@@ -23,12 +23,14 @@ Clone and then `bundle`
 
 ### Build
 
-`rake build`
+`bundle exec rake build`
 
 ### Running the server
 
 Either:
 
-`rake server` - builds then runs foreman
+`bundle exec rake server` - builds then runs foreman
 
-`foreman start` - runs server and opel-hot-reloader
+or
+
+`foreman start` - runs server without build
