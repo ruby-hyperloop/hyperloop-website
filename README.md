@@ -27,8 +27,10 @@ The new website will:
 
 ### Build
 
-`bundle exec rake build`
+To build packs.js: `webpack -p` (-p for production mode)
+
+To build app.js: `bundle exec rake build`
 
 ## Running the server
 
-`bundle exec rake server`
+`bundle exec rake server` (will build app.js and copy index.html from source to dist)
