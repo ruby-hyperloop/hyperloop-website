@@ -1,8 +1,10 @@
 module Components
   class Home < Hyperloop::Component
-    render(DIV) do
-      H1 { "Hello I am the new Hyperloop website" }
-      BUTTON { "Press me" }.on(:click) { alert "V3 baby" }
+    render do
+      Sem.Container do
+        H1 { "Hello I am the new Hyperloop website" }
+        Sem.Button(primary: true) { "Press me" }.on(:click) { alert "V3 baby" }
+      end
     end
   end
 end

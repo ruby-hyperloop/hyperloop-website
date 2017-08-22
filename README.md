@@ -31,10 +31,4 @@ The new website will:
 
 ## Running the server
 
-Either:
-
-`bundle exec rake server` - builds then runs foreman
-
-or
-
-`foreman start` - runs server without build
+`bundle exec rake server`

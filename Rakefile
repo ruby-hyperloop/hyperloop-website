@@ -14,6 +14,6 @@ task :build do
 end
 
 task :server do
-  Rake::Task['build'].execute
+  # Rake::Task['build'].execute
   sh 'foreman start'
 end
