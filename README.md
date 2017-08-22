@@ -19,13 +19,17 @@ The new website will:
 
 ## Setup and build
 
-Clone and then `bundle`
+### Setup
+
+`bundle`
+`npm`
+`npm install webpack -g` <-- if you don't have Webpack command line
 
 ### Build
 
 `bundle exec rake build`
 
-### Running the server
+## Running the server
 
 Either:
 
