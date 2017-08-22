@@ -11,6 +11,6 @@ task :build do
 end
 
 task :server do
-  sh 'rake build'
+  sh 'bundle exec rake build'
   sh 'foreman start'
 end
