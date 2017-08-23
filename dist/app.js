@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/home"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$Container', '$H1', '$on', '$alert', '$Button']);
+  Opal.add_stubs(['$render', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Container', '$times', '$SPAN']);
   return (function($base) {
     var $Components, self = $Components = $module($base, 'Components');
 
@@ -15720,20 +15720,44 @@ Opal.modules["components/home"] = function(Opal) {
       function $Home(){};
       var self = $Home = $klass($base, $super, 'Home', $Home);
 
-      var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+      var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_9, TMP_13;
 
-      return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+      ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
-      return ($c = ($d = $scope.get('Sem')).$Container, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4, $h, $i, TMP_5;
+      return ($c = ($d = $scope.get('Sem')).$Grid, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
 
-        ($e = ($f = self).$H1, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+        return ($e = ($f = $scope.get('Sem')).$GridRow, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4, $i, TMP_5;
 
-          return "Hello I am the new Hyperloop website"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f);
-          return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+          ($g = ($h = $scope.get('Sem')).$GridColumn, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
 
-          return "Press me"}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i, $hash2(["primary"], {"primary": true}))).$on, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+            return self.$side_nav()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["width"], {"width": 5}));
+            return ($g = ($i = $scope.get('Sem')).$GridColumn, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
 
-          return self.$alert("V3 baby")}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, "click");}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+            return self.$body()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($i, $hash2(["width"], {"width": 11}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["columns"], {"columns": 3}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+      Opal.defn(self, '$side_nav', TMP_9 = function $$side_nav() {
+        var $a, $b, TMP_6, self = this;
+
+        return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
+
+        return ($c = ($d = (100)).$times, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8;
+
+          return ($e = ($f = self).$SPAN, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+
+            return "side "}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($f)}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
+      }, TMP_9.$$arity = 0);
+
+      return (Opal.defn(self, '$body', TMP_13 = function $$body() {
+        var $a, $b, TMP_10, self = this;
+
+        return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $c, $d, TMP_11;
+
+        return ($c = ($d = (1000)).$times, $c.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $e, $f, TMP_12;
+
+          return ($e = ($f = self).$SPAN, $e.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+
+            return "body "}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $e).call($f)}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $c).call($d)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingRight"], {"marginTop": "2em", "paddingRight": "28px"})}));
+      }, TMP_13.$$arity = 0), nil) && 'body';
     })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
   })($scope.base)
 };
