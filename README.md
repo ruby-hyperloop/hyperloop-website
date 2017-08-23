@@ -22,7 +22,7 @@ The new website will:
 ### Setup
 
 `bundle`
-`npm`
+`npm install`
 `npm install webpack -g` <-- if you don't have Webpack command line
 
 ### Build
