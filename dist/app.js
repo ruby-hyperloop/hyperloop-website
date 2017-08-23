@@ -15766,7 +15766,7 @@ Opal.modules["components/home"] = function(Opal) {
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$render', '$on', '$get', '$BUTTON', '$HighlightX', '$html', '$state', '$body', '$mutate', '$lambda', '$call_me', '$puts']);
+  Opal.add_stubs(['$imports', '$render', '$on', '$get', '$BUTTON', '$HighlightX', '$html', '$state', '$body', '$lambda', '$call_me', '$mutate', '$gsub', '$downcase', '$puts']);
   (function($base, $super) {
     function $HighlightX(){};
     var self = $HighlightX = $klass($base, $super, 'HighlightX', $HighlightX);
@@ -15799,17 +15799,22 @@ Opal.modules["components/page"] = function(Opal) {
         if (self.raw == null) self.raw = nil;
 if (response == null) response = nil;
       self.raw = response.$body();
-        self.$mutate().$html(Marked(self.raw));
         var renderer = new Marked.Renderer();
-        return renderer.heading = ($c = ($d = self).$lambda, $c.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
-
-        return self.$call_me()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $c).call($d);}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b, "/DOCS.md");
+        renderer.heading = ($c = ($d = self).$lambda, $c.$$p = (TMP_6 = function(text, level){var self = TMP_6.$$s || this;
+if (text == null) text = nil;if (level == null) level = nil;
+        return self.$call_me(text, level)}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $c).call($d);
+        Marked.setOptions({
+        renderer: renderer
+      });
+        return self.$mutate().$html(Marked(self.raw));}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b, "/DOCS.md");
     }, TMP_7.$$arity = 0);
 
     return (Opal.defn(self, '$call_me', TMP_8 = function $$call_me(text, level) {
-      var self = this;
+      var self = this, slug = nil;
 
-      return self.$puts("I am here");
+      slug = text.$downcase().$gsub(/[^\w]+/g, "-");
+      self.$puts("" + (slug) + " " + (text) + " " + (level));
+      return "<H" + (level) + "> " + (text) + " </H" + (level) + ">";
     }, TMP_8.$$arity = 2), nil) && 'call_me';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };

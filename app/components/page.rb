@@ -39,7 +39,7 @@ class Page < Hyperloop::Component
       @raw = response.body
 
       `var renderer = new Marked.Renderer()`
-      `renderer.heading = #{lambda {|text, level| call_me(text, level)} }`
+      `renderer.heading = #{lambda {|text, level| on_heading(text, level)} }`
 
       `Marked.setOptions({
         renderer: renderer
@@ -50,9 +50,10 @@ class Page < Hyperloop::Component
     end
   end
 
-  def call_me text, level
+  def on_heading text, level
     slug = text.downcase.gsub(/[^\w]+/g, '-')
     puts "#{slug} #{text} #{level}"
+    "<h#{level} class='fred_heading_#{level}'>#{text}</h#{level}>"
   end
 
 end
