@@ -23,7 +23,7 @@ module Components
 
     def body
       Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
-        3000.times { SPAN { "body " } }
+        Page()
       end
     end
   end
