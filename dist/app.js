@@ -15766,7 +15766,7 @@ Opal.modules["components/home"] = function(Opal) {
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$after_mount', '$get', '$body', '$html', '$mutate', '$render', '$HighlightX', '$state']);
+  Opal.add_stubs(['$imports', '$render', '$on', '$get', '$BUTTON', '$HighlightX', '$html', '$state', '$body', '$mutate', '$lambda', '$call_me', '$puts']);
   (function($base, $super) {
     function $HighlightX(){};
     var self = $HighlightX = $klass($base, $super, 'HighlightX', $HighlightX);
@@ -15779,21 +15779,38 @@ Opal.modules["components/page"] = function(Opal) {
     function $Page(){};
     var self = $Page = $klass($base, $super, 'Page', $Page);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_3;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_7, TMP_8;
 
-    ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4;
 
-    return ($c = ($d = $scope.get('HTTP')).$get, $c.$$p = (TMP_2 = function(response){var self = TMP_2.$$s || this;
+    ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+      return "Get"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+
+      return self.$get()}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
+      return ($c = ($e = self).$HighlightX, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+
+      return self.$state().$html()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($e, $hash2(["innerHTML"], {"innerHTML": true}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+
+    Opal.defn(self, '$get', TMP_7 = function $$get() {
+      var $a, $b, TMP_5, self = this;
+
+      return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_5 = function(response){var self = TMP_5.$$s || this, $c, $d, TMP_6;
         if (self.raw == null) self.raw = nil;
 if (response == null) response = nil;
       self.raw = response.$body();
-        return self.$mutate().$html(Marked(self.raw));}, TMP_2.$$s = self, TMP_2.$$arity = 1, TMP_2), $c).call($d, "https://raw.githubusercontent.com/ruby-hyperloop/hyper-react/master/DOCS.md")}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+        self.$mutate().$html(Marked(self.raw));
+        var renderer = new Marked.Renderer();
+        return renderer.heading = ($c = ($d = self).$lambda, $c.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-    return ($a = ($c = self).$render, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $d, $e, TMP_4;
+        return self.$call_me()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $c).call($d);}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b, "/DOCS.md");
+    }, TMP_7.$$arity = 0);
 
-    return ($d = ($e = self).$HighlightX, $d.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+    return (Opal.defn(self, '$call_me', TMP_8 = function $$call_me(text, level) {
+      var self = this;
 
-      return self.$state().$html()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $d).call($e, $hash2(["innerHTML"], {"innerHTML": true}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($c, $scope.get('DIV'));
+      return self.$puts("I am here");
+    }, TMP_8.$$arity = 2), nil) && 'call_me';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
