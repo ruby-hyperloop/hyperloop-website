@@ -1,18 +1,16 @@
 module Components
   class Home < Hyperloop::Component
     render do
-      # Sem.Container(style: { marginTop: '2em' }) do
-        Sem.Grid do
-          Sem.GridRow(columns: 3) do
-            Sem.GridColumn(width: 4) do
-              side_nav
-            end
-            Sem.GridColumn(width: 12) do
-              body
-            end
+      Sem.Grid do
+        Sem.GridRow(columns: 2) do
+          Sem.GridColumn(width: 4) do
+            side_nav
+          end
+          Sem.GridColumn(width: 12) do
+            body
           end
         end
-      # end
+      end
     end
 
     def side_nav

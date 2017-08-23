@@ -15730,17 +15730,17 @@ Opal.modules["components/home"] = function(Opal) {
 
           ($g = ($h = $scope.get('Sem')).$GridColumn, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
 
-            return self.$side_nav()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["width"], {"width": 5}));
+            return self.$side_nav()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["width"], {"width": 4}));
             return ($g = ($i = $scope.get('Sem')).$GridColumn, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
 
-            return self.$body()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($i, $hash2(["width"], {"width": 11}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["columns"], {"columns": 3}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+            return self.$body()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($i, $hash2(["width"], {"width": 12}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["columns"], {"columns": 2}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
       Opal.defn(self, '$side_nav', TMP_9 = function $$side_nav() {
         var $a, $b, TMP_6, self = this;
 
         return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
 
-        return ($c = ($d = (100)).$times, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8;
+        return ($c = ($d = (200)).$times, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8;
 
           return ($e = ($f = self).$SPAN, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
 
@@ -15752,7 +15752,7 @@ Opal.modules["components/home"] = function(Opal) {
 
         return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $c, $d, TMP_11;
 
-        return ($c = ($d = (1000)).$times, $c.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $e, $f, TMP_12;
+        return ($c = ($d = (3000)).$times, $c.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $e, $f, TMP_12;
 
           return ($e = ($f = self).$SPAN, $e.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
