@@ -4,3 +4,5 @@ React = require('react');
 Sem = require('semantic-ui-react');
 
 Sticky = require('react-stickynode');
+
+Marked = require('marked');
