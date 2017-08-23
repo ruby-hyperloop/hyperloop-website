@@ -15,7 +15,9 @@ module Components
 
     def side_nav
       Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) do
-          200.times { SPAN { "side " } }
+        Sticky {
+          DIV { 200.times { SPAN { "side " } } }
+        }
         end
     end
 

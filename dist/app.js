@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/home"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Container', '$times', '$SPAN']);
+  Opal.add_stubs(['$render', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Container', '$Sticky', '$DIV', '$times', '$SPAN']);
   return (function($base) {
     var $Components, self = $Components = $module($base, 'Components');
 
@@ -15720,7 +15720,7 @@ Opal.modules["components/home"] = function(Opal) {
       function $Home(){};
       var self = $Home = $klass($base, $super, 'Home', $Home);
 
-      var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_9, TMP_13;
+      var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_11, TMP_15;
 
       ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
@@ -15735,29 +15735,33 @@ Opal.modules["components/home"] = function(Opal) {
 
             return self.$body()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($i, $hash2(["width"], {"width": 12}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["columns"], {"columns": 2}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-      Opal.defn(self, '$side_nav', TMP_9 = function $$side_nav() {
+      Opal.defn(self, '$side_nav', TMP_11 = function $$side_nav() {
         var $a, $b, TMP_6, self = this;
 
         return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
 
-        return ($c = ($d = (200)).$times, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8;
+        return ($c = ($d = self).$Sticky, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8;
 
-          return ($e = ($f = self).$SPAN, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+          return ($e = ($f = self).$DIV, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $g, $h, TMP_9;
 
-            return "side "}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($f)}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
-      }, TMP_9.$$arity = 0);
+            return ($g = ($h = (200)).$times, $g.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $i, $j, TMP_10;
 
-      return (Opal.defn(self, '$body', TMP_13 = function $$body() {
-        var $a, $b, TMP_10, self = this;
+              return ($i = ($j = self).$SPAN, $i.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
 
-        return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $c, $d, TMP_11;
+                return "side "}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $i).call($j)}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $g).call($h)}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($f)}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
+      }, TMP_11.$$arity = 0);
 
-        return ($c = ($d = (3000)).$times, $c.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $e, $f, TMP_12;
+      return (Opal.defn(self, '$body', TMP_15 = function $$body() {
+        var $a, $b, TMP_12, self = this;
 
-          return ($e = ($f = self).$SPAN, $e.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+        return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $c, $d, TMP_13;
 
-            return "body "}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $e).call($f)}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $c).call($d)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingRight"], {"marginTop": "2em", "paddingRight": "28px"})}));
-      }, TMP_13.$$arity = 0), nil) && 'body';
+        return ($c = ($d = (3000)).$times, $c.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $e, $f, TMP_14;
+
+          return ($e = ($f = self).$SPAN, $e.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
+
+            return "body "}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $e).call($f)}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($d)}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingRight"], {"marginTop": "2em", "paddingRight": "28px"})}));
+      }, TMP_15.$$arity = 0), nil) && 'body';
     })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
   })($scope.base)
 };
