@@ -4,7 +4,7 @@ end
 
 class Page < Hyperloop::Component
 
-  before_mount do
+  after_mount do
     HTTP.get('https://raw.githubusercontent.com/ruby-hyperloop/hyper-react/master/DOCS.md') do |response|
       @raw = response.body
       mutate.html `Marked(#{@raw})`

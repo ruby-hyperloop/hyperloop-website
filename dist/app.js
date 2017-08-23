@@ -15766,7 +15766,7 @@ Opal.modules["components/home"] = function(Opal) {
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$before_mount', '$get', '$body', '$html', '$mutate', '$render', '$HighlightX', '$state']);
+  Opal.add_stubs(['$imports', '$after_mount', '$get', '$body', '$html', '$mutate', '$render', '$HighlightX', '$state']);
   (function($base, $super) {
     function $HighlightX(){};
     var self = $HighlightX = $klass($base, $super, 'HighlightX', $HighlightX);
@@ -15781,7 +15781,7 @@ Opal.modules["components/page"] = function(Opal) {
 
     var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_3;
 
-    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
     return ($c = ($d = $scope.get('HTTP')).$get, $c.$$p = (TMP_2 = function(response){var self = TMP_2.$$s || this;
         if (self.raw == null) self.raw = nil;
