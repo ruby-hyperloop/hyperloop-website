@@ -13,7 +13,7 @@ module Components
       end
 
       Sem.Divider()
-      Page(url: state.url, key: @key) unless state.url.nil?
+      Page(url: state.url, key: @key, allow_edit: true) unless state.url.nil?
 
     end
   end

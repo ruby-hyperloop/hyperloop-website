@@ -1,14 +1,13 @@
 
 class Page < Hyperloop::Component
   param :url
+  param allow_edit: true
+
+  state search: ""
+  state needs_refresh: false
 
   after_mount do
-    HTTP.get(params.url) do |response|
-      md = MdConverter.new(response.body)
-      mutate.html md.html
-      mutate.code_blocks md.code_blocks
-      mutate.headings md.headings
-    end
+    get_page
   end
 
   render do
@@ -21,6 +20,15 @@ class Page < Hyperloop::Component
           body
         end
       end
+    end
+  end
+
+  def get_page
+    HTTP.get(params.url) do |response|
+      md = MdConverter.new(response.body)
+      mutate.html md.html
+      mutate.code_blocks md.code_blocks
+      mutate.headings md.headings
     end
   end
 
@@ -65,6 +73,27 @@ class Page < Hyperloop::Component
   def body
     Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
       DIV(dangerously_set_inner_HTML: { __html: state.html })
+      Sem.Rail(internal: true, position: :right) {
+        edit_button
+      } if params.allow_edit
     end
+  end
+
+  def edit_button
+    Sem.Grid(textAlign: :right) {
+      Sem.GridColumn {
+        if state.needs_refresh
+          Sem.Button(size: :tiny) { "Refresh page" }.on(:click) do
+            get_page
+            mutate.needs_refresh false
+          end
+        else
+          Sem.Button(size: :tiny) { "Edit this page" }.on(:click) do
+            mutate.needs_refresh true
+            `window.open("https://github.com/ruby-hyperloop/hyperloop-website/edit/master/dist/DOCS.md", "_blank");`
+          end
+        end
+      }
+    }
   end
 end
