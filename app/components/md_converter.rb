@@ -3,7 +3,21 @@
 class MdConverter
   def initialize md
     @md = md
+    @headings = []
+    @code_blocks = []
     process
+  end
+
+  def html
+    @html
+  end
+
+  def code_blocks
+    @code_blocks
+  end
+
+  def headings
+    @headings
   end
 
   def process
@@ -23,6 +37,10 @@ class MdConverter
   end
 
   def on_code code, lang
+    cb = {}
+    cb[:code] = code
+    cb[:lang] = lang
+    @code_blocks << cb
     "<pre><code class='lang-#{lang} hljs'>#{ highlight(code, lang) }</code></pre>"
   end
 
@@ -39,13 +57,12 @@ class MdConverter
   end
 
   def on_heading text, level
-    # slug = text.downcase.gsub(/[^\w]+/g, '-')
-    # puts "XX #{slug} #{text} #{level}"
+    heading = {}
+    heading[:text] = text
+    heading[:level] = level
+    heading[:slug] = text.downcase.gsub(/[^\w]+/g, '-')
+    @headings << heading
     "<h#{level} class='doc_h#{level}'>#{text}</h#{level}>"
-  end
-
-  def html
-    @html
   end
 
 end
