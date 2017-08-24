@@ -15781,12 +15781,12 @@ Opal.modules["components/home"] = function(Opal) {
 Opal.modules["components/md_converter"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
 
-  Opal.add_stubs(['$process', '$lambda', '$on_heading', '$gsub', '$downcase', '$puts']);
+  Opal.add_stubs(['$process', '$lambda', '$on_heading', '$on_highlight']);
   return (function($base, $super) {
     function $MdConverter(){};
     var self = $MdConverter = $klass($base, $super, 'MdConverter', $MdConverter);
 
-    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_3, TMP_4, TMP_5;
+    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_4, TMP_5, TMP_6, TMP_7;
 
     def.md = def.html = nil;
     Opal.defn(self, '$initialize', TMP_1 = function $$initialize(md) {
@@ -15796,30 +15796,38 @@ Opal.modules["components/md_converter"] = function(Opal) {
       return self.$process();
     }, TMP_1.$$arity = 1);
 
-    Opal.defn(self, '$process', TMP_3 = function $$process() {
-      var $a, $b, TMP_2, self = this;
+    Opal.defn(self, '$process', TMP_4 = function $$process() {
+      var $a, $b, TMP_2, $c, TMP_3, self = this;
 
       var renderer = new Marked.Renderer();
       renderer.heading = ($a = ($b = self).$lambda, $a.$$p = (TMP_2 = function(text, level){var self = TMP_2.$$s || this;
 if (text == null) text = nil;if (level == null) level = nil;
       return self.$on_heading(text, level)}, TMP_2.$$s = self, TMP_2.$$arity = 2, TMP_2), $a).call($b);
-      Marked.setOptions({ renderer: renderer });
+      Marked.setOptions({ renderer: renderer,
+                        highlight: ($a = ($c = self).$lambda, $a.$$p = (TMP_3 = function(code, lang){var self = TMP_3.$$s || this;
+if (code == null) code = nil;if (lang == null) lang = nil;
+      return self.$on_highlight(code, lang)}, TMP_3.$$s = self, TMP_3.$$arity = 2, TMP_3), $a).call($c)
+     });
       return self.html = Marked(self.md);
-    }, TMP_3.$$arity = 0);
+    }, TMP_4.$$arity = 0);
 
-    Opal.defn(self, '$on_heading', TMP_4 = function $$on_heading(text, level) {
-      var self = this, slug = nil;
+    Opal.defn(self, '$on_highlight', TMP_5 = function $$on_highlight(code, lang) {
+      var self = this;
 
-      slug = text.$downcase().$gsub(/[^\w]+/g, "-");
-      self.$puts("XX " + (slug) + " " + (text) + " " + (level));
-      return "<h" + (level) + " class='fred_heading_" + (level) + "'>" + (text) + "</h" + (level) + ">";
-    }, TMP_4.$$arity = 2);
+      return hljs.highlightAuto(code).value;
+    }, TMP_5.$$arity = 2);
 
-    return (Opal.defn(self, '$html', TMP_5 = function $$html() {
+    Opal.defn(self, '$on_heading', TMP_6 = function $$on_heading(text, level) {
+      var self = this;
+
+      return "<h" + (level) + " class='doc_h" + (level) + "'>" + (text) + "</h" + (level) + ">";
+    }, TMP_6.$$arity = 2);
+
+    return (Opal.defn(self, '$html', TMP_7 = function $$html() {
       var self = this;
 
       return self.html;
-    }, TMP_5.$$arity = 0), nil) && 'html';
+    }, TMP_7.$$arity = 0), nil) && 'html';
   })($scope.base, null)
 };
 
@@ -15827,32 +15835,30 @@ if (text == null) text = nil;if (level == null) level = nil;
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$on', '$get', '$BUTTON', '$HighlightX', '$html', '$state', '$new', '$body', '$mutate']);
+  Opal.add_stubs(['$render', '$on', '$get', '$BUTTON', '$DIV', '$html', '$state', '$new', '$body', '$mutate']);
   return (function($base, $super) {
     function $Page(){};
     var self = $Page = $klass($base, $super, 'Page', $Page);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_6;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_5;
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4;
+    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3;
 
     ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
       return "Get"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
 
       return self.$get()}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
-      return ($c = ($e = self).$HighlightX, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+      return self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": self.$state().$html()})}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
 
-      return self.$state().$html()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($e, $hash2(["innerHTML"], {"innerHTML": true}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+    return (Opal.defn(self, '$get', TMP_5 = function $$get() {
+      var $a, $b, TMP_4, self = this;
 
-    return (Opal.defn(self, '$get', TMP_6 = function $$get() {
-      var $a, $b, TMP_5, self = this;
-
-      return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_5 = function(response){var self = TMP_5.$$s || this, md = nil;
+      return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_4 = function(response){var self = TMP_4.$$s || this, md = nil;
 if (response == null) response = nil;
       md = $scope.get('MdConverter').$new(response.$body());
-        return self.$mutate().$html(md.$html());}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b, "/DOCS.md");
-    }, TMP_6.$$arity = 0), nil) && 'get';
+        return self.$mutate().$html(md.$html());}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $a).call($b, "/DOCS.md");
+    }, TMP_5.$$arity = 0), nil) && 'get';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
