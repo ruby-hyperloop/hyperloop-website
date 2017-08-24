@@ -10,29 +10,22 @@ class CodeMirrorTest < Hyperloop::Component
   render(DIV) do
     Sem.Container {
       H1 { "CodeMirror Test" }
-      Sem.Grid(columns: 2) {
-        Sem.GridRow {
-          Sem.GridColumn {
-            mirror
-          }
-          Sem.GridColumn {
-            P {"And this is where it will be evaluated."}
-            PRE {
-              state.code
-            }
-          }
-
-        }
-        Sem.GridRow {
-          Sem.GridColumn {
-            Sem.Message(fluid: true) {
-              "Compile results:"
-            }
-          }
-        }
+      mirror
+      Sem.Message(fluid: true) {
+        PRE { compile || state.compile_error }
       }
-
     }
+  end
+
+  def compile
+    begin
+      compiled_code = Opal::Compiler.new(state.code).compile
+    rescue Exception => e
+      @time_out = after(0.1) do
+        mutate.compile_error e.message
+      end
+    end
+    compiled_code
   end
 
   def mirror

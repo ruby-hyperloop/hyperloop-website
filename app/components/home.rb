@@ -22,6 +22,7 @@ module Components
 
       BUTTON { "CodeMirror" }.on(:click) do
         mutate.code_mirror true
+        mutate.key 3
       end
 
       Sem.Divider()
