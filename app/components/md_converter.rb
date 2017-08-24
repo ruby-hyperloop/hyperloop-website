@@ -62,7 +62,7 @@ class MdConverter
     heading[:level] = level
     heading[:slug] = text.downcase.gsub(/[^\w]+/g, '-')
     @headings << heading
-    "<h#{level} class='doc_h#{level}'>#{text}</h#{level}>"
+    "<h#{level} class='doc_h#{level}' id='#{heading[:slug]}'>#{text}</h#{level}>"
   end
 
 end

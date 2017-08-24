@@ -1,31 +1,20 @@
 module Components
   class Home < Hyperloop::Component
-    render do
-      Sem.Grid do
-        Sem.GridRow(columns: 2) do
-          Sem.GridColumn(width: 4) do
-            side_nav
-          end
-          Sem.GridColumn(width: 12) do
-            body
-          end
-        end
-      end
-    end
 
-    def side_nav
-      Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) do
-        Sticky {
-          DIV { 500.times { SPAN { "side " } } }
-        }
-        end
-    end
-
-    def body
-      Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
-        Page()
+    render(DIV) do
+      BUTTON { "Local: HyperModel DOCS" }.on(:click) do
+        mutate.url '/DOCS.md'
+        @key = 1
       end
+
+      BUTTON { "Github: HyperComponent DOCS" }.on(:click) do
+        mutate.url 'https://raw.githubusercontent.com/ruby-hyperloop/hyper-react/master/DOCS.md'
+        @key = 2
+      end
+
+      Sem.Divider()
+      Page(url: state.url, key: @key) unless state.url.nil?
+
     end
   end
-
 end
