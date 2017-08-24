@@ -94,12 +94,12 @@ class Page < Hyperloop::Component
         if state.needs_refresh
           Sem.Message(positive: true) {
             Sem.MessageHeader { "Thank you!" }
-            P { "Your edits will be published soon." }
+            P { "Your contribution will be published soon." }
           }
         else
-          Sem.Button(size: :tiny) { "Edit this page" }.on(:click) do
+          Sem.Button(size: :tiny) { "Improve this page" }.on(:click) do
             mutate.needs_refresh true
-            `window.open("https://github.com/ruby-hyperloop/hyperloop-website/edit/master/dist/DOCS.md", "_blank");`
+            `window.open(#{@edit_url}, "_blank");`
           end
         end
       }

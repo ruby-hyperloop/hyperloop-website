@@ -15743,10 +15743,10 @@ Opal.modules["components/home"] = function(Opal) {
 
       ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
-        return "Edit: HyperModel DOCS on website (edit ok)"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+        return "Edit: HyperModel dummy DOCS on website (edit ok)"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
 
         self.$mutate().$repo("hyperloop-website");
-          self.$mutate().$file("dist/DOCS.md");
+          self.$mutate().$file("dist/dummy_DOCS.md");
           self.$mutate().$edit(true);
           return self.$mutate().$key(1);}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
         ($c = ($e = ($g = ($h = self).$BUTTON, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
