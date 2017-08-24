@@ -1,20 +1,26 @@
 module Components
   class Home < Hyperloop::Component
 
+    state repo: nil
+
     render(DIV) do
-      BUTTON { "Local: HyperModel DOCS" }.on(:click) do
-        mutate.url '/DOCS.md'
-        @key = 1
+      BUTTON { "Edit: HyperModel DOCS on website (edit ok)" }.on(:click) do
+        mutate.repo 'hyperloop-website'
+        mutate.file 'dist/DOCS.md'
+        mutate.edit true
+        mutate.key 1
       end
 
-      BUTTON { "Github: HyperComponent DOCS" }.on(:click) do
-        mutate.url 'https://raw.githubusercontent.com/ruby-hyperloop/hyper-react/master/DOCS.md'
-        @key = 2
+      BUTTON { "Github: HyperComponent DOCS (no edit)" }.on(:click) do
+        # mutate.url 'https://raw.githubusercontent.com/ruby-hyperloop/hyper-react/master/DOCS.md'
+        mutate.repo 'hyper-react'
+        mutate.file 'DOCS.md'
+        mutate.edit false
+        mutate.key 2
       end
 
       Sem.Divider()
-      Page(url: state.url, key: @key, allow_edit: true) unless state.url.nil?
-
+      Page(repo: state.repo, file: state.file, key: state.key, allow_edit: state.edit) unless state.repo.nil?
     end
   end
 end

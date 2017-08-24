@@ -1,12 +1,21 @@
 
 class Page < Hyperloop::Component
-  param :url
+  param :repo
+  param :file
   param allow_edit: true
 
   state search: ""
   state needs_refresh: false
 
+  # https://github.com/ruby-hyperloop/hyperloop-website/blob/master/dist/DOCS.md
+
+  # raw:  https://raw.githubusercontent.com/ruby-hyperloop/hyperloop-website/master/dist/DOCS.md
+  # edit: https://github.com/ruby-hyperloop/hyperloop-website/edit/master/dist/DOCS.md
+
   after_mount do
+    @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
+    @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
+    puts "get page"
     get_page
   end
 
@@ -24,7 +33,7 @@ class Page < Hyperloop::Component
   end
 
   def get_page
-    HTTP.get(params.url) do |response|
+    HTTP.get(@raw_url) do |response|
       md = MdConverter.new(response.body)
       mutate.html md.html
       mutate.code_blocks md.code_blocks
@@ -83,10 +92,10 @@ class Page < Hyperloop::Component
     Sem.Grid(textAlign: :right) {
       Sem.GridColumn {
         if state.needs_refresh
-          Sem.Button(size: :tiny) { "Refresh page" }.on(:click) do
-            get_page
-            mutate.needs_refresh false
-          end
+          Sem.Message(positive: true) {
+            Sem.MessageHeader { "Thank you!" }
+            P { "Your edits will be published soon." }
+          }
         else
           Sem.Button(size: :tiny) { "Edit this page" }.on(:click) do
             mutate.needs_refresh true
