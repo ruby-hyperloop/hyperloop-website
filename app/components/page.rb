@@ -24,7 +24,7 @@ class Page < Hyperloop::Component
     end
   end
 
-  def search
+  def search_input
     Sem.Input(placeholder: 'Search', fluid: true).on(:change) do |e|
       mutate.search e.target.value
     end
@@ -33,30 +33,33 @@ class Page < Hyperloop::Component
   def side_nav
     Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) do
       Sticky {
-        search
-        # BR()
+        search_input
         H4 {"Sections"}
-        state.headings.each do |heading|
-          if state.search
-            P { heading[:text] } if heading[:text].downcase.include?(state.search.downcase)
-          else
-            P { heading[:text] }
-          end
-        end if state.headings
-
-        # BR()
+        sections_results
         H4 {"Code"} unless state.search == ""
-        state.code_blocks.each do |code|
-          if state.search != "" && code[:code].downcase.include?(state.search.downcase)
-            PRE(class: 'hljs') {
-              DIV(dangerously_set_inner_HTML: { __html: code[:html] })
-            }
-            # BR()
-          end
-        end  if state.code_blocks && state.search
-
+        code_results
       }
       end
+  end
+
+  def sections_results
+    state.headings.each do |heading|
+      if state.search
+        P { heading[:text] } if heading[:text].downcase.include?(state.search.downcase)
+      else
+        P { heading[:text] }
+      end
+    end if state.headings
+  end
+
+  def code_results
+    state.code_blocks.each do |code|
+      if state.search != "" && code[:code].downcase.include?(state.search.downcase)
+        PRE(class: 'hljs') {
+          DIV(dangerously_set_inner_HTML: { __html: code[:html] })
+        }
+      end
+    end  if state.code_blocks && state.search
   end
 
   def body
