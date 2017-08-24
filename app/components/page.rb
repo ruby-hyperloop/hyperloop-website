@@ -94,7 +94,7 @@ class Page < Hyperloop::Component
         if state.needs_refresh
           Sem.Message(positive: true) {
             Sem.MessageHeader { "Thank you!" }
-            P { "Your contribution will be published soon." }
+            P { "PRs are always welcome." }
           }
         else
           Sem.Button(size: :tiny) { "Improve this page" }.on(:click) do
