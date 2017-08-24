@@ -38,10 +38,11 @@ class MdConverter
 
   def on_code code, lang
     cb = {}
+    cb[:html] = highlight code, lang
     cb[:code] = code
     cb[:lang] = lang
     @code_blocks << cb
-    "<pre><code class='lang-#{lang} hljs'>#{ highlight(code, lang) }</code></pre>"
+    "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
   end
 
   def on_codespan code
