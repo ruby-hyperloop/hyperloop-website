@@ -9,7 +9,7 @@ task :build do
   File.open("dist/app.js", "w+") do |out|
    out << Opal::Builder.build("app").to_s
   end
-  cp 'source/index.html', 'dist/index.html'
+  # cp 'source/index.html', 'dist/index.html'
   puts "all done"
 end
 

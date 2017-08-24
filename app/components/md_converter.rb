@@ -10,9 +10,9 @@ class MdConverter
     `var renderer = new Marked.Renderer()`
     `renderer.heading = #{lambda {|text, level| on_heading(text, level)} }`
     `renderer.code = #{lambda {|code, lang| on_code(code, lang)} }`
+    `renderer.codespan = #{lambda {|code| on_codespan(code)} }`
 
     `Marked.setOptions({ renderer: renderer })`
-
     @html = `Marked(#{@md})`
   end
 
@@ -20,7 +20,12 @@ class MdConverter
     "<pre><code class='lang-#{lang} hljs'>#{ highlight(code, lang) }</code></pre>"
   end
 
-  def highlight code, lang
+  def on_codespan code
+    puts code
+    "<code class='inline-codespan'>#{ code }</code>"
+  end
+
+  def highlight code, lang=nil
     `hljs.highlightAuto(#{code}).value`
   end
 
