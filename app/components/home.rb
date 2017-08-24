@@ -4,9 +4,9 @@ module Components
     state repo: nil
 
     render(DIV) do
-      BUTTON { "Edit: HyperModel DOCS on website (edit ok)" }.on(:click) do
+      BUTTON { "Edit: HyperModel dummy DOCS on website (edit ok)" }.on(:click) do
         mutate.repo 'hyperloop-website'
-        mutate.file 'dist/DOCS.md'
+        mutate.file 'dist/dummy_DOCS.md'
         mutate.edit true
         mutate.key 1
       end
