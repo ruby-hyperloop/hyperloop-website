@@ -12,6 +12,9 @@ In Hyperloop, your ActiveRecord Models are available in your Isomorphic code.
 
 Components, Operations, and Stores have CRUD access to your server side ActiveRecord Models, using the standard ActiveRecord API.
 
++ point 1
++ and point 2
+
 In addition, Hyperloop implements push notifications (via a number of possible technologies) so changes to records on the server are dynamically pushed to all authorized clients.
 
 In other words, one browser creates, updates, or destroys a Model, and the changes are persisted in ActiveRecord models and then broadcast to all other authorized clients.
