@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/code_mirror"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$state', '$before_mount', '$code', '$mutate', '$render', '$Container', '$H1', '$mirror', '$compile', '$evaluate', '$Message', '$render_component', '$PRE', '$compile_error', '$new', '$message', '$gsub', '$puts', '$ReactCodeMirror', '$to_n', '$lambda']);
+  Opal.add_stubs(['$imports', '$state', '$before_mount', '$code', '$mutate', '$render', '$Container', '$H1', '$mirror', '$compile', '$evaluate', '$DIV', '$render_component', '$Message', '$PRE', '$compile_error', '$new', '$message', '$gsub', '$puts', '$MyComp', '$ReactCodeMirror', '$to_n', '$lambda']);
   (function($base, $super) {
     function $ReactCodeMirror(){};
     var self = $ReactCodeMirror = $klass($base, $super, 'ReactCodeMirror', $ReactCodeMirror);
@@ -15730,7 +15730,7 @@ Opal.modules["components/code_mirror"] = function(Opal) {
 
     ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, code = nil;
 
-    code = "puts 'hello'";
+    code = "class MyComp < Hyperloop::Component\n  render do\n    H1 { 'Hello world' }\n  end\nend";
       return self.$mutate().$code(code);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
     ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
@@ -15742,7 +15742,7 @@ Opal.modules["components/code_mirror"] = function(Opal) {
         return "CodeMirror Test"}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $f).call($g);
         self.$mirror();
         if ((($f = ($h = self.$compile(), $h !== false && $h !== nil && $h != null ?self.$evaluate() : $h)) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
-          return ($f = ($h = $scope.get('Sem')).$Message, $f.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+          return ($f = ($h = self).$DIV, $f.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
 
           return self.$render_component()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $f).call($h, $hash2(["id"], {"id": "result"}))
           } else {
@@ -15780,7 +15780,7 @@ Opal.modules["components/code_mirror"] = function(Opal) {
       } catch ($err) {
         if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
           try {
-            self.$mutate().$compile_error("failed: " + (e.$message()));
+            self.$mutate().$compile_error("Oops... \n\n " + (e.$message()));
             ret = false;
           } finally { Opal.pop_exception() }
         } else { throw $err; }
@@ -15791,7 +15791,8 @@ Opal.modules["components/code_mirror"] = function(Opal) {
     Opal.defn(self, '$render_component', TMP_10 = function $$render_component() {
       var self = this;
 
-      return self.$puts("SUCCESS LETS RENDER");
+      self.$puts("SUCCESS LETS RENDER");
+      return self.$MyComp();
     }, TMP_10.$$arity = 0);
 
     return (Opal.defn(self, '$mirror', TMP_12 = function $$mirror() {

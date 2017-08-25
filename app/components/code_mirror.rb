@@ -8,13 +8,13 @@ class CodeMirrorTest < Hyperloop::Component
   state code: ""
 
   before_mount do
-#     code =
-# "class MyComp < Hyperloop::Component
-#   render do
-#     H1 { 'Hello world' }
-#   end
-# end"
-  code = "puts 'hello'"
+    code =
+"class MyComp < Hyperloop::Component
+  render do
+    H1 { 'Hello world' }
+  end
+end"
+  # code = "puts 'hello'"
     mutate.code code
   end
 
@@ -24,9 +24,10 @@ class CodeMirrorTest < Hyperloop::Component
       mirror
 
       if compile && evaluate
-        DIV(id:'result') {
+        Sem.Message {
           render_component
         }
+
       else
         Sem.Message(negative: true) {
           PRE { state.compile_error }
@@ -52,7 +53,7 @@ class CodeMirrorTest < Hyperloop::Component
       ret = true
       `eval(#{@compiled_code})`
       rescue Exception => e
-        mutate.compile_error "failed: #{e.message}"
+        mutate.compile_error "Oops... \n\n #{e.message}"
         ret = false
     end
     ret
@@ -60,6 +61,9 @@ class CodeMirrorTest < Hyperloop::Component
 
   def render_component
     puts "SUCCESS LETS RENDER"
+    # `ReactDOM.unmountComponentAtNode(document.getElementById("result"));`
+    # render{ MyComp() }
+    MyComp()
   end
 
   def mirror
