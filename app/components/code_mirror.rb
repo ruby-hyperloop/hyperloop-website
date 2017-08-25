@@ -7,25 +7,59 @@ class CodeMirrorTest < Hyperloop::Component
 
   state code: ""
 
+  before_mount do
+#     code =
+# "class MyComp < Hyperloop::Component
+#   render do
+#     H1 { 'Hello world' }
+#   end
+# end"
+  code = "puts 'hello'"
+    mutate.code code
+  end
+
   render(DIV) do
     Sem.Container {
       H1 { "CodeMirror Test" }
       mirror
-      Sem.Message(fluid: true) {
-        PRE { compile || state.compile_error }
-      }
+
+      if compile && evaluate
+        DIV(id:'result') {
+          render_component
+        }
+      else
+        Sem.Message(negative: true) {
+          PRE { state.compile_error }
+        }
+      end
     }
   end
 
   def compile
     begin
-      compiled_code = Opal::Compiler.new(state.code).compile
+      ret = true
+      @compiled_code = Opal::Compiler.new(state.code).compile
     rescue Exception => e
-      @time_out = after(0.1) do
-        mutate.compile_error e.message
-      end
+      message = e.message
+      mutate.compile_error message.gsub 'An error occurred while compiling: (file)', 'Oops...'
+      ret = false
     end
-    compiled_code
+    ret
+  end
+
+  def evaluate
+    begin
+      ret = true
+      `eval(#{@compiled_code})`
+      rescue Exception => e
+        mutate.compile_error "failed: #{e.message}"
+        ret = false
+    end
+    ret
+  end
+
+  def render_component
+    puts "SUCCESS LETS RENDER"
   end
 
   def mirror

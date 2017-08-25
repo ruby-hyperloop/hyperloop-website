@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/code_mirror"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$state', '$render', '$Container', '$H1', '$mirror', '$Message', '$PRE', '$compile', '$compile_error', '$new', '$code', '$after', '$mutate', '$message', '$ReactCodeMirror', '$to_n', '$lambda']);
+  Opal.add_stubs(['$imports', '$state', '$before_mount', '$code', '$mutate', '$render', '$Container', '$H1', '$mirror', '$compile', '$evaluate', '$Message', '$render_component', '$PRE', '$compile_error', '$new', '$message', '$gsub', '$puts', '$ReactCodeMirror', '$to_n', '$lambda']);
   (function($base, $super) {
     function $ReactCodeMirror(){};
     var self = $ReactCodeMirror = $klass($base, $super, 'ReactCodeMirror', $ReactCodeMirror);
@@ -15723,49 +15723,85 @@ Opal.modules["components/code_mirror"] = function(Opal) {
     function $CodeMirrorTest(){};
     var self = $CodeMirrorTest = $klass($base, $super, 'CodeMirrorTest', $CodeMirrorTest);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_7, TMP_9;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_8, TMP_9, TMP_10, TMP_12;
 
+    def.compiled_code = nil;
     self.$state($hash2(["code"], {"code": ""}));
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, code = nil;
 
-    return ($c = ($d = $scope.get('Sem')).$Container, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4;
+    code = "puts 'hello'";
+      return self.$mutate().$code(code);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-      ($e = ($f = self).$H1, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
 
-        return "CodeMirror Test"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f);
+    return ($d = ($e = $scope.get('Sem')).$Container, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $f, $g, TMP_4, $h, TMP_5, $i, TMP_6;
+
+      ($f = ($g = self).$H1, $f.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+
+        return "CodeMirror Test"}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $f).call($g);
         self.$mirror();
-        return ($e = ($g = $scope.get('Sem')).$Message, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5;
+        if ((($f = ($h = self.$compile(), $h !== false && $h !== nil && $h != null ?self.$evaluate() : $h)) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
+          return ($f = ($h = $scope.get('Sem')).$Message, $f.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
 
-        return ($h = ($i = self).$PRE, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $j;
+          return self.$render_component()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $f).call($h, $hash2(["id"], {"id": "result"}))
+          } else {
+          return ($f = ($i = $scope.get('Sem')).$Message, $f.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $j, $k, TMP_7;
 
-          return ((($j = self.$compile()) !== false && $j !== nil && $j != null) ? $j : self.$state().$compile_error())}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, $hash2(["fluid"], {"fluid": true}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+          return ($j = ($k = self).$PRE, $j.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-    Opal.defn(self, '$compile', TMP_7 = function $$compile() {
-      var $a, $b, TMP_6, self = this, compiled_code = nil, e = nil;
+            return self.$state().$compile_error()}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $j).call($k)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $f).call($i, $hash2(["negative"], {"negative": true}))
+        };}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
+
+    Opal.defn(self, '$compile', TMP_8 = function $$compile() {
+      var self = this, ret = nil, e = nil, message = nil;
 
       try {
-        compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(self.$state().$code()).$compile()
+        ret = true;
+        self.compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(self.$state().$code()).$compile();
       } catch ($err) {
         if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
           try {
-            self.time_out = ($a = ($b = self).$after, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
-
-            return self.$mutate().$compile_error(e.$message())}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, 0.1)
+            message = e.$message();
+            self.$mutate().$compile_error(message.$gsub("An error occurred while compiling: (file)", "Oops..."));
+            ret = false;
           } finally { Opal.pop_exception() }
         } else { throw $err; }
       };
-      return compiled_code;
-    }, TMP_7.$$arity = 0);
+      return ret;
+    }, TMP_8.$$arity = 0);
 
-    return (Opal.defn(self, '$mirror', TMP_9 = function $$mirror() {
-      var $a, $b, TMP_8, self = this, options = nil;
+    Opal.defn(self, '$evaluate', TMP_9 = function $$evaluate() {
+      var self = this, ret = nil, e = nil;
+
+      try {
+        ret = true;
+        eval(self.compiled_code);
+      } catch ($err) {
+        if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
+          try {
+            self.$mutate().$compile_error("failed: " + (e.$message()));
+            ret = false;
+          } finally { Opal.pop_exception() }
+        } else { throw $err; }
+      };
+      return ret;
+    }, TMP_9.$$arity = 0);
+
+    Opal.defn(self, '$render_component', TMP_10 = function $$render_component() {
+      var self = this;
+
+      return self.$puts("SUCCESS LETS RENDER");
+    }, TMP_10.$$arity = 0);
+
+    return (Opal.defn(self, '$mirror', TMP_12 = function $$mirror() {
+      var $a, $b, TMP_11, self = this, options = nil;
 
       options = $hash2(["lineNumbers", "mode", "theme", "indentUnit", "matchBrackets"], {"lineNumbers": false, "mode": "ruby", "theme": "one-dark", "indentUnit": 2, "matchBrackets": true});
-      return self.$ReactCodeMirror($hash2(["options", "value", "onChange"], {"options": options.$to_n(), "value": self.$state().$code(), "onChange": ($a = ($b = self).$lambda, $a.$$p = (TMP_8 = function(value){var self = TMP_8.$$s || this;
+      return self.$ReactCodeMirror($hash2(["options", "value", "onChange"], {"options": options.$to_n(), "value": self.$state().$code(), "onChange": ($a = ($b = self).$lambda, $a.$$p = (TMP_11 = function(value){var self = TMP_11.$$s || this;
 if (value == null) value = nil;
-      return self.$mutate().$code(value)}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $a).call($b)}));
-    }, TMP_9.$$arity = 0), nil) && 'mirror';
+      return self.$mutate().$code(value)}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $a).call($b)}));
+    }, TMP_12.$$arity = 0), nil) && 'mirror';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
