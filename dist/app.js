@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/code_mirror"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$state', '$render', '$Container', '$H1', '$mirror', '$Message', '$PRE', '$compile', '$code', '$new', '$after', '$puts', '$message', '$ReactCodeMirror', '$to_n', '$lambda', '$mutate']);
+  Opal.add_stubs(['$imports', '$state', '$render', '$Container', '$H1', '$mirror', '$Message', '$PRE', '$compile', '$compile_error', '$new', '$code', '$after', '$mutate', '$message', '$ReactCodeMirror', '$to_n', '$lambda']);
   (function($base, $super) {
     function $ReactCodeMirror(){};
     var self = $ReactCodeMirror = $klass($base, $super, 'ReactCodeMirror', $ReactCodeMirror);
@@ -15723,7 +15723,7 @@ Opal.modules["components/code_mirror"] = function(Opal) {
     function $CodeMirrorTest(){};
     var self = $CodeMirrorTest = $klass($base, $super, 'CodeMirrorTest', $CodeMirrorTest);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_8, TMP_10;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_7, TMP_9;
 
     self.$state($hash2(["code"], {"code": ""}));
 
@@ -15735,39 +15735,37 @@ Opal.modules["components/code_mirror"] = function(Opal) {
 
         return "CodeMirror Test"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f);
         self.$mirror();
-        return ($e = ($g = $scope.get('Sem')).$Message, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5, $j, TMP_6;
+        return ($e = ($g = $scope.get('Sem')).$Message, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5;
 
-        ($h = ($i = self).$PRE, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+        return ($h = ($i = self).$PRE, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $j;
 
-          return self.$compile()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i);
-          return ($h = ($j = self).$PRE, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+          return ((($j = self.$compile()) !== false && $j !== nil && $j != null) ? $j : self.$state().$compile_error())}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, $hash2(["fluid"], {"fluid": true}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
 
-          return self.$state().$code()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($j);}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, $hash2(["fluid"], {"fluid": true}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
-
-    Opal.defn(self, '$compile', TMP_8 = function $$compile() {
-      var $a, $b, TMP_7, self = this, e = nil;
+    Opal.defn(self, '$compile', TMP_7 = function $$compile() {
+      var $a, $b, TMP_6, self = this, compiled_code = nil, e = nil;
 
       try {
-        return (($scope.get('Opal')).$$scope.get('Compiler')).$new(self.$state().$code()).$compile()
+        compiled_code = (($scope.get('Opal')).$$scope.get('Compiler')).$new(self.$state().$code()).$compile()
       } catch ($err) {
         if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
           try {
-            return self.time_out = ($a = ($b = self).$after, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+            self.time_out = ($a = ($b = self).$after, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-            return self.$puts(e.$message())}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b, 0.1)
+            return self.$mutate().$compile_error(e.$message())}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, 0.1)
           } finally { Opal.pop_exception() }
         } else { throw $err; }
       };
-    }, TMP_8.$$arity = 0);
+      return compiled_code;
+    }, TMP_7.$$arity = 0);
 
-    return (Opal.defn(self, '$mirror', TMP_10 = function $$mirror() {
-      var $a, $b, TMP_9, self = this, options = nil;
+    return (Opal.defn(self, '$mirror', TMP_9 = function $$mirror() {
+      var $a, $b, TMP_8, self = this, options = nil;
 
       options = $hash2(["lineNumbers", "mode", "theme", "indentUnit", "matchBrackets"], {"lineNumbers": false, "mode": "ruby", "theme": "one-dark", "indentUnit": 2, "matchBrackets": true});
-      return self.$ReactCodeMirror($hash2(["options", "value", "onChange"], {"options": options.$to_n(), "value": self.$state().$code(), "onChange": ($a = ($b = self).$lambda, $a.$$p = (TMP_9 = function(value){var self = TMP_9.$$s || this;
+      return self.$ReactCodeMirror($hash2(["options", "value", "onChange"], {"options": options.$to_n(), "value": self.$state().$code(), "onChange": ($a = ($b = self).$lambda, $a.$$p = (TMP_8 = function(value){var self = TMP_8.$$s || this;
 if (value == null) value = nil;
-      return self.$mutate().$code(value)}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9), $a).call($b)}));
-    }, TMP_10.$$arity = 0), nil) && 'mirror';
+      return self.$mutate().$code(value)}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $a).call($b)}));
+    }, TMP_9.$$arity = 0), nil) && 'mirror';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
@@ -16115,7 +16113,7 @@ if (code == null) code = nil;
             } else {
             return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this;
 
-            return "Improve this page"}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $h).call($i, $hash2(["size"], {"size": "tiny"}))).$on, $e.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this;
+            return nil}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $h).call($i, $hash2(["icon", "circular", "label"], {"icon": "github", "circular": true, "label": "Improve this page"}))).$on, $e.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this;
               if (self.edit_url == null) self.edit_url = nil;
 
             self.$mutate().$needs_refresh(true);

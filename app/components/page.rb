@@ -97,7 +97,9 @@ class Page < Hyperloop::Component
             P { "PRs are always welcome." }
           }
         else
-          Sem.Button(size: :tiny) { "Improve this page" }.on(:click) do
+          Sem.Button(icon: :github, circular: true, label: "Improve this page") {
+
+          }.on(:click) do
             mutate.needs_refresh true
             `window.open(#{@edit_url}, "_blank");`
           end
