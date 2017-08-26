@@ -23,12 +23,7 @@ end"
       H1 { "CodeMirror Test" }
       mirror
 
-      if compile && evaluate
-        Sem.Message {
-          render_component
-        }
-
-      else
+      unless compile && evaluate && render_component
         Sem.Message(negative: true) {
           PRE { state.compile_error }
         }
@@ -52,18 +47,30 @@ end"
     begin
       ret = true
       `eval(#{@compiled_code})`
-      rescue Exception => e
-        mutate.compile_error "Oops... \n\n #{e.message}"
-        ret = false
+    rescue Exception => e
+      mutate.compile_error "Oops... \n\n #{e.message}"
+      ret = false
     end
     ret
   end
 
   def render_component
-    puts "SUCCESS LETS RENDER"
-    # `ReactDOM.unmountComponentAtNode(document.getElementById("result"));`
-    # render{ MyComp() }
-    MyComp()
+    begin
+      ret = true
+      Sem.Message {
+        DIV(id: 'result') {
+          # ALL OF THE FORMS BELOW WORK, BUT NONE RAISE AN EXCEPTION
+          MyComp()
+          # React.create_element(MyComp, {})
+          # `eval(React.createElement( MyComp, {}, null))`
+          # `React.createElement( MyComp, {}, null)`
+        }
+      }
+    rescue Exception => e
+      mutate.compile_error "React unhappy... \n\n #{e.message}"
+      ret = false
+    end
+    ret
   end
 
   def mirror
