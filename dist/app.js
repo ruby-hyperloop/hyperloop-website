@@ -15710,7 +15710,7 @@ if (e == null) e = nil;
 Opal.modules["components/code_mirror"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$state', '$before_mount', '$code', '$mutate', '$render', '$Container', '$H1', '$mirror', '$compile', '$evaluate', '$render_component', '$Message', '$PRE', '$compile_error', '$new', '$message', '$gsub', '$puts', '$DIV', '$ReactCodeMirror', '$to_n', '$lambda']);
+  Opal.add_stubs(['$imports', '$state', '$before_mount', '$code', '$mutate', '$render', '$Container', '$H1', '$mirror', '$compile', '$evaluate', '$render_component', '$Message', '$PRE', '$compile_error', '$new', '$message', '$gsub', '$DIV', '$create_element', '$const_get', '$ReactCodeMirror', '$to_n', '$lambda']);
   (function($base, $super) {
     function $ReactCodeMirror(){};
     var self = $ReactCodeMirror = $klass($base, $super, 'ReactCodeMirror', $ReactCodeMirror);
@@ -15789,14 +15789,13 @@ Opal.modules["components/code_mirror"] = function(Opal) {
     Opal.defn(self, '$render_component', TMP_11 = function $$render_component() {
       var $a, $b, TMP_9, self = this, ret = nil, e = nil;
 
-      self.$puts("SUCCESS LETS RENDER");
       try {
         ret = true;
         ($a = ($b = $scope.get('Sem')).$Message, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $c, $d, TMP_10;
 
         return ($c = ($d = self).$DIV, $c.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
 
-          return eval(React.createElement( MyComp, {}, null));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $c).call($d, $hash2(["id"], {"id": "result"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $a).call($b);
+          return $scope.get('React').$create_element($scope.get('Module').$const_get("MyComp"), $hash2([], {}))}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $c).call($d, $hash2(["id"], {"id": "result"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $a).call($b);
       } catch ($err) {
         if (Opal.rescue($err, [$scope.get('Exception')])) {e = $err;
           try {

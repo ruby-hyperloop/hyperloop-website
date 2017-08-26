@@ -60,8 +60,8 @@ end"
       Sem.Message {
         DIV(id: 'result') {
           # ALL OF THE FORMS BELOW WORK, BUT NONE RAISE AN EXCEPTION
-          MyComp()
-          # React.create_element(MyComp, {})
+          # MyComp()
+          React.create_element( Module.const_get(component_name), {})
           # `eval(React.createElement( MyComp, {}, null))`
           # `React.createElement( MyComp, {}, null)`
         }
@@ -71,6 +71,11 @@ end"
       ret = false
     end
     ret
+  end
+
+  def component_name
+    elements = state.code.split ' '
+    elements[ (elements.index('Hyperloop::Component') -2) ]
   end
 
   def mirror
