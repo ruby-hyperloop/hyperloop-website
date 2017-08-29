@@ -23,7 +23,7 @@ end
 
 and then comes this
 
-<div class = 'runable'>
+<pre class = 'runable'>
 ```ruby
 # ruby in a runable div
 class MyComp < Hyperloop::Component
@@ -32,7 +32,7 @@ class MyComp < Hyperloop::Component
   end
 end
 ```
-</div>
+</pre>
 
 then finally the runable ones
 
