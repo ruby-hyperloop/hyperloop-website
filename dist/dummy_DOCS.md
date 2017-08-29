@@ -23,14 +23,16 @@ end
 
 and then comes this
 
+<div class = 'runable'>
 ```ruby
-# ruby
+# ruby in a runable div
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
   end
 end
 ```
+</div>
 
 then finally the runable ones
 
