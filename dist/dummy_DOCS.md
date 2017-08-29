@@ -23,8 +23,7 @@ end
 
 and then comes this
 
-```runable
-```ruby
+```ruby(test)
 # ruby double
 class MyComp < Hyperloop::Component
   render do
@@ -32,8 +31,6 @@ class MyComp < Hyperloop::Component
   end
 end
 ```
-```
-
 
 then finally the runable ones
 
