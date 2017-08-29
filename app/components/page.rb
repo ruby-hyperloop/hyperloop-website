@@ -1,12 +1,3 @@
-# Document.ready? do
-#   puts "doc ready afm"
-#   Element.find('code.lang-ruby-runable').each do |mount_point|
-#     code = mount_point.text
-#     puts code
-#     React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
-#    end
-# end
-
 class Page < Hyperloop::Component
   param :repo
   param :file
@@ -15,26 +6,11 @@ class Page < Hyperloop::Component
   state search: ""
   state needs_refresh: false
 
-  # https://github.com/ruby-hyperloop/hyperloop-website/blob/master/dist/DOCS.md
-
-  # raw:  https://raw.githubusercontent.com/ruby-hyperloop/hyperloop-website/master/dist/DOCS.md
-  # edit: https://github.com/ruby-hyperloop/hyperloop-website/edit/master/dist/DOCS.md
-
   before_mount do
     puts "before mount"
     @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
     @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
     get_page
-    # afm
-  end
-
-  def afm
-  #   puts "about to find elements"
-  #  Element.find('code.lang-ruby-runable').each do |mount_point|
-  #    code = mount_point.text
-  #    puts code
-  #    React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
-  #   end
   end
 
   render(DIV) do
@@ -42,9 +18,6 @@ class Page < Hyperloop::Component
     Sem.Grid do
       Sem.GridRow(columns: 2) do
         Sem.GridColumn(width: 4) do
-          BUTTON {"Re-mount"}.on(:click) do
-            afm
-          end
           side_nav
         end
         Sem.GridColumn(width: 12) do
