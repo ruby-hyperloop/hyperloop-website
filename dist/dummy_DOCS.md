@@ -23,7 +23,7 @@ end
 
 and then comes this
 
-```ruby(test)
+```ruby runable
 # ruby double
 class MyComp < Hyperloop::Component
   render do
