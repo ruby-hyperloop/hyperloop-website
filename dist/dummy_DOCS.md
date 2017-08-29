@@ -23,16 +23,17 @@ end
 
 and then comes this
 
-<pre class = 'runable'>
+```runable
 ```ruby
-# ruby in a runable div
+# ruby double
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
   end
 end
 ```
-</pre>
+```
+
 
 then finally the runable ones
 
