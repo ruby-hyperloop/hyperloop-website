@@ -53,8 +53,10 @@ class MyComp < Hyperloop::Component
   end
 end
 ```
-Not sure if the markdown is working from this point on
 
+with a div
+
+<div class='runnable'>
 ```ruby
 # ruby-runable
 class MyComp < Hyperloop::Component
@@ -62,7 +64,8 @@ class MyComp < Hyperloop::Component
     H1 { 'Hello world' }
   end
 end
-```runable
+```
+</div>
 
 
 + point 1
