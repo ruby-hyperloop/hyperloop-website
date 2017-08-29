@@ -1,19 +1,35 @@
-class Page < Hyperloop::Component
-  param :repo
-  param :file
-  param allow_edit: true
+class PageLoader < Hyperloop::Component
 
-  state search: ""
-  state needs_refresh: false
+  after_mount do
+    bfm
+  end
 
-  before_mount do
-    puts "before mount"
-    @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
-    @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
-    get_page
+  def bfm
+    mutate.pages [
+      { repo: 'hyper-store', file: 'DOCS.md', allow_edit: true },
+      { repo: 'hyper-mesh', file: 'DOCS.md', allow_edit: true },
+      { repo: 'hyper-react', file: 'DOCS.md', allow_edit: true }
+    ]
+    load_and_convert_pages
+  end
+
+  def load_and_convert_pages
+    state.pages.each do |page|
+      HTTP.get( raw_url(page) ) do |response|
+        puts "response"
+        page[:md_converter] = MdConverter.new(response.body)
+      end
+    end
+  end
+
+  def raw_url page
+    "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
   end
 
   render(DIV) do
+    BUTTON { "Before Mount" }.on(:click) { bfm }
+    BUTTON { "Force Update" }.on(:click) { force_update! }
+    Sem.Divider()
 
     Sem.Grid do
       Sem.GridRow(columns: 2) do
@@ -27,16 +43,62 @@ class Page < Hyperloop::Component
     end
   end
 
+  def side_nav
+    state.pages.each do |page|
+      H3 { LI {page[:repo].to_s} }
+      UL {
+        page[:md_converter].headings.each do |heading|
+          LI { heading[:text] }
+        end if page[:md_converter]
+      }
+    end #if state.pages
+  end
+
+  def body
+    P { "body" }
+  end
+
+end
+
+class Page < Hyperloop::Component
+  param :repo
+  param :file
+  param allow_edit: true
+
+  state search: ""
+  state needs_refresh: false
+
+  before_mount do
+    puts "before mount"
+    # @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
+    @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
+    get_page
+  end
+
+  render(DIV) do
+
+    # Sem.Grid do
+    #   Sem.GridRow(columns: 2) do
+    #     Sem.GridColumn(width: 4) do
+    #       side_nav
+    #     end
+    #     Sem.GridColumn(width: 12) do
+    #       body
+    #     end
+    #   end
+    # end
+  end
+
   def get_page
-    puts "het page"
-    HTTP.get(@raw_url) do |response|
-      puts "post promise"
-      md = MdConverter.new(response.body)
-      mutate.html md.html
-      mutate.code_blocks md.code_blocks
-      mutate.headings md.headings
-      runable
-    end
+    # puts "get page"
+    # HTTP.get(@raw_url) do |response|
+    #   puts "post promise"
+    #   # md = MdConverter.new(response.body)
+    #   mutate.html md.html
+    #   mutate.code_blocks md.code_blocks
+    #   mutate.headings md.headings
+    #   runable
+    # end
   end
 
   def runable

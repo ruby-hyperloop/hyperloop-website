@@ -15725,14 +15725,102 @@ Opal.modules["components/highlight_x"] = function(Opal) {
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$state', '$before_mount', '$puts', '$to_s', '$repo', '$params', '$file', '$get_page', '$render', '$Grid', '$GridRow', '$GridColumn', '$on', '$afm', '$BUTTON', '$side_nav', '$body', '$get', '$new', '$html', '$mutate', '$code_blocks', '$headings', '$runable', '$force_update!', '$each', '$text', '$create_element', '$parent', '$find', '$search', '$value', '$target', '$Input', '$Container', '$Sticky', '$search_input', '$H4', '$sections_results', '$==', '$code_results', '$include?', '$downcase', '$[]', '$P', '$!=', '$PRE', '$DIV', '$allow_edit', '$Rail', '$edit_button', '$needs_refresh', '$Message', '$MessageHeader', '$Button']);
+  Opal.add_stubs(['$after_mount', '$bfm', '$pages', '$mutate', '$load_and_convert_pages', '$each', '$get', '$puts', '$[]=', '$new', '$body', '$raw_url', '$state', '$[]', '$render', '$on', '$BUTTON', '$force_update!', '$Divider', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$H3', '$LI', '$to_s', '$UL', '$headings', '$P', '$param', '$before_mount', '$repo', '$params', '$file', '$get_page', '$text', '$create_element', '$parent', '$find', '$search', '$value', '$target', '$Input', '$Container', '$Sticky', '$search_input', '$H4', '$sections_results', '$==', '$code_results', '$include?', '$downcase', '$code_blocks', '$!=', '$PRE', '$DIV', '$html', '$allow_edit', '$Rail', '$edit_button', '$needs_refresh', '$Message', '$MessageHeader', '$Button']);
+  (function($base, $super) {
+    function $PageLoader(){};
+    var self = $PageLoader = $klass($base, $super, 'PageLoader', $PageLoader);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_2, TMP_5, TMP_6, $c, TMP_7, TMP_22, TMP_24;
+
+    ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+
+    return self.$bfm()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+    Opal.defn(self, '$bfm', TMP_2 = function $$bfm() {
+      var self = this;
+
+      self.$mutate().$pages([$hash2(["repo", "file", "allow_edit"], {"repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-react", "file": "DOCS.md", "allow_edit": true})]);
+      return self.$load_and_convert_pages();
+    }, TMP_2.$$arity = 0);
+
+    Opal.defn(self, '$load_and_convert_pages', TMP_5 = function $$load_and_convert_pages() {
+      var $a, $b, TMP_3, self = this;
+
+      return ($a = ($b = self.$state().$pages()).$each, $a.$$p = (TMP_3 = function(page){var self = TMP_3.$$s || this, $c, $d, TMP_4;
+if (page == null) page = nil;
+      return ($c = ($d = $scope.get('HTTP')).$get, $c.$$p = (TMP_4 = function(response){var self = TMP_4.$$s || this;
+if (response == null) response = nil;
+        self.$puts("response");
+          return page['$[]=']("md_converter", $scope.get('MdConverter').$new(response.$body()));}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $c).call($d, self.$raw_url(page))}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $a).call($b);
+    }, TMP_5.$$arity = 0);
+
+    Opal.defn(self, '$raw_url', TMP_6 = function $$raw_url(page) {
+      var self = this;
+
+      return "https://raw.githubusercontent.com/ruby-hyperloop/" + (page['$[]']("repo")) + "/master/" + (page['$[]']("file"));
+    }, TMP_6.$$arity = 1);
+
+    ($a = ($c = self).$render, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $d, $e, TMP_8, $f, $g, TMP_9, TMP_10, $h, $i, TMP_11, TMP_12;
+
+    ($d = ($e = ($f = ($g = self).$BUTTON, $f.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+
+      return "Before Mount"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $f).call($g)).$on, $d.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+
+      return self.$bfm()}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $d).call($e, "click");
+      ($d = ($f = ($h = ($i = self).$BUTTON, $h.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+
+      return "Force Update"}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $h).call($i)).$on, $d.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
+
+      return self['$force_update!']()}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $d).call($f, "click");
+      $scope.get('Sem').$Divider();
+      return ($d = ($h = $scope.get('Sem')).$Grid, $d.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $j, $k, TMP_13;
+
+      return ($j = ($k = $scope.get('Sem')).$GridRow, $j.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $l, $m, TMP_14, $n, TMP_15;
+
+        ($l = ($m = $scope.get('Sem')).$GridColumn, $l.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
+
+          return self.$side_nav()}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $l).call($m, $hash2(["width"], {"width": 4}));
+          return ($l = ($n = $scope.get('Sem')).$GridColumn, $l.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
+
+          return self.$body()}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $l).call($n, $hash2(["width"], {"width": 12}));}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $j).call($k, $hash2(["columns"], {"columns": 2}))}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $d).call($h);}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($c, $scope.get('DIV'));
+
+    Opal.defn(self, '$side_nav', TMP_22 = function $$side_nav() {
+      var $a, $b, TMP_16, self = this;
+
+      return ($a = ($b = self.$state().$pages()).$each, $a.$$p = (TMP_16 = function(page){var self = TMP_16.$$s || this, $c, $d, TMP_17, $e, TMP_19;
+if (page == null) page = nil;
+      ($c = ($d = self).$H3, $c.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $e, $f, TMP_18;
+
+        return ($e = ($f = self).$LI, $e.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
+
+          return page['$[]']("repo").$to_s()}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $e).call($f)}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $c).call($d);
+        return ($c = ($e = self).$UL, $c.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this, $f, $g, TMP_20;
+
+        if ((($f = page['$[]']("md_converter")) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
+            return ($f = ($g = page['$[]']("md_converter").$headings()).$each, $f.$$p = (TMP_20 = function(heading){var self = TMP_20.$$s || this, $h, $i, TMP_21;
+if (heading == null) heading = nil;
+            return ($h = ($i = self).$LI, $h.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
+
+              return heading['$[]']("text")}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $h).call($i)}, TMP_20.$$s = self, TMP_20.$$arity = 1, TMP_20), $f).call($g)
+            } else {
+            return nil
+          }}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $c).call($e);}, TMP_16.$$s = self, TMP_16.$$arity = 1, TMP_16), $a).call($b);
+    }, TMP_22.$$arity = 0);
+
+    return (Opal.defn(self, '$body', TMP_24 = function $$body() {
+      var $a, $b, TMP_23, self = this;
+
+      return ($a = ($b = self).$P, $a.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this;
+
+      return "body"}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $a).call($b);
+    }, TMP_24.$$arity = 0), nil) && 'body';
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
   return (function($base, $super) {
     function $Page(){};
     var self = $Page = $klass($base, $super, 'Page', $Page);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_2, $c, TMP_3, TMP_11, TMP_13, TMP_15, TMP_20, TMP_24, TMP_27, TMP_30, TMP_38;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_25, $c, TMP_26, TMP_27, TMP_29, TMP_31, TMP_36, TMP_40, TMP_43, TMP_46, TMP_54;
 
-    def.raw_url = nil;
     self.$param("repo");
 
     self.$param("file");
@@ -15743,176 +15831,147 @@ Opal.modules["components/page"] = function(Opal) {
 
     self.$state($hash2(["needs_refresh"], {"needs_refresh": false}));
 
-    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this;
 
     self.$puts("before mount");
-      self.raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/" + (self.$params().$repo().$to_s()) + "/master/" + (self.$params().$file().$to_s());
       self.edit_url = "https://github.com/ruby-hyperloop/" + (self.$params().$repo()) + "/edit/master/" + (self.$params().$file());
-      return self.$get_page();}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+      return self.$get_page();}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $a).call($b);
 
-    Opal.defn(self, '$afm', TMP_2 = function $$afm() {
+    ($a = ($c = self).$render, $a.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this;
+
+    return nil}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $a).call($c, $scope.get('DIV'));
+
+    Opal.defn(self, '$get_page', TMP_27 = function $$get_page() {
       var self = this;
 
       return nil;
-    }, TMP_2.$$arity = 0);
+    }, TMP_27.$$arity = 0);
 
-    ($a = ($c = self).$render, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $d, $e, TMP_4;
-
-    return ($d = ($e = $scope.get('Sem')).$Grid, $d.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $f, $g, TMP_5;
-
-      return ($f = ($g = $scope.get('Sem')).$GridRow, $f.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $h, $i, TMP_6, $j, TMP_9;
-
-        ($h = ($i = $scope.get('Sem')).$GridColumn, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $j, $k, TMP_7, $l, $m, TMP_8;
-
-          ($j = ($k = ($l = ($m = self).$BUTTON, $l.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
-
-            return "Re-mount"}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $l).call($m)).$on, $j.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
-
-            return self.$afm()}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $j).call($k, "click");
-            return self.$side_nav();}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($i, $hash2(["width"], {"width": 4}));
-          return ($h = ($j = $scope.get('Sem')).$GridColumn, $h.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
-
-          return self.$body()}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $h).call($j, $hash2(["width"], {"width": 12}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $f).call($g, $hash2(["columns"], {"columns": 2}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $d).call($e)}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($c, $scope.get('DIV'));
-
-    Opal.defn(self, '$get_page', TMP_11 = function $$get_page() {
-      var $a, $b, TMP_10, self = this;
-
-      self.$puts("het page");
-      return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_10 = function(response){var self = TMP_10.$$s || this, md = nil;
-if (response == null) response = nil;
-      self.$puts("post promise");
-        md = $scope.get('MdConverter').$new(response.$body());
-        self.$mutate().$html(md.$html());
-        self.$mutate().$code_blocks(md.$code_blocks());
-        self.$mutate().$headings(md.$headings());
-        return self.$runable();}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), $a).call($b, self.raw_url);
-    }, TMP_11.$$arity = 0);
-
-    Opal.defn(self, '$runable', TMP_13 = function $$runable() {
-      var $a, $b, TMP_12, self = this;
+    Opal.defn(self, '$runable', TMP_29 = function $$runable() {
+      var $a, $b, TMP_28, self = this;
 
       self.$puts("runable");
       self['$force_update!']();
-      return ($a = ($b = $scope.get('Element').$find("code.lang-ruby-runable")).$each, $a.$$p = (TMP_12 = function(mount_point){var self = TMP_12.$$s || this, code = nil;
+      return ($a = ($b = $scope.get('Element').$find("code.lang-ruby-runable")).$each, $a.$$p = (TMP_28 = function(mount_point){var self = TMP_28.$$s || this, code = nil;
 if (mount_point == null) mount_point = nil;
       code = mount_point.$text();
         self.$puts(code);
-        return $scope.get('React').$render($scope.get('React').$create_element($scope.get('CodeMirror'), $hash2(["code"], {"code": code})), mount_point.$parent());}, TMP_12.$$s = self, TMP_12.$$arity = 1, TMP_12), $a).call($b);
-    }, TMP_13.$$arity = 0);
+        return $scope.get('React').$render($scope.get('React').$create_element($scope.get('CodeMirror'), $hash2(["code"], {"code": code})), mount_point.$parent());}, TMP_28.$$s = self, TMP_28.$$arity = 1, TMP_28), $a).call($b);
+    }, TMP_29.$$arity = 0);
 
-    Opal.defn(self, '$search_input', TMP_15 = function $$search_input() {
-      var $a, $b, TMP_14, self = this;
+    Opal.defn(self, '$search_input', TMP_31 = function $$search_input() {
+      var $a, $b, TMP_30, self = this;
 
-      return ($a = ($b = $scope.get('Sem').$Input($hash2(["placeholder", "fluid"], {"placeholder": "Search", "fluid": true}))).$on, $a.$$p = (TMP_14 = function(e){var self = TMP_14.$$s || this;
+      return ($a = ($b = $scope.get('Sem').$Input($hash2(["placeholder", "fluid"], {"placeholder": "Search", "fluid": true}))).$on, $a.$$p = (TMP_30 = function(e){var self = TMP_30.$$s || this;
 if (e == null) e = nil;
-      return self.$mutate().$search(e.$target().$value())}, TMP_14.$$s = self, TMP_14.$$arity = 1, TMP_14), $a).call($b, "change");
-    }, TMP_15.$$arity = 0);
+      return self.$mutate().$search(e.$target().$value())}, TMP_30.$$s = self, TMP_30.$$arity = 1, TMP_30), $a).call($b, "change");
+    }, TMP_31.$$arity = 0);
 
-    Opal.defn(self, '$side_nav', TMP_20 = function $$side_nav() {
-      var $a, $b, TMP_16, self = this;
+    Opal.defn(self, '$side_nav', TMP_36 = function $$side_nav() {
+      var $a, $b, TMP_32, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this, $c, $d, TMP_17;
+      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this, $c, $d, TMP_33;
 
-      return ($c = ($d = self).$Sticky, $c.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $e, $f, TMP_18, $g, TMP_19;
+      return ($c = ($d = self).$Sticky, $c.$$p = (TMP_33 = function(){var self = TMP_33.$$s || this, $e, $f, TMP_34, $g, TMP_35;
 
         self.$search_input();
-          ($e = ($f = self).$H4, $e.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
+          ($e = ($f = self).$H4, $e.$$p = (TMP_34 = function(){var self = TMP_34.$$s || this;
 
-          return "Sections"}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $e).call($f);
+          return "Sections"}, TMP_34.$$s = self, TMP_34.$$arity = 0, TMP_34), $e).call($f);
           self.$sections_results();
           if (self.$state().$search()['$==']("")) {
             } else {
-            ($e = ($g = self).$H4, $e.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
+            ($e = ($g = self).$H4, $e.$$p = (TMP_35 = function(){var self = TMP_35.$$s || this;
 
-            return "Code"}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $e).call($g)
+            return "Code"}, TMP_35.$$s = self, TMP_35.$$arity = 0, TMP_35), $e).call($g)
           };
-          return self.$code_results();}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $c).call($d)}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
-    }, TMP_20.$$arity = 0);
+          return self.$code_results();}, TMP_33.$$s = self, TMP_33.$$arity = 0, TMP_33), $c).call($d)}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
+    }, TMP_36.$$arity = 0);
 
-    Opal.defn(self, '$sections_results', TMP_24 = function $$sections_results() {
-      var $a, $b, TMP_21, self = this;
+    Opal.defn(self, '$sections_results', TMP_40 = function $$sections_results() {
+      var $a, $b, TMP_37, self = this;
 
       if ((($a = self.$state().$headings()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-        return ($a = ($b = self.$state().$headings()).$each, $a.$$p = (TMP_21 = function(heading){var self = TMP_21.$$s || this, $c, $d, TMP_22, $e, TMP_23;
+        return ($a = ($b = self.$state().$headings()).$each, $a.$$p = (TMP_37 = function(heading){var self = TMP_37.$$s || this, $c, $d, TMP_38, $e, TMP_39;
 if (heading == null) heading = nil;
         if ((($c = self.$state().$search()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
             if ((($c = heading['$[]']("text").$downcase()['$include?'](self.$state().$search().$downcase())) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-              return ($c = ($d = self).$P, $c.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
+              return ($c = ($d = self).$P, $c.$$p = (TMP_38 = function(){var self = TMP_38.$$s || this;
 
-              return heading['$[]']("text")}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $c).call($d)
+              return heading['$[]']("text")}, TMP_38.$$s = self, TMP_38.$$arity = 0, TMP_38), $c).call($d)
               } else {
               return nil
             }
             } else {
-            return ($c = ($e = self).$P, $c.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this;
+            return ($c = ($e = self).$P, $c.$$p = (TMP_39 = function(){var self = TMP_39.$$s || this;
 
-            return heading['$[]']("text")}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $c).call($e)
-          }}, TMP_21.$$s = self, TMP_21.$$arity = 1, TMP_21), $a).call($b)
+            return heading['$[]']("text")}, TMP_39.$$s = self, TMP_39.$$arity = 0, TMP_39), $c).call($e)
+          }}, TMP_37.$$s = self, TMP_37.$$arity = 1, TMP_37), $a).call($b)
         } else {
         return nil
       };
-    }, TMP_24.$$arity = 0);
+    }, TMP_40.$$arity = 0);
 
-    Opal.defn(self, '$code_results', TMP_27 = function $$code_results() {
-      var $a, $b, TMP_25, self = this;
+    Opal.defn(self, '$code_results', TMP_43 = function $$code_results() {
+      var $a, $b, TMP_41, self = this;
 
       if ((($a = ($b = self.$state().$code_blocks(), $b !== false && $b !== nil && $b != null ?self.$state().$search() : $b)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-        return ($a = ($b = self.$state().$code_blocks()).$each, $a.$$p = (TMP_25 = function(code){var self = TMP_25.$$s || this, $c, $d, TMP_26;
+        return ($a = ($b = self.$state().$code_blocks()).$each, $a.$$p = (TMP_41 = function(code){var self = TMP_41.$$s || this, $c, $d, TMP_42;
 if (code == null) code = nil;
         if ((($c = ($d = self.$state().$search()['$!='](""), $d !== false && $d !== nil && $d != null ?code['$[]']("code").$downcase()['$include?'](self.$state().$search().$downcase()) : $d)) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-            return ($c = ($d = self).$PRE, $c.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this;
+            return ($c = ($d = self).$PRE, $c.$$p = (TMP_42 = function(){var self = TMP_42.$$s || this;
 
-            return self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": code['$[]']("html")})}))}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $c).call($d, $hash2(["class"], {"class": "hljs"}))
+            return self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": code['$[]']("html")})}))}, TMP_42.$$s = self, TMP_42.$$arity = 0, TMP_42), $c).call($d, $hash2(["class"], {"class": "hljs"}))
             } else {
             return nil
-          }}, TMP_25.$$s = self, TMP_25.$$arity = 1, TMP_25), $a).call($b)
+          }}, TMP_41.$$s = self, TMP_41.$$arity = 1, TMP_41), $a).call($b)
         } else {
         return nil
       };
-    }, TMP_27.$$arity = 0);
+    }, TMP_43.$$arity = 0);
 
-    Opal.defn(self, '$body', TMP_30 = function $$body() {
-      var $a, $b, TMP_28, self = this;
+    Opal.defn(self, '$body', TMP_46 = function $$body() {
+      var $a, $b, TMP_44, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this, $c, $d, TMP_29;
+      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_44 = function(){var self = TMP_44.$$s || this, $c, $d, TMP_45;
 
       self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": self.$state().$html()})}));
         if ((($c = self.$params().$allow_edit()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-          return ($c = ($d = $scope.get('Sem')).$Rail, $c.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
+          return ($c = ($d = $scope.get('Sem')).$Rail, $c.$$p = (TMP_45 = function(){var self = TMP_45.$$s || this;
 
-          return self.$edit_button()}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $c).call($d, $hash2(["internal", "position"], {"internal": true, "position": "right"}))
+          return self.$edit_button()}, TMP_45.$$s = self, TMP_45.$$arity = 0, TMP_45), $c).call($d, $hash2(["internal", "position"], {"internal": true, "position": "right"}))
           } else {
           return nil
-        };}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingRight"], {"marginTop": "2em", "paddingRight": "28px"})}));
-    }, TMP_30.$$arity = 0);
+        };}, TMP_44.$$s = self, TMP_44.$$arity = 0, TMP_44), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingRight"], {"marginTop": "2em", "paddingRight": "28px"})}));
+    }, TMP_46.$$arity = 0);
 
-    return (Opal.defn(self, '$edit_button', TMP_38 = function $$edit_button() {
-      var $a, $b, TMP_31, self = this;
+    return (Opal.defn(self, '$edit_button', TMP_54 = function $$edit_button() {
+      var $a, $b, TMP_47, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Grid, $a.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this, $c, $d, TMP_32;
+      return ($a = ($b = $scope.get('Sem')).$Grid, $a.$$p = (TMP_47 = function(){var self = TMP_47.$$s || this, $c, $d, TMP_48;
 
-      return ($c = ($d = $scope.get('Sem')).$GridColumn, $c.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this, $e, $f, TMP_33, $g, TMP_36, $h, $i, TMP_37;
+      return ($c = ($d = $scope.get('Sem')).$GridColumn, $c.$$p = (TMP_48 = function(){var self = TMP_48.$$s || this, $e, $f, TMP_49, $g, TMP_52, $h, $i, TMP_53;
 
         if ((($e = self.$state().$needs_refresh()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
-            return ($e = ($f = $scope.get('Sem')).$Message, $e.$$p = (TMP_33 = function(){var self = TMP_33.$$s || this, $g, $h, TMP_34, $i, TMP_35;
+            return ($e = ($f = $scope.get('Sem')).$Message, $e.$$p = (TMP_49 = function(){var self = TMP_49.$$s || this, $g, $h, TMP_50, $i, TMP_51;
 
-            ($g = ($h = $scope.get('Sem')).$MessageHeader, $g.$$p = (TMP_34 = function(){var self = TMP_34.$$s || this;
+            ($g = ($h = $scope.get('Sem')).$MessageHeader, $g.$$p = (TMP_50 = function(){var self = TMP_50.$$s || this;
 
-              return "Thank you!"}, TMP_34.$$s = self, TMP_34.$$arity = 0, TMP_34), $g).call($h);
-              return ($g = ($i = self).$P, $g.$$p = (TMP_35 = function(){var self = TMP_35.$$s || this;
+              return "Thank you!"}, TMP_50.$$s = self, TMP_50.$$arity = 0, TMP_50), $g).call($h);
+              return ($g = ($i = self).$P, $g.$$p = (TMP_51 = function(){var self = TMP_51.$$s || this;
 
-              return "PRs are always welcome."}, TMP_35.$$s = self, TMP_35.$$arity = 0, TMP_35), $g).call($i);}, TMP_33.$$s = self, TMP_33.$$arity = 0, TMP_33), $e).call($f, $hash2(["positive"], {"positive": true}))
+              return "PRs are always welcome."}, TMP_51.$$s = self, TMP_51.$$arity = 0, TMP_51), $g).call($i);}, TMP_49.$$s = self, TMP_49.$$arity = 0, TMP_49), $e).call($f, $hash2(["positive"], {"positive": true}))
             } else {
-            return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_37 = function(){var self = TMP_37.$$s || this;
+            return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_53 = function(){var self = TMP_53.$$s || this;
 
-            return nil}, TMP_37.$$s = self, TMP_37.$$arity = 0, TMP_37), $h).call($i, $hash2(["icon", "circular", "label"], {"icon": "github", "circular": true, "label": "Improve this page"}))).$on, $e.$$p = (TMP_36 = function(){var self = TMP_36.$$s || this;
+            return nil}, TMP_53.$$s = self, TMP_53.$$arity = 0, TMP_53), $h).call($i, $hash2(["icon", "circular", "label"], {"icon": "github", "circular": true, "label": "Improve this page"}))).$on, $e.$$p = (TMP_52 = function(){var self = TMP_52.$$s || this;
               if (self.edit_url == null) self.edit_url = nil;
 
             self.$mutate().$needs_refresh(true);
-              return window.open(self.edit_url, "_blank");;}, TMP_36.$$s = self, TMP_36.$$arity = 0, TMP_36), $e).call($g, "click")
-          }}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $c).call($d)}, TMP_31.$$s = self, TMP_31.$$arity = 0, TMP_31), $a).call($b, $hash2(["textAlign"], {"textAlign": "right"}));
-    }, TMP_38.$$arity = 0), nil) && 'edit_button';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
+              return window.open(self.edit_url, "_blank");;}, TMP_52.$$s = self, TMP_52.$$arity = 0, TMP_52), $e).call($g, "click")
+          }}, TMP_48.$$s = self, TMP_48.$$arity = 0, TMP_48), $c).call($d)}, TMP_47.$$s = self, TMP_47.$$arity = 0, TMP_47), $a).call($b, $hash2(["textAlign"], {"textAlign": "right"}));
+    }, TMP_54.$$arity = 0), nil) && 'edit_button';
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
 /* Generated by Opal 0.10.5 */
@@ -16032,7 +16091,7 @@ if (header == null) header = nil;if (body == null) body = nil;
 Opal.modules["components/home"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$render', '$on', '$repo', '$mutate', '$file', '$edit', '$key', '$BUTTON', '$code_mirror', '$Divider', '$nil?', '$Page', '$CodeMirror']);
+  Opal.add_stubs(['$state', '$render', '$H1', '$Divider', '$PageLoader']);
   return (function($base) {
     var $Components, self = $Components = $module($base, 'Components');
 
@@ -16048,41 +16107,13 @@ Opal.modules["components/home"] = function(Opal) {
 
       self.$state($hash2(["code_mirror"], {"code_mirror": false}));
 
-      return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4, $g, $h, TMP_5, TMP_6, $i, $j, TMP_7, code = nil;
+      return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
-      ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+      ($c = ($d = self).$H1, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
 
-        return "Edit: HyperModel dummy DOCS on website (edit ok)"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
-
-        self.$mutate().$repo("hyperloop-website");
-          self.$mutate().$file("dist/dummy_DOCS.md");
-          self.$mutate().$edit(true);
-          return self.$mutate().$key(1);}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
-        ($c = ($e = ($g = ($h = self).$BUTTON, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
-
-        return "Github: HyperComponent DOCS (no edit)"}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($h)).$on, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
-
-        self.$mutate().$repo("hyper-react");
-          self.$mutate().$file("DOCS.md");
-          self.$mutate().$edit(false);
-          return self.$mutate().$key(2);}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($e, "click");
-        ($c = ($g = ($i = ($j = self).$BUTTON, $i.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
-
-        return "CodeMirror"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $i).call($j)).$on, $c.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
-
-        self.$mutate().$code_mirror(true);
-          return self.$mutate().$key(3);}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $c).call($g, "click");
+        return "DOCS PageLoader"}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d);
         $scope.get('Sem').$Divider();
-        if ((($c = self.$state().$repo()['$nil?']()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-          } else {
-          self.$Page($hash2(["repo", "file", "key", "allow_edit"], {"repo": self.$state().$repo(), "file": self.$state().$file(), "key": self.$state().$key(), "allow_edit": self.$state().$edit()}))
-        };
-        code = "\nclass MyComp < Hyperloop::Component\n  render do\n    H1 { 'hello' }\n  end\nend\n";
-        if ((($c = self.$state().$code_mirror()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-          return self.$CodeMirror($hash2(["code"], {"code": code}))
-          } else {
-          return nil
-        };}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+        return self.$PageLoader();}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
     })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
   })($scope.base)
 };
