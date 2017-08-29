@@ -52,8 +52,7 @@ class MyComp < Hyperloop::Component
 end
 ```
 
-
-
+Not sure if the markdown is working from this point on
 
 + point 1
 + and point 2
