@@ -1,3 +1,11 @@
+# Document.ready? do
+#   puts "doc ready afm"
+#   Element.find('code.lang-ruby-runable').each do |mount_point|
+#     code = mount_point.text
+#     puts code
+#     React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
+#    end
+# end
 
 class Page < Hyperloop::Component
   param :repo
@@ -12,17 +20,31 @@ class Page < Hyperloop::Component
   # raw:  https://raw.githubusercontent.com/ruby-hyperloop/hyperloop-website/master/dist/DOCS.md
   # edit: https://github.com/ruby-hyperloop/hyperloop-website/edit/master/dist/DOCS.md
 
-  after_mount do
+  before_mount do
+    puts "before mount"
     @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
     @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
-    puts "get page"
     get_page
+    # afm
   end
 
-  render do
+  def afm
+  #   puts "about to find elements"
+  #  Element.find('code.lang-ruby-runable').each do |mount_point|
+  #    code = mount_point.text
+  #    puts code
+  #    React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
+  #   end
+  end
+
+  render(DIV) do
+
     Sem.Grid do
       Sem.GridRow(columns: 2) do
         Sem.GridColumn(width: 4) do
+          BUTTON {"Re-mount"}.on(:click) do
+            afm
+          end
           side_nav
         end
         Sem.GridColumn(width: 12) do
@@ -33,12 +55,25 @@ class Page < Hyperloop::Component
   end
 
   def get_page
+    puts "het page"
     HTTP.get(@raw_url) do |response|
+      puts "post promise"
       md = MdConverter.new(response.body)
       mutate.html md.html
       mutate.code_blocks md.code_blocks
       mutate.headings md.headings
+      runable
     end
+  end
+
+  def runable
+    puts "runable"
+    force_update!
+    Element.find('code.lang-ruby-runable').each do |mount_point|
+      code = mount_point.text
+      puts code
+      React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
+     end
   end
 
   def search_input

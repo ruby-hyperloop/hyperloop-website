@@ -21,16 +21,43 @@ The new website will:
 
 ### Setup
 
-`bundle`
-`npm install`
-`npm install webpack -g` <-- if you don't have Webpack command line
++ `bundle`
++ `npm install`
++ `npm install webpack -g` <-- if you don't have Webpack command line
 
 ### Build
 
-To build packs.js: `webpack -p` (-p for production mode)
++ To build packs.js: `webpack` (-p for production mode)
 
-To build app.js: `bundle exec rake build`
++ To build app.js: `bundle exec rake build`
 
 ## Running the server
 
-`bundle exec rake server` (will build app.js and copy index.html from source to dist)
++ `bundle exec rake server` (will build app.js and copy index.html from source to dist)
+
+## Code blocks
+
+### Runable code blocks
+
+Code blocks need to render properly in Github and also on the site. Some code blocks are live and runanle.
+
+Normal code block - `three-backticks ruby`
+```ruby
+class MyComp < Hyperloop::Component
+  render do
+    H1 { 'Hello world' }
+  end
+end
+```
+
+Runable code block - `three-backticks ruby runable`
+
+```ruby runable
+class MyComp < Hyperloop::Component
+  render do
+    H1 { 'Hello world' }
+  end
+end
+```
+
+All runable code blocks must have a Hyperloop Component `class Anything < Hyperloop::Component` somewhere near the beginning of the code block.

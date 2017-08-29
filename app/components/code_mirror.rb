@@ -3,24 +3,17 @@ class ReactCodeMirror < Hyperloop::Component
 end
 
 
-class CodeMirrorTest < Hyperloop::Component
+class CodeMirror < Hyperloop::Component
+  param :code
 
   state code: ""
 
   before_mount do
-    code =
-"class MyComp < Hyperloop::Component
-  render do
-    H1 { 'Hello world' }
-  end
-end"
-  # code = "puts 'hello'"
-    mutate.code code
+    mutate.code params.code
   end
 
   render(DIV) do
     Sem.Container {
-      H1 { "CodeMirror Test" }
       mirror
 
       unless compile && evaluate && render_component

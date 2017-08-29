@@ -2,7 +2,7 @@
 
 class MdConverter
   def initialize md
-    @md = md
+    @md = md.gsub 'ruby runable', 'ruby-runable' #the space messes up the parsing
     @headings = []
     @code_blocks = []
     process
