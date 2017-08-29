@@ -24,7 +24,7 @@ end
 and then comes this
 
 ```ruby runable
-# ruby double
+# ruby runable (github ok, md, ok)
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
@@ -35,7 +35,7 @@ end
 then finally the runable ones
 
 ```ruby-runable
-# ruby-runable
+# ruby-runable (github no, md ok)
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
@@ -46,7 +46,7 @@ end
 nothing to do with this?
 
 ```ruby runable
-# ruby runable
+# ruby runable (githib ok, md ok)
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
@@ -54,19 +54,14 @@ class MyComp < Hyperloop::Component
 end
 ```
 
-with a div
-
-<div class='runnable'>
 ```ruby
-# ruby-runable
+# ruby (github ok, md ok)
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
   end
 end
 ```
-</div>
-
 
 + point 1
 + and point 2
