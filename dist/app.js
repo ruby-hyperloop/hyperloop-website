@@ -15725,13 +15725,14 @@ Opal.modules["components/highlight_x"] = function(Opal) {
 Opal.modules["components/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$after_mount', '$bfm', '$pages', '$mutate', '$load_and_convert_pages', '$each', '$get', '$puts', '$[]=', '$new', '$body', '$raw_url', '$state', '$[]', '$render', '$on', '$BUTTON', '$force_update!', '$Divider', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$H3', '$LI', '$to_s', '$UL', '$headings', '$P', '$param', '$before_mount', '$repo', '$params', '$file', '$get_page', '$text', '$create_element', '$parent', '$find', '$search', '$value', '$target', '$Input', '$Container', '$Sticky', '$search_input', '$H4', '$sections_results', '$==', '$code_results', '$include?', '$downcase', '$code_blocks', '$!=', '$PRE', '$DIV', '$html', '$allow_edit', '$Rail', '$edit_button', '$needs_refresh', '$Message', '$MessageHeader', '$Button']);
+  Opal.add_stubs(['$after_mount', '$bfm', '$load_and_convert_pages', '$each', '$get', '$puts', '$[]=', '$new', '$body', '$raw_url', '$[]', '$render', '$on', '$BUTTON', '$force_update!', '$Divider', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$H3', '$LI', '$to_s', '$UL', '$headings', '$P', '$param', '$state', '$before_mount', '$repo', '$params', '$file', '$get_page', '$text', '$create_element', '$parent', '$find', '$search', '$mutate', '$value', '$target', '$Input', '$Container', '$Sticky', '$search_input', '$H4', '$sections_results', '$==', '$code_results', '$include?', '$downcase', '$code_blocks', '$!=', '$PRE', '$DIV', '$html', '$allow_edit', '$Rail', '$edit_button', '$needs_refresh', '$Message', '$MessageHeader', '$Button']);
   (function($base, $super) {
     function $PageLoader(){};
     var self = $PageLoader = $klass($base, $super, 'PageLoader', $PageLoader);
 
     var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_2, TMP_5, TMP_6, $c, TMP_7, TMP_22, TMP_24;
 
+    def.pages = nil;
     ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
     return self.$bfm()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
@@ -15739,14 +15740,14 @@ Opal.modules["components/page"] = function(Opal) {
     Opal.defn(self, '$bfm', TMP_2 = function $$bfm() {
       var self = this;
 
-      self.$mutate().$pages([$hash2(["repo", "file", "allow_edit"], {"repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-react", "file": "DOCS.md", "allow_edit": true})]);
+      self.pages = [$hash2(["repo", "file", "allow_edit"], {"repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-react", "file": "DOCS.md", "allow_edit": true})];
       return self.$load_and_convert_pages();
     }, TMP_2.$$arity = 0);
 
     Opal.defn(self, '$load_and_convert_pages', TMP_5 = function $$load_and_convert_pages() {
       var $a, $b, TMP_3, self = this;
 
-      return ($a = ($b = self.$state().$pages()).$each, $a.$$p = (TMP_3 = function(page){var self = TMP_3.$$s || this, $c, $d, TMP_4;
+      return ($a = ($b = self.pages).$each, $a.$$p = (TMP_3 = function(page){var self = TMP_3.$$s || this, $c, $d, TMP_4;
 if (page == null) page = nil;
       return ($c = ($d = $scope.get('HTTP')).$get, $c.$$p = (TMP_4 = function(response){var self = TMP_4.$$s || this;
 if (response == null) response = nil;
@@ -15787,24 +15788,28 @@ if (response == null) response = nil;
     Opal.defn(self, '$side_nav', TMP_22 = function $$side_nav() {
       var $a, $b, TMP_16, self = this;
 
-      return ($a = ($b = self.$state().$pages()).$each, $a.$$p = (TMP_16 = function(page){var self = TMP_16.$$s || this, $c, $d, TMP_17, $e, TMP_19;
+      if ((($a = self.pages) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+        return ($a = ($b = self.pages).$each, $a.$$p = (TMP_16 = function(page){var self = TMP_16.$$s || this, $c, $d, TMP_17, $e, TMP_19;
 if (page == null) page = nil;
-      ($c = ($d = self).$H3, $c.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $e, $f, TMP_18;
+        ($c = ($d = self).$H3, $c.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $e, $f, TMP_18;
 
-        return ($e = ($f = self).$LI, $e.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
+          return ($e = ($f = self).$LI, $e.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
 
-          return page['$[]']("repo").$to_s()}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $e).call($f)}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $c).call($d);
-        return ($c = ($e = self).$UL, $c.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this, $f, $g, TMP_20;
+            return page['$[]']("repo").$to_s()}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $e).call($f)}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $c).call($d);
+          return ($c = ($e = self).$UL, $c.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this, $f, $g, TMP_20;
 
-        if ((($f = page['$[]']("md_converter")) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
-            return ($f = ($g = page['$[]']("md_converter").$headings()).$each, $f.$$p = (TMP_20 = function(heading){var self = TMP_20.$$s || this, $h, $i, TMP_21;
+          if ((($f = page['$[]']("md_converter")) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
+              return ($f = ($g = page['$[]']("md_converter").$headings()).$each, $f.$$p = (TMP_20 = function(heading){var self = TMP_20.$$s || this, $h, $i, TMP_21;
 if (heading == null) heading = nil;
-            return ($h = ($i = self).$LI, $h.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
+              return ($h = ($i = self).$LI, $h.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
 
-              return heading['$[]']("text")}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $h).call($i)}, TMP_20.$$s = self, TMP_20.$$arity = 1, TMP_20), $f).call($g)
-            } else {
-            return nil
-          }}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $c).call($e);}, TMP_16.$$s = self, TMP_16.$$arity = 1, TMP_16), $a).call($b);
+                return heading['$[]']("text")}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $h).call($i)}, TMP_20.$$s = self, TMP_20.$$arity = 1, TMP_20), $f).call($g)
+              } else {
+              return nil
+            }}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $c).call($e);}, TMP_16.$$s = self, TMP_16.$$arity = 1, TMP_16), $a).call($b)
+        } else {
+        return nil
+      };
     }, TMP_22.$$arity = 0);
 
     return (Opal.defn(self, '$body', TMP_24 = function $$body() {
