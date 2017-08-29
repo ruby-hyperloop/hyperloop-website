@@ -35,7 +35,7 @@ end
 then finally the runable ones
 
 ```ruby-runable
-# no ruby-runable
+# ruby-runable
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
@@ -44,7 +44,7 @@ end
 ```
 
 ```ruby runable
-# no ruby runable
+# ruby runable
 class MyComp < Hyperloop::Component
   render do
     H1 { 'Hello world' }
