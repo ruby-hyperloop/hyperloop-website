@@ -43,6 +43,8 @@ class MyComp < Hyperloop::Component
 end
 ```
 
+nothing to do with this?
+
 ```ruby runable
 # ruby runable
 class MyComp < Hyperloop::Component
@@ -51,8 +53,17 @@ class MyComp < Hyperloop::Component
   end
 end
 ```
-
 Not sure if the markdown is working from this point on
+
+```ruby
+# ruby-runable
+class MyComp < Hyperloop::Component
+  render do
+    H1 { 'Hello world' }
+  end
+end
+```runable
+
 
 + point 1
 + and point 2
