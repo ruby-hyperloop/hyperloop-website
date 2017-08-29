@@ -5,7 +5,6 @@ end
 
 class CodeMirror < Hyperloop::Component
   param :code
-
   state code: ""
 
   before_mount do

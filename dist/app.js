@@ -16032,7 +16032,7 @@ if (header == null) header = nil;if (body == null) body = nil;
 Opal.modules["components/home"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$render', '$on', '$repo', '$mutate', '$file', '$edit', '$key', '$BUTTON', '$code_mirror', '$Divider', '$nil?', '$Page', '$CodeMirrorTest']);
+  Opal.add_stubs(['$state', '$render', '$on', '$repo', '$mutate', '$file', '$edit', '$key', '$BUTTON', '$code_mirror', '$Divider', '$nil?', '$Page', '$CodeMirror']);
   return (function($base) {
     var $Components, self = $Components = $module($base, 'Components');
 
@@ -16048,7 +16048,7 @@ Opal.modules["components/home"] = function(Opal) {
 
       self.$state($hash2(["code_mirror"], {"code_mirror": false}));
 
-      return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4, $g, $h, TMP_5, TMP_6, $i, $j, TMP_7;
+      return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4, $g, $h, TMP_5, TMP_6, $i, $j, TMP_7, code = nil;
 
       ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
@@ -16077,8 +16077,9 @@ Opal.modules["components/home"] = function(Opal) {
           } else {
           self.$Page($hash2(["repo", "file", "key", "allow_edit"], {"repo": self.$state().$repo(), "file": self.$state().$file(), "key": self.$state().$key(), "allow_edit": self.$state().$edit()}))
         };
+        code = "\nclass MyComp < Hyperloop::Component\n  render do\n    H1 { 'hello' }\n  end\nend\n";
         if ((($c = self.$state().$code_mirror()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-          return self.$CodeMirrorTest()
+          return self.$CodeMirror($hash2(["code"], {"code": code}))
           } else {
           return nil
         };}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));

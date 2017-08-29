@@ -27,7 +27,14 @@ module Components
 
       Sem.Divider()
       Page(repo: state.repo, file: state.file, key: state.key, allow_edit: state.edit) unless state.repo.nil?
-      CodeMirrorTest() if state.code_mirror
+      code = "
+class MyComp < Hyperloop::Component
+  render do
+    H1 { 'hello' }
+  end
+end
+"
+      CodeMirror(code: code) if state.code_mirror
     end
   end
 end
