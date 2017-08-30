@@ -16159,58 +16159,53 @@ Opal.modules["components/page_body"] = function(Opal) {
 Opal.modules["components/page_loader"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$on', '$bfm', '$BUTTON', '$force_update!', '$Divider', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Sticky', '$each', '$PageToc', '$pages', '$Container', '$[]', '$PageBody']);
+  Opal.add_stubs(['$render', '$on', '$force_update!', '$BUTTON', '$Divider', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Sticky', '$each', '$PageToc', '$pages', '$Container', '$[]', '$PageBody']);
   return (function($base, $super) {
     function $PageLoader(){};
     var self = $PageLoader = $klass($base, $super, 'PageLoader', $PageLoader);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_12, TMP_15;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_10, TMP_13;
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4, $g, $h, TMP_5, TMP_6;
+    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e, $f, TMP_3, TMP_4;
 
     ($c = ($d = ($e = ($f = self).$BUTTON, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
-      return "Before Mount"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+      return "Force Update"}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)).$on, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
 
-      return self.$bfm()}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
-      ($c = ($e = ($g = ($h = self).$BUTTON, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
-
-      return "Force Update"}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($h)).$on, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
-
-      return self['$force_update!']()}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($e, "click");
+      return self['$force_update!']()}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, "click");
       $scope.get('Sem').$Divider();
-      return ($c = ($g = $scope.get('Sem')).$Grid, $c.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $i, $j, TMP_7;
+      return ($c = ($e = $scope.get('Sem')).$Grid, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $g, $h, TMP_5;
 
-      return ($i = ($j = $scope.get('Sem')).$GridRow, $i.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $k, $l, TMP_8, $m, TMP_9;
+      return ($g = ($h = $scope.get('Sem')).$GridRow, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $i, $j, TMP_6, $k, TMP_7;
 
-        ($k = ($l = $scope.get('Sem')).$GridColumn, $k.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+        ($i = ($j = $scope.get('Sem')).$GridColumn, $i.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-          return self.$side_nav()}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $k).call($l, $hash2(["width"], {"width": 4}));
-          return ($k = ($m = $scope.get('Sem')).$GridColumn, $k.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+          return self.$side_nav()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $i).call($j, $hash2(["width"], {"width": 4}));
+          return ($i = ($k = $scope.get('Sem')).$GridColumn, $i.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-          return self.$body()}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($m, $hash2(["width"], {"width": 12}));}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $i).call($j, $hash2(["columns"], {"columns": 2}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $c).call($g);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+          return self.$body()}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $i).call($k, $hash2(["width"], {"width": 12}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($h, $hash2(["columns"], {"columns": 2}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($e);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
 
-    Opal.defn(self, '$side_nav', TMP_12 = function $$side_nav() {
-      var $a, $b, TMP_10, self = this;
+    Opal.defn(self, '$side_nav', TMP_10 = function $$side_nav() {
+      var $a, $b, TMP_8, self = this;
 
-      return ($a = ($b = self).$Sticky, $a.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $c, $d, TMP_11;
+      return ($a = ($b = self).$Sticky, $a.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $c, $d, TMP_9;
 
-      return ($c = ($d = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_11 = function(page){var self = TMP_11.$$s || this;
+      return ($c = ($d = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_9 = function(page){var self = TMP_9.$$s || this;
 if (page == null) page = nil;
-        return self.$PageToc($hash2(["page"], {"page": page}))}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $c).call($d)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $a).call($b);
-    }, TMP_12.$$arity = 0);
+        return self.$PageToc($hash2(["page"], {"page": page}))}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9), $c).call($d)}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $a).call($b);
+    }, TMP_10.$$arity = 0);
 
-    return (Opal.defn(self, '$body', TMP_15 = function $$body() {
-      var $a, $b, TMP_13, self = this;
+    return (Opal.defn(self, '$body', TMP_13 = function $$body() {
+      var $a, $b, TMP_11, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $c, $d, TMP_14;
+      return ($a = ($b = $scope.get('Sem')).$Container, $a.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $c, $d, TMP_12;
 
-      return ($c = ($d = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_14 = function(page){var self = TMP_14.$$s || this, $e;
+      return ($c = ($d = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_12 = function(page){var self = TMP_12.$$s || this, $e;
 if (page == null) page = nil;
         if ((($e = page['$[]']("md_converter")) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
             self.$PageBody($hash2(["page"], {"page": page}))};
-          return $scope.get('Sem').$Divider();}, TMP_14.$$s = self, TMP_14.$$arity = 1, TMP_14), $c).call($d)}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
-    }, TMP_15.$$arity = 0), nil) && 'body';
+          return $scope.get('Sem').$Divider();}, TMP_12.$$s = self, TMP_12.$$arity = 1, TMP_12), $c).call($d)}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $a).call($b, $hash2(["style"], {"style": $hash2(["marginTop", "paddingLeft"], {"marginTop": "2em", "paddingLeft": "28px"})}));
+    }, TMP_13.$$arity = 0), nil) && 'body';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 

@@ -23,7 +23,6 @@ class PageStore < Hyperloop::Store
 
     def load_and_convert_pages
       state.pages.each do |page|
-        page[:md_converter] = nil
         HTTP.get( raw_url(page) ) do |response|
           puts "response"
           page[:md_converter] = MdConverter.new(response.body)

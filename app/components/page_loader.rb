@@ -1,7 +1,6 @@
 class PageLoader < Hyperloop::Component
 
   render(DIV) do
-    BUTTON { "Before Mount" }.on(:click) { bfm }
     BUTTON { "Force Update" }.on(:click) { force_update! }
     Sem.Divider()
 
