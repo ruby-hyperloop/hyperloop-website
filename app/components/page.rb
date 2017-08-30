@@ -4,12 +4,12 @@ class Page < Hyperloop::Component
   param allow_edit: true
 
   state search: ""
-  state needs_refresh: false
+  # state needs_refresh: false
 
   before_mount do
     puts "before mount"
     # @raw_url = "https://raw.githubusercontent.com/ruby-hyperloop/#{params.repo.to_s}/master/#{params.file.to_s}"
-    @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
+    # @edit_url = "https://github.com/ruby-hyperloop/#{params.repo}/edit/master/#{params.file}"
     get_page
   end
 
@@ -87,32 +87,32 @@ class Page < Hyperloop::Component
     end  if state.code_blocks && state.search
   end
 
-  def body
-    Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
-      DIV(dangerously_set_inner_HTML: { __html: state.html })
-      Sem.Rail(internal: true, position: :right) {
-        edit_button
-      } if params.allow_edit
-    end
-  end
+  # def body
+  #   Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
+  #     DIV(dangerously_set_inner_HTML: { __html: state.html })
+  #     Sem.Rail(internal: true, position: :right) {
+  #       edit_button
+  #     } if params.allow_edit
+  #   end
+  # end
 
-  def edit_button
-    Sem.Grid(textAlign: :right) {
-      Sem.GridColumn {
-        if state.needs_refresh
-          Sem.Message(positive: true) {
-            Sem.MessageHeader { "Thank you!" }
-            P { "PRs are always welcome." }
-          }
-        else
-          Sem.Button(icon: :github, circular: true, label: "Improve this page") {
-
-          }.on(:click) do
-            mutate.needs_refresh true
-            `window.open(#{@edit_url}, "_blank");`
-          end
-        end
-      }
-    }
-  end
+  # def edit_button
+  #   Sem.Grid(textAlign: :right) {
+  #     Sem.GridColumn {
+  #       if state.needs_refresh
+  #         Sem.Message(positive: true) {
+  #           Sem.MessageHeader { "Thank you!" }
+  #           P { "PRs are always welcome." }
+  #         }
+  #       else
+  #         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
+  #
+  #         }.on(:click) do
+  #           mutate.needs_refresh true
+  #           `window.open(#{@edit_url}, "_blank");`
+  #         end
+  #       end
+  #     }
+  #   }
+  # end
 end
