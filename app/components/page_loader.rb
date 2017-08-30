@@ -5,7 +5,7 @@ class PageLoader < Hyperloop::Component
   end
 
   def bfm
-    mutate.pages [
+    @pages = [
       { repo: 'hyper-store', file: 'DOCS.md', allow_edit: true },
       { repo: 'hyper-mesh', file: 'DOCS.md', allow_edit: true },
       { repo: 'hyper-react', file: 'DOCS.md', allow_edit: true }
@@ -14,7 +14,7 @@ class PageLoader < Hyperloop::Component
   end
 
   def load_and_convert_pages
-    state.pages.each do |page|
+    @pages.each do |page|
       HTTP.get( raw_url(page) ) do |response|
         puts "response"
         page[:md_converter] = MdConverter.new(response.body)
@@ -51,19 +51,19 @@ class PageLoader < Hyperloop::Component
   def side_nav
     # Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
       Sticky {
-        state.pages.each do |page|
+        @pages.each do |page|
           PageToc(page: page)
-        end if state.pages
+        end if @pages
       }
     # }
   end
 
   def body
     Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
-      state.pages.each do |page|
+      @pages.each do |page|
         PageBody(page: page) if page[:md_converter]
         Sem.Divider()
-      end if state.pages
+      end if @pages
     }
   end
 
