@@ -12,52 +12,10 @@ In Hyperloop, your ActiveRecord Models are available in your Isomorphic code.
 
 Components, Operations, and Stores have CRUD access to your server side ActiveRecord Models, using the standard ActiveRecord API.
 
-```
-# no lauguage specifier
-class MyComp < Hyperloop::Component
-  render do
-    H1 { 'Hello world' }
-  end
-end
-```
-
-and then comes this
-
 ```ruby runable
 # ruby runable (github ok, md, ok)
 class MyComp < Hyperloop::Component
-  render do
-    H1 { 'Hello world' }
-  end
-end
-```
-
-then finally the runable ones
-
-```ruby-runable
-# ruby-runable (github no, md ok)
-class MyComp < Hyperloop::Component
-  render do
-    H1 { 'Hello world' }
-  end
-end
-```
-
-nothing to do with this?
-
-```ruby runable
-# ruby runable (githib ok, md ok)
-class MyComp < Hyperloop::Component
-  render do
-    H1 { 'Hello world' }
-  end
-end
-```
-
-```ruby
-# ruby (github ok, md ok)
-class MyComp < Hyperloop::Component
-  render do
+  render(DIV) do
     H1 { 'Hello world' }
   end
 end
