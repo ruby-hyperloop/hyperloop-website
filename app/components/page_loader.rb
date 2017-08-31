@@ -1,19 +1,27 @@
 class PageLoader < Hyperloop::Component
 
+  after_mount do
+  end
+
   render(DIV) do
     BUTTON { "Force Update" }.on(:click) { force_update! }
     Sem.Divider()
 
-    Sem.Grid do
-      Sem.GridRow(columns: 2) do
-        Sem.GridColumn(width: 4) do
-          side_nav
-        end
-        Sem.GridColumn(width: 12) do
-          body
+    if PageStore.loaded?
+      Sem.Grid do
+        Sem.GridRow(columns: 2) do
+          Sem.GridColumn(width: 4) do
+            side_nav
+          end
+          Sem.GridColumn(width: 12) do
+            body
+          end
         end
       end
+    else
+      H1 { "loading....." }
     end
+
   end
 
   def side_nav

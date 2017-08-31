@@ -1,16 +1,22 @@
 class PageStore < Hyperloop::Store
 
-  class << self
+  receives Hyperloop::Application::Boot do
+    init
+  end
 
-    state pages: nil, scope: :class
+  class << self
+    state loaded: false, scope: :shared
 
     def pages
-      init unless state.pages
-      state.pages
+      @@pages
+    end
+
+    def loaded?
+      state.loaded
     end
 
     def init
-      mutate.pages [
+      @@pages = [
         { repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
         { repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
         { repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
@@ -22,12 +28,24 @@ class PageStore < Hyperloop::Store
     end
 
     def load_and_convert_pages
-      state.pages.each do |page|
-        HTTP.get( raw_url(page) ) do |response|
-          puts "response"
+      @@promises = 0
+
+      @@pages.each do |page|
+        get(page)
+      end
+    end
+
+    def get page
+      @@promises += 1
+      HTTP.get( raw_url(page) ) do |response|
+        if response.ok?
           page[:md_converter] = MdConverter.new(response.body)
           page[:edit_url] = edit_url page
+        else
+          alert "Unable to get #{raw_url(page)} from Github"
         end
+        @@promises -= 1
+        mutate.loaded true if @@promises == 0
       end
     end
 
