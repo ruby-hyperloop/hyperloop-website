@@ -26,9 +26,9 @@ class PageLoader < Hyperloop::Component
   def side_nav
     # Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
       Sticky {
-        PageStore.pages.each do |page|
-          PageToc(page: page)
-        end
+        # PageStore.pages.each do |page|
+          PagesToc(pages: PageStore.pages)
+        # end
       }
     # }
   end
