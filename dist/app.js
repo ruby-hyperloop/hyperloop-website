@@ -16215,40 +16215,68 @@ if (page == null) page = nil;
 Opal.modules["components/pages_toc"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$before_mount', '$each_with_index', '$<<', '$to_s', '$[]', '$headings', '$as_node', '$panel', '$pages', '$params', '$render', '$Accordion', '$to_n', '$DIV', '$each', '$LI', '$drop']);
-  return (function($base, $super) {
+  Opal.add_stubs(['$param', '$before_mount', '$render', '$each_with_index', '$<<', '$as_node', '$TocHeading', '$[]', '$headings', '$panel', '$pages', '$params', '$Accordion', '$to_n', '$DIV', '$each', '$TocItem', '$drop', '$P', '$heading', '$on', '$LI']);
+  (function($base, $super) {
     function $PagesToc(){};
     var self = $PagesToc = $klass($base, $super, 'PagesToc', $PagesToc);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_3, TMP_7;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_6;
 
     self.$param("pages");
 
-    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
-    self.panels = [];
-      return ($c = ($d = self.$params().$pages()).$each_with_index, $c.$$p = (TMP_2 = function(page, index){var self = TMP_2.$$s || this;
-        if (self.panels == null) self.panels = nil;
+    return nil}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3, panels = nil;
+
+    panels = [];
+      ($d = ($e = self.$params().$pages()).$each_with_index, $d.$$p = (TMP_3 = function(page, index){var self = TMP_3.$$s || this;
 if (page == null) page = nil;if (index == null) index = nil;
-      return self.panels['$<<']($hash2(["title", "content", "key"], {"title": page['$[]']("md_converter").$headings()['$[]'](0)['$[]']("text").$to_s(), "content": self.$panel(page).$as_node(), "key": index}))}, TMP_2.$$s = self, TMP_2.$$arity = 2, TMP_2), $c).call($d);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+      return panels['$<<']($hash2(["title", "content", "key"], {"title": self.$TocHeading($hash2(["heading"], {"heading": page['$[]']("md_converter").$headings()['$[]'](0)})).$as_node(), "content": self.$panel(page).$as_node(), "key": index}))}, TMP_3.$$s = self, TMP_3.$$arity = 2, TMP_3), $d).call($e);
+      return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": panels.$to_n(), "styled": false, "fluid": true}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
 
-    ($a = ($c = self).$render, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
-      if (self.panels == null) self.panels = nil;
-
-    return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": self.panels.$to_n(), "styled": false, "fluid": true}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($c, $scope.get('DIV'));
-
-    return (Opal.defn(self, '$panel', TMP_7 = function $$panel(page) {
+    return (Opal.defn(self, '$panel', TMP_6 = function $$panel(page) {
       var $a, $b, TMP_4, self = this;
 
       return ($a = ($b = self).$DIV, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
 
-      return ($c = ($d = page['$[]']("md_converter").$headings().$drop(1)).$each, $c.$$p = (TMP_5 = function(heading){var self = TMP_5.$$s || this, $e, $f, TMP_6;
+      return ($c = ($d = page['$[]']("md_converter").$headings().$drop(1)).$each, $c.$$p = (TMP_5 = function(heading){var self = TMP_5.$$s || this;
 if (heading == null) heading = nil;
-        return ($e = ($f = self).$LI, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+        return self.$TocItem($hash2(["heading"], {"heading": heading}))}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $c).call($d)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
+    }, TMP_6.$$arity = 1), nil) && 'panel';
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
+  (function($base, $super) {
+    function $TocHeading(){};
+    var self = $TocHeading = $klass($base, $super, 'TocHeading', $TocHeading);
 
-          return heading['$[]']("text")}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "toc_h" + (heading['$[]']("level"))}))}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $c).call($d)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
-    }, TMP_7.$$arity = 1), nil) && 'panel';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_7;
+
+    self.$param("heading");
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $c, $d, TMP_8;
+
+    return ($c = ($d = self).$P, $c.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+
+      return self.$params().$heading()['$[]']("text")}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $c).call($d)}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b, $scope.get('DIV'));
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
+  return (function($base, $super) {
+    function $TocItem(){};
+    var self = $TocItem = $klass($base, $super, 'TocItem', $TocItem);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_9;
+
+    self.$param("heading");
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $c, $d, TMP_10, $e, $f, TMP_11;
+
+    return ($c = ($d = ($e = ($f = self).$LI, $e.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+
+      return self.$params().$heading()['$[]']("text")}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $e).call($f, $hash2(["class"], {"class": "toc_h" + (self.$params().$heading()['$[]']("level"))}))).$on, $c.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, slug = nil;
+
+      slug = "" + (self.$params().$heading()['$[]']("slug"));
+        return document.getElementById(slug).scrollIntoView(true);;}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $c).call($d, "click")}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $a).call($b, $scope.get('DIV'));
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
 /* Generated by Opal 0.10.5 */
