@@ -16159,7 +16159,7 @@ Opal.modules["components/page_body"] = function(Opal) {
 Opal.modules["components/page_loader"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$after_mount', '$render', '$on', '$force_update!', '$BUTTON', '$Divider', '$puts', '$loaded?', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$H1', '$Sticky', '$each', '$PageToc', '$pages', '$Container', '$[]', '$PageBody']);
+  Opal.add_stubs(['$after_mount', '$render', '$on', '$force_update!', '$BUTTON', '$Divider', '$loaded?', '$Grid', '$GridRow', '$GridColumn', '$side_nav', '$body', '$Dimmer', '$Loader', '$Sticky', '$each', '$PageToc', '$pages', '$Container', '$[]', '$PageBody']);
   return (function($base, $super) {
     function $PageLoader(){};
     var self = $PageLoader = $klass($base, $super, 'PageLoader', $PageLoader);
@@ -16178,7 +16178,6 @@ Opal.modules["components/page_loader"] = function(Opal) {
 
       return self['$force_update!']()}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, "click");
       $scope.get('Sem').$Divider();
-      self.$puts("PageStore.loaded? " + ($scope.get('PageStore')['$loaded?']()));
       if ((($d = $scope.get('PageStore')['$loaded?']()) !== nil && $d != null && (!$d.$$is_boolean || $d == true))) {
         return ($d = ($f = $scope.get('Sem')).$Grid, $d.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $h, $i, TMP_6;
 
@@ -16191,9 +16190,9 @@ Opal.modules["components/page_loader"] = function(Opal) {
 
             return self.$body()}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $j).call($l, $hash2(["width"], {"width": 12}));}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($i, $hash2(["columns"], {"columns": 2}))}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $d).call($f)
         } else {
-        return ($d = ($h = self).$H1, $d.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+        return ($d = ($h = $scope.get('Sem')).$Dimmer, $d.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
 
-        return "loading....."}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $d).call($h)
+        return $scope.get('Sem').$Loader($hash2(["inverted", "size", "content"], {"inverted": true, "size": "large", "content": "Loading pages"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $d).call($h, $hash2(["active", "inverted"], {"active": true, "inverted": true}))
       };}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
 
     Opal.defn(self, '$side_nav', TMP_12 = function $$side_nav() {
@@ -16259,7 +16258,7 @@ Opal.modules["stores/page_store"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$receives', '$puts', '$init', '$state', '$loaded', '$load_and_convert_pages', '$pages', '$each', '$get', '$+', '$ok?', '$[]=', '$new', '$body', '$edit_url', '$alert', '$-', '$==', '$mutate', '$raw_url', '$[]']);
+  Opal.add_stubs(['$receives', '$init', '$state', '$loaded', '$load_and_convert_pages', '$each', '$get', '$+', '$ok?', '$[]=', '$new', '$body', '$edit_url', '$alert', '$raw_url', '$-', '$==', '$mutate', '$[]']);
   return (function($base, $super) {
     function $PageStore(){};
     var self = $PageStore = $klass($base, $super, 'PageStore', $PageStore);
@@ -16268,8 +16267,7 @@ Opal.modules["stores/page_store"] = function(Opal) {
 
     ($a = ($b = self).$receives, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
-    self.$puts("I am getting the boot");
-      return self.$init();}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, (((($scope.get('Hyperloop')).$$scope.get('Application'))).$$scope.get('Boot')));
+    return self.$init()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, (((($scope.get('Hyperloop')).$$scope.get('Application'))).$$scope.get('Boot')));
 
     return (function(self) {
       var $scope = self.$$scope, def = self.$$proto, TMP_2, TMP_3, TMP_4, TMP_6, TMP_8, TMP_9, TMP_10;
@@ -16288,35 +16286,30 @@ Opal.modules["stores/page_store"] = function(Opal) {
       Opal.defn(self, '$init', TMP_4 = function $$init() {
         var self = this;
 
-        self.$puts("init running");
         (Opal.cvars['@@pages'] = [$hash2(["repo", "file", "allow_edit"], {"repo": "hyper-react", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-router", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-operation", "file": "DOCS.md", "allow_edit": true}), $hash2(["repo", "file", "allow_edit"], {"repo": "hyper-operation", "file": "DOCS-POLICIES.md", "allow_edit": true})]);
-        self.$load_and_convert_pages();
-        return self.$state().$pages();
+        return self.$load_and_convert_pages();
       }, TMP_4.$$arity = 0);
       Opal.defn(self, '$load_and_convert_pages', TMP_6 = function $$load_and_convert_pages() {
         var $a, $b, TMP_5, $c, self = this;
 
         (Opal.cvars['@@promises'] = 0);
-        return ($a = ($b = (($c = Opal.cvars['@@pages']) == null ? nil : $c)).$each, $a.$$p = (TMP_5 = function(page){var self = TMP_5.$$s || this, $c;
+        return ($a = ($b = (($c = Opal.cvars['@@pages']) == null ? nil : $c)).$each, $a.$$p = (TMP_5 = function(page){var self = TMP_5.$$s || this;
 if (page == null) page = nil;
-        self.$get(page);
-          self.$puts("after get page");
-          return (Opal.cvars['@@promises'] = $rb_plus((($c = Opal.cvars['@@promises']) == null ? nil : $c), 1));}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b);
+        return self.$get(page)}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($b);
       }, TMP_6.$$arity = 0);
       Opal.defn(self, '$get', TMP_8 = function $$get(page) {
         var $a, $b, TMP_7, self = this;
 
+        (Opal.cvars['@@promises'] = $rb_plus((($a = Opal.cvars['@@promises']) == null ? nil : $a), 1));
         return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_7 = function(response){var self = TMP_7.$$s || this, $c;
 if (response == null) response = nil;
-        self.$puts("promise resolved");
-          if ((($c = response['$ok?']()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
+        if ((($c = response['$ok?']()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
             page['$[]=']("md_converter", $scope.get('MdConverter').$new(response.$body()));
             page['$[]=']("edit_url", self.$edit_url(page));
             } else {
-            self.$alert("Unable to get DOCS pages from Github")
+            self.$alert("Unable to get " + (self.$raw_url(page)) + " from Github")
           };
           (Opal.cvars['@@promises'] = $rb_minus((($c = Opal.cvars['@@promises']) == null ? nil : $c), 1));
-          self.$puts("promises " + ((($c = Opal.cvars['@@promises']) == null ? nil : $c)));
           if ((($c = Opal.cvars['@@promises']) == null ? nil : $c)['$=='](0)) {
             return self.$mutate().$loaded(true)
             } else {

@@ -4,9 +4,6 @@ class PageLoader < Hyperloop::Component
   end
 
   render(DIV) do
-    BUTTON { "Force Update" }.on(:click) { force_update! }
-    Sem.Divider()
-
     if PageStore.loaded?
       Sem.Grid do
         Sem.GridRow(columns: 2) do
@@ -19,7 +16,9 @@ class PageLoader < Hyperloop::Component
         end
       end
     else
-      H1 { "loading....." }
+      Sem.Dimmer(active:true, inverted:true) {
+        Sem.Loader(inverted:true, size: :large, content: 'Loading pages')
+      }
     end
 
   end
