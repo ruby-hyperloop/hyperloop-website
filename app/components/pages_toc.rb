@@ -13,7 +13,7 @@ class PagesToc < Hyperloop::Component
   render(DIV) do
     panels = []
     params.pages.each_with_index do |page, index|
-      panels << { title: page[:md_converter].headings[0].to_s,
+      panels << { title: page[:md_converter].headings[0][:text].to_s,
                     content: panel(page).as_node,
                     key: index
       }
