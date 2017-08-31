@@ -10,6 +10,9 @@ class PagesToc < Hyperloop::Component
   #   }
   # # end
 
+  before_mount do
+  end
+
   render(DIV) do
     panels = []
     params.pages.each_with_index do |page, index|
@@ -24,9 +27,18 @@ class PagesToc < Hyperloop::Component
   def panel page
     DIV do
       page[:md_converter].headings.drop(1).each do |heading|
-        LI(class: "toc_h#{heading[:level]}") { heading[:text] }
+        TocItem(heading: heading)
       end
     end
   end
+end
 
+class TocItem < Hyperloop::Component
+  param :heading
+  render(DIV) do
+    LI(class: "toc_h#{params.heading[:level]}") { params.heading[:text] }.on(:click) do
+      slug = "#{params.heading[:slug]}"
+      `document.getElementById(#{slug}).scrollIntoView(true);`
+    end
+  end
 end

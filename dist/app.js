@@ -16215,34 +16215,39 @@ if (page == null) page = nil;
 Opal.modules["components/pages_toc"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$render', '$each_with_index', '$<<', '$to_s', '$[]', '$headings', '$as_node', '$panel', '$pages', '$params', '$Accordion', '$to_n', '$DIV', '$each', '$LI', '$drop']);
+  Opal.add_stubs(['$param', '$before_mount', '$each_with_index', '$<<', '$to_s', '$[]', '$headings', '$as_node', '$panel', '$pages', '$params', '$render', '$Accordion', '$to_n', '$DIV', '$each', '$LI', '$drop']);
   return (function($base, $super) {
     function $PagesToc(){};
     var self = $PagesToc = $klass($base, $super, 'PagesToc', $PagesToc);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_6;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_3, TMP_7;
 
     self.$param("pages");
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, panels = nil;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
-    panels = [];
-      ($c = ($d = self.$params().$pages()).$each_with_index, $c.$$p = (TMP_2 = function(page, index){var self = TMP_2.$$s || this;
+    self.panels = [];
+      return ($c = ($d = self.$params().$pages()).$each_with_index, $c.$$p = (TMP_2 = function(page, index){var self = TMP_2.$$s || this;
+        if (self.panels == null) self.panels = nil;
 if (page == null) page = nil;if (index == null) index = nil;
-      return panels['$<<']($hash2(["title", "content", "key"], {"title": page['$[]']("md_converter").$headings()['$[]'](0).$to_s(), "content": self.$panel(page).$as_node(), "key": index}))}, TMP_2.$$s = self, TMP_2.$$arity = 2, TMP_2), $c).call($d);
-      return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": panels.$to_n(), "styled": false, "fluid": true}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+      return self.panels['$<<']($hash2(["title", "content", "key"], {"title": page['$[]']("md_converter").$headings()['$[]'](0)['$[]']("text").$to_s(), "content": self.$panel(page).$as_node(), "key": index}))}, TMP_2.$$s = self, TMP_2.$$arity = 2, TMP_2), $c).call($d);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    return (Opal.defn(self, '$panel', TMP_6 = function $$panel(page) {
-      var $a, $b, TMP_3, self = this;
+    ($a = ($c = self).$render, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+      if (self.panels == null) self.panels = nil;
 
-      return ($a = ($b = self).$DIV, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $c, $d, TMP_4;
+    return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": self.panels.$to_n(), "styled": false, "fluid": true}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($c, $scope.get('DIV'));
 
-      return ($c = ($d = page['$[]']("md_converter").$headings().$drop(1)).$each, $c.$$p = (TMP_4 = function(heading){var self = TMP_4.$$s || this, $e, $f, TMP_5;
+    return (Opal.defn(self, '$panel', TMP_7 = function $$panel(page) {
+      var $a, $b, TMP_4, self = this;
+
+      return ($a = ($b = self).$DIV, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
+
+      return ($c = ($d = page['$[]']("md_converter").$headings().$drop(1)).$each, $c.$$p = (TMP_5 = function(heading){var self = TMP_5.$$s || this, $e, $f, TMP_6;
 if (heading == null) heading = nil;
-        return ($e = ($f = self).$LI, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+        return ($e = ($f = self).$LI, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-          return heading['$[]']("text")}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($f, $hash2(["class"], {"class": "toc_h" + (heading['$[]']("level"))}))}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $c).call($d)}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($b);
-    }, TMP_6.$$arity = 1), nil) && 'panel';
+          return heading['$[]']("text")}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "toc_h" + (heading['$[]']("level"))}))}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $c).call($d)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
+    }, TMP_7.$$arity = 1), nil) && 'panel';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
