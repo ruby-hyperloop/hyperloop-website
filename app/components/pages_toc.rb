@@ -9,7 +9,7 @@ class PagesToc < Hyperloop::Component
     params.pages.each_with_index do |page, index|
       panels << { title: TocHeading(heading: page[:md_converter].headings[0]).as_node,
                     content: panel(page).as_node,
-                    key: index
+                    key: index.to_s
       }
     end
     Sem.Accordion(panels: panels.to_n, styled: false, fluid: true)

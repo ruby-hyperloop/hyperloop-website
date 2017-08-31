@@ -2,16 +2,27 @@ class PageBody < Hyperloop::Component
   param :page
   state needs_refresh: false
 
+  after_mount do
+    convert_runable_code_blocks
+  end
+
   render(DIV) do
     Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
-      # H1 {  params.page[:repo].to_s }
       edit_button if params.page[:allow_edit]
       DIV(dangerously_set_inner_HTML: { __html: params.page[:md_converter].html })
-      # Sem.Rail(internal: true, position: :right) {
-        # edit_button if params.page[:allow_edit]
-      # } if params.page[:allow_edit]
     end
   end
+
+  def convert_runable_code_blocks
+    puts "convert_runable_code_blocks"
+    force_update!
+    Element.find('code.lang-ruby-runable').each do |mount_point|
+      code = mount_point.text
+      puts code
+      React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
+     end
+  end
+
 
   def edit_button
     Sem.Grid(textAlign: :right) {
