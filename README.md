@@ -34,11 +34,7 @@ The new website will:
 
 ## Running the server
 
-+ `bundle exec rake server` (will build app.js and copy index.html from source to dist)
-
-or..
-
-+ `webpack-dev-server --progress --colors` <-- http://localhost:8080/webpack-dev-server/bundle
+`foreman start`
 
 ## Code blocks
 
