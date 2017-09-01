@@ -1,3 +1,59 @@
 .inline-codespan {
   background-color: #ececec;
 }
+
+.main-container {
+  margin-left: 400px;
+}
+
+.ui.menu {
+  overflow-y: scroll !important;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+}
+
+.ui.vertical.menu .item>.label {
+  float: left !important;
+}
+
+.accordion div.title span {
+  color: #e81176;
+}
+
+.menu .toc_h2 {
+  font-weight: bold;
+  font-size: 16px;
+  padding: 15px 0 7px 0;
+}
+
+.menu ul+.toc_h2{
+  padding-top: 0;
+}
+
+.menu .toc_h3 {
+  font-size: 14px;
+  padding: 0 0 5px 10px;
+}
+
+.menu .toc_h4 {
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.menu ul > li.toc_h4:last-child {
+  padding-bottom: 5px;
+}
+
+.menu a {
+  cursor: pointer;
+  color: black !important;
+}
+
+.menu a:hover {
+  color: #e81176 !important;
+}
+
