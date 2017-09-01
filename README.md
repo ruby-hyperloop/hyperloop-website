@@ -23,8 +23,10 @@ The new website will:
 
 + `bundle`
 + `npm install`
-+ `npm install webpack -g` <-- if you don't have Webpack command line
++ `npm install webpack@3.4.1 -g` <-- if you don't have Webpack command line
 + `npm install webpack-dev-server -g`
++ `npm install style-loader`
++ `npm install html-webpack-plugin`
 
 ### Build
 
@@ -35,6 +37,8 @@ The new website will:
 ## Running the server
 
 `foreman start`
+
+Browse `localhost:8080`
 
 ## Code blocks
 
