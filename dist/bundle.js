@@ -39656,7 +39656,7 @@ exports = module.exports = __webpack_require__(93)(undefined);
 
 
 // module
-exports.push([module.i, ".inline-codespan {\n  background-color: #ececec;\n}\n", ""]);
+exports.push([module.i, ".inline-codespan {\n  background-color: #ececec;\n}\n\nbody {\n  background-color: #red;\n}\n\n.funny-thing {\n  color: green;\n}\n\nh1 {\n    color: green;\n}\n", ""]);
 
 // exports
 
