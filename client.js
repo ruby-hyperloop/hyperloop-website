@@ -1,3 +1,8 @@
+require("./app/css/override.css");
+require("./app/css/one-dark.css");
+require("./app/css/highlight-theme.css");
+require("./app/css/codemirror.css");
+
 ReactDOM = require('react-dom');
 React = require('react');
 

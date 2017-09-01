@@ -8,7 +8,17 @@ var config = {
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
+  },
+  module: {
+
+    loaders: [
+          { test: /\.css$/,
+            loader: "style-loader!css-loader"
+          }
+    ]
+
   }
+
 };
 
 module.exports = config;

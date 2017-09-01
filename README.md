@@ -24,6 +24,7 @@ The new website will:
 + `bundle`
 + `npm install`
 + `npm install webpack -g` <-- if you don't have Webpack command line
++ `npm install webpack-dev-server -g`
 
 ### Build
 
@@ -33,7 +34,7 @@ The new website will:
 
 ## Running the server
 
-+ `bundle exec rake server` (will build app.js and copy index.html from source to dist)
+`foreman start`
 
 ## Code blocks
 
