@@ -7,7 +7,7 @@ class PagesToc < Hyperloop::Component
   render(DIV) do
     panels = []
     params.pages.each_with_index do |page, index|
-      puts "HEADING: #{page[:md_converter].headings[0]['text']}"
+      puts "HEADING: #{page[:md_converter].headings}"
       panels << { title: TocHeading(heading: page[:md_converter].headings[0]).as_node,
                     content: panel(page).as_node,
                     key: index.to_s
@@ -41,7 +41,7 @@ class TocItem < Hyperloop::Component
     
 
     LI(class: "toc_h#{params.heading[:level]}") do
-        A { params.heading[:text] }.on(:click) do
+        A { "#{params.heading[:text]}" }.on(:click) do
         slug = "#{params.heading[:slug]}"
         `document.getElementById(#{slug}).scrollIntoView(true);`
       end

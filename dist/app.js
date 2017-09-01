@@ -16103,7 +16103,7 @@ if (mount_point == null) mount_point = nil;
 Opal.modules["components/pages_toc"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$before_mount', '$render', '$each_with_index', '$<<', '$as_node', '$TocHeading', '$[]', '$headings', '$panel', '$to_s', '$pages', '$params', '$Accordion', '$to_n', '$UL', '$each', '$TocItem', '$drop', '$on', '$heading', '$SPAN', '$LI', '$A']);
+  Opal.add_stubs(['$param', '$before_mount', '$render', '$each_with_index', '$puts', '$headings', '$[]', '$<<', '$as_node', '$TocHeading', '$panel', '$to_s', '$pages', '$params', '$Accordion', '$to_n', '$UL', '$each', '$TocItem', '$drop', '$on', '$heading', '$SPAN', '$LI', '$A']);
   (function($base, $super) {
     function $PagesToc(){};
     var self = $PagesToc = $klass($base, $super, 'PagesToc', $PagesToc);
@@ -16121,7 +16121,8 @@ Opal.modules["components/pages_toc"] = function(Opal) {
     panels = [];
       ($d = ($e = self.$params().$pages()).$each_with_index, $d.$$p = (TMP_3 = function(page, index){var self = TMP_3.$$s || this;
 if (page == null) page = nil;if (index == null) index = nil;
-      return panels['$<<']($hash2(["title", "content", "key"], {"title": self.$TocHeading($hash2(["heading"], {"heading": page['$[]']("md_converter").$headings()['$[]'](0)})).$as_node(), "content": self.$panel(page).$as_node(), "key": index.$to_s()}))}, TMP_3.$$s = self, TMP_3.$$arity = 2, TMP_3), $d).call($e);
+      self.$puts("HEADING: " + (page['$[]']("md_converter").$headings()));
+        return panels['$<<']($hash2(["title", "content", "key"], {"title": self.$TocHeading($hash2(["heading"], {"heading": page['$[]']("md_converter").$headings()['$[]'](0)})).$as_node(), "content": self.$panel(page).$as_node(), "key": index.$to_s()}));}, TMP_3.$$s = self, TMP_3.$$arity = 2, TMP_3), $d).call($e);
       return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": panels.$to_n(), "styled": true, "fluid": true}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
 
     return (Opal.defn(self, '$panel', TMP_6 = function $$panel(page) {
@@ -16165,7 +16166,7 @@ if (heading == null) heading = nil;
 
       return ($e = ($f = ($g = ($h = self).$A, $g.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
-        return self.$params().$heading()['$[]']("text")}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $g).call($h)).$on, $e.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil;
+        return "b" + (self.$params().$heading()['$[]']("text"))}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $g).call($h)).$on, $e.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil;
 
         slug = "" + (self.$params().$heading()['$[]']("slug"));
           return document.getElementById(slug).scrollIntoView(true);;}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $e).call($f, "click")}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $c).call($d, $hash2(["class"], {"class": "toc_h" + (self.$params().$heading()['$[]']("level"))}))}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $a).call($b);
