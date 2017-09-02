@@ -38,7 +38,7 @@ class PageLoader < Hyperloop::Component
   def body
     #Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
       DIV(class: 'main-container') do
-        H1 { "here now" }
+        H1 { "here now alfie wants to go swimming now" }
         PageStore.pages.each do |page|
           PageBody(page: page) if page[:md_converter]
           Sem.Divider()

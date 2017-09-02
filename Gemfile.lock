@@ -15,6 +15,10 @@ GEM
       sourcemap (~> 0.1.0)
       sprockets (~> 3.1)
       tilt (>= 1.4)
+    opal-sprockets (0.4.1.0.10.4.3.1.0)
+      opal (~> 0.10.4)
+      sprockets (~> 3.1)
+      tilt (>= 1.4)
     opal_hot_reloader (0.1.4)
       listen (~> 3.0)
       websocket
@@ -38,7 +42,9 @@ PLATFORMS
 DEPENDENCIES
   foreman
   opal
+  opal-sprockets
   opal_hot_reloader
+  rack
   rake
 
 BUNDLED WITH

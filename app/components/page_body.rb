@@ -14,11 +14,11 @@ class PageBody < Hyperloop::Component
   end
 
   def convert_runable_code_blocks
-    puts "convert_runable_code_blocks"
+    # puts "convert_runable_code_blocks"
     force_update!
     Element.find('code.lang-ruby-runable').each do |mount_point|
       code = mount_point.text
-      puts code
+      # puts code
       React.render(React.create_element(CodeMirror, {code: code} ), mount_point.parent)
      end
   end

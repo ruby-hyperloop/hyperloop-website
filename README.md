@@ -38,7 +38,7 @@ The new website will:
 
 `foreman start`
 
-Browse `localhost:8080`
+Browse `http://localhost:9292/`
 
 ## Code blocks
 

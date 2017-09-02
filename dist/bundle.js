@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "745c6268622606755b6d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "15434bde02932ea33a59"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -9842,7 +9842,7 @@ exports = module.exports = __webpack_require__(93)(undefined);
 
 
 // module
-exports.push([module.i, ".inline-codespan {\n  background-color: #ececec;\n}\n\n  \n.main-container {\n  margin-left: 400px;\n}\n\n.ui.menu {\n  overflow-y: scroll !important;\n}\n\n.menu ul {\n  list-style-type: none;\n  margin: 0;\n  padding:0;\n}\n\n.ui.vertical.menu .item>.label {\n  float: left !important;\n}\n\n.accordion div.title span {\n  color: #e81176;\n}\n\n.menu .toc_h2 {\n  font-weight: bold;\n  font-size: 16px;\n  padding: 15px 0 7px 0;\n}\n\n.menu ul+.toc_h2{\n  padding-top: 0;\n}\n\n.menu .toc_h3 {\n  font-size: 14px;\n  padding: 0 0 5px 10px;\n}\n\n.menu .toc_h4 {\n  font-size: 12px;\n  padding-left: 20px;\n}\n\n.menu ul > li.toc_h4:last-child {\n  padding-bottom: 5px;\n}\n\n.menu a {\n  cursor: pointer;\n  color: black !important;\n}\n\n.menu a:hover {\n  color: #e81176 !important;\n}\n", ""]);
+exports.push([module.i, ".inline-codespan {\n  background-color: #ececec;\n}\n\nh1 {\n  color: green;\n}\n\n.main-container {\n  margin-left: 400px;\n}\n\n.ui.menu {\n  overflow-y: scroll !important;\n}\n\n.menu ul {\n  list-style-type: none;\n  margin: 0;\n  padding:0;\n}\n\n.ui.vertical.menu .item>.label {\n  float: left !important;\n}\n\n.accordion div.title span {\n  color: #e81176;\n}\n\n.menu .toc_h2 {\n  font-weight: bold;\n  font-size: 16px;\n  padding: 15px 0 7px 0;\n}\n\n.menu ul+.toc_h2{\n  padding-top: 0;\n}\n\n.menu .toc_h3 {\n  font-size: 14px;\n  padding: 0 0 5px 10px;\n}\n\n.menu .toc_h4 {\n  font-size: 12px;\n  padding-left: 20px;\n}\n\n.menu ul > li.toc_h4:last-child {\n  padding-bottom: 5px;\n}\n\n.menu a {\n  cursor: pointer;\n  color: black !important;\n}\n\n.menu a:hover {\n  color: #e81176 !important;\n}\n", ""]);
 
 // exports
 
