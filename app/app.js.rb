@@ -1,14 +1,11 @@
 require_tree './components'
-# require_tree './operations'
 require_tree './stores'
 
-require 'opal_hot_reloader' # this will move to hyperloop.js
-
+# following only required for development (find a way to build without for production)
+require 'opal_hot_reloader' 
 OpalHotReloader.listen
-
-require 'opal' # we dont need this for production (adds lot of size)
+require 'opal'
 
 Document.ready? do
-  puts "here"
   Element['#site'].render{ Components::Home() }
 end

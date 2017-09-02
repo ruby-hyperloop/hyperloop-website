@@ -38835,13 +38835,7 @@ ReactDOM = __webpack_require__(149);
 React = __webpack_require__(1);
 
 Sem = __webpack_require__(541);
-
-// Sticky = require('react-stickynode');
-
 Marked = __webpack_require__(867);
-// Highlight = require('react-highlight');
-// highlight_js = require('highlight.js');
-
 CodeMirror = __webpack_require__(868);
 __webpack_require__(872);
 
