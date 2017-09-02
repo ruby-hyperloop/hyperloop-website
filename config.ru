@@ -8,5 +8,5 @@ run Opal::Server.new { |server|
   server.main = 'app'
   # the directory where the code is (add to opal load path )
   server.append_path 'app'
-  server.index_path = './index.html.erb'
+  server.index_path = './app/index.html.erb'
 }

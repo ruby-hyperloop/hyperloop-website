@@ -6,7 +6,7 @@ require 'opal_hot_reloader' # this will move to hyperloop.js
 
 OpalHotReloader.listen
 
-require 'opal'
+require 'opal' # we dont need this for production (adds lot of size)
 
 Document.ready? do
   puts "here"

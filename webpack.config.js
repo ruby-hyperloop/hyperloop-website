@@ -1,7 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-const WebpackShellPlugin = require('webpack-shell-plugin');
-var HtmlWebpackPlugin =  require('html-webpack-plugin');
 
 var BUILD_DIR = path.resolve(__dirname, 'dist');
 
@@ -19,12 +17,7 @@ var config = {
           }
     ]
 
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new WebpackShellPlugin({onBuildStart:['bundle exec rake build'], dev: false})
-  ]
+  }
 
 };
 

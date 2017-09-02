@@ -24,20 +24,19 @@ The new website will:
 + `bundle`
 + `npm install`
 + `npm install webpack@3.4.1 -g` <-- if you don't have Webpack command line
-+ `npm install webpack-dev-server -g`
 
 ### Build
 
 + To build packs.js and app.js: `webpack` (-p for production mode)
-
 + To build app.js: `bundle exec rake build`
 
 ## Running the server
 
-+ To build the Opal code, run webpack-dev-server,  and OpelHotReloader:
+We use Rack and OpelHotReloader as a development environment. Website Components are rebuilt by sprockets on server start. You will need to build bundle.js (`webpack`).
+
+To start the server:
 
 `foreman start`
-
 Browse `http://localhost:9292/`
 
 ## Code blocks

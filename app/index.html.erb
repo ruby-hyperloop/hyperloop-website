@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- bundle from webpack -->
+    <script src="dist/bundle.js"></script>
+
+    <!-- React and JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
+    <link href="./app/css/codemirror.css" rel="stylesheet">
+    <link href="./app/css/one-dark.css" rel="stylesheet">
+    <link href="./app/css/highlight-theme.css" rel="stylesheet">
+    <link href="./app/css/override.css" rel="stylesheet">
+
+    <!-- cdn libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- Opal and Hyperloop -->
+    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/opal-compiler.min.js"></script>
+    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/hyperloop.min.js"></script>
+
+    <!-- website application -->
+    <%= javascript_include_tag 'app.js'%>
+  </head>
+
+  <body>
+
+		<div id="site"></div>
+  </body>
+</html>
