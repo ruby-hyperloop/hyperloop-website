@@ -25,8 +25,6 @@ The new website will:
 + `npm install`
 + `npm install webpack@3.4.1 -g` <-- if you don't have Webpack command line
 + `npm install webpack-dev-server -g`
-+ `npm install style-loader`
-+ `npm install html-webpack-plugin`
 
 ### Build
 
@@ -36,7 +34,9 @@ The new website will:
 
 ## Running the server
 
-`foreman start`
++ To build the Opal code then run the server: `rake server`
+
++ To run the server: `foreman start`
 
 Browse `localhost:8080`
 
@@ -46,23 +46,27 @@ Browse `localhost:8080`
 
 Code blocks need to render properly in Github and also on the site. Some code blocks are live and runanle.
 
-Normal code block - `three-backticks ruby`
+Normal code block - (three-backticks ruby)
+<PRE>
 ```ruby
 class MyComp < Hyperloop::Component
-  render do
+  render(DIV) do
     H1 { 'Hello world' }
   end
 end
 ```
+</PRE>
 
-Runable code block - `three-backticks ruby runable`
+Runable code block - (three-backticks ruby runable)
 
+<PRE>
 ```ruby runable
 class MyComp < Hyperloop::Component
-  render do
+  render(DIV) do
     H1 { 'Hello world' }
   end
 end
 ```
+</PRE>
 
 All runable code blocks must have a Hyperloop Component `class Anything < Hyperloop::Component` somewhere near the beginning of the code block.
