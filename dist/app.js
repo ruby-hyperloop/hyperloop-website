@@ -16175,12 +16175,12 @@ if (mount_point == null) mount_point = nil;
 Opal.modules["components/page_loader"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$after_mount', '$render', '$loaded?', '$side_nav', '$body', '$Dimmer', '$Loader', '$Menu', '$PagesToc', '$pages', '$DIV', '$each', '$[]', '$PageBody', '$Divider']);
+  Opal.add_stubs(['$after_mount', '$render', '$loaded?', '$side_nav', '$body', '$Dimmer', '$Loader', '$Menu', '$PagesToc', '$pages', '$DIV', '$H1', '$each', '$[]', '$PageBody', '$Divider']);
   return (function($base, $super) {
     function $PageLoader(){};
     var self = $PageLoader = $klass($base, $super, 'PageLoader', $PageLoader);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_5, TMP_8;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_5, TMP_9;
 
     ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
@@ -16205,17 +16205,20 @@ Opal.modules["components/page_loader"] = function(Opal) {
       return self.$PagesToc($hash2(["pages"], {"pages": $scope.get('PageStore').$pages()}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b, $hash2(["fixed", "vertical", "size", "inverted", "compact"], {"fixed": "left", "vertical": true, "size": "huge", "inverted": false, "compact": true}));
     }, TMP_5.$$arity = 0);
 
-    return (Opal.defn(self, '$body', TMP_8 = function $$body() {
+    return (Opal.defn(self, '$body', TMP_9 = function $$body() {
       var $a, $b, TMP_6, self = this;
 
-      return ($a = ($b = self).$DIV, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
+      return ($a = ($b = self).$DIV, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7, $e, TMP_8;
 
-      return ($c = ($d = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_7 = function(page){var self = TMP_7.$$s || this, $e;
+      ($c = ($d = self).$H1, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+
+        return "here now"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d);
+        return ($c = ($e = $scope.get('PageStore').$pages()).$each, $c.$$p = (TMP_8 = function(page){var self = TMP_8.$$s || this, $f;
 if (page == null) page = nil;
-        if ((($e = page['$[]']("md_converter")) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
+        if ((($f = page['$[]']("md_converter")) !== nil && $f != null && (!$f.$$is_boolean || $f == true))) {
             self.$PageBody($hash2(["page"], {"page": page}))};
-          return $scope.get('Sem').$Divider();}, TMP_7.$$s = self, TMP_7.$$arity = 1, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["class"], {"class": "main-container"}));
-    }, TMP_8.$$arity = 0), nil) && 'body';
+          return $scope.get('Sem').$Divider();}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $c).call($e);}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["class"], {"class": "main-container"}));
+    }, TMP_9.$$arity = 0), nil) && 'body';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 

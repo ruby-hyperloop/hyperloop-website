@@ -28,15 +28,15 @@ The new website will:
 
 ### Build
 
-+ To build packs.js: `webpack` (-p for production mode)
++ To build packs.js and app.js: `webpack` (-p for production mode)
 
 + To build app.js: `bundle exec rake build`
 
 ## Running the server
 
-+ To build the Opal code then run the server: `rake server`
++ To build the Opal code, run webpack-dev-server,  and OpelHotReloader:
 
-+ To run the server: `foreman start`
+`foreman start`
 
 Browse `localhost:8080`
 
