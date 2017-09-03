@@ -2,27 +2,55 @@
   background-color: #ececec;
 }
 
-.main-container {
-  margin-left: 400px;
+.maincontainer {
+  
 }
 
-.ui.menu {
-  overflow-y: scroll !important;
+.tocmenu > .menu {
+  padding-top: 100px; 
+  overflow-y: scroll !important; 
 }
 
-.menu ul {
+.docscontainer {
+  margin-top: 50px;
+}
+
+.tocmenu .menu a {
+  cursor: pointer;
+  color: grey !important;
+}
+
+.tocmenu .menu a:hover {
+  color: #e81176 !important;
+}
+
+
+.item1 {
+  min-width: 20%;
+}
+
+.item2 {
+flex-grow: 1;
+}
+
+.footer {
+  flex: 1 100%;
+}
+
+/*.menu ul {
   list-style-type: none;
   margin: 0;
   padding:0;
-}
+}*/
+
+
+
+
 
 .ui.vertical.menu .item>.label {
   float: left !important;
 }
 
-.accordion div.title span {
-  color: #e81176;
-}
 
 .menu .toc_h2 {
   font-weight: bold;
@@ -44,15 +72,5 @@
   padding-left: 20px;
 }
 
-.menu ul > li.toc_h4:last-child {
-  padding-bottom: 5px;
-}
 
-.menu a {
-  cursor: pointer;
-  color: black !important;
-}
 
-.menu a:hover {
-  color: #e81176 !important;
-}

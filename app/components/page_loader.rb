@@ -1,55 +1,66 @@
 class PageLoader < Hyperloop::Component
 
+  state sidebar_visibility: false
+
   after_mount do
   end
 
   render(DIV) do
+    
     if PageStore.loaded?
-      # Sem.Grid do
-      #   Sem.GridRow(columns: 2) do
-      #     Sem.GridColumn(width: 4) do
-            side_nav
-          # end
-          # Sem.GridColumn(width: 12) do
+
+      Sem.Menu(icon: true, fixed: :top, inverted: true) {
+        A(class: 'item', id: 'togglemenu') do
+          Sem.Icon(name: 'sidebar')
+          "Menu"
+        end.on(:click) do
+          mutate.sidebar_visibility !state.sidebar_visibility
+        end
+      }
+
+      Sem.SidebarPushable do
+          
+        Sem.Sidebar(animation: :push, visible: (state.sidebar_visibility ? true : false)) {
+          PagesToc(pages: PageStore.pages)
+        }
+
+        Sem.SidebarPusher {
+          DIV(class: 'maincontainer') do
             body
-          # end
-        # end
-      # end
+          end
+        }
+      end
+
     else
       Sem.Dimmer(active:true, inverted:true) {
         Sem.Loader(inverted:true, size: :large, content: 'Loading pages')
       }
     end
-
+    
   end
 
   def side_nav
-    # Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
-      # Sticky {
-        # PageStore.pages.each do |page|
+    
+    # Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
+    #   Sem.Grid {
+    #     Sem.GridRow { SiteMenu()  }
+    #     Sem.GridRow { PagesToc(pages: PageStore.pages) }
+    #   }
+    # }
 
-        Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
-          Sem.Grid {
-            Sem.GridRow { SiteMenu()  }
-            Sem.GridRow { PagesToc(pages: PageStore.pages) }
-          }
+    Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
+          PagesToc(pages: PageStore.pages)
         }
 
-        # end
-      #}
-    # }
   end
 
   def body
-    #Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
-      DIV(class: 'main-container') do
-        SiteMenu()
-        PageStore.pages.each do |page|
-          PageBody(page: page) if page[:md_converter]
-          Sem.Divider()
-        end
+    DIV(class: 'docscontainer') do
+      PageStore.pages.each do |page|
+        PageBody(page: page) if page[:md_converter]
+        Sem.Divider()
       end
-    #}
+    end
   end
 
 end
