@@ -5,8 +5,9 @@ module Components
     state code_mirror: false
 
     render(DIV) do
-      H1 { "DOCS PageLoader" }
-      Sem.Divider()
+      # H1 { "DOCS PageLoader" }
+      # Sem.Divider()
+      # SiteMenu()
       PageLoader()
     end
   end

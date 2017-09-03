@@ -27,9 +27,14 @@ class PageLoader < Hyperloop::Component
     # Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
       # Sticky {
         # PageStore.pages.each do |page|
+
         Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
-          PagesToc(pages: PageStore.pages)
+          Sem.Grid {
+            Sem.GridRow { SiteMenu()  }
+            Sem.GridRow { PagesToc(pages: PageStore.pages) }
+          }
         }
+
         # end
       #}
     # }
@@ -38,6 +43,7 @@ class PageLoader < Hyperloop::Component
   def body
     #Sem.Container(style: { marginTop: '2em', paddingLeft: '28px' }) {
       DIV(class: 'main-container') do
+        SiteMenu()
         PageStore.pages.each do |page|
           PageBody(page: page) if page[:md_converter]
           Sem.Divider()
