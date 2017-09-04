@@ -1,18 +1,33 @@
+.accordian-div {
+  padding-top: 50px;
+}
+
+.toc-div {
+  padding-left: 15px;
+}
+
+
 .inline-codespan {
   background-color: #ececec;
 }
 
 .maincontainer {
-  
+
 }
 
 .tocmenu > .menu {
-  padding-top: 100px; 
-  overflow-y: scroll !important; 
+  padding-top: 100px;
+  overflow-y: scroll !important;
 }
 
-.docscontainer {
-  margin-top: 50px;
+.menu ul {
+  .docscontainer {
+    margin-top: 50px;
+  }
+}
+
+.tocmenu > .menu { 
+  overflow-y: scroll;
 }
 
 .tocmenu .menu a {
@@ -37,20 +52,19 @@ flex-grow: 1;
   flex: 1 100%;
 }
 
-/*.menu ul {
+.menu ul {
   list-style-type: none;
   margin: 0;
   padding:0;
-}*/
+}
 
-
-
-
+.ui.menu {
+  overflow-y: scroll !important;
+}
 
 .ui.vertical.menu .item>.label {
   float: left !important;
 }
-
 
 .menu .toc_h2 {
   font-weight: bold;
@@ -72,5 +86,19 @@ flex-grow: 1;
   padding-left: 20px;
 }
 
+.menu ul > li.toc_h4:last-child {
+  padding-bottom: 5px;
+}
 
+.menu a {
+  cursor: pointer;
+  color: black !important;
+}
 
+.menu a:hover {
+  color: #e81176 !important;
+}
+
+.accordion div.title span {
+  color: #e81176;
+}

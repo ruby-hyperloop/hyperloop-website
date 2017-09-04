@@ -1,9 +1,10 @@
 class SidebarStore < Hyperloop::Store
 
   class << self
-    state sidebar_visibility: false, scope: :shared
+    state visible: true, scope: :shared, reader: true
 
-    
+    def toggle
+      mutate.visible !state.visible
+    end
   end
-
 end

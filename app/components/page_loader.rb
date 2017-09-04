@@ -1,15 +1,15 @@
 class PageLoader < Hyperloop::Component
 
-  state sidebar_visibility: false
+  state sidebar_visibility: true
 
   after_mount do
   end
 
   render(DIV) do
-    
+
     if PageStore.loaded?
 
-      Sem.Menu(icon: true, fixed: :top, inverted: true) {
+      Sem.Menu(icon: true, fixed: :top, inverted: false) {
         A(class: 'item', id: 'togglemenu') do
           Sem.Icon(name: 'sidebar')
           "Menu"
@@ -19,9 +19,10 @@ class PageLoader < Hyperloop::Component
       }
 
       Sem.SidebarPushable do
-          
-        Sem.Sidebar(animation: :push, visible: (state.sidebar_visibility ? true : false)) {
-          PagesToc(pages: PageStore.pages)
+
+        Sem.Sidebar(animation: :push, width: :wide, visible: (state.sidebar_visibility ? true : false)) {
+          # PagesToc(pages: PageStore.pages)
+          side_nav
         }
 
         Sem.SidebarPusher {
@@ -36,11 +37,11 @@ class PageLoader < Hyperloop::Component
         Sem.Loader(inverted:true, size: :large, content: 'Loading pages')
       }
     end
-    
+
   end
 
   def side_nav
-    
+
     # Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
     #   Sem.Grid {
     #     Sem.GridRow { SiteMenu()  }
@@ -48,7 +49,7 @@ class PageLoader < Hyperloop::Component
     #   }
     # }
 
-    Sem.Menu(fixed: :left, vertical:true, size: :huge, inverted: false, compact: true ) {
+    Sem.Menu(fixed: :left, vertical: true, size: :huge, inverted: false, compact: true ) {
           PagesToc(pages: PageStore.pages)
         }
 
