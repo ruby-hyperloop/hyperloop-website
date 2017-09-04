@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "codemirror-one-dark-theme": "^1.0.6",
+    "create-react-class": "^15.6.0",
     "marked": "^0.3.6",
     "react": "^15.6.1",
     "react-codemirror": "^1.0.0",

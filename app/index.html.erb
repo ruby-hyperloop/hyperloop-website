@@ -21,11 +21,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
     <!-- Opal and Hyperloop -->
-    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/opal-compiler.min.js"></script>
-    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/master/hyperloop.min.js"></script>
+    <%= javascript_include_tag 'opal.js'%>
+    <!-- <script src="http://cdn.opalrb.org/opal/current/opal.min.js"></script> -->
+    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/dist/hyperloop.min.js"></script>
 
     <!-- website application -->
+
     <%= javascript_include_tag 'app.js'%>
+
   </head>
 
   <body>
