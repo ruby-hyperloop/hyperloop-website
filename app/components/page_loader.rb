@@ -49,7 +49,7 @@ class PageLoader < Hyperloop::Component
     #   }
     # }
 
-    Sem.Menu(fixed: :left, vertical: true, size: :huge, inverted: false, compact: true ) {
+    Sem.Menu(fixed: :left, vertical: true, size: :huge, inverted: false, compact: true, fluid: true ) {
           PagesToc(pages: PageStore.pages)
         }
 

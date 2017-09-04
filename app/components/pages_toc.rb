@@ -21,6 +21,7 @@ class PagesToc < Hyperloop::Component
   # end
 
   render(DIV) do
+
     panels = []
     params.pages.each_with_index do |page, index|
       # puts "HEADING: #{page[:md_converter].headings}"
@@ -30,6 +31,9 @@ class PagesToc < Hyperloop::Component
       }
     end
     DIV(class: 'accordian-div') {
+      Sem.Segment(basic: true) {
+        Sem.Header(as: 'h3') { "COMPS Documentation" }
+      }
       Sem.Accordion(panels: panels.to_n, styled: true, fluid: true)
     }
   end

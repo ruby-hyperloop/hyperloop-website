@@ -17,7 +17,7 @@ class PageStore < Hyperloop::Store
 
     def init
       @@pages = [
-        { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
+        # { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
         { repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
         { repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
         { repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
