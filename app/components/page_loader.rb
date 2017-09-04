@@ -57,10 +57,13 @@ class PageLoader < Hyperloop::Component
 
   def body
     DIV(class: 'docscontainer') do
-      PageStore.pages.each do |page|
-        PageBody(page: page) if page[:md_converter]
-        Sem.Divider()
-      end
+      # PageStore.pages.each do |page|
+      #   PageBody(page: page) if page[:md_converter]
+      #   Sem.Divider()
+      # end
+
+      PageBody(page: PageStore.current_page)
+
     end
   end
 

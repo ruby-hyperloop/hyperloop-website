@@ -25,7 +25,7 @@ class PagesToc < Hyperloop::Component
     panels = []
     params.pages.each_with_index do |page, index|
       # puts "HEADING: #{page[:md_converter].headings}"
-      panels << { title: TocHeading(heading: page[:md_converter].headings[0]).as_node,
+      panels << { title: TocHeading(page: page, heading: page[:md_converter].headings[0]).as_node,
                     content: panel(page).as_node,
                     key: index.to_s
       }
@@ -57,11 +57,14 @@ class PagesToc < Hyperloop::Component
 end
 
 class TocHeading < Hyperloop::Component
+  param :page
   param :heading
+
   render do
     SPAN(class: 'header'){ params.heading[:text] }.on(:click) do
-      slug = "#{params.heading[:slug]}"
-      `document.getElementById(#{slug}).scrollIntoView(true);`
+      # slug = "#{params.heading[:slug]}"
+      # `document.getElementById(#{slug}).scrollIntoView(true);`
+      PageStore.set_current_page params.page
     end
   end
 end
@@ -72,8 +75,9 @@ class TocItem < Hyperloop::Component
 
     LI(class: "toc_h#{params.heading[:level]}") do
       A { "#{params.heading[:text]}" }.on(:click) do
-        slug = "#{params.heading[:slug]}"
-        `document.getElementById(#{slug}).scrollIntoView(true);`
+        # slug = "#{params.heading[:slug]}"
+        # `document.getElementById(#{slug}).scrollIntoView(true);`
+        PageStore.set_current_anchor params.heading[:slug]
         end
       end
   end

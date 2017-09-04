@@ -15,6 +15,22 @@ class PageStore < Hyperloop::Store
       state.loaded
     end
 
+    def current_page
+      state.current_page
+    end
+
+    def current_anchor
+      state.current_anchor
+    end
+
+    def set_current_page page
+      mutate.current_page page
+    end
+
+    def set_current_anchor anchor
+      mutate.current_anchor anchor
+    end
+
     def init
       @@pages = [
         # { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
@@ -26,6 +42,8 @@ class PageStore < Hyperloop::Store
         { repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true }
       ]
       load_and_convert_pages
+      mutate.current_page @@pages[0]
+
     end
 
     def load_and_convert_pages

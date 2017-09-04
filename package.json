@@ -29,6 +29,7 @@
     "react": "^15.6.1",
     "react-codemirror": "^1.0.0",
     "react-dom": "^15.6.1",
+    "react-scrollspy": "^3.3.3",
     "semantic-ui-react": "^0.71.5"
   }
 }
