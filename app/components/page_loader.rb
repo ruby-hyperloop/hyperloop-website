@@ -18,7 +18,7 @@ class PageLoader < Hyperloop::Component
         end
       }
 
-      Sem.SidebarPushable do
+      Sem.SidebarPushable(as: :Segment) do
 
         Sem.Sidebar(animation: :push, width: :wide, visible: (state.sidebar_visibility ? true : false)) {
           # PagesToc(pages: PageStore.pages)
