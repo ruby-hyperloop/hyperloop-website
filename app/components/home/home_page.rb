@@ -1,4 +1,4 @@
-class HomeRoute < Hyperloop::Router::Component
+class HomePage < Hyperloop::Router::Component
   render(DIV) do
 
     sidebar = HomeSidebar().as_node

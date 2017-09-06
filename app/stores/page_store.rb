@@ -1,79 +1,65 @@
 class PageStore < Hyperloop::Store
 
-  receives Hyperloop::Application::Boot do
-    init
+  state loaded: false, scope: :shared
+
+  def initialize pages
+    puts "PageStore is starting now"
+    @pages = pages
+    load_and_convert_pages
+    mutate.current_page @pages[0]
   end
 
-  class << self
-    state loaded: false, scope: :shared
+  def pages
+    @pages
+  end
 
-    def pages
-      @@pages
+  def loaded?
+    state.loaded
+  end
+
+  def current_page
+    state.current_page
+  end
+
+  def current_anchor
+    state.current_anchor
+  end
+
+  def set_current_page page
+    mutate.current_page page
+  end
+
+  def set_current_anchor anchor
+    mutate.current_anchor anchor
+  end
+
+  def load_and_convert_pages
+    @promises = 0
+
+    @pages.each do |page|
+      get(page)
     end
+  end
 
-    def loaded?
-      state.loaded
-    end
-
-    def current_page
-      state.current_page
-    end
-
-    def current_anchor
-      state.current_anchor
-    end
-
-    def set_current_page page
-      mutate.current_page page
-    end
-
-    def set_current_anchor anchor
-      mutate.current_anchor anchor
-    end
-
-    def init
-      @@pages = [
-        # { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
-        { repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
-        { repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
-        { repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
-        { repo: 'hyper-mesh',      file: 'DOCS.md',  allow_edit: true },
-        { repo: 'hyper-operation', file: 'DOCS.md',  allow_edit: true },
-        { repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true }
-      ]
-      load_and_convert_pages
-      mutate.current_page @@pages[0]
-
-    end
-
-    def load_and_convert_pages
-      @@promises = 0
-
-      @@pages.each do |page|
-        get(page)
+  def get page
+    @promises += 1
+    HTTP.get( raw_url(page) ) do |response|
+      if response.ok?
+        page[:md_converter] = MdConverter.new(response.body)
+        page[:edit_url] = edit_url page
+      else
+        alert "Unable to get #{raw_url(page)} from Github"
       end
+      @promises -= 1
+      mutate.loaded true if @promises == 0
     end
+  end
 
-    def get page
-      @@promises += 1
-      HTTP.get( raw_url(page) ) do |response|
-        if response.ok?
-          page[:md_converter] = MdConverter.new(response.body)
-          page[:edit_url] = edit_url page
-        else
-          alert "Unable to get #{raw_url(page)} from Github"
-        end
-        @@promises -= 1
-        mutate.loaded true if @@promises == 0
-      end
-    end
+  def raw_url page
+    "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
+  end
 
-    def raw_url page
-      "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
-    end
-
-    def edit_url page
-      "https://github.com/ruby-hyperloop/#{page[:repo]}/edit/master/#{page[:file]}"
-    end
+  def edit_url page
+    "https://github.com/ruby-hyperloop/#{page[:repo]}/edit/master/#{page[:file]}"
   end
 end

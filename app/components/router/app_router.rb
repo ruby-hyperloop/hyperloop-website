@@ -3,12 +3,9 @@ class AppRouter < Hyperloop::Router
 
   route do
     DIV {
-      # each route must render the page it wants completely
-      # all pages should conform to having:
-      # AppMenu, SideNav and a PageBody 
       Switch do
-        Route('/', exact: true, mounts: HomeRoute)
-        Route('/docs', exact: true, mounts: DocsRoute)
+        Route('/', exact: true, mounts: HomePage)
+        Route('/docs', exact: true, mounts: DocsPage)
       end
     }
   end
