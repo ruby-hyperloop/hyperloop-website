@@ -7,5 +7,5 @@ OpalHotReloader.listen
 # require 'opal'
 
 Document.ready? do
-  Element['#site'].render{ Components::Home() }
+  Element['#site'].render{ AppRouter() }
 end
