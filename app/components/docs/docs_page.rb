@@ -19,6 +19,6 @@ class DocsPage < Hyperloop::Router::Component
     sidebar = DocsSidebar(page_store: @@page_store).as_node
     body = DocsBody().as_node
 
-    PageLayout(sidebar_component: sidebar, body_component: body, loaded: true)
+    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @@page_store.loaded?)
   end
 end
