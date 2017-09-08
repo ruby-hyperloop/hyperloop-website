@@ -4,6 +4,11 @@ class AppMenu < Hyperloop::Router::Component
     Sem.Menu(fixed: :top, inverted: false) do
       sidebar_toggle
       home
+      start
+      installation
+      tutorials
+      gems
+      tools
       docs
     end
   end
@@ -19,6 +24,36 @@ class AppMenu < Hyperloop::Router::Component
   def home
     Sem.MenuItem {
       Link('/') { 'HOME' }
+    }
+  end
+
+  def start
+    Sem.MenuItem {
+      Link('/start') { 'START' }
+    }
+  end
+
+  def installation
+    Sem.MenuItem {
+      Link('/installation') { 'INSTALLATION' }
+    }
+  end
+
+  def tutorials
+    Sem.MenuItem {
+      Link('/tutorials') { 'TUTORIALS' }
+    }
+  end
+
+  def gems
+    Sem.MenuItem {
+      Link('/gems') { 'GEMS' }
+    }
+  end
+
+  def tools
+    Sem.MenuItem {
+      Link('/tools') { 'TOOLS' }
     }
   end
 
