@@ -4,7 +4,7 @@ class DocsSidebar < Hyperloop::Component
   render(DIV) do
     Sem.Menu(fixed: :left, vertical: true, size: :huge, inverted: false, compact: true, fluid: true ) do
       accordion
-    end
+    end if params.page_store.loaded?
   end
 
   def accordion
@@ -14,7 +14,7 @@ class DocsSidebar < Hyperloop::Component
                     content: panel(page).as_node,
                     key: index.to_s
       }
-    end if params.page_store.loaded?
+    end
 
     DIV(class: 'accordian-div') {
       Sem.Segment(basic: true) {

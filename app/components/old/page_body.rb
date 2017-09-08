@@ -10,7 +10,7 @@ class PageBody < Hyperloop::Component
   render(DIV) do
     # puts "rendering PageBody"
     Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
-      edit_button if params.page[:allow_edit]
+      # edit_button if params.page[:allow_edit]
       DIV(dangerously_set_inner_HTML: { __html: params.page[:md_converter].html })
     end
     convert_runable_code_blocks
@@ -34,23 +34,23 @@ class PageBody < Hyperloop::Component
   end
 
 
-  def edit_button
-    Sem.Grid(textAlign: :right) {
-      Sem.GridColumn {
-        if state.needs_refresh
-          Sem.Message(positive: true) {
-            Sem.MessageHeader { "Thank you!" }
-            P { "PRs are always welcome." }
-          }
-        else
-          Sem.Button(icon: :github, circular: true, label: "Improve this page") {
-
-          }.on(:click) do
-            mutate.needs_refresh true
-            `window.open(#{params.page[:edit_url]}, "_blank");`
-          end
-        end
-      }
-    }
-  end
+  # def edit_button
+  #   Sem.Grid(textAlign: :right) {
+  #     Sem.GridColumn {
+  #       if state.needs_refresh
+  #         Sem.Message(positive: true) {
+  #           Sem.MessageHeader { "Thank you!" }
+  #           P { "PRs are always welcome." }
+  #         }
+  #       else
+  #         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
+  #
+  #         }.on(:click) do
+  #           mutate.needs_refresh true
+  #           `window.open(#{params.page[:edit_url]}, "_blank");`
+  #         end
+  #       end
+  #     }
+  #   }
+  # end
 end

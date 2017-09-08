@@ -17,7 +17,7 @@ class DocsPage < Hyperloop::Router::Component
   render(DIV) do
 
     sidebar = DocsSidebar(page_store: @@page_store).as_node
-    body = DocsBody().as_node
+    body = DocsBody(page_store: @@page_store).as_node
 
     PageLayout(sidebar_component: sidebar, body_component: body, loaded: @@page_store.loaded?)
   end

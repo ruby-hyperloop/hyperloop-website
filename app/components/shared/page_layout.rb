@@ -9,10 +9,12 @@ class PageLayout < Hyperloop::Router::Component
       Sem.Loader(inverted: true, size: :large, content: 'Loading dynamic content...')
     }
 
-    #  FRED cannot get this column to scroll independantly!!
+    # FRED cannot get this column to scroll independantly!!
+    # I can make it work if I take the menu away but not ther - very fiddly
+    #  please solve this - I give up on this one
     Sem.Grid do
       Sem.GridRow { AppMenu() }
-      Sem.GridRow(columns: '2') do
+      Sem.GridRow(columns: '3') do
         Sem.GridColumn do
           Sem.SidebarPushable do
             Sem.Sidebar(as: :Segment, animation: :push, width: :wide, visible: SidebarStore.visible ) do
@@ -27,7 +29,7 @@ class PageLayout < Hyperloop::Router::Component
         end
         Sem.GridColumn do
           Sem.SidebarPusher do
-            Sem.Container(style: { marginTop: '3.5em'}) {
+            Sem.Container(text: true, style: { marginTop: '3.5em'}) {
               params.body_component.render
             }
           end
