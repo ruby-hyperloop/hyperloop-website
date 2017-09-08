@@ -2,7 +2,7 @@ class DocsPage < Hyperloop::Router::Component
 
   before_mount do
     pages = [
-      { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
+      # { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
       { repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
       { repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
       { repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
