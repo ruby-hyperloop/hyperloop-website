@@ -11,14 +11,14 @@ class DocsPage < Hyperloop::Router::Component
       { repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true }
     ]
 
-    @@page_store ||= PageStore.new(pages)
+    @page_store ||= PageStore.new(pages)
   end
 
   render(DIV) do
 
-    sidebar = DocsSidebar(page_store: @@page_store).as_node
-    body = DocsBody(page_store: @@page_store).as_node
+    sidebar = DocsSidebar(page_store: @page_store).as_node
+    body = DocsBody(page_store: @page_store).as_node
 
-    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @@page_store.loaded?)
+    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @page_store.loaded?)
   end
 end

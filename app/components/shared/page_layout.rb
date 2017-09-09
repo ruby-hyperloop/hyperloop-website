@@ -17,7 +17,7 @@ class PageLayout < Hyperloop::Router::Component
       Sem.GridRow(columns: '3') do
         Sem.GridColumn do
           Sem.SidebarPushable do
-            Sem.Sidebar(as: :Segment, animation: :push, width: :wide, visible: SidebarStore.visible ) do
+            Sem.Sidebar(animation: :push, width: :wide, visible: SidebarStore.visible ) do
               # DIV(class: 'sidenav-container') {
               # FRED I am not sure why the style from the div is not being applied, so am using
               # Sem.Container as a hack...
@@ -29,6 +29,7 @@ class PageLayout < Hyperloop::Router::Component
         end
         Sem.GridColumn do
           Sem.SidebarPusher do
+            # FRED the layout of this is all wrong! for some reason it bunches up in the middle
             Sem.Container(text: true, style: { marginTop: '3.5em'}) {
               params.body_component.render
             }
