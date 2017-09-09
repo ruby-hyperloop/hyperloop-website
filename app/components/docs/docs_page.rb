@@ -1,24 +1,10 @@
 class DocsPage < Hyperloop::Router::Component
 
-  before_mount do
-    pages = [
-      # { repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
-      { repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
-      { repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
-      { repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
-      { repo: 'hyper-mesh',      file: 'DOCS.md',  allow_edit: true },
-      { repo: 'hyper-operation', file: 'DOCS.md',  allow_edit: true },
-      { repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true }
-    ]
-
-    @section_store ||= SectionStore.new(pages)
-  end
-
   render(DIV) do
 
-    sidebar = DocsSidebar(section_store: @section_store).as_node
-    body = DocsBody(section_store: @section_store).as_node
+    sidebar = DocsSidebar(section_store: SiteStore.sections[:docs]).as_node
+    body = DocsBody(section_store: SiteStore.sections[:docs]).as_node
 
-    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @section_store.loaded?)
+    PageLayout(sidebar_component: sidebar, body_component: body, loaded: SiteStore.sections[:docs].loaded?)
   end
 end

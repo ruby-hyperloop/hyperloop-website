@@ -33,6 +33,16 @@ class SectionStore < Hyperloop::Store
     mutate.current_anchor anchor
   end
 
+  def raw_url page
+    "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
+  end
+
+  def edit_url page
+    "https://github.com/ruby-hyperloop/#{page[:repo]}/edit/master/#{page[:file]}"
+  end
+
+  private
+
   def load_and_convert_pages
     @promises = 0
 
@@ -45,6 +55,7 @@ class SectionStore < Hyperloop::Store
     @promises += 1
     HTTP.get( raw_url(page) ) do |response|
       if response.ok?
+        puts "got page #{page}"
         converted = MdConverter.new(response.body)
         page[:headings] = converted.headings
         page[:code_blocks] = converted.code_blocks
@@ -58,11 +69,4 @@ class SectionStore < Hyperloop::Store
     end
   end
 
-  def raw_url page
-    "https://raw.githubusercontent.com/ruby-hyperloop/#{page[:repo]}/master/#{page[:file]}"
-  end
-
-  def edit_url page
-    "https://github.com/ruby-hyperloop/#{page[:repo]}/edit/master/#{page[:file]}"
-  end
 end
