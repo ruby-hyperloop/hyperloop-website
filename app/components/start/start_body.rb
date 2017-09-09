@@ -1,6 +1,6 @@
 class StartBody < Hyperloop::Component
-  param :page_store
-  
+  param :section_store
+
   render(DIV) do
     H1 { "Start body" }
   end

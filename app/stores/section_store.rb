@@ -1,9 +1,9 @@
-class PageStore < Hyperloop::Store
+class SectionStore < Hyperloop::Store
 
   state loaded: false
 
   def initialize pages
-    puts "PageStore is starting now"
+    puts "SectionStore is starting now"
     @pages = pages
     load_and_convert_pages
     mutate.current_page @pages[0]

@@ -1,14 +1,14 @@
 class PageToc < Hyperloop::Component
 
-  param :page_store
+  param :section_store
 
   render do
-    DIV(class: 'accordian-div') { accordion } if params.page_store.loaded?
+    DIV(class: 'accordian-div') { accordion } if params.section_store.loaded?
   end
 
   def accordion
     panels = []
-    params.page_store.pages.each_with_index do |page, index|
+    params.section_store.pages.each_with_index do |page, index|
       panels << { title: toc_heading(page, page[:headings][0]).as_node,
                     content: panel(page).as_node,
                     key: index.to_s
@@ -29,7 +29,7 @@ class PageToc < Hyperloop::Component
     SPAN(class: 'header'){ heading[:text] }.on(:click) do
       # slug = "#{params.heading[:slug]}"
       # `document.getElementById(#{slug}).scrollIntoView(true);`
-      params.page_store.set_current_page page
+      params.section_store.set_current_page page
       force_update!
     end
   end
@@ -39,9 +39,9 @@ class PageToc < Hyperloop::Component
       A { "#{heading[:text]}" }.on(:click) do
         # slug = "#{params.heading[:slug]}"
         # `document.getElementById(#{slug}).scrollIntoView(true);`
-        params.page_store.set_current_page page
+        params.section_store.set_current_page page
         force_update!
-        # params.page_store.set_current_anchor params.heading[:slug]
+        # params.section_store.set_current_anchor params.heading[:slug]
         end
       end
   end

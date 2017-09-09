@@ -6,14 +6,14 @@ class StartPage < Hyperloop::Router::Component
       { repo: 'hyperloop-website',     file: 'pages/start/stores.md',  allow_edit: true }
     ]
 
-    @page_store ||= PageStore.new(pages)
+    @section_store ||= SectionStore.new(pages)
   end
 
   render(DIV) do
 
-    sidebar = StartSidebar(page_store: @page_store).as_node
-    body = StartBody(page_store: @page_store).as_node
+    sidebar = StartSidebar(section_store: @section_store).as_node
+    body = StartBody(section_store: @section_store).as_node
 
-    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @page_store.loaded?)
+    PageLayout(sidebar_component: sidebar, body_component: body, loaded: @section_store.loaded?)
   end
 end
