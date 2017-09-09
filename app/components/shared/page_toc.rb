@@ -9,7 +9,7 @@ class PageToc < Hyperloop::Component
   def accordion
     panels = []
     params.page_store.pages.each_with_index do |page, index|
-      panels << { title: TocHeading(page_store: params.page_store, page: page, heading: page[:headings][0]).as_node,
+      panels << { title: toc_heading(page, page[:headings][0]).as_node,
                     content: panel(page).as_node,
                     key: index.to_s
       }
@@ -20,41 +20,31 @@ class PageToc < Hyperloop::Component
   def panel page
     UL do
       page[:headings].drop(1).each do |heading|
-        TocItem(page_store: params.page_store, heading: heading, page: page)
+        toc_item(page, heading)
       end
     end
   end
-end
 
-class TocHeading < Hyperloop::Component
-  param :page
-  param :heading
-  param :page_store
-
-  render do
-    SPAN(class: 'header'){ params.heading[:text] }.on(:click) do
+  def toc_heading page, heading
+    SPAN(class: 'header'){ heading[:text] }.on(:click) do
       # slug = "#{params.heading[:slug]}"
       # `document.getElementById(#{slug}).scrollIntoView(true);`
-      params.page_store.set_current_page params.page
+      params.page_store.set_current_page page
       force_update!
     end
   end
-end
 
-class TocItem < Hyperloop::Component
-  param :page
-  param :heading
-  param :page_store
-
-  render do
-    LI(class: "toc_h#{params.heading[:level]}") do
-      A { "#{params.heading[:text]}" }.on(:click) do
+  def toc_item page, heading
+    LI(class: "toc_h#{heading[:level]}") do
+      A { "#{heading[:text]}" }.on(:click) do
         # slug = "#{params.heading[:slug]}"
         # `document.getElementById(#{slug}).scrollIntoView(true);`
-        params.page_store.set_current_page params.page
+        params.page_store.set_current_page page
         force_update!
         # params.page_store.set_current_anchor params.heading[:slug]
         end
       end
   end
+
+
 end
