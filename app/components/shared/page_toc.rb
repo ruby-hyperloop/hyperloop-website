@@ -9,7 +9,7 @@ class PageToc < Hyperloop::Component
   def accordion
     panels = []
     params.page_store.pages.each_with_index do |page, index|
-      panels << { title: TocHeading(page_store: params.page_store, page: page, heading: page[:md_converter].headings[0]).as_node,
+      panels << { title: TocHeading(page_store: params.page_store, page: page, heading: page[:headings][0]).as_node,
                     content: panel(page).as_node,
                     key: index.to_s
       }
@@ -19,7 +19,7 @@ class PageToc < Hyperloop::Component
 
   def panel page
     UL do
-      page[:md_converter].headings.drop(1).each do |heading|
+      page[:headings].drop(1).each do |heading|
         TocItem(page_store: params.page_store, heading: heading, page: page)
       end
     end

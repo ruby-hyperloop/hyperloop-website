@@ -11,7 +11,7 @@
 #     # puts "rendering PageBody"
 #     Sem.Container(style: { marginTop: '2em', paddingRight: '28px' }) do
 #       # edit_button if params.page[:allow_edit]
-#       DIV(dangerously_set_inner_HTML: { __html: params.page[:md_converter].html })
+#       DIV(dangerously_set_inner_HTML: { __html: params.page[:html] })
 #     end
 #     convert_runable_code_blocks
 #     # puts "navifate to #{PageStore.current_anchor}"

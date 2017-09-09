@@ -1,6 +1,6 @@
 class PageStore < Hyperloop::Store
 
-  state loaded: false, scope: :shared
+  state loaded: false
 
   def initialize pages
     puts "PageStore is starting now"
@@ -45,7 +45,10 @@ class PageStore < Hyperloop::Store
     @promises += 1
     HTTP.get( raw_url(page) ) do |response|
       if response.ok?
-        page[:md_converter] = MdConverter.new(response.body)
+        converted = MdConverter.new(response.body)
+        page[:headings] = converted.headings
+        page[:code_blocks] = converted.code_blocks
+        page[:html] = converted.html
         page[:edit_url] = edit_url page
       else
         alert "Unable to get #{raw_url(page)} from Github"

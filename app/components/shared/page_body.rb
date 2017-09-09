@@ -10,7 +10,7 @@ class PageBody < Hyperloop::Component
     if params.page_store.loaded?
       edit_button if params.page_store.current_page[:allow_edit]
       Sem.Divider(hidden: true)
-      DIV(dangerously_set_inner_HTML: { __html: params.page_store.current_page[:md_converter].html })
+      DIV(dangerously_set_inner_HTML: { __html: params.page_store.current_page[:html] })
       # convert_runable_code_blocks
     end
   end
