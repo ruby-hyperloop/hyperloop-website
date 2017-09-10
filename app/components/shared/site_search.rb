@@ -6,6 +6,7 @@ class SiteSearch < Hyperloop::Component
     Sem.Search(category: true, aligned: :right,
       onSearchChange: lambda { |e, value| search_change(e, value) },
       resultRenderer: lambda { |obj| render_result(obj) },
+      categoryRenderer: lambda { |obj| render_category(obj) },
       results: state.results,
       loading: !SiteStore.loaded?
     )
@@ -13,22 +14,18 @@ class SiteSearch < Hyperloop::Component
 
   def search_change e, v
     value = `e.target.value`
-    # mutate.results @search_data.to_n
     mutate.results SiteStore.search_headings(value).to_n
-    # puts @search_data
+  end
+
+  def render_category obj
+    SPAN do
+      P { 'obj.text' }
+    end.to_n
   end
 
   def render_result obj
-    DIV do
+    SPAN do
       P { `obj.text` }
-      # P { 'obj.descriptiom' }
     end.to_n
-    # SearchResult()
   end
 end
-
-# class SearchResult < Hyperloop::Component
-#   render do
-#     H1 {"here"}
-#   end
-# end
