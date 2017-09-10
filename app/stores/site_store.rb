@@ -26,7 +26,7 @@ class SiteStore < Hyperloop::Store
         a[:results] = []
         pages = section[1].pages
         pages.each do |page|
-          a[:results].concat( match_headings(page[:headings], value) )
+          a[:results].concat( match_headings(page[:headings], value, page[:friendly_doc_name]) )
         end
         data << a unless a[:results].size == 0
       end
@@ -35,9 +35,10 @@ class SiteStore < Hyperloop::Store
 
     private
 
-    def match_headings headings, value
+    def match_headings headings, value, friendly_doc_name
       ret = []
       headings.each do |heading|
+        heading[:friendly_doc_name] = friendly_doc_name
         ret << heading if heading[:text].downcase.include?(value.downcase)
       end
       ret

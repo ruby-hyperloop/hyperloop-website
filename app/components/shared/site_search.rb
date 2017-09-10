@@ -19,16 +19,16 @@ class SiteSearch < Hyperloop::Component
   def render_result obj
     #  FRED I don't know why we get the warnings about props on a div and a missing key
     #  clearly this is not where to declare these props, I have tried everything
-    r=rand(2**256).to_s(36)[0..7]
-    React.create_element(SearchResult, {slug: `obj.slug`, text: `obj.text`, key: r} ).to_n
+    React.create_element(SearchResult, {friendly_doc_name: `obj.friendly_doc_name`, heading_text: `obj.text`} ).to_n
   end
 end
 
 class SearchResult < Hyperloop::Component
-  param :slug
-  param :text
+  param :friendly_doc_name
+  param :heading_text
 
-  render do
-    P { params.text }
+  render(DIV) do
+    H4 { params.heading_text }
+    EM { params.friendly_doc_name }
   end
 end

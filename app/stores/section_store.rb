@@ -58,6 +58,7 @@ class SectionStore < Hyperloop::Store
         puts "got page #{page}"
         converted = MdConverter.new(response.body)
         page[:headings] = converted.headings
+        page[:friendly_doc_name] = converted.headings[0][:text]
         page[:code_blocks] = converted.code_blocks
         page[:html] = converted.html
         page[:edit_url] = edit_url page
