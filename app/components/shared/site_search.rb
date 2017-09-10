@@ -3,7 +3,7 @@ class SiteSearch < Hyperloop::Component
   state results: []
 
   render(DIV) do
-    Sem.Search(category: false,
+    Sem.Search(category: true, aligned: :right,
       onSearchChange: lambda { |e, value| search_change(e, value) },
       resultRenderer: lambda { |obj| render_result(obj) },
       results: state.results
@@ -15,10 +15,12 @@ class SiteSearch < Hyperloop::Component
     value = `e.target.value`
     # can be result.title
     # mutate.results @options.to_n
-    mutate.results [
+    mutate.results [{name: 'dog things', results: [
       { title: 'Alfie is sleeping', descriptiom: 'He is always on the bed' },
       { title: 'Alfie is eating', descriptiom: 'He is always eating a bone wherever he can' }
-    ].to_n
+    ]}
+  ].to_n
+    #  `{ name: '', results: [{ title: '', description: '' }]`
   end
 
   def render_result obj
