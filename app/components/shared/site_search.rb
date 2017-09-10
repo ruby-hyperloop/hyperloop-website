@@ -3,39 +3,38 @@ class SiteSearch < Hyperloop::Component
   state results: []
 
   render(DIV) do
+    get_search_data if @search_data == nil && SiteStore.loaded?
     Sem.Search(category: true, aligned: :right,
       onSearchChange: lambda { |e, value| search_change(e, value) },
       resultRenderer: lambda { |obj| render_result(obj) },
-      results: state.results
-      # loading: SiteStore.loading?
+      results: state.results,
+      loading: !SiteStore.loaded?
     )
   end
 
   def search_change e, v
     value = `e.target.value`
-    # can be result.title
-    # mutate.results @options.to_n
-    mutate.results [{name: 'dog things', results: [
-      { title: 'Alfie is sleeping', descriptiom: 'He is always on the bed' },
-      { title: 'Alfie is eating', descriptiom: 'He is always eating a bone wherever he can' }
-    ]}
-  ].to_n
-    #  `{ name: '', results: [{ title: '', description: '' }]`
+    mutate.results @search_data.to_n
+    # puts @search_data
   end
 
   def render_result obj
-    # puts "render"
-  #   # `debugger;`
-  #   # puts obj
-  #   Sem.Label(key: '1', title: "Hello").as_node.to_n
-    SPAN { `obj.descriptiom` }.to_n
+    DIV do
+      H4 { `obj.text`  }
+      # P { 'obj.descriptiom' }
+    end.to_n
   end
 
-  def reset
-    @options = [
-      { title: 'Alfie is sleeping', descriptiom: 'He is always on the bed' },
-      { title: 'Alfie is eating', descriptiom: 'He is always eating a bone wherever he can' }
+  def get_search_data
+    t = [{name: 'dog things', results: [
+        { title: 'Alfie is sleeping', descriptiom: 'He is always on the bed' },
+        { title: 'Alfie is eating', descriptiom: 'He is always eating a bone wherever he can' }
+      ]}
     ]
+    puts t
+    puts "get search data"
+    @search_data = SiteStore.search_data
+    puts @search_data
   end
 
 end

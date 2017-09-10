@@ -10,6 +10,29 @@ class SiteStore < Hyperloop::Store
       @section_stores
     end
 
+    def loaded?
+      ret = true
+      @section_stores.each do |section|
+        ret = false unless section[1].loaded?
+      end
+      ret
+    end
+
+    def search_data
+      data = []
+      @section_stores.each do |section|
+        a = {}
+        a[:name] = section[0]
+        a[:results] = []
+        pages = section[1].pages
+        pages.each do |page|
+          a[:results].concat page[:headings]
+        end
+        data << a
+      end
+      data
+    end
+
     private
 
     def init
