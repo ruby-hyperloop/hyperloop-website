@@ -10,6 +10,7 @@ class AppMenu < Hyperloop::Router::Component
       gems
       tools
       docs
+      search
     end
   end
 
@@ -60,6 +61,14 @@ class AppMenu < Hyperloop::Router::Component
   def docs
     Sem.MenuItem {
       Link('/docs') { 'DOCS' }
+    }
+  end
+
+  def search
+    Sem.MenuMenu(position: :right) {
+      Sem.MenuItem {
+        SiteSearch()
+      }
     }
   end
 

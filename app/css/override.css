@@ -28,11 +28,11 @@
   overflow-y: scroll !important
 }
 
-.menu ul {
+/*.menu ul {
   .docscontainer {
     margin-top: 50px;
   }
-}
+}*/
 
 .tocmenu > .menu {
   overflow-y: scroll;
@@ -66,9 +66,10 @@ flex-grow: 1;
   padding:0;
 }
 
-.ui.menu {
+/* this breaks the search control on the menu*/
+/*.ui.menu {
   overflow-y: scroll !important;
-}
+}*/
 
 .ui.vertical.menu .item>.label {
   float: left !important;
