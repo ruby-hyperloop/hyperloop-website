@@ -18,22 +18,30 @@ class SiteStore < Hyperloop::Store
       ret
     end
 
-    def search_data
+    def search_headings value
       data = []
       @section_stores.each do |section|
         a = {}
-        a[:name] = section[0]
+        a[:name] = section[0].upcase
         a[:results] = []
         pages = section[1].pages
         pages.each do |page|
-          a[:results].concat page[:headings]
+          a[:results].concat( match_headings(page[:headings], value) )
         end
-        data << a
+        data << a unless a[:results].size == 0
       end
       data
     end
 
     private
+
+    def match_headings headings, value
+      ret = []
+      headings.each do |heading|
+        ret << heading if heading[:text].downcase.include?(value.downcase)
+      end
+      ret
+    end
 
     def init
       @section_stores = {}
