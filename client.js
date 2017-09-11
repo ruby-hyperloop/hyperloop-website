@@ -6,6 +6,9 @@ ReactRouter = require('react-router');
 ReactRouterDOM = require('react-router-dom');
 History = require('history');
 
+require('hyperloop-js/hyperloop');
+require('hyperloop-js/hyper-router');
+
 Sem = require('semantic-ui-react');
 Marked = require('marked');
 CodeMirror = require('react-codemirror');
