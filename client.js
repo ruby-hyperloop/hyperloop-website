@@ -6,8 +6,8 @@ ReactRouter = require('react-router');
 ReactRouterDOM = require('react-router-dom');
 History = require('history');
 
-require('hyperloop-js/hyperloop');
-require('hyperloop-js/hyper-router');
+require('ruby-hyperloop/hyperloop');
+require('ruby-hyperloop/hyper-router');
 
 Sem = require('semantic-ui-react');
 Marked = require('marked');
