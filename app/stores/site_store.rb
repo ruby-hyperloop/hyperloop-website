@@ -26,7 +26,7 @@ class SiteStore < Hyperloop::Store
         a[:results] = []
         pages = section[1].pages
         pages.each do |page|
-          a[:results].concat( match_headings(page[:headings], value, page[:friendly_doc_name]) )
+          a[:results].concat( match_headings(page[:headings], value, page) )
         end
         data << a unless a[:results].size == 0
       end
@@ -35,18 +35,23 @@ class SiteStore < Hyperloop::Store
 
     private
 
-    def match_headings headings, value, friendly_doc_name
+    def match_headings headings, value, page
       ret = []
-      headings.each do |heading|
-        heading[:friendly_doc_name] = friendly_doc_name
-        ret << heading if heading[:text].downcase.include?(value.downcase)
+      headings.each_with_index do |heading, index|
+        if heading[:text].downcase.include?(value.downcase)
+          heading[:friendly_doc_name] = page[:friendly_doc_name]
+          heading[:repo] = page[:repo]
+          heading[:file] = page[:file]
+          heading[:key] = "#{index}-#{heading[:repo]}-#{heading[:file]}-#{heading[:slug]}"
+          ret << heading
+        end
       end
       ret
     end
 
     def init
       @section_stores = {}
-      # if the site is being loaded through a specific route, can we figure out which section to load first?
+      # FRED if the site is being loaded through a specific route, can we figure out which section to load first?
       load_start_section
       load_docs_section
     end

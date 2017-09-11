@@ -17,6 +17,25 @@ The new website will:
 + will be as SEO friendly as the current site (through pre-rendering)
 + be beautiful to behold!
 
+## Adding pages and sections
+
+### Adding a section
+
++ Add a route to the Router `app/components/router/app_router.rb`
++ Add a menu item to `app/components/shared/app_menu.rb`
++ Create folder in components and add a `xxx_page.rb` component which will be rendered by the router. See one of the other examples, each folder has three files - `xxx_page.rb`, `xxx_body.rb` and `xxx_sidebar.rb` (assuming your want the three column layout)
+
+### Pages (PageBody and PageToc)
+
+Not all sections need to load pages, but if you do then:
+
++ See the `init` method in `app/stores/site_store`, you will need to add a loader which loads the pages an sets a new key in the `@section_stores` hash
++ Pass the store to `PageBody` and `PageToc` and they will redner the Toc and current page and will also handle all navigation and loading of the correct page
+
+## Structure
+
++ There is one singleton Store - `SiteStore` which contains many instances of `SectionStore` (one per section)
+
 ## Setup and build
 
 ### Setup
