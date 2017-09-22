@@ -15801,12 +15801,12 @@ Opal.modules["components/docs/docs_page"] = function(Opal) {
 Opal.modules["components/home/home_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$main_content', '$SidebarPusher', '$DIV', '$IMG', '$Link', '$I', '$on', '$toggle', '$A', '$SPAN', '$H1', '$H2', '$P', '$AppFooter']);
+  Opal.add_stubs(['$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$main_content', '$SidebarPusher', '$DIV', '$IMG', '$I', '$on', '$toggle', '$A', '$SPAN', '$H1', '$H2', '$P', '$AppFooter']);
   return (function($base, $super) {
     function $HomePage(){};
     var self = $HomePage = $klass($base, $super, 'HomePage', $HomePage);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_45;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_44;
 
     ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
@@ -15819,121 +15819,118 @@ Opal.modules["components/home/home_page"] = function(Opal) {
       self.$SidebarMenu();
         return self.$main_content();}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, $hash2(["id", "className"], {"id": "example", "className": "index"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
 
-    return (Opal.defn(self, '$main_content', TMP_45 = function $$main_content() {
+    return (Opal.defn(self, '$main_content', TMP_44 = function $$main_content() {
       var $a, $b, TMP_4, self = this;
 
       return ($a = ($b = $scope.get('Sem')).$SidebarPusher, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
 
-      ($c = ($d = self).$DIV, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, TMP_24, $h, TMP_31;
+      ($c = ($d = self).$DIV, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, TMP_23, $h, TMP_30;
 
         ($e = ($f = self).$DIV, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $g, $h, TMP_7;
 
           return ($g = ($h = self).$DIV, $g.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $i, $j, TMP_8;
 
-            return ($i = ($j = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $k, $l, TMP_9, $m, TMP_14, $n, TMP_18;
+            return ($i = ($j = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $k, $l, TMP_9, $m, TMP_13, $n, TMP_17;
 
               ($k = ($l = self).$DIV, $k.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $m, $n, TMP_10;
 
-                return ($m = ($n = self).$DIV, $m.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $o, $p, TMP_11, $q, TMP_13;
+                return ($m = ($n = self).$DIV, $m.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $o, $p, TMP_11, $q, TMP_12;
 
-                  ($o = ($p = self).$DIV, $o.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $q, $r, TMP_12;
+                  ($o = ($p = self).$DIV, $o.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
 
-                    self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "dist/images/hyperloop-logo.png"}));
-                      return ($q = ($r = self).$Link, $q.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+                    return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "dist/images/hyperloop-logo.png"}))}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "active learn side"}));
+                    return ($o = ($q = self).$DIV, $o.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
-                      return "DOCUMENTATION"}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $q).call($r, "/docs", $hash2(["class"], {"class": "item"}));}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "active learn side"}));
-                    return ($o = ($q = self).$DIV, $o.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
+                    return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "images/logo.png"}))}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $o).call($q, $hash2(["class"], {"class": "ui side"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $m).call($n, $hash2(["class"], {"class": "sides"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($l, $hash2(["class"], {"class": "ui logo shape"}));
+                ($k = ($m = self).$DIV, $k.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $n, $o, TMP_14, $p, TMP_15;
 
-                    return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "images/logo.png"}))}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $o).call($q, $hash2(["class"], {"class": "ui side"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $m).call($n, $hash2(["class"], {"class": "sides"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($l, $hash2(["class"], {"class": "ui logo shape"}));
-                ($k = ($m = self).$DIV, $k.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this, $n, $o, TMP_15, $p, TMP_16;
+                ($n = ($o = self).$DIV, $n.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
-                ($n = ($o = self).$DIV, $n.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
-
-                  return nil}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $n).call($o, $hash2(["class"], {"class": "item"}));
-                  return ($n = ($p = self).$DIV, $n.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this, $q, $r, TMP_17;
+                  return nil}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $n).call($o, $hash2(["class"], {"class": "item"}));
+                  return ($n = ($p = self).$DIV, $n.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this, $q, $r, TMP_16;
 
                   self.$I($hash2(["class"], {"class": "world icon"}));
-                    ($q = ($r = self).$DIV, $q.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this;
+                    ($q = ($r = self).$DIV, $q.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
 
-                    return "English"}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $q).call($r, $hash2(["class"], {"class": "text"}));
-                    return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $n).call($p, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $k).call($m, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
-                return ($k = ($n = self).$DIV, $k.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this, $o, $p, TMP_19, $q, $r, TMP_20, TMP_21, $s, TMP_22, $t, TMP_23;
+                    return "English"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $q).call($r, $hash2(["class"], {"class": "text"}));
+                    return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $n).call($p, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $k).call($m, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
+                return ($k = ($n = self).$DIV, $k.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $o, $p, TMP_18, $q, $r, TMP_19, TMP_20, $s, TMP_21, $t, TMP_22;
 
-                ($o = ($p = ($q = ($r = self).$A, $q.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this;
+                ($o = ($p = ($q = ($r = self).$A, $q.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
 
                   self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                    return " Menu\n        ";}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $q).call($r, $hash2(["class"], {"class": "view-ui item"}))).$on, $o.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
+                    return " Menu\n        ";}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $q).call($r, $hash2(["class"], {"class": "view-ui item"}))).$on, $o.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
 
-                  return $scope.get('SidebarStore').$toggle()}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $o).call($p, "click");
-                  ($o = ($q = self).$A, $o.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
+                  return $scope.get('SidebarStore').$toggle()}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $o).call($p, "click");
+                  ($o = ($q = self).$A, $o.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this;
 
-                  return "Docs"}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $o).call($q, $hash2(["href", "data-site", "class"], {"href": "", "data-site": "ui", "class": "additional item"}));
-                  ($o = ($s = self).$SPAN, $o.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
+                  return "Docs"}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $o).call($q, $hash2(["href", "data-site", "class"], {"href": "", "data-site": "ui", "class": "additional item"}));
+                  ($o = ($s = self).$SPAN, $o.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
 
-                  return "Themes"}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $o).call($s, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));
-                  return ($o = ($t = self).$SPAN, $o.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this;
+                  return "Themes"}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $o).call($s, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));
+                  return ($o = ($t = self).$SPAN, $o.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
 
-                  return "Layouts"}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $o).call($t, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $k).call($n, $hash2(["class"], {"class": "ui large inverted secondary network menu"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($j, $hash2(["class"], {"class": "column"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $g).call($h, $hash2(["class"], {"class": "ui page grid"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "following bar"}));
-          ($e = ($g = self).$DIV, $e.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this, $h, $i, TMP_25;
+                  return "Layouts"}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $o).call($t, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $k).call($n, $hash2(["class"], {"class": "ui large inverted secondary network menu"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($j, $hash2(["class"], {"class": "column"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $g).call($h, $hash2(["class"], {"class": "ui page grid"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "following bar"}));
+          ($e = ($g = self).$DIV, $e.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this, $h, $i, TMP_24;
 
-          return ($h = ($i = self).$DIV, $h.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this, $j, $k, TMP_26;
+          return ($h = ($i = self).$DIV, $h.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this, $j, $k, TMP_25;
 
-            return ($j = ($k = self).$DIV, $j.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this, $l, $m, TMP_27;
+            return ($j = ($k = self).$DIV, $j.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this, $l, $m, TMP_26;
 
-              return ($l = ($m = self).$DIV, $l.$$p = (TMP_27 = function(){var self = TMP_27.$$s || this, $n, $o, TMP_28, $p, TMP_30;
+              return ($l = ($m = self).$DIV, $l.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this, $n, $o, TMP_27, $p, TMP_29;
 
-                ($n = ($o = self).$H1, $n.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this, $p, $q, TMP_29;
+                ($n = ($o = self).$H1, $n.$$p = (TMP_27 = function(){var self = TMP_27.$$s || this, $p, $q, TMP_28;
 
-                  return ($p = ($q = self).$SPAN, $p.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
+                  return ($p = ($q = self).$SPAN, $p.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this;
 
-                    return "Hyperloop"}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $p).call($q, $hash2(["class"], {"class": "library"}))}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $n).call($o, $hash2(["class"], {"class": "ui inverted header"}));
+                    return "Hyperloop"}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $p).call($q, $hash2(["class"], {"class": "library"}))}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $n).call($o, $hash2(["class"], {"class": "ui inverted header"}));
                   self.$DIV($hash2(["class"], {"class": "ui hidden divider"}));
-                  return ($n = ($p = self).$A, $n.$$p = (TMP_30 = function(){var self = TMP_30.$$s || this;
+                  return ($n = ($p = self).$A, $n.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
 
                   self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                    return "\n          Get Started\n        ";}, TMP_30.$$s = self, TMP_30.$$arity = 0, TMP_30), $n).call($p, $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $l).call($m, $hash2(["class"], {"class": "introduction"}))}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $j).call($k, $hash2(["class"], {"class": "column"}))}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $h).call($i, $hash2(["class"], {"class": "ui page grid"}))}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $e).call($g, $hash2(["class"], {"class": "masthead segment"}));
-          return ($e = ($h = self).$DIV, $e.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this, $i, $j, TMP_32;
+                    return "\n          Get Started\n        ";}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $n).call($p, $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $l).call($m, $hash2(["class"], {"class": "introduction"}))}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $j).call($k, $hash2(["class"], {"class": "column"}))}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $h).call($i, $hash2(["class"], {"class": "ui page grid"}))}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $e).call($g, $hash2(["class"], {"class": "masthead segment"}));
+          return ($e = ($h = self).$DIV, $e.$$p = (TMP_30 = function(){var self = TMP_30.$$s || this, $i, $j, TMP_31;
 
-          return ($i = ($j = self).$DIV, $i.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this, $k, $l, TMP_33, $m, TMP_37, $n, TMP_41;
+          return ($i = ($j = self).$DIV, $i.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this, $k, $l, TMP_32, $m, TMP_36, $n, TMP_40;
 
-            ($k = ($l = self).$DIV, $k.$$p = (TMP_33 = function(){var self = TMP_33.$$s || this, $m, $n, TMP_34, $o, TMP_35, $p, TMP_36;
+            ($k = ($l = self).$DIV, $k.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this, $m, $n, TMP_33, $o, TMP_34, $p, TMP_35;
 
-              ($m = ($n = self).$H2, $m.$$p = (TMP_34 = function(){var self = TMP_34.$$s || this;
+              ($m = ($n = self).$H2, $m.$$p = (TMP_33 = function(){var self = TMP_33.$$s || this;
 
                 self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/paint.png"}));
-                  return "Simplicity";}, TMP_34.$$s = self, TMP_34.$$arity = 0, TMP_34), $m).call($n, $hash2(["class"], {"class": "ui icon header"}));
-                ($m = ($o = self).$P, $m.$$p = (TMP_35 = function(){var self = TMP_35.$$s || this;
+                  return "Simplicity";}, TMP_33.$$s = self, TMP_33.$$arity = 0, TMP_33), $m).call($n, $hash2(["class"], {"class": "ui icon header"}));
+                ($m = ($o = self).$P, $m.$$p = (TMP_34 = function(){var self = TMP_34.$$s || this;
 
-                return "Build interactive Web applications quickly. Hyperloop encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperloop takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value."}, TMP_35.$$s = self, TMP_35.$$arity = 0, TMP_35), $m).call($o);
-                return ($m = ($p = self).$A, $m.$$p = (TMP_36 = function(){var self = TMP_36.$$s || this;
+                return "Build interactive Web applications quickly. Hyperloop encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperloop takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value."}, TMP_34.$$s = self, TMP_34.$$arity = 0, TMP_34), $m).call($o);
+                return ($m = ($p = self).$A, $m.$$p = (TMP_35 = function(){var self = TMP_35.$$s || this;
 
-                return "Simplicity"}, TMP_36.$$s = self, TMP_36.$$arity = 0, TMP_36), $m).call($p, $hash2(["href", "class"], {"href": "", "class": "ui secondary large button"}));}, TMP_33.$$s = self, TMP_33.$$arity = 0, TMP_33), $k).call($l, $hash2(["class"], {"class": "column"}));
-              ($k = ($m = self).$DIV, $k.$$p = (TMP_37 = function(){var self = TMP_37.$$s || this, $n, $o, TMP_38, $p, TMP_39, $q, TMP_40;
+                return "Simplicity"}, TMP_35.$$s = self, TMP_35.$$arity = 0, TMP_35), $m).call($p, $hash2(["href", "class"], {"href": "", "class": "ui secondary large button"}));}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $k).call($l, $hash2(["class"], {"class": "column"}));
+              ($k = ($m = self).$DIV, $k.$$p = (TMP_36 = function(){var self = TMP_36.$$s || this, $n, $o, TMP_37, $p, TMP_38, $q, TMP_39;
 
-              ($n = ($o = self).$H2, $n.$$p = (TMP_38 = function(){var self = TMP_38.$$s || this;
+              ($n = ($o = self).$H2, $n.$$p = (TMP_37 = function(){var self = TMP_37.$$s || this;
 
                 self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/gear.png"}));
-                  return "Isomorphic Ruby";}, TMP_38.$$s = self, TMP_38.$$arity = 0, TMP_38), $n).call($o, $hash2(["class"], {"class": "ui icon header"}));
-                ($n = ($p = self).$P, $n.$$p = (TMP_39 = function(){var self = TMP_39.$$s || this;
+                  return "Isomorphic Ruby";}, TMP_37.$$s = self, TMP_37.$$arity = 0, TMP_37), $n).call($o, $hash2(["class"], {"class": "ui icon header"}));
+                ($n = ($p = self).$P, $n.$$p = (TMP_38 = function(){var self = TMP_38.$$s || this;
 
-                return "One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. Hyperloop is fully integrated with Rails and also gives you unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperloop lets you build beautiful interactive user interfaces in Ruby."}, TMP_39.$$s = self, TMP_39.$$arity = 0, TMP_39), $n).call($p);
-                return ($n = ($q = self).$A, $n.$$p = (TMP_40 = function(){var self = TMP_40.$$s || this;
+                return "One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. Hyperloop is fully integrated with Rails and also gives you unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperloop lets you build beautiful interactive user interfaces in Ruby."}, TMP_38.$$s = self, TMP_38.$$arity = 0, TMP_38), $n).call($p);
+                return ($n = ($q = self).$A, $n.$$p = (TMP_39 = function(){var self = TMP_39.$$s || this;
 
-                return "Isomorphic Ruby"}, TMP_40.$$s = self, TMP_40.$$arity = 0, TMP_40), $n).call($q, $hash2(["href", "class"], {"href": "", "class": "ui pink large button hyperlooppinkbutton"}));}, TMP_37.$$s = self, TMP_37.$$arity = 0, TMP_37), $k).call($m, $hash2(["class"], {"class": "column"}));
-              return ($k = ($n = self).$DIV, $k.$$p = (TMP_41 = function(){var self = TMP_41.$$s || this, $o, $p, TMP_42, $q, TMP_43, $r, TMP_44;
+                return "Isomorphic Ruby"}, TMP_39.$$s = self, TMP_39.$$arity = 0, TMP_39), $n).call($q, $hash2(["href", "class"], {"href": "", "class": "ui pink large button hyperlooppinkbutton"}));}, TMP_36.$$s = self, TMP_36.$$arity = 0, TMP_36), $k).call($m, $hash2(["class"], {"class": "column"}));
+              return ($k = ($n = self).$DIV, $k.$$p = (TMP_40 = function(){var self = TMP_40.$$s || this, $o, $p, TMP_41, $q, TMP_42, $r, TMP_43;
 
-              ($o = ($p = self).$H2, $o.$$p = (TMP_42 = function(){var self = TMP_42.$$s || this;
+              ($o = ($p = self).$H2, $o.$$p = (TMP_41 = function(){var self = TMP_41.$$s || this;
 
                 self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/plugin.png"}));
-                  return "Complete Architecture";}, TMP_42.$$s = self, TMP_42.$$arity = 0, TMP_42), $o).call($p, $hash2(["class"], {"class": "ui icon header"}));
-                ($o = ($q = self).$P, $o.$$p = (TMP_43 = function(){var self = TMP_43.$$s || this;
+                  return "Complete Architecture";}, TMP_41.$$s = self, TMP_41.$$arity = 0, TMP_41), $o).call($p, $hash2(["class"], {"class": "ui icon header"}));
+                ($o = ($q = self).$P, $o.$$p = (TMP_42 = function(){var self = TMP_42.$$s || this;
 
-                return "Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state."}, TMP_43.$$s = self, TMP_43.$$arity = 0, TMP_43), $o).call($q);
-                return ($o = ($r = self).$A, $o.$$p = (TMP_44 = function(){var self = TMP_44.$$s || this;
+                return "Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state."}, TMP_42.$$s = self, TMP_42.$$arity = 0, TMP_42), $o).call($q);
+                return ($o = ($r = self).$A, $o.$$p = (TMP_43 = function(){var self = TMP_43.$$s || this;
 
-                return "Complete Architecture"}, TMP_44.$$s = self, TMP_44.$$arity = 0, TMP_44), $o).call($r, $hash2(["href", "class"], {"href": "", "class": "ui black large button"}));}, TMP_41.$$s = self, TMP_41.$$arity = 0, TMP_41), $k).call($n, $hash2(["class"], {"class": "column"}));}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $i).call($j, $hash2(["class"], {"class": "ui three column equal height center aligned divided relaxed stackable page grid"}))}, TMP_31.$$s = self, TMP_31.$$arity = 0, TMP_31), $e).call($h, $hash2(["class"], {"class": "feature alternate ui vertical stripe segment"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "full height"}));
+                return "Complete Architecture"}, TMP_43.$$s = self, TMP_43.$$arity = 0, TMP_43), $o).call($r, $hash2(["href", "class"], {"href": "", "class": "ui black large button"}));}, TMP_40.$$s = self, TMP_40.$$arity = 0, TMP_40), $k).call($n, $hash2(["class"], {"class": "column"}));}, TMP_31.$$s = self, TMP_31.$$arity = 0, TMP_31), $i).call($j, $hash2(["class"], {"class": "ui three column equal height center aligned divided relaxed stackable page grid"}))}, TMP_30.$$s = self, TMP_30.$$arity = 0, TMP_30), $e).call($h, $hash2(["class"], {"class": "feature alternate ui vertical stripe segment"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "full height"}));
         return self.$AppFooter();}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
-    }, TMP_45.$$arity = 0), nil) && 'main_content';
+    }, TMP_44.$$arity = 0), nil) && 'main_content';
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -17124,22 +17121,14 @@ Opal.modules["components/tools/tools_page"] = function(Opal) {
 };
 
 /* Generated by Opal 0.10.5 */
-<<<<<<< HEAD
 Opal.modules["components/old/page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
   Opal.add_stubs(['$param', '$state', '$before_mount', '$puts', '$get_page', '$render', '$force_update!', '$each', '$text', '$create_element', '$parent', '$find', '$on', '$search', '$mutate', '$value', '$target', '$Input', '$Container', '$Sticky', '$search_input', '$H4', '$sections_results', '$==', '$code_results', '$headings', '$include?', '$downcase', '$[]', '$P', '$code_blocks', '$!=', '$PRE', '$DIV']);
-=======
-Opal.modules["components/shared/site_search"] = function(Opal) {
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
-
-  Opal.add_stubs(['$state', '$render', '$search_control', '$on', '$puts', '$text', '$result', '$value', '$mutate', '$repo', '$file', '$slug', '$target', '$results', '$to_n', '$search_headings', '$Search', '$lambda', '$render_result', '$!', '$loaded?', '$SPAN', '$H4', '$EM']);
->>>>>>> e047754c4465684ef9bff67ed4d84a9970785894
   return (function($base, $super) {
     function $Page(){};
     var self = $Page = $klass($base, $super, 'Page', $Page);
 
-<<<<<<< HEAD
     var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_3, TMP_5, TMP_7, TMP_12, TMP_16, TMP_19;
 
     self.$param("repo");
@@ -17147,126 +17136,6 @@ Opal.modules["components/shared/site_search"] = function(Opal) {
     self.$param("file");
 
     self.$param($hash2(["allow_edit"], {"allow_edit": true}));
-=======
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_6, TMP_10;
-
-    self.$state($hash2(["results"], {"results": []}));
-
-    self.$state($hash2(["value"], {"value": ""}));
-
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
-
-    return self.$search_control()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
-
-    Opal.defn(self, '$search_control', TMP_6 = function $$search_control() {
-      var $a, $b, TMP_2, $c, $d, TMP_3, $e, $f, TMP_4, $g, $h, TMP_5, self = this;
-
-      return ($a = ($b = ($c = ($d = ($e = ($f = $scope.get('Sem')).$Search, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
-
-      return nil}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($f, $hash2(["category", "aligned", "resultRenderer", "results", "value", "loading"], {"category": true, "aligned": "right", "resultRenderer": ($g = ($h = self).$lambda, $g.$$p = (TMP_5 = function(obj){var self = TMP_5.$$s || this;
-if (obj == null) obj = nil;
-      return self.$render_result(obj)}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $g).call($h), "results": self.$state().$results(), "value": self.$state().$value(), "loading": $scope.get('SiteStore')['$loaded?']()['$!']()}))).$on, $c.$$p = (TMP_3 = function(e){var self = TMP_3.$$s || this;
-if (e == null) e = nil;
-      self.$mutate().$value(e.$target().$value());
-        return self.$mutate().$results($scope.get('SiteStore').$search_headings(self.$state().$value()).$to_n());}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $c).call($d, "searchChange")).$on, $a.$$p = (TMP_2 = function(e, data){var self = TMP_2.$$s || this;
-if (e == null) e = nil;if (data == null) data = nil;
-      self.$puts(data.$result().$text());
-        self.$mutate().$value(data.$result().$text());
-        self.$puts("FRED - you will need to route to.. '" + (data.$result().$text()) + "'");
-        self.$puts(data.$result().$repo());
-        self.$puts(data.$result().$file());
-        return self.$puts(data.$result().$slug());}, TMP_2.$$s = self, TMP_2.$$arity = 2, TMP_2), $a).call($b, "resultSelect");
-    }, TMP_6.$$arity = 0);
-
-    return (Opal.defn(self, '$render_result', TMP_10 = function $$render_result(obj) {
-      var $a, $b, TMP_7, self = this;
-
-      return ($a = ($b = self).$SPAN, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $c, $d, TMP_8, $e, TMP_9;
-
-      ($c = ($d = self).$H4, $c.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
-
-        return obj.text;}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $c).call($d);
-        return ($c = ($e = self).$EM, $c.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
-
-        return obj.friendly_doc_name;}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $c).call($e);}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b).$to_n();
-    }, TMP_10.$$arity = 1), nil) && 'render_result';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
-};
-
-/* Generated by Opal 0.10.5 */
-Opal.modules["components/shared/state_patch"] = function(Opal) {
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $klass = Opal.klass, $hash2 = Opal.hash2;
-
-  Opal.add_stubs(['$[]=', '$[]', '$states', '$new', '$after', '$each', '$set_state2', '$key?', '$current_observers', '$update_react_js_state', '$==']);
-  return (function($base) {
-    var $React, self = $React = $module($base, 'React');
-
-    var def = self.$$proto, $scope = self.$$scope;
-
-    (function($base, $super) {
-      function $State(){};
-      var self = $State = $klass($base, $super, 'State', $State);
-
-      var def = self.$$proto, $scope = self.$$scope, TMP_10;
-
-      return (Opal.defs(self, '$set_state', TMP_10 = function $$set_state(object, name, value, delay) {
-        var $a, $b, $c, TMP_1, $d, TMP_2, TMP_8, $e, TMP_9, self = this, updates = nil;
-        if (self.bulk_update_flag == null) self.bulk_update_flag = nil;
-        if (self.delayed_updates == null) self.delayed_updates = nil;
-        if (self.delayed_updater == null) self.delayed_updater = nil;
-        if (self.rendering_level == null) self.rendering_level = nil;
-
-        if (delay == null) {
-          delay = $scope.get('ALWAYS_UPDATE_STATE_AFTER_RENDER');
-        }
-        self.$states()['$[]'](object)['$[]='](name, value);
-        if ((($a = ((($b = delay) !== false && $b !== nil && $b != null) ? $b : self.bulk_update_flag)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-          ((($a = self.delayed_updates) !== false && $a !== nil && $a != null) ? $a : self.delayed_updates = ($b = ($c = $scope.get('Hash')).$new, $b.$$p = (TMP_1 = function(h, k){var self = TMP_1.$$s || this;
-if (h == null) h = nil;if (k == null) k = nil;
-          return h['$[]='](k, $hash2([], {}))}, TMP_1.$$s = self, TMP_1.$$arity = 2, TMP_1), $b).call($c));
-          self.delayed_updates['$[]'](object)['$[]='](name, [value, $scope.get('Set').$new()]);
-          ((($a = self.delayed_updater) !== false && $a !== nil && $a != null) ? $a : self.delayed_updater = ($b = ($d = self).$after, $b.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4, $h, TMP_5, $i, TMP_7, delayed_updates = nil, updates = nil;
-            if (self.delayed_updates == null) self.delayed_updates = nil;
-
-          delayed_updates = self.delayed_updates;
-            self.delayed_updates = ($e = ($f = $scope.get('Hash')).$new, $e.$$p = (TMP_3 = function(h, k){var self = TMP_3.$$s || this;
-if (h == null) h = nil;if (k == null) k = nil;
-            return h['$[]='](k, $hash2([], {}))}, TMP_3.$$s = self, TMP_3.$$arity = 2, TMP_3), $e).call($f);
-            self.delayed_updater = nil;
-            updates = ($e = ($g = $scope.get('Hash')).$new, $e.$$p = (TMP_4 = function(hash, key){var self = TMP_4.$$s || this;
-if (hash == null) hash = nil;if (key == null) key = nil;
-            return hash['$[]='](key, $scope.get('Array').$new())}, TMP_4.$$s = self, TMP_4.$$arity = 2, TMP_4), $e).call($g);
-            ($e = ($h = delayed_updates).$each, $e.$$p = (TMP_5 = function(object, name_hash){var self = TMP_5.$$s || this, $i, $j, TMP_6;
-if (object == null) object = nil;if (name_hash == null) name_hash = nil;
-            return ($i = ($j = name_hash).$each, $i.$$p = (TMP_6 = function(name, value_and_set){var self = TMP_6.$$s || this;
-if (name == null) name = nil;if (value_and_set == null) value_and_set = nil;
-              return self.$set_state2(object, name, value_and_set['$[]'](0), updates, value_and_set['$[]'](1))}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $i).call($j)}, TMP_5.$$s = self, TMP_5.$$arity = 2, TMP_5), $e).call($h);
-            ($e = ($i = updates).$each, $e.$$p = (TMP_7 = function(observer, args){var self = TMP_7.$$s || this, $j;
-if (observer == null) observer = nil;if (args == null) args = nil;
-            if ((($j = self.$current_observers()['$key?'](observer)) !== nil && $j != null && (!$j.$$is_boolean || $j == true))) {
-                return ($j = observer).$update_react_js_state.apply($j, Opal.to_a(args))
-                } else {
-                return nil
-              }}, TMP_7.$$s = self, TMP_7.$$arity = 2, TMP_7), $e).call($i);
-            return updates = nil;}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $b).call($d, 0.001));
-        } else if (self.rendering_level['$=='](0)) {
-          updates = ($a = ($b = $scope.get('Hash')).$new, $a.$$p = (TMP_8 = function(hash, key){var self = TMP_8.$$s || this;
-if (hash == null) hash = nil;if (key == null) key = nil;
-          return hash['$[]='](key, $scope.get('Array').$new())}, TMP_8.$$s = self, TMP_8.$$arity = 2, TMP_8), $a).call($b);
-          self.$set_state2(object, name, value, updates);
-          ($a = ($e = updates).$each, $a.$$p = (TMP_9 = function(observer, args){var self = TMP_9.$$s || this, $f;
-if (observer == null) observer = nil;if (args == null) args = nil;
-          return ($f = observer).$update_react_js_state.apply($f, Opal.to_a(args))}, TMP_9.$$s = self, TMP_9.$$arity = 2, TMP_9), $a).call($e);};
-        return value;
-      }, TMP_10.$$arity = -4), nil) && 'set_state'
-    })($scope.base, null)
-  })($scope.base)
-};
-
-/* Generated by Opal 0.10.5 */
-Opal.modules["components/start/start_body"] = function(Opal) {
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
->>>>>>> e047754c4465684ef9bff67ed4d84a9970785894
 
     self.$state($hash2(["search"], {"search": ""}));
 
