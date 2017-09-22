@@ -59,7 +59,11 @@ class SiteStore < Hyperloop::Store
     def load_start_section
       pages = [
         { repo: 'hyperloop-website',     file: 'pages/start/components.md',  allow_edit: true },
-        { repo: 'hyperloop-website',     file: 'pages/start/stores.md',  allow_edit: true }
+        { repo: 'hyperloop-website',     file: 'pages/start/stores.md',  allow_edit: true },
+        { repo: 'hyperloop-website',     file: 'pages/start/models.md',  allow_edit: true },
+        { repo: 'hyperloop-website',     file: 'pages/start/operations.md',  allow_edit: true },
+        { repo: 'hyperloop-website',     file: 'pages/start/policies.md',  allow_edit: true },
+        { repo: 'hyperloop-website',     file: 'pages/start/pradgmatic.md',  allow_edit: true }
       ]
       @section_stores[:start] = SectionStore.new(pages)
     end

@@ -4,8 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
 
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
     <!-- bundle from webpack -->
+    <%= javascript_include_tag 'opal.js'%>
     <script src="dist/bundle.js"></script>
+
 
     <!-- <script src="dist/docs.js"></script> -->
 
@@ -14,7 +19,6 @@
     <!-- <script src="dist/semantic.min.js"></script> -->
     <!-- <script src="dist/docs.js"></script> -->
     
-
     <!-- stylesheets -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
     <link href="./app/css/codemirror.css" rel="stylesheet">
@@ -30,14 +34,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
     <!-- Opal and Hyperloop -->
-    <%= javascript_include_tag 'opal.js'%>
+    <!-- <%= javascript_include_tag 'opal.js'%> -->
     <!-- <script src="http://cdn.opalrb.org/opal/current/opal.min.js"></script> -->
-    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyperloop.js"></script>
-    <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyper-router.js"></script>
+    <!-- <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyperloop.js"></script> -->
+    <!-- <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyper-router.js"></script> -->
 
 
     <!-- website application -->
-
+    <!-- <%= javascript_include_tag 'opal.js'%> -->
     <%= javascript_include_tag 'app.js'%>
 
   </head>
