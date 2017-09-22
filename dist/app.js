@@ -15725,7 +15725,7 @@ Opal.modules["components/router/app_router"] = function(Opal) {
 
       return ($e = ($f = self).$Switch, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
-        self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePage')}));
+        self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePageBis')}));
           self.$Route("/start", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('StartPage')}));
           self.$Route("/installation", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('InstallationPage')}));
           self.$Route("/tutorials", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('TutorialsPage')}));
@@ -15801,7 +15801,7 @@ Opal.modules["components/docs/docs_page"] = function(Opal) {
 Opal.modules["components/home/home_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$main_content', '$SidebarPusher', '$DIV', '$IMG', '$I', '$on', '$toggle', '$A', '$SPAN', '$H1', '$H2', '$P', '$AppFooter']);
+  Opal.add_stubs(['$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$main_content', '$SidebarPusher', '$DIV', '$IMG', '$I', '$on', '$toggle', '$A', '$SPAN', '$H1', '$Link', '$H2', '$P', '$AppFooter']);
   return (function($base, $super) {
     function $HomePage(){};
     var self = $HomePage = $klass($base, $super, 'HomePage', $HomePage);
@@ -15885,10 +15885,10 @@ Opal.modules["components/home/home_page"] = function(Opal) {
 
                     return "Hyperloop"}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $p).call($q, $hash2(["class"], {"class": "library"}))}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $n).call($o, $hash2(["class"], {"class": "ui inverted header"}));
                   self.$DIV($hash2(["class"], {"class": "ui hidden divider"}));
-                  return ($n = ($p = self).$A, $n.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
+                  return ($n = ($p = self).$Link, $n.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
 
                   self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                    return "\n          Get Started\n        ";}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $n).call($p, $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $l).call($m, $hash2(["class"], {"class": "introduction"}))}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $j).call($k, $hash2(["class"], {"class": "column"}))}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $h).call($i, $hash2(["class"], {"class": "ui page grid"}))}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $e).call($g, $hash2(["class"], {"class": "masthead segment"}));
+                    return "\n          Get Started\n        ";}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $n).call($p, "/start", $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $l).call($m, $hash2(["class"], {"class": "introduction"}))}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $j).call($k, $hash2(["class"], {"class": "column"}))}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $h).call($i, $hash2(["class"], {"class": "ui page grid"}))}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $e).call($g, $hash2(["class"], {"class": "masthead segment"}));
           return ($e = ($h = self).$DIV, $e.$$p = (TMP_30 = function(){var self = TMP_30.$$s || this, $i, $j, TMP_31;
 
           return ($i = ($j = self).$DIV, $i.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this, $k, $l, TMP_32, $m, TMP_36, $n, TMP_40;
@@ -15931,6 +15931,42 @@ Opal.modules["components/home/home_page"] = function(Opal) {
                 return "Complete Architecture"}, TMP_43.$$s = self, TMP_43.$$arity = 0, TMP_43), $o).call($r, $hash2(["href", "class"], {"href": "", "class": "ui black large button"}));}, TMP_40.$$s = self, TMP_40.$$arity = 0, TMP_40), $k).call($n, $hash2(["class"], {"class": "column"}));}, TMP_31.$$s = self, TMP_31.$$arity = 0, TMP_31), $i).call($j, $hash2(["class"], {"class": "ui three column equal height center aligned divided relaxed stackable page grid"}))}, TMP_30.$$s = self, TMP_30.$$arity = 0, TMP_30), $e).call($h, $hash2(["class"], {"class": "feature alternate ui vertical stripe segment"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "full height"}));
         return self.$AppFooter();}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
     }, TMP_44.$$arity = 0), nil) && 'main_content';
+  })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["components/home/home_page_bis"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$render', '$DIV', '$B', '$Menu', '$A', '$P']);
+  return (function($base, $super) {
+    function $HomePageBis(){};
+    var self = $HomePageBis = $klass($base, $super, 'HomePageBis', $HomePageBis);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+
+    return ($c = ($d = self).$DIV, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_5, $h, TMP_8;
+
+      ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
+
+        return ($g = ($h = self).$B, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+
+          return "I am a fixed header!"}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h)}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "menu"}));
+        ($e = ($g = $scope.get('BurgerMenu')).$Menu, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $h, $i, TMP_6, $j, TMP_7;
+
+        ($h = ($i = self).$A, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+
+          return "Link 1"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($i);
+          return ($h = ($j = self).$A, $h.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+
+          return "Link 2"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $h).call($j);}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($g, $hash2(["pagewrapid", "outercontainerid"], {"pagewrapid": "page-wrap", "outercontainerid": "outer-container"}));
+        return ($e = ($h = self).$DIV, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $i, $j, TMP_9;
+
+        return ($i = ($j = self).$P, $i.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+
+          return "hello"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j)}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($h, $hash2(["class"], {"class": "page-wrap"}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "outer-container"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
