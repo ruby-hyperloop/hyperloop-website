@@ -7,5 +7,5 @@ OpalHotReloader.listen(25222, false, 1)
 # require 'opal'
 
 Document.ready? do
-  Element['#site'].render{ AppRouter() }
+  Element['#hyperloopsite'].render{ AppRouter() }
 end

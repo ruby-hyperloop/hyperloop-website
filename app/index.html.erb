@@ -7,8 +7,13 @@
     <!-- bundle from webpack -->
     <script src="dist/bundle.js"></script>
 
+    <!-- <script src="dist/docs.js"></script> -->
+
     <!-- React and JQuery -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- <script src="dist/semantic.min.js"></script> -->
+    <!-- <script src="dist/docs.js"></script> -->
+    
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"></link>
@@ -16,6 +21,10 @@
     <link href="./app/css/one-dark.css" rel="stylesheet">
     <link href="./app/css/highlight-theme.css" rel="stylesheet">
     <link href="./app/css/override.css" rel="stylesheet">
+
+    <link href="./app/css/docs.css" rel="stylesheet">
+    <link href="./app/css/home.css" rel="stylesheet">
+
 
     <!-- cdn libs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
@@ -26,6 +35,7 @@
     <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyperloop.js"></script>
     <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyper-router.js"></script>
 
+
     <!-- website application -->
 
     <%= javascript_include_tag 'app.js'%>
@@ -34,6 +44,8 @@
 
   <body>
 
-		<div id="site"></div>
+
+    <div id="hyperloopsite"></div>
+    <!-- <script src="dist/home.js"></script> -->
   </body>
 </html>

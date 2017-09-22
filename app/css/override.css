@@ -1,5 +1,9 @@
+
+.hyperlooppink { color: #e81176;}
+.hyperloopgreen { color: #149c8e;}
+
 .accordian-div {
-  padding-top: 50px;
+  
 }
 
 .toc-div {
@@ -19,13 +23,10 @@
   background-color: blue;
 }
 
-.tocmenu > .menu {
-  padding-top: 100px;
-  overflow-y: scroll !important;
-}
 
-.tocmenu{
-  overflow-y: scroll !important
+
+.tocmenu .ui.menu{
+  overflow-y: scroll !important;
 }
 
 /*.menu ul {
@@ -34,9 +35,6 @@
   }
 }*/
 
-.tocmenu > .menu {
-  overflow-y: scroll;
-}
 
 .tocmenu .menu a {
   cursor: pointer;
@@ -60,16 +58,12 @@ flex-grow: 1;
   flex: 1 100%;
 }
 
-.menu ul {
+/*.menu ul {
   list-style-type: none;
   margin: 0;
   padding:0;
 }
 
-/* this breaks the search control on the menu*/
-/*.ui.menu {
-  overflow-y: scroll !important;
-}*/
 
 .ui.vertical.menu .item>.label {
   float: left !important;
@@ -111,3 +105,4 @@ flex-grow: 1;
 .accordion div.title span {
   color: #e81176;
 }
+*/
