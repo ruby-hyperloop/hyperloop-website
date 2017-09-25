@@ -42,8 +42,8 @@ body > .content  {
   background: #FCFCFC url(../images/bg.jpg) repeat;
 }
 
-.ui.sidebar {
-  position: fixed !important;
+.ui.fixed.menu {
+  z-index: 1 !important;
 }
 
 #example .hyperlooppinkbutton {
@@ -162,7 +162,7 @@ p:last-child {
 code a,
 a code,
 a {
-  color: #009FDA;
+  color: white;
   text-decoration: none;
 }
 code a:hover,
@@ -224,12 +224,14 @@ a:hover {
   background-color: #149c8e;
 }
 
+
+
 /* segment headers */
 #example .header.segment,
 #example > .content > .page > .segment,
 #example > .header.segment {
   position: relative;
-  z-index: 2;
+  z-index: -1;
   margin: 0em;
   min-height: 220px;
   padding-top: 70px;
@@ -436,18 +438,19 @@ body#example.hide {
 #example .masthead .column {
   display: table;
 }
-#example .introduction {
+#example .introductiontitle {
   font-size: 22px;
   display: table-cell;
   padding: 30px 0px;
   vertical-align: top;
   width: 100%;
 }
-#example .introduction .header {
+#example .introductiontitle .header {
   margin-bottom: 0em;
   color: #e81176;
+  font-weight: bold !important;
 }
-#example .introduction .theme.buttons {
+#example .introductiontitle .theme.buttons {
   margin: -0.1em 0em 0em 0.5em;
   vertical-align: middle;
 }
@@ -1339,7 +1342,7 @@ body.progress.animated .ui.progress .bar {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  z-index: 1;
+  z-index: 0;
 }
 #example .wide.main.container {
   width: 80%;
@@ -1738,4 +1741,92 @@ body.progress.animated .ui.progress .bar {
   #example > .pusher > .full.height {
     flex: none;
   }
+}
+
+
+
+
+/***************************************************/
+/* BURGER MENU/
+/***************************************************/
+
+
+.bm-item-list a.header {
+  background-color: white;
+  text-align: center;
+  padding: 2em 0 2em 0;
+}
+
+.bm-item-list a.header:hover {
+  background-color: white;
+}
+
+.bm-item-list img {
+  width: 50%;
+}
+
+.bm-item-list img:hover {
+  opacity: 0.9;
+}
+
+.bm-item-list a {
+  padding: 1em;
+  text-transform: uppercase;
+  transition: background 0.3s, box-shadow 0.3s;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2);
+}
+
+.bm-item-list a:hover {
+ 
+  background: #26a497;
+  /*box-shadow: inset 0 -1px rgba(0, 0, 0, 0);*/
+  color: #e81176;
+}
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: #373a47;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+}
+
+/* General sidebar styles */
+.bm-menu {
+  background: #149c8e;
+  /*padding: 2.5em 1.5em 0;*/
+  font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  /*padding: 0.8em;*/
+}
+
+/* Styling of overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
 }

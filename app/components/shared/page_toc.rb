@@ -1,3 +1,8 @@
+class ReactYahooSticky < Hyperloop::Component
+  imports 'YahooSticky'
+end
+
+
 class PageToc < Hyperloop::Component
 
   param :section_store
@@ -6,11 +11,12 @@ class PageToc < Hyperloop::Component
 
     Sem.Rail(close: true, dividing: false, position: 'left') do
       
-      
-      DIV(class: 'ui sticky visible transition') do
-        
-        accordion if params.section_store.loaded?
-        
+      ReactYahooSticky(enable: true, top: 50) do
+        DIV(class: 'ui sticky visible transition') do
+          
+          accordion if params.section_store.loaded?
+          
+        end
       end
     end
 

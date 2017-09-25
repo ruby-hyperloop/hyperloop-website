@@ -15725,7 +15725,7 @@ Opal.modules["components/router/app_router"] = function(Opal) {
 
       return ($e = ($f = self).$Switch, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
-        self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePageBis')}));
+        self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePage')}));
           self.$Route("/start", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('StartPage')}));
           self.$Route("/installation", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('InstallationPage')}));
           self.$Route("/tutorials", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('TutorialsPage')}));
@@ -15801,172 +15801,98 @@ Opal.modules["components/docs/docs_page"] = function(Opal) {
 Opal.modules["components/home/home_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$main_content', '$SidebarPusher', '$DIV', '$IMG', '$I', '$on', '$toggle', '$A', '$SPAN', '$H1', '$Link', '$H2', '$P', '$AppFooter']);
+  Opal.add_stubs(['$before_mount', '$hide', '$after_mount', '$on', '$[]', '$render', '$DIV', '$SidebarMenu', '$main_content', '$AppMenu', '$H1', '$SPAN', '$Link', '$I', '$H2', '$IMG', '$P', '$A', '$AppFooter']);
   return (function($base, $super) {
     function $HomePage(){};
     var self = $HomePage = $klass($base, $super, 'HomePage', $HomePage);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_44;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, $d, TMP_4, TMP_29;
 
     ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
     return $scope.get('SidebarStore').$hide()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
+    ($a = ($c = self).$after_mount, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
 
-    return ($d = ($e = $scope.get('Sem')).$SidebarPushable, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+    return ($d = ($e = $scope.get('Element')['$[]'](".bm-overlay")).$on, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+      return $scope.get('SidebarStore').$hide()}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, "click")}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+
+    ($a = ($d = self).$render, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $e, $f, TMP_5;
+
+    return ($e = ($f = self).$DIV, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $g, $h, TMP_6;
 
       self.$SidebarMenu();
-        return self.$main_content();}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, $hash2(["id", "className"], {"id": "example", "className": "index"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-    return (Opal.defn(self, '$main_content', TMP_44 = function $$main_content() {
-      var $a, $b, TMP_4, self = this;
+        return self.$main_content()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $g).call($h, $hash2(["class"], {"class": "page-wrap"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($f, $hash2(["id", "class"], {"id": "example", "class": "index"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($d);
 
-      return ($a = ($b = $scope.get('Sem')).$SidebarPusher, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
+    return (Opal.defn(self, '$main_content', TMP_29 = function $$main_content() {
+      var $a, $b, TMP_7, self = this;
 
-      ($c = ($d = self).$DIV, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, TMP_23, $h, TMP_30;
+      ($a = ($b = self).$DIV, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $c, $d, TMP_8, $e, TMP_15;
 
-        ($e = ($f = self).$DIV, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $g, $h, TMP_7;
+      self.$AppMenu();
+        ($c = ($d = self).$DIV, $c.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $e, $f, TMP_9;
 
-          return ($g = ($h = self).$DIV, $g.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $i, $j, TMP_8;
+        return ($e = ($f = self).$DIV, $e.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $g, $h, TMP_10;
 
-            return ($i = ($j = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $k, $l, TMP_9, $m, TMP_13, $n, TMP_17;
+          return ($g = ($h = self).$DIV, $g.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
 
-              ($k = ($l = self).$DIV, $k.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $m, $n, TMP_10;
+            return ($i = ($j = self).$DIV, $i.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $k, $l, TMP_12, $m, TMP_14;
 
-                return ($m = ($n = self).$DIV, $m.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $o, $p, TMP_11, $q, TMP_12;
+              ($k = ($l = self).$H1, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $m, $n, TMP_13;
 
-                  ($o = ($p = self).$DIV, $o.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+                return ($m = ($n = self).$SPAN, $m.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
-                    return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "dist/images/hyperloop-logo.png"}))}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "active learn side"}));
-                    return ($o = ($q = self).$DIV, $o.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+                  return "Hyperloop"}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $m).call($n, $hash2(["class"], {"class": "library"}))}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, $hash2(["class"], {"class": "ui inverted header"}));
+                self.$DIV($hash2(["class"], {"class": "ui hidden divider"}));
+                return ($k = ($m = self).$Link, $k.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
-                    return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "images/logo.png"}))}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $o).call($q, $hash2(["class"], {"class": "ui side"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $m).call($n, $hash2(["class"], {"class": "sides"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($l, $hash2(["class"], {"class": "ui logo shape"}));
-                ($k = ($m = self).$DIV, $k.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $n, $o, TMP_14, $p, TMP_15;
+                self.$I($hash2(["class"], {"class": "sidebar icon"}));
+                  return "\n          Get Started\n        ";}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $k).call($m, "/start", $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $i).call($j, $hash2(["class"], {"class": "introduction"}))}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $c).call($d, $hash2(["class"], {"class": "masthead segment stopped"}));
+        return ($c = ($e = self).$DIV, $c.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this, $f, $g, TMP_16;
 
-                ($n = ($o = self).$DIV, $n.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
+        return ($f = ($g = self).$DIV, $f.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this, $h, $i, TMP_17, $j, TMP_21, $k, TMP_25;
 
-                  return nil}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $n).call($o, $hash2(["class"], {"class": "item"}));
-                  return ($n = ($p = self).$DIV, $n.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this, $q, $r, TMP_16;
+          ($h = ($i = self).$DIV, $h.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $j, $k, TMP_18, $l, TMP_19, $m, TMP_20;
 
-                  self.$I($hash2(["class"], {"class": "world icon"}));
-                    ($q = ($r = self).$DIV, $q.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
+            ($j = ($k = self).$H2, $j.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
 
-                    return "English"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $q).call($r, $hash2(["class"], {"class": "text"}));
-                    return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $n).call($p, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $k).call($m, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
-                return ($k = ($n = self).$DIV, $k.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $o, $p, TMP_18, $q, $r, TMP_19, TMP_20, $s, TMP_21, $t, TMP_22;
+              self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/paint.png"}));
+                return "Simplicity";}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $j).call($k, $hash2(["class"], {"class": "ui icon header"}));
+              ($j = ($l = self).$P, $j.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
 
-                ($o = ($p = ($q = ($r = self).$A, $q.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
+              return "Build interactive Web applications quickly. Hyperloop encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperloop takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value."}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $j).call($l);
+              return ($j = ($m = self).$A, $j.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this;
 
-                  self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                    return " Menu\n        ";}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $q).call($r, $hash2(["class"], {"class": "view-ui item"}))).$on, $o.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
+              return "Simplicity"}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $j).call($m, $hash2(["href", "class"], {"href": "", "class": "ui secondary large button"}));}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $h).call($i, $hash2(["class"], {"class": "column"}));
+            ($h = ($j = self).$DIV, $h.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this, $k, $l, TMP_22, $m, TMP_23, $n, TMP_24;
 
-                  return $scope.get('SidebarStore').$toggle()}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $o).call($p, "click");
-                  ($o = ($q = self).$A, $o.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this;
+            ($k = ($l = self).$H2, $k.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
 
-                  return "Docs"}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $o).call($q, $hash2(["href", "data-site", "class"], {"href": "", "data-site": "ui", "class": "additional item"}));
-                  ($o = ($s = self).$SPAN, $o.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
+              self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/gear.png"}));
+                return "Isomorphic Ruby";}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $k).call($l, $hash2(["class"], {"class": "ui icon header"}));
+              ($k = ($m = self).$P, $k.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this;
 
-                  return "Themes"}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $o).call($s, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));
-                  return ($o = ($t = self).$SPAN, $o.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
+              return "One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. Hyperloop is fully integrated with Rails and also gives you unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperloop lets you build beautiful interactive user interfaces in Ruby."}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $k).call($m);
+              return ($k = ($n = self).$A, $k.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this;
 
-                  return "Layouts"}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $o).call($t, $hash2(["class", "data-site", "data-content"], {"class": "additional item", "data-site": "layout", "data-content": "Coming Soon"}));}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $k).call($n, $hash2(["class"], {"class": "ui large inverted secondary network menu"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($j, $hash2(["class"], {"class": "column"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $g).call($h, $hash2(["class"], {"class": "ui page grid"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "following bar"}));
-          ($e = ($g = self).$DIV, $e.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this, $h, $i, TMP_24;
+              return "Isomorphic Ruby"}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $k).call($n, $hash2(["href", "class"], {"href": "", "class": "ui pink large button hyperlooppinkbutton"}));}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $h).call($j, $hash2(["class"], {"class": "column"}));
+            return ($h = ($k = self).$DIV, $h.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this, $l, $m, TMP_26, $n, TMP_27, $o, TMP_28;
 
-          return ($h = ($i = self).$DIV, $h.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this, $j, $k, TMP_25;
+            ($l = ($m = self).$H2, $l.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this;
 
-            return ($j = ($k = self).$DIV, $j.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this, $l, $m, TMP_26;
+              self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/plugin.png"}));
+                return "Complete Architecture";}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $l).call($m, $hash2(["class"], {"class": "ui icon header"}));
+              ($l = ($n = self).$P, $l.$$p = (TMP_27 = function(){var self = TMP_27.$$s || this;
 
-              return ($l = ($m = self).$DIV, $l.$$p = (TMP_26 = function(){var self = TMP_26.$$s || this, $n, $o, TMP_27, $p, TMP_29;
+              return "Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state."}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $l).call($n);
+              return ($l = ($o = self).$A, $l.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this;
 
-                ($n = ($o = self).$H1, $n.$$p = (TMP_27 = function(){var self = TMP_27.$$s || this, $p, $q, TMP_28;
-
-                  return ($p = ($q = self).$SPAN, $p.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this;
-
-                    return "Hyperloop"}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $p).call($q, $hash2(["class"], {"class": "library"}))}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $n).call($o, $hash2(["class"], {"class": "ui inverted header"}));
-                  self.$DIV($hash2(["class"], {"class": "ui hidden divider"}));
-                  return ($n = ($p = self).$Link, $n.$$p = (TMP_29 = function(){var self = TMP_29.$$s || this;
-
-                  self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                    return "\n          Get Started\n        ";}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29), $n).call($p, "/start", $hash2(["class"], {"class": "ui big basic inverted pink view-ui button getstartedbutton"}));}, TMP_26.$$s = self, TMP_26.$$arity = 0, TMP_26), $l).call($m, $hash2(["class"], {"class": "introduction"}))}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $j).call($k, $hash2(["class"], {"class": "column"}))}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $h).call($i, $hash2(["class"], {"class": "ui page grid"}))}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $e).call($g, $hash2(["class"], {"class": "masthead segment"}));
-          return ($e = ($h = self).$DIV, $e.$$p = (TMP_30 = function(){var self = TMP_30.$$s || this, $i, $j, TMP_31;
-
-          return ($i = ($j = self).$DIV, $i.$$p = (TMP_31 = function(){var self = TMP_31.$$s || this, $k, $l, TMP_32, $m, TMP_36, $n, TMP_40;
-
-            ($k = ($l = self).$DIV, $k.$$p = (TMP_32 = function(){var self = TMP_32.$$s || this, $m, $n, TMP_33, $o, TMP_34, $p, TMP_35;
-
-              ($m = ($n = self).$H2, $m.$$p = (TMP_33 = function(){var self = TMP_33.$$s || this;
-
-                self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/paint.png"}));
-                  return "Simplicity";}, TMP_33.$$s = self, TMP_33.$$arity = 0, TMP_33), $m).call($n, $hash2(["class"], {"class": "ui icon header"}));
-                ($m = ($o = self).$P, $m.$$p = (TMP_34 = function(){var self = TMP_34.$$s || this;
-
-                return "Build interactive Web applications quickly. Hyperloop encourages rapid development with clean, pragmatic design. With developer productivity as our highest goal, Hyperloop takes care of much of the hassle of Web development, so you can focus on innovation and delivering end-user value."}, TMP_34.$$s = self, TMP_34.$$arity = 0, TMP_34), $m).call($o);
-                return ($m = ($p = self).$A, $m.$$p = (TMP_35 = function(){var self = TMP_35.$$s || this;
-
-                return "Simplicity"}, TMP_35.$$s = self, TMP_35.$$arity = 0, TMP_35), $m).call($p, $hash2(["href", "class"], {"href": "", "class": "ui secondary large button"}));}, TMP_32.$$s = self, TMP_32.$$arity = 0, TMP_32), $k).call($l, $hash2(["class"], {"class": "column"}));
-              ($k = ($m = self).$DIV, $k.$$p = (TMP_36 = function(){var self = TMP_36.$$s || this, $n, $o, TMP_37, $p, TMP_38, $q, TMP_39;
-
-              ($n = ($o = self).$H2, $n.$$p = (TMP_37 = function(){var self = TMP_37.$$s || this;
-
-                self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/gear.png"}));
-                  return "Isomorphic Ruby";}, TMP_37.$$s = self, TMP_37.$$arity = 0, TMP_37), $n).call($o, $hash2(["class"], {"class": "ui icon header"}));
-                ($n = ($p = self).$P, $n.$$p = (TMP_38 = function(){var self = TMP_38.$$s || this;
-
-                return "One language. One model. One set of tests. The same business logic and domain models running on the clients and the server. Hyperloop is fully integrated with Rails and also gives you unfettered access to the complete universe of JavaScript libraries (including React) from within your Ruby code. Hyperloop lets you build beautiful interactive user interfaces in Ruby."}, TMP_38.$$s = self, TMP_38.$$arity = 0, TMP_38), $n).call($p);
-                return ($n = ($q = self).$A, $n.$$p = (TMP_39 = function(){var self = TMP_39.$$s || this;
-
-                return "Isomorphic Ruby"}, TMP_39.$$s = self, TMP_39.$$arity = 0, TMP_39), $n).call($q, $hash2(["href", "class"], {"href": "", "class": "ui pink large button hyperlooppinkbutton"}));}, TMP_36.$$s = self, TMP_36.$$arity = 0, TMP_36), $k).call($m, $hash2(["class"], {"class": "column"}));
-              return ($k = ($n = self).$DIV, $k.$$p = (TMP_40 = function(){var self = TMP_40.$$s || this, $o, $p, TMP_41, $q, TMP_42, $r, TMP_43;
-
-              ($o = ($p = self).$H2, $o.$$p = (TMP_41 = function(){var self = TMP_41.$$s || this;
-
-                self.$IMG($hash2(["class", "src"], {"class": "ui icon image", "src": "dist/images/icons/plugin.png"}));
-                  return "Complete Architecture";}, TMP_41.$$s = self, TMP_41.$$arity = 0, TMP_41), $o).call($p, $hash2(["class"], {"class": "ui icon header"}));
-                ($o = ($q = self).$P, $o.$$p = (TMP_42 = function(){var self = TMP_42.$$s || this;
-
-                return "Everything has a place in our architecture. Components deliver interactive user experiences, Operations encapsulate business logic, Models magically synchronize data between clients and servers, Policies govern authorization and Stores hold local state."}, TMP_42.$$s = self, TMP_42.$$arity = 0, TMP_42), $o).call($q);
-                return ($o = ($r = self).$A, $o.$$p = (TMP_43 = function(){var self = TMP_43.$$s || this;
-
-                return "Complete Architecture"}, TMP_43.$$s = self, TMP_43.$$arity = 0, TMP_43), $o).call($r, $hash2(["href", "class"], {"href": "", "class": "ui black large button"}));}, TMP_40.$$s = self, TMP_40.$$arity = 0, TMP_40), $k).call($n, $hash2(["class"], {"class": "column"}));}, TMP_31.$$s = self, TMP_31.$$arity = 0, TMP_31), $i).call($j, $hash2(["class"], {"class": "ui three column equal height center aligned divided relaxed stackable page grid"}))}, TMP_30.$$s = self, TMP_30.$$arity = 0, TMP_30), $e).call($h, $hash2(["class"], {"class": "feature alternate ui vertical stripe segment"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "full height"}));
-        return self.$AppFooter();}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
-    }, TMP_44.$$arity = 0), nil) && 'main_content';
-  })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
-};
-
-/* Generated by Opal 0.10.5 */
-Opal.modules["components/home/home_page_bis"] = function(Opal) {
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
-
-  Opal.add_stubs(['$render', '$DIV', '$B', '$Menu', '$A', '$P']);
-  return (function($base, $super) {
-    function $HomePageBis(){};
-    var self = $HomePageBis = $klass($base, $super, 'HomePageBis', $HomePageBis);
-
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
-
-    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
-
-    return ($c = ($d = self).$DIV, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_5, $h, TMP_8;
-
-      ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
-
-        return ($g = ($h = self).$B, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
-
-          return "I am a fixed header!"}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h)}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "menu"}));
-        ($e = ($g = $scope.get('BurgerMenu')).$Menu, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $h, $i, TMP_6, $j, TMP_7;
-
-        ($h = ($i = self).$A, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
-
-          return "Link 1"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($i);
-          return ($h = ($j = self).$A, $h.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
-
-          return "Link 2"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $h).call($j);}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($g, $hash2(["pagewrapid", "outercontainerid"], {"pagewrapid": "page-wrap", "outercontainerid": "outer-container"}));
-        return ($e = ($h = self).$DIV, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $i, $j, TMP_9;
-
-        return ($i = ($j = self).$P, $i.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
-
-          return "hello"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j)}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($h, $hash2(["class"], {"class": "page-wrap"}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "outer-container"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+              return "Complete Architecture"}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $l).call($o, $hash2(["href", "class"], {"href": "", "class": "ui black large button"}));}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $h).call($k, $hash2(["class"], {"class": "column"}));}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $f).call($g, $hash2(["class"], {"class": "ui three column equal height center aligned divided relaxed stackable page grid"}))}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $c).call($e, $hash2(["class"], {"class": "feature alternate ui vertical stripe segment"}));}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b, $hash2(["class"], {"class": "full height"}));
+      return self.$AppFooter();
+    }, TMP_29.$$arity = 0), nil) && 'main_content';
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16045,12 +15971,12 @@ Opal.modules["components/gems/gems_page"] = function(Opal) {
 Opal.modules["components/shared/page_layout"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$before_mount', '$hide', '$render', '$SidebarPushable', '$SidebarMenu', '$top_menu', '$sidebar_toggle', '$main_content', '$DIV', '$A', '$I', '$IFRAME', '$on', '$toggle', '$SPAN', '$SidebarPusher', '$page_title', '$params', '$P', '$sidebar_component', '$body_component', '$AppFooter']);
+  Opal.add_stubs(['$param', '$before_mount', '$hide', '$after_mount', '$on', '$[]', '$render', '$DIV', '$SidebarMenu', '$main_content', '$AppMenu', '$page_title', '$params', '$P', '$sidebar_component', '$body_component', '$AppFooter']);
   return (function($base, $super) {
     function $PageLayout(){};
     var self = $PageLayout = $klass($base, $super, 'PageLayout', $PageLayout);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_11, TMP_15, TMP_25;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, $d, TMP_4, TMP_14;
 
     self.$param("sidebar_component");
 
@@ -16064,79 +15990,45 @@ Opal.modules["components/shared/page_layout"] = function(Opal) {
 
     return $scope.get('SidebarStore').$hide()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
+    ($a = ($c = self).$after_mount, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
 
-    return ($d = ($e = $scope.get('Sem')).$SidebarPushable, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+    return ($d = ($e = $scope.get('Element')['$[]'](".bm-overlay")).$on, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+      return $scope.get('SidebarStore').$hide()}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, "click")}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+
+    ($a = ($d = self).$render, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $e, $f, TMP_5;
+
+    return ($e = ($f = self).$DIV, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $g, $h, TMP_6;
 
       self.$SidebarMenu();
-        self.$top_menu();
-        self.$sidebar_toggle();
-        return self.$main_content();}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, $hash2(["id"], {"id": "example"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-    Opal.defn(self, '$top_menu', TMP_11 = function $$top_menu() {
-      var $a, $b, TMP_4, self = this;
+        return self.$main_content()}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $g).call($h, $hash2(["class"], {"class": "page-wrap"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($f, $hash2(["id", "class"], {"id": "example", "class": "index"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($d);
 
-      return ($a = ($b = self).$DIV, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
+    return (Opal.defn(self, '$main_content', TMP_14 = function $$main_content() {
+      var $a, $b, TMP_7, self = this;
 
-      return ($c = ($d = self).$DIV, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, TMP_7, $h, TMP_8;
+      ($a = ($b = self).$DIV, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $c, $d, TMP_8, $e, TMP_13;
 
-        ($e = ($f = self).$A, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+      self.$AppMenu();
+        ($c = ($d = self).$DIV, $c.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $e, $f, TMP_9;
 
-          return self.$I($hash2(["class"], {"class": "content icon"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, $hash2(["class"], {"class": "launch item"}));
-          ($e = ($g = self).$DIV, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+        return ($e = ($f = self).$DIV, $e.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $g, $h, TMP_10;
 
-          return nil}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($g, $hash2(["class"], {"class": "title item"}));
-          return ($e = ($h = self).$DIV, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $i, $j, TMP_9, $k, TMP_10;
+          return ($g = ($h = self).$DIV, $g.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11, $k, TMP_12;
 
-          ($i = ($j = self).$DIV, $i.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+            ($i = ($j = self).$DIV, $i.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
 
-            return self.$IFRAME($hash2(["class", "src", "allowTransparency", "frameBorder", "scrolling", "width", "height"], {"class": "github", "src": "http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyperloop&type=watch&count=true", "allowTransparency": "true", "frameBorder": "0", "scrolling": "0", "width": "100", "height": "20"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j, $hash2(["class"], {"class": "vertically fitted borderless item"}));
-            return ($i = ($k = self).$A, $i.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
+              return self.$params().$page_title()}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $i).call($j, $hash2(["class"], {"class": "ui huge header"}));
+              return ($i = ($k = self).$P, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
-            return self.$I($hash2(["class"], {"class": "alternate github icon"}))}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $i).call($k, $hash2(["class", "data-content", "href"], {"class": "popup icon github item", "data-content": "View project on GitHub", "href": "https://github.com/ruby-hyperloop/hyperloop"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($h, $hash2(["class"], {"class": "right menu"}));}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "container"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b, $hash2(["class"], {"class": "ui fixed inverted main menu"}));
-    }, TMP_11.$$arity = 0);
+              return "The Complete Isomorphic Ruby Framework"}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($k);}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $g).call($h, $hash2(["class"], {"class": "introductiontitle"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $e).call($f, $hash2(["class"], {"class": "container"}))}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $c).call($d, $hash2(["class"], {"class": "header segment"}));
+        return ($c = ($e = self).$DIV, $c.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
-    Opal.defn(self, '$sidebar_toggle', TMP_15 = function $$sidebar_toggle() {
-      var $a, $b, TMP_12, $c, $d, TMP_13, self = this;
-
-      return ($a = ($b = ($c = ($d = self).$DIV, $c.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $e, $f, TMP_14;
-
-      self.$I($hash2(["class"], {"class": "content icon"}));
-        return ($e = ($f = self).$SPAN, $e.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
-
-        return "Menu"}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $e).call($f, $hash2(["class"], {"class": "text"}));}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($d, $hash2(["class"], {"class": "ui black big launch right attached fixed button"}))).$on, $a.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
-
-      return $scope.get('SidebarStore').$toggle()}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $a).call($b, "click");
-    }, TMP_15.$$arity = 0);
-
-    return (Opal.defn(self, '$main_content', TMP_25 = function $$main_content() {
-      var $a, $b, TMP_16, $c, $d, TMP_17, self = this;
-
-      return ($a = ($b = ($c = ($d = $scope.get('Sem')).$SidebarPusher, $c.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $e, $f, TMP_18;
-
-      ($e = ($f = self).$DIV, $e.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this, $g, $h, TMP_19, $i, TMP_24;
-
-        self.$top_menu();
-          ($g = ($h = self).$DIV, $g.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this, $i, $j, TMP_20;
-
-          return ($i = ($j = self).$DIV, $i.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this, $k, $l, TMP_21;
-
-            return ($k = ($l = self).$DIV, $k.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this, $m, $n, TMP_22, $o, TMP_23;
-
-              ($m = ($n = self).$DIV, $m.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
-
-                return self.$params().$page_title()}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $m).call($n, $hash2(["class"], {"class": "ui huge header"}));
-                return ($m = ($o = self).$P, $m.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this;
-
-                return "The Complete Isomorphic Ruby Framework"}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $m).call($o);}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $k).call($l, $hash2(["class"], {"class": "introduction"}))}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $i).call($j, $hash2(["class"], {"class": "container"}))}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $g).call($h, $hash2(["class"], {"class": "header segment"}));
-          return ($g = ($i = self).$DIV, $g.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this;
-
-          self.$params().$sidebar_component().$render();
-            return self.$params().$body_component().$render();}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $g).call($i, $hash2(["class"], {"class": "main container"}));}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $e).call($f, $hash2(["class"], {"class": "full height"}));
-        return self.$AppFooter();}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $c).call($d)).$on, $a.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
-
-      return $scope.get('SidebarStore').$hide()}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $a).call($b, "click");
-    }, TMP_25.$$arity = 0), nil) && 'main_content';
+        self.$params().$sidebar_component().$render();
+          return self.$params().$body_component().$render();}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($e, $hash2(["class"], {"class": "main container"}));}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b, $hash2(["class"], {"class": "full height"}));
+      return self.$AppFooter();
+    }, TMP_14.$$arity = 0), nil) && 'main_content';
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16461,116 +16353,54 @@ Opal.modules["components/shared/app_footer"] = function(Opal) {
 Opal.modules["components/shared/app_menu"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$Menu', '$sidebar_toggle', '$home', '$start', '$installation', '$tutorials', '$gems', '$tools', '$docs', '$search', '$on', '$toggle', '$A', '$Icon', '$MenuItem', '$Link', '$MenuMenu', '$SiteSearch']);
+  Opal.add_stubs(['$render', '$DIV', '$IMG', '$IFRAME', '$I', '$on', '$toggle', '$A']);
   return (function($base, $super) {
     function $AppMenu(){};
     var self = $AppMenu = $klass($base, $super, 'AppMenu', $AppMenu);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_5, TMP_8, TMP_11, TMP_14, TMP_17, TMP_20, TMP_23, TMP_26, TMP_29;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
-    return ($c = ($d = $scope.get('Sem')).$Menu, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+    return ($c = ($d = self).$DIV, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
 
-      self.$sidebar_toggle();
-        self.$home();
-        self.$start();
-        self.$installation();
-        self.$tutorials();
-        self.$gems();
-        self.$tools();
-        self.$docs();
-        return self.$search();}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["fixed", "inverted"], {"fixed": "top", "inverted": false}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'));
+      return ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
 
-    Opal.defn(self, '$sidebar_toggle', TMP_5 = function $$sidebar_toggle() {
-      var $a, $b, TMP_3, $c, $d, TMP_4, self = this;
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i, $j, TMP_5, $k, TMP_8, $l, TMP_12;
 
-      return ($a = ($b = ($c = ($d = self).$A, $c.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+          ($i = ($j = self).$DIV, $i.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $k, $l, TMP_6;
 
-      return $scope.get('Sem').$Icon($hash2(["name"], {"name": "sidebar"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $c).call($d, $hash2(["class", "id"], {"class": "item", "id": "togglemenu"}))).$on, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+            return ($k = ($l = self).$DIV, $k.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $m, $n, TMP_7;
 
-      return $scope.get('SidebarStore').$toggle()}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($b, "click");
-    }, TMP_5.$$arity = 0);
+              return ($m = ($n = self).$DIV, $m.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-    Opal.defn(self, '$home', TMP_8 = function $$home() {
-      var $a, $b, TMP_6, self = this;
+                return self.$IMG($hash2(["class", "src", "width"], {"class": "ui image", "src": "dist/images/hyperloop-logo-small-pink.png", "width": "100%"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $m).call($n, $hash2(["class"], {"class": "active learn side"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $k).call($l, $hash2(["class"], {"class": "sides"}))}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j, $hash2(["class"], {"class": "ui logo shape"}));
+            ($i = ($k = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $l, $m, TMP_9, $n, TMP_10;
 
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
+            ($l = ($m = self).$DIV, $l.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
 
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+              return self.$IFRAME($hash2(["class", "src", "allowTransparency", "frameBorder", "scrolling", "width", "height"], {"class": "github", "src": "http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyperloop&type=watch&count=true", "allowTransparency": "true", "frameBorder": "0", "scrolling": "0", "width": "100", "height": "20"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $l).call($m, $hash2(["class"], {"class": "item"}));
+              return ($l = ($n = self).$DIV, $l.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $o, $p, TMP_11;
 
-        return "HOME"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d, "/")}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b);
-    }, TMP_8.$$arity = 0);
+              self.$I($hash2(["class"], {"class": "world icon"}));
+                ($o = ($p = self).$DIV, $o.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
 
-    Opal.defn(self, '$start', TMP_11 = function $$start() {
-      var $a, $b, TMP_9, self = this;
+                return "English"}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "text"}));
+                return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $l).call($n, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($k, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
+            return ($i = ($l = self).$DIV, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $m, $n, TMP_13, $o, $p, TMP_14, TMP_15, $q, TMP_16;
 
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $c, $d, TMP_10;
+            ($m = ($n = ($o = ($p = self).$A, $o.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
+              self.$I($hash2(["class"], {"class": "sidebar icon"}));
+                return " Menu\n        ";}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $o).call($p, $hash2(["class"], {"class": "view-ui item"}))).$on, $m.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
-        return "START"}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $c).call($d, "/start")}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $a).call($b);
-    }, TMP_11.$$arity = 0);
+              return $scope.get('SidebarStore').$toggle()}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $m).call($n, "click");
+              ($m = ($o = self).$A, $m.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
 
-    Opal.defn(self, '$installation', TMP_14 = function $$installation() {
-      var $a, $b, TMP_12, self = this;
+              return "Help"}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $m).call($o, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
+              return ($m = ($q = self).$A, $m.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
 
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $c, $d, TMP_13;
-
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
-
-        return "INSTALLATION"}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($d, "/installation")}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $a).call($b);
-    }, TMP_14.$$arity = 0);
-
-    Opal.defn(self, '$tutorials', TMP_17 = function $$tutorials() {
-      var $a, $b, TMP_15, self = this;
-
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this, $c, $d, TMP_16;
-
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
-
-        return "TUTORIALS"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $c).call($d, "/tutorials")}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $a).call($b);
-    }, TMP_17.$$arity = 0);
-
-    Opal.defn(self, '$gems', TMP_20 = function $$gems() {
-      var $a, $b, TMP_18, self = this;
-
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this, $c, $d, TMP_19;
-
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
-
-        return "GEMS"}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $c).call($d, "/gems")}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $a).call($b);
-    }, TMP_20.$$arity = 0);
-
-    Opal.defn(self, '$tools', TMP_23 = function $$tools() {
-      var $a, $b, TMP_21, self = this;
-
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this, $c, $d, TMP_22;
-
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this;
-
-        return "TOOLS"}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $c).call($d, "/tools")}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $a).call($b);
-    }, TMP_23.$$arity = 0);
-
-    Opal.defn(self, '$docs', TMP_26 = function $$docs() {
-      var $a, $b, TMP_24, self = this;
-
-      return ($a = ($b = $scope.get('Sem')).$MenuItem, $a.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this, $c, $d, TMP_25;
-
-      return ($c = ($d = self).$Link, $c.$$p = (TMP_25 = function(){var self = TMP_25.$$s || this;
-
-        return "DOCS"}, TMP_25.$$s = self, TMP_25.$$arity = 0, TMP_25), $c).call($d, "/docs")}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $a).call($b);
-    }, TMP_26.$$arity = 0);
-
-    return (Opal.defn(self, '$search', TMP_29 = function $$search() {
-      var $a, $b, TMP_27, self = this;
-
-      return ($a = ($b = $scope.get('Sem')).$MenuMenu, $a.$$p = (TMP_27 = function(){var self = TMP_27.$$s || this, $c, $d, TMP_28;
-
-      return ($c = ($d = $scope.get('Sem')).$MenuItem, $c.$$p = (TMP_28 = function(){var self = TMP_28.$$s || this;
-
-        return self.$SiteSearch()}, TMP_28.$$s = self, TMP_28.$$arity = 0, TMP_28), $c).call($d)}, TMP_27.$$s = self, TMP_27.$$arity = 0, TMP_27), $a).call($b, $hash2(["position"], {"position": "right"}));
-    }, TMP_29.$$arity = 0), nil) && 'search';
+              return "Showcase"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $m).call($q, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($l, $hash2(["class"], {"class": "ui large secondary network menu"}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "following bar fixed"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16578,7 +16408,7 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
 Opal.modules["components/shared/sidebar_menu"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$Sidebar', '$DIV', '$A', '$IMG', '$Link', '$B', '$visible']);
+  Opal.add_stubs(['$render', '$Push', '$Link', '$IMG', '$visible']);
   return (function($base, $super) {
     function $SidebarMenu(){};
     var self = $SidebarMenu = $klass($base, $super, 'SidebarMenu', $SidebarMenu);
@@ -16587,64 +16417,33 @@ Opal.modules["components/shared/sidebar_menu"] = function(Opal) {
 
     return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e;
 
-    return ($c = ($d = $scope.get('Sem')).$Sidebar, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_7, $h, TMP_10, $i, TMP_13, $j, TMP_16, $k, TMP_19, $l, TMP_22;
+    return ($c = ($d = $scope.get('BurgerMenu')).$Push, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4, $h, TMP_5, $i, TMP_6, $j, TMP_7, $k, TMP_8, $l, TMP_9;
 
-      ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4, $i, TMP_5;
+      ($e = ($f = self).$Link, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
-        ($g = ($h = self).$A, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+        return self.$IMG($hash2(["src"], {"src": "dist/images/hyperloop-logo-title.png"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, "/", $hash2(["class"], {"class": "header"}));
+        ($e = ($g = self).$Link, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
 
-          return self.$IMG($hash2(["src"], {"src": "dist/images/hyperloop-logo.png"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["href", "class"], {"href": "/", "class": "ui logo icon image"}));
-          return ($g = ($i = self).$Link, $g.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $j, $k, TMP_6;
+        return "GET STARTED"}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, "/start");
+        ($e = ($h = self).$Link, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
 
-          return ($j = ($k = self).$B, $j.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+        return "INSTALLATION"}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($h, "/installation", $hash2(["class"], {"class": "item"}));
+        ($e = ($i = self).$Link, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
 
-            return "Hyperloop"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $j).call($k)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $g).call($i, "/");}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "item"}));
-        ($e = ($g = self).$DIV, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $h, $i, TMP_8;
+        return "TUTORIALS"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($i, "/tutorials", $hash2(["class"], {"class": "item"}));
+        ($e = ($j = self).$Link, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-        return ($h = ($i = self).$DIV, $h.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $j, $k, TMP_9;
+        return "DOCUMENTATION"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($j, "/docs", $hash2(["class"], {"class": "item"}));
+        ($e = ($k = self).$Link, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
 
-          return ($j = ($k = self).$Link, $j.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+        return "GEMS"}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($k, "/gems", $hash2(["class"], {"class": "item"}));
+        return ($e = ($l = self).$Link, $e.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
 
-            return "GET STARTED"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $j).call($k, "/start", $hash2(["class"], {"class": "item"}))}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $h).call($i, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($g, $hash2(["class"], {"class": "item"}));
-        ($e = ($h = self).$DIV, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
-
-        return ($i = ($j = self).$DIV, $i.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $k, $l, TMP_12;
-
-          return ($k = ($l = self).$Link, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
-
-            return "INSTALLATION"}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "/installation", $hash2(["class"], {"class": "item"}))}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $i).call($j, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $e).call($h, $hash2(["class"], {"class": "item"}));
-        ($e = ($i = self).$DIV, $e.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, $j, $k, TMP_14;
-
-        return ($j = ($k = self).$DIV, $j.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this, $l, $m, TMP_15;
-
-          return ($l = ($m = self).$Link, $l.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
-
-            return "TUTORIALS"}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $l).call($m, "/tutorials", $hash2(["class"], {"class": "item"}))}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $j).call($k, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $e).call($i, $hash2(["class"], {"class": "item"}));
-        ($e = ($j = self).$DIV, $e.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this, $k, $l, TMP_17;
-
-        return ($k = ($l = self).$DIV, $k.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $m, $n, TMP_18;
-
-          return ($m = ($n = self).$Link, $m.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
-
-            return "DOCUMENTATION"}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $m).call($n, "/docs", $hash2(["class"], {"class": "item"}))}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $k).call($l, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $e).call($j, $hash2(["class"], {"class": "item"}));
-        ($e = ($k = self).$DIV, $e.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this, $l, $m, TMP_20;
-
-        return ($l = ($m = self).$DIV, $l.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this, $n, $o, TMP_21;
-
-          return ($n = ($o = self).$Link, $n.$$p = (TMP_21 = function(){var self = TMP_21.$$s || this;
-
-            return "GEMS"}, TMP_21.$$s = self, TMP_21.$$arity = 0, TMP_21), $n).call($o, "/gems", $hash2(["class"], {"class": "item"}))}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $l).call($m, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $e).call($k, $hash2(["class"], {"class": "item"}));
-        return ($e = ($l = self).$DIV, $e.$$p = (TMP_22 = function(){var self = TMP_22.$$s || this, $m, $n, TMP_23;
-
-        return ($m = ($n = self).$DIV, $m.$$p = (TMP_23 = function(){var self = TMP_23.$$s || this, $o, $p, TMP_24;
-
-          return ($o = ($p = self).$Link, $o.$$p = (TMP_24 = function(){var self = TMP_24.$$s || this;
-
-            return "TOOLS"}, TMP_24.$$s = self, TMP_24.$$arity = 0, TMP_24), $o).call($p, "/tools", $hash2(["class"], {"class": "item"}))}, TMP_23.$$s = self, TMP_23.$$arity = 0, TMP_23), $m).call($n, $hash2(["class"], {"class": "ui small inverted header"}))}, TMP_22.$$s = self, TMP_22.$$arity = 0, TMP_22), $e).call($l, $hash2(["class"], {"class": "item"}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["id", "animation", "visible", "className"], {"id": "menu", "animation": "overlay", "visible": ((function() {if ((($e = $scope.get('SidebarStore').$visible()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
+        return "TOOLS"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $e).call($l, "/tools", $hash2(["class"], {"class": "item"}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["pagewrapid", "outercontainerid", "isOpen", "customBurgerIcon", "customCrossIcon", "disableOverlayClick"], {"pagewrapid": "page-wrap", "outercontainerid": "index", "isOpen": ((function() {if ((($e = $scope.get('SidebarStore').$visible()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
         return true
         } else {
         return false
-      }; return nil; })()), "className": "menu vertical inverted hyperloopgreen"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+      }; return nil; })()), "customBurgerIcon": false, "customCrossIcon": false, "disableOverlayClick": true}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16790,12 +16589,20 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$render', '$Rail', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$A', '$==', '$drop', '$pages']);
+  (function($base, $super) {
+    function $ReactYahooSticky(){};
+    var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
+
+    var def = self.$$proto, $scope = self.$$scope;
+
+    return self.$imports("YahooSticky")
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
   return (function($base, $super) {
     function $PageToc(){};
     var self = $PageToc = $klass($base, $super, 'PageToc', $PageToc);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_13;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_14;
 
     self.$param("section_store");
 
@@ -16803,52 +16610,54 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
 
     return ($c = ($d = $scope.get('Sem')).$Rail, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
 
-      return ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g;
+      return ($e = ($f = self).$ReactYahooSticky, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
 
-        if ((($g = self.$params().$section_store()['$loaded?']()) !== nil && $g != null && (!$g.$$is_boolean || $g == true))) {
-            return self.$accordion()
-            } else {
-            return nil
-          }}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i;
 
-    return (Opal.defn(self, '$accordion', TMP_13 = function $$accordion() {
-      var $a, $b, TMP_4, self = this;
+          if ((($i = self.$params().$section_store()['$loaded?']()) !== nil && $i != null && (!$i.$$is_boolean || $i == true))) {
+              return self.$accordion()
+              } else {
+              return nil
+            }}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["enable"], {"enable": true}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-      return ($a = ($b = $scope.get('Sem')).$Accordion, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
+    return (Opal.defn(self, '$accordion', TMP_14 = function $$accordion() {
+      var $a, $b, TMP_5, self = this;
 
-      return ($c = ($d = self.$params().$section_store().$pages()).$each_with_index, $c.$$p = (TMP_5 = function(page, index){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, $h, TMP_7, TMP_9;
+      return ($a = ($b = $scope.get('Sem')).$Accordion, $a.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $c, $d, TMP_6;
+
+      return ($c = ($d = self.$params().$section_store().$pages()).$each_with_index, $c.$$p = (TMP_6 = function(page, index){var self = TMP_6.$$s || this, $e, $f, TMP_7, $g, $h, TMP_8, TMP_10;
 if (page == null) page = nil;if (index == null) index = nil;
-        ($e = ($f = ($g = ($h = $scope.get('Sem')).$AccordionTitle, $g.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $i, $j, TMP_8;
+        ($e = ($f = ($g = ($h = $scope.get('Sem')).$AccordionTitle, $g.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $i, $j, TMP_9;
 
           self.$I($hash2(["class"], {"class": "dropdown icon"}));
-            return ($i = ($j = self).$B, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+            return ($i = ($j = self).$B, $i.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
 
-            return page['$[]']("headings")['$[]'](0)['$[]']("text")}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($j);}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $g).call($h, $hash2(["as", "className"], {"as": "A", "className": "item"}))).$on, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+            return page['$[]']("headings")['$[]'](0)['$[]']("text")}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j);}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $g).call($h, $hash2(["as", "className"], {"as": "A", "className": "item"}))).$on, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
           self.$params().$section_store().$set_current_page(page);
-            return self['$force_update!']();}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f, "click");
-          return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $i, $j, TMP_10;
+            return self['$force_update!']();}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($f, "click");
+          return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
 
-          return ($i = ($j = page['$[]']("headings").$drop(1)).$each, $i.$$p = (TMP_10 = function(heading){var self = TMP_10.$$s || this, $k, $l, TMP_11, $m, $n, TMP_12, $o;
+          return ($i = ($j = page['$[]']("headings").$drop(1)).$each, $i.$$p = (TMP_11 = function(heading){var self = TMP_11.$$s || this, $k, $l, TMP_12, $m, $n, TMP_13, $o;
 if (heading == null) heading = nil;
             if ((($k = ($rb_lt(heading['$[]']("level"), 4))) !== nil && $k != null && (!$k.$$is_boolean || $k == true))) {
-                return ($k = ($l = ($m = ($n = self).$A, $m.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+                return ($k = ($l = ($m = ($n = self).$A, $m.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
-                return heading['$[]']("text")}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $m).call($n, $hash2(["class"], {"class": "item " + ((function() {if ((($o = (heading['$[]']("level")['$=='](3))) !== nil && $o != null && (!$o.$$is_boolean || $o == true))) {
+                return heading['$[]']("text")}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $m).call($n, $hash2(["class"], {"class": "item " + ((function() {if ((($o = (heading['$[]']("level")['$=='](3))) !== nil && $o != null && (!$o.$$is_boolean || $o == true))) {
                   return "subitem"
                   } else {
                   return nil
-                }; return nil; })())}))).$on, $k.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, slug = nil;
+                }; return nil; })())}))).$on, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil;
 
                 slug = "" + (heading['$[]']("slug"));
                   document.getElementById(slug).scrollIntoView(true);;
                   self.$params().$section_store().$set_current_page(page);
-                  return self['$force_update!']();}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $k).call($l, "click")
+                  return self['$force_update!']();}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
                 } else {
                 return nil
-              }}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), $i).call($j)}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $e).call($g, $hash2(["className"], {"className": "menu"}));}, TMP_5.$$s = self, TMP_5.$$arity = 2, TMP_5), $c).call($d)}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b, $hash2(["fluid", "className"], {"fluid": true, "className": "large pointing secondary vertical following menu"}));
-    }, TMP_13.$$arity = 0), nil) && 'accordion';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
+              }}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $i).call($j)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $e).call($g, $hash2(["className"], {"className": "menu"}));}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $c).call($d)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $a).call($b, $hash2(["fluid", "className"], {"fluid": true, "className": "large pointing secondary vertical following menu"}));
+    }, TMP_14.$$arity = 0), nil) && 'accordion';
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
 /* Generated by Opal 0.10.5 */

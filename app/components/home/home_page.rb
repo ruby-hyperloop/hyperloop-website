@@ -4,6 +4,12 @@ class HomePage < Hyperloop::Router::Component
     SidebarStore.hide
   end
 
+  after_mount do
+    Element['.bm-overlay'].on(:click) {
+      SidebarStore.hide
+    }
+  end
+
 
   render do
 
@@ -12,9 +18,15 @@ class HomePage < Hyperloop::Router::Component
 
     # PageLayout(sidebar_component: sidebar, body_component: body, loaded: true)
 
-    Sem.SidebarPushable(id: 'example', className: 'index') do
-      SidebarMenu()      
-      main_content
+    DIV(id: 'example', class: 'index') do
+      
+      SidebarMenu()
+      
+
+      DIV(class: 'page-wrap') do      
+        main_content
+      end
+      
     end
 
   end
@@ -22,52 +34,12 @@ class HomePage < Hyperloop::Router::Component
 
   def main_content
 
-    Sem.SidebarPusher do
-
-
+  
       DIV(class: 'full height') do
 
-        DIV(class: 'following bar') do
-          DIV(class: 'ui page grid') do
-            DIV(class: 'column') do
-              DIV(class: 'ui logo shape') do
-                DIV(class: 'sides') do
-                  DIV(class: 'active learn side') do
-                    IMG(class: 'ui image', src: 'dist/images/hyperloop-logo.png')
-                    #Link('/docs', class: 'item') { 'DOCUMENTATION' }
+        AppMenu()
 
-                  end
-                  DIV(class: 'ui side') do
-                    IMG(class: 'ui image', src: 'images/logo.png')
-                  end
-                end
-              end
-              DIV(class: 'ui inverted right floated secondary menu') do
-                DIV(class: 'item') do
-                  #IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=semantic-org&repo=semantic-ui&type=watch&count=true', allowTransparency: 'true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
-                end
-                DIV(class: 'ui language floating dropdown link item', id: 'languages') do
-                  I(class: 'world icon')
-                  DIV(class: 'text') { 'English' }
-                  DIV(class: 'menu')
-                end
-              end
-              DIV(class: 'ui large inverted secondary network menu') do
-                A(class: 'view-ui item') do
-                  I(class: 'sidebar icon')
-                  " Menu\n        "
-                end.on(:click) {
-                  SidebarStore.toggle
-                }
-                A(href: '', 'data-site' => 'ui', class: 'additional item') { 'Docs' }
-                SPAN(class: 'additional item', 'data-site' => 'layout', 'data-content' => 'Coming Soon') { 'Themes' }
-                SPAN(class: 'additional item', 'data-site' => 'layout', 'data-content' => 'Coming Soon') { 'Layouts' }
-              end
-            end
-          end
-        end
-
-        DIV(class: 'masthead segment') do
+        DIV(class: 'masthead segment stopped') do
           DIV(class: 'ui page grid') do
             DIV(class: 'column') do
               DIV(class: 'introduction') do
@@ -113,6 +85,7 @@ class HomePage < Hyperloop::Router::Component
             end
           end
         end
+
       end
       
       AppFooter()
@@ -120,7 +93,7 @@ class HomePage < Hyperloop::Router::Component
 
 
 
-    end
+    
 
   end
 
