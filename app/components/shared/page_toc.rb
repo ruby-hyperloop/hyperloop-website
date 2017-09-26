@@ -35,9 +35,13 @@ class PageToc < Hyperloop::Component
           I(class: 'dropdown icon')
           B() { page[:headings][0][:text] }
         end.on(:click) do
+                    
+           Element['html, body'].animate({
+             scrollTop: 0
+           }, 500)
           params.section_store.set_current_page page
           force_update!
-
+          
         end
 
         

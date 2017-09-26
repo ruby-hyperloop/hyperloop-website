@@ -16587,9 +16587,12 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   function $rb_lt(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs < rhs : lhs['$<'](rhs);
   }
+  function $rb_minus(lhs, rhs) {
+    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
+  }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$top', '$offset', '$puts', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$top', '$offset', '$animate', '$-', '$A', '$==', '$drop', '$pages']);
   (function($base, $super) {
     function $ReactYahooSticky(){};
     var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
@@ -16651,7 +16654,7 @@ if (heading == null) heading = nil;
 
                 slug = "" + (heading['$[]']("slug"));
                   anchorchapter_position = $scope.get('Element')['$[]']("#" + (slug)).$offset().$top();
-                  self.$puts(anchorchapter_position);
+                  $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": $rb_minus(anchorchapter_position, 85)}), 500);
                   self.$params().$section_store().$set_current_page(page);
                   return self['$force_update!']();}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
                 } else {
