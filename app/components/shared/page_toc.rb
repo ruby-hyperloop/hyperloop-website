@@ -48,7 +48,11 @@ class PageToc < Hyperloop::Component
               A(class: "item #{'subitem' if (heading[:level]==3)}") { heading[:text] }
                 .on(:click) do
                   slug = "#{heading[:slug]}"
-                  `document.getElementById(#{slug}).scrollIntoView(true);`
+                  anchorchapter_position = Element["##{slug}"].offset().top
+                  Element['html, body'].animate({
+                                          scrollTop: anchorchapter_position-85
+                                        }, 500)
+                  #`document.getElementById(#{slug}).scrollIntoView(true);`
                   params.section_store.set_current_page page
                   force_update!
                 end

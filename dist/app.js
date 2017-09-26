@@ -16269,7 +16269,7 @@ if (header == null) header = nil;if (body == null) body = nil;
       heading['$[]=']("level", level);
       heading['$[]=']("slug", text.$downcase().$gsub(/[^\w]+/g, "-"));
       self.headings['$<<'](heading);
-      return "<h" + (level) + " class='doc_h" + (level) + "' id='" + (heading['$[]']("slug")) + "'>" + (text) + "</h" + (level) + ">";
+      return "<h" + (level) + " class='doc_h" + (level) + " chapteranchor' id='" + (heading['$[]']("slug")) + "'>" + (text) + "</h" + (level) + ">";
     }, TMP_16.$$arity = 2), nil) && 'on_heading';
   })($scope.base, null)
 };
@@ -16589,7 +16589,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$top', '$offset', '$puts', '$A', '$==', '$drop', '$pages']);
   (function($base, $super) {
     function $ReactYahooSticky(){};
     var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
@@ -16647,10 +16647,11 @@ if (heading == null) heading = nil;
                   return "subitem"
                   } else {
                   return nil
-                }; return nil; })())}))).$on, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil;
+                }; return nil; })())}))).$on, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil, anchorchapter_position = nil;
 
                 slug = "" + (heading['$[]']("slug"));
-                  document.getElementById(slug).scrollIntoView(true);;
+                  anchorchapter_position = $scope.get('Element')['$[]']("#" + (slug)).$offset().$top();
+                  self.$puts(anchorchapter_position);
                   self.$params().$section_store().$set_current_page(page);
                   return self['$force_update!']();}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
                 } else {
