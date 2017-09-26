@@ -3,11 +3,12 @@ class DocsPage < Hyperloop::Router::Component
   before_mount do
     SidebarStore.hide
   end
-  
+
   render do
 
-
-    sidebar = DocsSidebar(section_store: SiteStore.sections[:docs]).as_node
+    sidebar = DocsSidebar(section_store: SiteStore.sections[:docs],
+                          history: history,
+                          section: 'docs').as_node
     body = DocsBody(section_store: SiteStore.sections[:docs]).as_node
     title = "Hyperloop Documentation"
 
