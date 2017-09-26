@@ -16618,7 +16618,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
               return self.$accordion()
               } else {
               return nil
-            }}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["enable"], {"enable": true}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+            }}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["enable", "top"], {"enable": true, "top": 50}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
     return (Opal.defn(self, '$accordion', TMP_14 = function $$accordion() {
       var $a, $b, TMP_5, self = this;
