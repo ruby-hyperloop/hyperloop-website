@@ -24,9 +24,14 @@ class PageToc < Hyperloop::Component
           I(class: 'dropdown icon')
           B() { page[:headings][0][:text] }
         end.on(:click) do
-          params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
+
+           Element['html, body'].animate({
+             scrollTop: 0
+           }, 500)
           params.section_store.set_current_page page
-          # force_update!
+          params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}"
+          force_update!
+
         end
 
         Sem.AccordionContent(className: 'menu') do
@@ -35,8 +40,12 @@ class PageToc < Hyperloop::Component
               A(class: "item #{'subitem' if (heading[:level]==3)}") { heading[:text] }
                 .on(:click) do
                   slug = "#{heading[:slug]}"
+                  anchorchapter_position = Element["##{slug}"].offset().top
+                  Element['html, body'].animate({
+                                          scrollTop: anchorchapter_position-85
+                                        }, 500)
                   params.history.push "/#{params.section}/#{page[:repo]}/#{page[:file]}/#{slug}"
-                  `document.getElementById(#{slug}).scrollIntoView(true);`
+                  #`document.getElementById(#{slug}).scrollIntoView(true);`
                   params.section_store.set_current_page page
                   # force_update!
                 end

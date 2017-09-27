@@ -588,7 +588,7 @@ body#example.hide {
       Footer
 -----------------*/
 
-#example .pusher > .footer {
+#example .footer {
   margin: 0em;
   border-radius: 0em;
   padding: 5em 0em 6em;
@@ -1327,7 +1327,7 @@ body.progress.animated .ui.progress .bar {
       Definition Container
 *******************************/
 
-#example .pusher > .footer {
+#example .footer {
   clear: both;
 }
 
@@ -1429,7 +1429,7 @@ body.progress.animated .ui.progress .bar {
   #example .solid, #example .stripe {
     padding: 4em 0em;
   }
-  #example .pusher > .footer {
+  #example .footer {
     padding: 2em 0em;
   }
   #example .container {
@@ -1754,7 +1754,7 @@ body.progress.animated .ui.progress .bar {
 .bm-item-list a.header {
   background-color: white;
   text-align: center;
-  padding: 2em 0 2em 0;
+  padding: 1em 0 1em 0;
 }
 
 .bm-item-list a.header:hover {
@@ -1762,7 +1762,7 @@ body.progress.animated .ui.progress .bar {
 }
 
 .bm-item-list img {
-  width: 50%;
+  width: 60%;
 }
 
 .bm-item-list img:hover {

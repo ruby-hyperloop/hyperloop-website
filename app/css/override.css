@@ -29,11 +29,10 @@
   overflow-y: scroll !important;
 }
 
-/*.menu ul {
-  .docscontainer {
-    margin-top: 50px;
-  }
-}*/
+.chapteranchor {
+  padding-top: 85px;
+  margin-top: -85px;
+}
 
 
 .tocmenu .menu a {
@@ -58,51 +57,3 @@ flex-grow: 1;
   flex: 1 100%;
 }
 
-/*.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding:0;
-}
-
-
-.ui.vertical.menu .item>.label {
-  float: left !important;
-}
-
-.menu .toc_h2 {
-  font-weight: bold;
-  font-size: 16px;
-  padding: 15px 0 7px 0;
-}
-
-.menu ul+.toc_h2{
-  padding-top: 0;
-}
-
-.menu .toc_h3 {
-  font-size: 14px;
-  padding: 0 0 5px 10px;
-}
-
-.menu .toc_h4 {
-  font-size: 12px;
-  padding-left: 20px;
-}
-
-.menu ul > li.toc_h4:last-child {
-  padding-bottom: 5px;
-}
-
-.menu a {
-  cursor: pointer;
-  color: black !important;
-}
-
-.menu a:hover {
-  color: #e81176 !important;
-}
-
-.accordion div.title span {
-  color: #e81176;
-}
-*/
