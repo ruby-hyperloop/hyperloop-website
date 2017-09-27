@@ -37,14 +37,14 @@ class SiteSearch < Hyperloop::Component
       H4 { `obj.text` }
       EM { `obj.friendly_doc_name` }
     end.to_n
-    # SearchResult().to_n
+    #SearchResult().to_n
   end
 end
 
 # class SearchResult < Hyperloop::Component
 #   param :friendly_doc_name
 #   param :heading_text
-#
+
 #   render(DIV) do
 #     H4 { params.heading_text }
 #     EM { params.friendly_doc_name }

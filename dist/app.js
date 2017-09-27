@@ -16353,7 +16353,7 @@ Opal.modules["components/shared/app_footer"] = function(Opal) {
 Opal.modules["components/shared/app_menu"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$DIV', '$IMG', '$IFRAME', '$I', '$on', '$toggle', '$A']);
+  Opal.add_stubs(['$render', '$DIV', '$IMG', '$IFRAME', '$I', '$on', '$toggle', '$A', '$MenuItem', '$SiteSearch']);
   return (function($base, $super) {
     function $AppMenu(){};
     var self = $AppMenu = $klass($base, $super, 'AppMenu', $AppMenu);
@@ -16374,7 +16374,7 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
 
               return ($m = ($n = self).$DIV, $m.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-                return self.$IMG($hash2(["class", "src", "width"], {"class": "ui image", "src": "dist/images/hyperloop-logo-small-pink.png", "width": "100%"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $m).call($n, $hash2(["class"], {"class": "active learn side"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $k).call($l, $hash2(["class"], {"class": "sides"}))}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j, $hash2(["class"], {"class": "ui logo shape"}));
+                return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "dist/images/hyperloop-logo-small-pink.png"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $m).call($n, $hash2(["class"], {"class": "active learn side"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $k).call($l, $hash2(["class"], {"class": "sides"}))}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j, $hash2(["class"], {"class": "ui logo shape"}));
             ($i = ($k = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $l, $m, TMP_9, $n, TMP_10;
 
             ($l = ($m = self).$DIV, $l.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
@@ -16387,7 +16387,7 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
 
                 return "English"}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "text"}));
                 return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $l).call($n, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($k, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
-            return ($i = ($l = self).$DIV, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $m, $n, TMP_13, $o, $p, TMP_14, TMP_15, $q, TMP_16;
+            return ($i = ($l = self).$DIV, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $m, $n, TMP_13, $o, $p, TMP_14, TMP_15, $q, TMP_16, $r, TMP_17;
 
             ($m = ($n = ($o = ($p = self).$A, $o.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
@@ -16398,9 +16398,12 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
               ($m = ($o = self).$A, $m.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
 
               return "Help"}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $m).call($o, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
-              return ($m = ($q = self).$A, $m.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
+              ($m = ($q = self).$A, $m.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
 
-              return "Showcase"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $m).call($q, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($l, $hash2(["class"], {"class": "ui large secondary network menu"}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "following bar fixed"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+              return "Showcase"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $m).call($q, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
+              return ($m = ($r = $scope.get('Sem')).$MenuItem, $m.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this;
+
+              return self.$SiteSearch()}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $m).call($r);}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($l, $hash2(["class"], {"class": "ui large secondary network menu"}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "following bar fixed"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16592,7 +16595,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$[]', '$AccordionContent', '$each', '$<', '$top', '$offset', '$animate', '$-', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$animate', '$[]', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$AccordionContent', '$each', '$<', '$top', '$offset', '$-', '$A', '$==', '$drop', '$pages']);
   (function($base, $super) {
     function $ReactYahooSticky(){};
     var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
@@ -16637,7 +16640,8 @@ if (page == null) page = nil;if (index == null) index = nil;
 
             return page['$[]']("headings")['$[]'](0)['$[]']("text")}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j);}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $g).call($h, $hash2(["as", "className"], {"as": "A", "className": "item"}))).$on, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
-          self.$params().$section_store().$set_current_page(page);
+          $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": 0}), "slow");
+            self.$params().$section_store().$set_current_page(page);
             return self['$force_update!']();}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($f, "click");
           return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
 

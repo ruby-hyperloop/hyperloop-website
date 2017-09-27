@@ -8,7 +8,7 @@ class AppMenu < Hyperloop::Router::Component
           DIV(class: 'ui logo shape') do
             DIV(class: 'sides') do
               DIV(class: 'active learn side') do
-                IMG(class: 'ui image', src: 'dist/images/hyperloop-logo-small-pink.png', width: '100%')
+                IMG(class: 'ui image', src: 'dist/images/hyperloop-logo-small-pink.png')
                 #Link('/docs', class: 'item') { 'DOCUMENTATION' }
 
               end
@@ -34,6 +34,10 @@ class AppMenu < Hyperloop::Router::Component
             }
             A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Help' }
             A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Showcase' }  
+          
+            Sem.MenuItem {
+              SiteSearch()
+            }
           end
         end
       end

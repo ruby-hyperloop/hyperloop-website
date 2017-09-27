@@ -38,7 +38,7 @@ class PageToc < Hyperloop::Component
                     
            Element['html, body'].animate({
              scrollTop: 0
-           }, 500)
+           }, :slow)
           params.section_store.set_current_page page
           force_update!
           
