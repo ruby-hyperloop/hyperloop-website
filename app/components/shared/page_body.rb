@@ -11,7 +11,7 @@ class PageBody < Hyperloop::Component
       edit_button if params.section_store.current_page[:allow_edit]
       Sem.Divider(hidden: true)
       DIV(dangerously_set_inner_HTML: { __html: params.section_store.current_page[:html] })
-      # convert_runable_code_blocks
+      convert_runable_code_blocks
     end
   end
 
