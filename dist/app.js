@@ -15726,12 +15726,12 @@ Opal.modules["components/router/app_router"] = function(Opal) {
       return ($e = ($f = self).$Switch, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
 
         self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePage')}));
-          self.$Route("/start", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('StartPage')}));
+          self.$Route("/start", $hash2(["exact", "mounts"], {"exact": false, "mounts": $scope.get('StartPage')}));
           self.$Route("/installation", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('InstallationPage')}));
           self.$Route("/tutorials", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('TutorialsPage')}));
           self.$Route("/gems", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('GemsPage')}));
           self.$Route("/tools", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('ToolsPage')}));
-          return self.$Route("/docs", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('DocsPage')}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+          return self.$Route("/docs", $hash2(["exact", "mounts"], {"exact": false, "mounts": $scope.get('DocsPage')}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Router')))
 };
 
@@ -15739,7 +15739,7 @@ Opal.modules["components/router/app_router"] = function(Opal) {
 Opal.modules["components/docs/docs_sidebar"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$render', '$PageToc', '$section_store', '$params']);
+  Opal.add_stubs(['$param', '$render', '$PageToc', '$section_store', '$params', '$history', '$section']);
   return (function($base, $super) {
     function $DocsSidebar(){};
     var self = $DocsSidebar = $klass($base, $super, 'DocsSidebar', $DocsSidebar);
@@ -15748,9 +15748,13 @@ Opal.modules["components/docs/docs_sidebar"] = function(Opal) {
 
     self.$param("section_store");
 
+    self.$param("history");
+
+    self.$param("section");
+
     return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
-    return self.$PageToc($hash2(["section_store"], {"section_store": self.$params().$section_store()}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+    return self.$PageToc($hash2(["section_store", "history", "section"], {"section_store": self.$params().$section_store(), "history": self.$params().$history(), "section": self.$params().$section()}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
@@ -15777,7 +15781,7 @@ Opal.modules["components/docs/docs_body"] = function(Opal) {
 Opal.modules["components/docs/docs_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$before_mount', '$hide', '$render', '$as_node', '$DocsSidebar', '$[]', '$sections', '$DocsBody', '$PageLayout', '$loaded?']);
+  Opal.add_stubs(['$before_mount', '$hide', '$render', '$puts', '$url', '$match', '$as_node', '$DocsSidebar', '$[]', '$sections', '$history', '$DocsBody', '$Route', '$PageLayout', '$loaded?']);
   return (function($base, $super) {
     function $DocsPage(){};
     var self = $DocsPage = $klass($base, $super, 'DocsPage', $DocsPage);
@@ -15788,12 +15792,22 @@ Opal.modules["components/docs/docs_page"] = function(Opal) {
 
     return $scope.get('SidebarStore').$hide()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, sidebar = nil, body = nil, title = nil;
+    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3, $f, TMP_4, $g, TMP_5, sidebar = nil, body = nil, title = nil;
 
-    sidebar = self.$DocsSidebar($hash2(["section_store"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("docs")})).$as_node();
+    self.$puts(self.$match().$url());
+      sidebar = self.$DocsSidebar($hash2(["section_store", "history", "section"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("docs"), "history": self.$history(), "section": "docs"})).$as_node();
       body = self.$DocsBody($hash2(["section_store"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("docs")})).$as_node();
       title = "Hyperloop Documentation";
-      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "loaded"], {"sidebar_component": sidebar, "body_component": body, "page_title": title, "loaded": $scope.get('SiteStore').$sections()['$[]']("docs")['$loaded?']()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+      ($d = ($e = self).$Route, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+      return self.$puts("we have a repo")}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, "/docs/:repo", $hash2(["exact"], {"exact": true}));
+      ($d = ($f = self).$Route, $d.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+
+      return self.$puts("we have a repo and file")}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $d).call($f, "/docs/:repo/:file", $hash2(["exact"], {"exact": true}));
+      ($d = ($g = self).$Route, $d.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+
+      return self.$puts("we have a repo and file and slug")}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $d).call($g, "/docs/:repo/:file/:slug", $hash2(["exact"], {"exact": true}));
+      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "loaded"], {"sidebar_component": sidebar, "body_component": body, "page_title": title, "loaded": $scope.get('SiteStore').$sections()['$[]']("docs")['$loaded?']()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -16088,77 +16102,9 @@ if (e == null) e = nil;if (data == null) data = nil;
 
 /* Generated by Opal 0.10.5 */
 Opal.modules["components/shared/page_toc.old"] = function(Opal) {
-  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice;
 
-  Opal.add_stubs(['$param', '$render', '$DIV', '$Container', '$Menu', '$loaded?', '$section_store', '$params', '$accordion', '$each_with_index', '$<<', '$as_node', '$toc_heading', '$[]', '$panel', '$to_s', '$pages', '$Accordion', '$to_n', '$UL', '$each', '$toc_item', '$drop', '$on', '$set_current_page', '$force_update!', '$SPAN', '$LI', '$A']);
-  return (function($base, $super) {
-    function $PageToc(){};
-    var self = $PageToc = $klass($base, $super, 'PageToc', $PageToc);
-
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_7, TMP_10, TMP_13, TMP_17;
-
-    self.$param("section_store");
-
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
-
-    return ($c = ($d = self).$DIV, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
-
-      return ($e = ($f = $scope.get('Sem')).$Container, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
-
-        return ($g = ($h = $scope.get('Sem')).$Menu, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i, $j, TMP_5;
-
-          if ((($i = self.$params().$section_store()['$loaded?']()) !== nil && $i != null && (!$i.$$is_boolean || $i == true))) {
-              return ($i = ($j = self).$DIV, $i.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
-
-              return self.$accordion()}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j, $hash2(["class"], {"class": "accordian-div"}))
-              } else {
-              return nil
-            }}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["fixed", "vertical", "size", "inverted", "compact"], {"fixed": "left", "vertical": true, "size": "huge", "inverted": false, "compact": true}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "tocmenu"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
-
-    Opal.defn(self, '$accordion', TMP_7 = function $$accordion() {
-      var $a, $b, TMP_6, self = this, panels = nil;
-
-      panels = [];
-      ($a = ($b = self.$params().$section_store().$pages()).$each_with_index, $a.$$p = (TMP_6 = function(page, index){var self = TMP_6.$$s || this;
-if (page == null) page = nil;if (index == null) index = nil;
-      return panels['$<<']($hash2(["title", "content", "key"], {"title": self.$toc_heading(page, page['$[]']("headings")['$[]'](0)).$as_node(), "content": self.$panel(page).$as_node(), "key": index.$to_s()}))}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $a).call($b);
-      return $scope.get('Sem').$Accordion($hash2(["panels", "styled", "fluid"], {"panels": panels.$to_n(), "styled": false, "fluid": false}));
-    }, TMP_7.$$arity = 0);
-
-    Opal.defn(self, '$panel', TMP_10 = function $$panel(page) {
-      var $a, $b, TMP_8, self = this;
-
-      return ($a = ($b = self).$UL, $a.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $c, $d, TMP_9;
-
-      return ($c = ($d = page['$[]']("headings").$drop(1)).$each, $c.$$p = (TMP_9 = function(heading){var self = TMP_9.$$s || this;
-if (heading == null) heading = nil;
-        return self.$toc_item(page, heading)}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9), $c).call($d)}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $a).call($b);
-    }, TMP_10.$$arity = 1);
-
-    Opal.defn(self, '$toc_heading', TMP_13 = function $$toc_heading(page, heading) {
-      var $a, $b, TMP_11, $c, $d, TMP_12, self = this;
-
-      return ($a = ($b = ($c = ($d = self).$SPAN, $c.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
-
-      return heading['$[]']("text")}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $c).call($d, $hash2(["class"], {"class": "header"}))).$on, $a.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
-
-      self.$params().$section_store().$set_current_page(page);
-        return self['$force_update!']();}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $a).call($b, "click");
-    }, TMP_13.$$arity = 2);
-
-    return (Opal.defn(self, '$toc_item', TMP_17 = function $$toc_item(page, heading) {
-      var $a, $b, TMP_14, self = this;
-
-      return ($a = ($b = self).$LI, $a.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this, $c, $d, TMP_15, $e, $f, TMP_16;
-
-      return ($c = ($d = ($e = ($f = self).$A, $e.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
-
-        return "" + (heading['$[]']("text"))}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $e).call($f)).$on, $c.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
-
-        self.$params().$section_store().$set_current_page(page);
-          return self['$force_update!']();}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $c).call($d, "click")}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $a).call($b, $hash2(["class"], {"class": "toc_h" + (heading['$[]']("level"))}));
-    }, TMP_17.$$arity = 2), nil) && 'toc_item';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
+  return nil
 };
 
 /* Generated by Opal 0.10.5 */
@@ -16595,7 +16541,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$animate', '$[]', '$set_current_page', '$force_update!', '$AccordionTitle', '$I', '$B', '$AccordionContent', '$each', '$<', '$top', '$offset', '$-', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$section_store', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$animate', '$[]', '$set_current_page', '$push', '$history', '$section', '$force_update!', '$AccordionTitle', '$I', '$B', '$AccordionContent', '$each', '$<', '$top', '$offset', '$-', '$A', '$==', '$drop', '$pages']);
   (function($base, $super) {
     function $ReactYahooSticky(){};
     var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
@@ -16611,6 +16557,10 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
     var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_14;
 
     self.$param("section_store");
+
+    self.$param("history");
+
+    self.$param("section");
 
     ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
 
@@ -16642,6 +16592,7 @@ if (page == null) page = nil;if (index == null) index = nil;
 
           $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": 0}), "slow");
             self.$params().$section_store().$set_current_page(page);
+            self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("repo")) + "/" + (page['$[]']("file")));
             return self['$force_update!']();}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($f, "click");
           return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
 
@@ -16659,8 +16610,8 @@ if (heading == null) heading = nil;
                 slug = "" + (heading['$[]']("slug"));
                   anchorchapter_position = $scope.get('Element')['$[]']("#" + (slug)).$offset().$top();
                   $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": $rb_minus(anchorchapter_position, 85)}), 500);
-                  self.$params().$section_store().$set_current_page(page);
-                  return self['$force_update!']();}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
+                  self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("repo")) + "/" + (page['$[]']("file")) + "/" + (slug));
+                  return self.$params().$section_store().$set_current_page(page);}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
                 } else {
                 return nil
               }}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $i).call($j)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $e).call($g, $hash2(["className"], {"className": "menu"}));}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $c).call($d)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $a).call($b, $hash2(["fluid", "className"], {"fluid": true, "className": "large pointing secondary vertical following menu"}));
@@ -16811,7 +16762,7 @@ Opal.modules["components/start/start_sidebar"] = function(Opal) {
 Opal.modules["components/start/start_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$as_node', '$StartSidebar', '$[]', '$sections', '$StartBody', '$PageLayout', '$loaded?']);
+  Opal.add_stubs(['$render', '$as_node', '$DocsSidebar', '$[]', '$sections', '$history', '$StartBody', '$PageLayout', '$loaded?']);
   return (function($base, $super) {
     function $StartPage(){};
     var self = $StartPage = $klass($base, $super, 'StartPage', $StartPage);
@@ -16820,7 +16771,7 @@ Opal.modules["components/start/start_page"] = function(Opal) {
 
     return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, sidebar = nil, body = nil, title = nil;
 
-    sidebar = self.$StartSidebar($hash2(["section_store"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("start")})).$as_node();
+    sidebar = self.$DocsSidebar($hash2(["section_store", "history", "section"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("start"), "history": self.$history(), "section": "start"})).$as_node();
       body = self.$StartBody($hash2(["section_store"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("start")})).$as_node();
       title = "Get started with Hyperloop";
       return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "loaded"], {"sidebar_component": sidebar, "body_component": body, "page_title": title, "loaded": $scope.get('SiteStore').$sections()['$[]']("start")['$loaded?']()}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'))
