@@ -8,6 +8,6 @@ class StartPage < Hyperloop::Router::Component
     body = StartBody(section_store: SiteStore.sections[:start]).as_node
     title = "Get started with Hyperloop"
 
-    PageLayout(sidebar_component: sidebar, body_component: body, page_title: title, loaded: SiteStore.sections[:start].loaded?)
+    PageLayout(sidebar_component: sidebar, body_component: body, page_title: title, section: 'start', loaded: SiteStore.sections[:start].loaded?)
   end
 end

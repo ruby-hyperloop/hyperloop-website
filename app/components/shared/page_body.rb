@@ -1,16 +1,16 @@
 class PageBody < Hyperloop::Component
 
-  param :section_store
+  param :section
 
   before_mount do
     mutate.needs_refresh false
   end
 
   render(DIV) do
-    if params.section_store.loaded?
-      edit_button if params.section_store.current_page[:allow_edit]
+    if SiteStore.sections[params.section].loaded?
+      edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
       Sem.Divider(hidden: true)
-      DIV(dangerously_set_inner_HTML: { __html: params.section_store.current_page[:html] })
+      DIV(dangerously_set_inner_HTML: { __html: SiteStore.sections[params.section].current_page[:html] })
       convert_runable_code_blocks
     end
   end
@@ -35,7 +35,7 @@ class PageBody < Hyperloop::Component
 
           }.on(:click) do
             mutate.needs_refresh true
-            `window.open(#{params.section_store.current_page[:edit_url]}, "_blank");`
+            `window.open(#{SiteStore.sections[params.section].current_page[:edit_url]}, "_blank");`
           end
         end
       }

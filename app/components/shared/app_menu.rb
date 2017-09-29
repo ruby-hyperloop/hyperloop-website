@@ -1,5 +1,7 @@
 class AppMenu < Hyperloop::Router::Component
 
+  param :section
+
   render do
 
     DIV(class: 'following bar fixed') do
@@ -35,9 +37,12 @@ class AppMenu < Hyperloop::Router::Component
             A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Help' }
             A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Showcase' }  
           
-            Sem.MenuItem {
-              SiteSearch()
-            }
+            if (params.section != 'home')
+              Sem.MenuItem {
+                SiteSearch(section: params.section)
+              }
+            end
+
           end
         end
       end

@@ -10,7 +10,8 @@ class AppRouter < Hyperloop::Router
         Route('/tutorials', exact: true, mounts: TutorialsPage)
         Route('/gems', exact: true, mounts: GemsPage)
         Route('/tools', exact: true, mounts: ToolsPage)
-        Route('/docs', exact: false, mounts: DocsPage)
+        Route('/docs', exact: false) { |m, l, h| DocsPage(match: m, location: l, history: h) }
+        
       end
     }
   end

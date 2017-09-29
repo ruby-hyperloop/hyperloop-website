@@ -1,3 +1,5 @@
+
+
 class SectionStore < Hyperloop::Store
 
   state loaded: false
@@ -61,6 +63,7 @@ class SectionStore < Hyperloop::Store
         page[:friendly_doc_name] = converted.headings[0][:text]
         page[:code_blocks] = converted.code_blocks
         page[:html] = converted.html
+        page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
         page[:edit_url] = edit_url page
       else
         alert "Unable to get #{raw_url(page)} from Github"

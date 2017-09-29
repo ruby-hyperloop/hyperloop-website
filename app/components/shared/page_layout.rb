@@ -3,6 +3,9 @@ class PageLayout < Hyperloop::Router::Component
   param :body_component
   param :page_title
   param :loaded
+  param :section
+
+  
 
   before_mount do
     SidebarStore.hide
@@ -12,25 +15,18 @@ class PageLayout < Hyperloop::Router::Component
     Element['.bm-overlay'].on(:click) {
       SidebarStore.hide
     }
+
+    # Element['.ui.page.modals'].on(:click) {
+    #   mutate.modalvisibility false
+    # }
   end
 
-  # after_mount do
-  #   `$('#menu').sidebar({
-  #     transition: 'overlay', 
-  #     mobileTransition: 'uncover',
-  #     context: $('#example')
-  #   }).sidebar('attach events', '.launch.button')`
-  # end
+  
 
   render do
 
-    # Sem.Dimmer(active: (params.loaded ? false : true), inverted: true) {
-    #   Sem.Loader(inverted: true, size: :large, content: 'Loading dynamic content...')
-    # }
-
     DIV(id: 'example', class: 'index') do
-        #top_menu
-        #sidebar_toggle
+       
         SidebarMenu()  
         
         DIV(class: 'page-wrap') do
@@ -42,53 +38,14 @@ class PageLayout < Hyperloop::Router::Component
   end
 
 
-  # def top_menu
-
-  #   DIV(class: 'ui fixed inverted main menu') do
-  #     DIV(class: 'container') do
-  #       A(class: 'launch item') do
-  #         I(class: 'content icon')
-  #       end
-  #       DIV(class: 'title item') do
-  #         # B() { 'Developing:' }
-  #         # " Customization Guide\n      "
-  #       end
-        
-  #       DIV(class: 'right menu') do
-  #         DIV(class: 'vertically fitted borderless item') do
-  #           IFRAME(class: 'github', src: 'http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyperloop&type=watch&count=true', allowTransparency: 'true', frameBorder: '0', scrolling: '0', width: '100', height: '20')
-  #         end
-  #         A(class: 'popup icon github item', 'data-content' => 'View project on GitHub', href: 'https://github.com/ruby-hyperloop/hyperloop') do
-  #           I(class: 'alternate github icon')
-  #         end
-  #       end
-  #     end
-  #   end
-
-  # end
-
-
-
-  # def sidebar_toggle
-
-  #   DIV(class: 'ui black big launch right attached fixed button') do
-  #     I(class: 'content icon')
-  #     SPAN(class: 'text') { 'Menu' }
-  #   end.on(:click) {
-  #     SidebarStore.toggle
-  #   }
-
-  # end
-
-
-
+  
   def main_content
 
-    
+      
 
       DIV(class: 'full height') do
 
-        AppMenu()
+        AppMenu(section: params.section)
         
         DIV(class: 'header segment') do
           DIV(class: 'container') do
@@ -109,6 +66,12 @@ class PageLayout < Hyperloop::Router::Component
       end
       
       AppFooter()
+
+      SearchResultModal()
+
+      
+
+      
 
     
 

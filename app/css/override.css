@@ -2,6 +2,11 @@
 .hyperlooppink { color: #e81176;}
 .hyperloopgreen { color: #149c8e;}
 
+
+.ui.category.search .results {
+    width: 50rem !important;
+}
+
 .accordian-div {
   
 }

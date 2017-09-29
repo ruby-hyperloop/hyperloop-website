@@ -1,9 +1,9 @@
 
-class DocsBody < Hyperloop::Component
-  param :section_store
+# class DocsBody < Hyperloop::Component
+  
 
-  render do
-    PageBody(section_store: params.section_store)
-  end
+#   render do
+#     PageBody(section; 'docs')
+#   end
 
-end
+# end

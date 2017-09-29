@@ -1,18 +1,12 @@
-class DocsSidebar < Hyperloop::Component
-  param :section_store
-  param :history
-  param :section
+# class DocsSidebar < Hyperloop::Component
+#   #param :section_store
+#   param :history
+#   param :location
 
-  render do
-    # Sem.Segment(basic: true) {
-    #   Sem.Header(as: 'h3') { "COMPS Documentation" }
-    # }
-    PageToc(section_store: params.section_store, history: params.history, section: params.section)
+#   render do
 
+#     PageToc(history: params.history, location: params.location, section: 'docs')
 
+#   end
 
-
-
-  end
-
-end
+# end

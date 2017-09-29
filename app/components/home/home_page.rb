@@ -37,7 +37,7 @@ class HomePage < Hyperloop::Router::Component
   
       DIV(class: 'full height') do
 
-        AppMenu()
+        AppMenu(section: 'home')
 
         DIV(class: 'masthead segment stopped') do
           DIV(class: 'ui page grid') do
