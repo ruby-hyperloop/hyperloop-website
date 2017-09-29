@@ -1,6 +1,7 @@
 ReactDOM = require('react-dom');
 React = require('react');
-createReactClass = require('create-react-class');
+// createReactClass = require('create-react-class');
+React.createClass = require('create-react-class');
 
 ReactRouter = require('react-router');
 ReactRouterDOM = require('react-router-dom');
