@@ -9,7 +9,7 @@ module Rack
       status_code, headers, body = app.call(env)
 
       if status_code == 404
-        [404, { "Content-Type" => "text/html" }, [html_body]]
+        [301, { "Content-Type" => "text/html" }, [html_body]]
       else
         [status_code, headers, body]
       end
