@@ -5,7 +5,7 @@ class SearchResultModalStore < Hyperloop::Store
 
     def hide
       mutate.visible false
-      SearchEngineStore.mutate.inputvaluetoosmall ""
+      
     end
 
     def show

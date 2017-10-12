@@ -11,6 +11,11 @@
     <%= javascript_include_tag 'opal.js'%>
     <script src="dist/bundle.js"></script>
 
+    
+      <script src="dist/lunr.js"></script>
+      <script src="dist/lunar_search_helpers.js"></script>
+
+
 
     <!-- <script src="dist/docs.js"></script> -->
 
@@ -46,8 +51,45 @@
 
   <body>
 
+    <script type="text/javascript">
+
+        
+
+
+
+
+
+ $(document).ready(function() {
+    //alert (getDatas());
+//     var data = AllWebsiteDatas;
+//     var searchquery = "library";
+//     var searchresults = Searchquery(Lunrindex(data), data, searchquery);
+    
+//     $.each(searchresults, function(i,result) {
+//         alert(result.text);  
+//     }); 
+ });
+
+
+
+    </script>
+
+
+    <script type="text/ruby">
+
+    Document.ready? do
+           
+       #@globalIndex = `AllWebsiteDatas`
+       
+
+       #puts rubyobj[0][:text]
+    end
+
+    </script>
+    
+
 
     <div id="hyperloopsite"></div>
-    <!-- <script src="dist/home.js"></script> -->
+    
   </body>
 </html>

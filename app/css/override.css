@@ -2,6 +2,15 @@
 .hyperlooppink { color: #e81176;}
 .hyperloopgreen { color: #149c8e;}
 
+a {
+  color: #e81176 !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #149c8e !important;
+  cursor: pointer;
+}
 
 .ui.category.search .results {
     width: 50rem !important;
@@ -28,6 +37,9 @@
   background-color: blue;
 }
 
+.searchresultcontent {
+  min-height: 40vh;
+}
 
 
 .tocmenu .ui.menu{

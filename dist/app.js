@@ -15710,30 +15710,47 @@ if (e == null) e = nil;
 Opal.modules["components/router/app_router"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$history', '$route', '$DIV', '$Switch', '$Route', '$DocsPage']);
+  Opal.add_stubs(['$history', '$before_mount', '$push', '$route', '$DIV', '$Switch', '$Route', '$StartPage', '$DocsPage', '$SearchResultPage']);
   return (function($base, $super) {
     function $AppRouter(){};
     var self = $AppRouter = $klass($base, $super, 'AppRouter', $AppRouter);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2;
 
     self.$history("browser");
 
-    return ($a = ($b = self).$route, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, redirect = nil, pathname = nil, hash = nil;
 
-    return ($c = ($d = self).$DIV, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
+    url = new URL(window.location.href);
+      redirect = url.searchParams.get('redirect');
+      if (redirect !== false && redirect !== nil && redirect != null) {
+        pathname = url.searchParams.get('pathname');
+        hash = url.searchParams.get('hash');
+        return self.$history().$push("" + (pathname) + "#" + (hash));
+        } else {
+        return nil
+      };}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-      return ($e = ($f = self).$Switch, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
+    return ($a = ($c = self).$route, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
+
+    return ($d = ($e = self).$DIV, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $f, $g, TMP_4;
+
+      return ($f = ($g = self).$Switch, $f.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5, $j, TMP_6, $k, TMP_7;
 
         self.$Route("/", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('HomePage')}));
-          self.$Route("/start", $hash2(["exact", "mounts"], {"exact": false, "mounts": $scope.get('StartPage')}));
+          ($h = ($i = self).$Route, $h.$$p = (TMP_5 = function(m, l, h){var self = TMP_5.$$s || this;
+if (m == null) m = nil;if (l == null) l = nil;if (h == null) h = nil;
+          return self.$StartPage($hash2(["match", "location", "history"], {"match": m, "location": l, "history": h}))}, TMP_5.$$s = self, TMP_5.$$arity = 3, TMP_5), $h).call($i, "/start", $hash2(["exact"], {"exact": false}));
           self.$Route("/installation", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('InstallationPage')}));
           self.$Route("/tutorials", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('TutorialsPage')}));
           self.$Route("/gems", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('GemsPage')}));
           self.$Route("/tools", $hash2(["exact", "mounts"], {"exact": true, "mounts": $scope.get('ToolsPage')}));
-          return ($g = ($h = self).$Route, $g.$$p = (TMP_4 = function(m, l, h){var self = TMP_4.$$s || this;
+          ($h = ($j = self).$Route, $h.$$p = (TMP_6 = function(m, l, h){var self = TMP_6.$$s || this;
 if (m == null) m = nil;if (l == null) l = nil;if (h == null) h = nil;
-          return self.$DocsPage($hash2(["match", "location", "history"], {"match": m, "location": l, "history": h}))}, TMP_4.$$s = self, TMP_4.$$arity = 3, TMP_4), $g).call($h, "/docs", $hash2(["exact"], {"exact": false}));}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+          return self.$DocsPage($hash2(["match", "location", "history"], {"match": m, "location": l, "history": h}))}, TMP_6.$$s = self, TMP_6.$$arity = 3, TMP_6), $h).call($j, "/docs", $hash2(["exact"], {"exact": false}));
+          return ($h = ($k = self).$Route, $h.$$p = (TMP_7 = function(m, l, h){var self = TMP_7.$$s || this;
+if (m == null) m = nil;if (l == null) l = nil;if (h == null) h = nil;
+          return self.$SearchResultPage($hash2(["match", "location", "history"], {"match": m, "location": l, "history": h}))}, TMP_7.$$s = self, TMP_7.$$arity = 3, TMP_7), $h).call($k, "/searchresult", $hash2(["exact"], {"exact": false}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $f).call($g)}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e)}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Router')))
 };
 
@@ -15755,7 +15772,7 @@ Opal.modules["components/docs/docs_body"] = function(Opal) {
 Opal.modules["components/docs/docs_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$before_mount', '$hide', '$render', '$puts', '$url', '$match', '$as_node', '$PageToc', '$history', '$params', '$location', '$PageBody', '$Route', '$PageLayout', '$loaded?', '$[]', '$sections']);
+  Opal.add_stubs(['$before_mount', '$hide', '$render', '$as_node', '$PageToc', '$history', '$location', '$PageBody', '$PageLayout', '$loaded?', '$[]', '$sections']);
   return (function($base, $super) {
     function $DocsPage(){};
     var self = $DocsPage = $klass($base, $super, 'DocsPage', $DocsPage);
@@ -15766,23 +15783,13 @@ Opal.modules["components/docs/docs_page"] = function(Opal) {
 
     return $scope.get('SidebarStore').$hide()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3, $f, TMP_4, $g, TMP_5, section_name = nil, displaytitle = nil, sidebar = nil, body = nil;
+    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, section = nil, displaytitle = nil, sidebar = nil, body = nil;
 
-    self.$puts(self.$match().$url());
-      section_name = "docs";
+    section = "docs";
       displaytitle = "Hyperloop Documentation";
-      sidebar = self.$PageToc($hash2(["history", "location", "section"], {"history": self.$params().$history(), "location": self.$params().$location(), "section": section_name})).$as_node();
-      body = self.$PageBody($hash2(["section"], {"section": section_name})).$as_node();
-      ($d = ($e = self).$Route, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
-
-      return self.$puts("we have a repo")}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, "/docs/:repo", $hash2(["exact"], {"exact": true}));
-      ($d = ($f = self).$Route, $d.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
-
-      return self.$puts("we have a repo and file")}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $d).call($f, "/docs/:repo/:file", $hash2(["exact"], {"exact": true}));
-      ($d = ($g = self).$Route, $d.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
-
-      return self.$puts("we have a repo and file and slug")}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $d).call($g, "/docs/:repo/:file/:slug", $hash2(["exact"], {"exact": true}));
-      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "section", "loaded"], {"sidebar_component": sidebar, "body_component": body, "page_title": displaytitle, "section": section_name, "loaded": $scope.get('SiteStore').$sections()['$[]'](section_name)['$loaded?']()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
+      sidebar = self.$PageToc($hash2(["history", "location", "section"], {"history": self.$history(), "location": self.$location(), "section": section})).$as_node();
+      body = self.$PageBody($hash2(["section"], {"section": section})).$as_node();
+      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "section", "loaded", "history", "location"], {"sidebar_component": sidebar, "body_component": body, "page_title": displaytitle, "section": section, "loaded": $scope.get('SiteStore').$sections()['$[]'](section)['$loaded?'](), "history": self.$history(), "location": self.$location()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -15960,7 +15967,7 @@ Opal.modules["components/gems/gems_page"] = function(Opal) {
 Opal.modules["components/shared/page_layout"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$before_mount', '$hide', '$after_mount', '$on', '$[]', '$render', '$DIV', '$SidebarMenu', '$main_content', '$AppMenu', '$section', '$params', '$page_title', '$P', '$sidebar_component', '$body_component', '$AppFooter', '$SearchResultModal']);
+  Opal.add_stubs(['$param', '$before_mount', '$hide', '$after_mount', '$on', '$[]', '$render', '$DIV', '$SidebarMenu', '$main_content', '$AppMenu', '$section', '$params', '$history', '$location', '$page_title', '$P', '$sidebar_component', '$body_component', '$AppFooter', '$SearchResultModal']);
   return (function($base, $super) {
     function $PageLayout(){};
     var self = $PageLayout = $klass($base, $super, 'PageLayout', $PageLayout);
@@ -16001,7 +16008,7 @@ Opal.modules["components/shared/page_layout"] = function(Opal) {
 
       ($a = ($b = self).$DIV, $a.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $c, $d, TMP_8, $e, TMP_13;
 
-      self.$AppMenu($hash2(["section"], {"section": self.$params().$section()}));
+      self.$AppMenu($hash2(["section", "history", "location"], {"section": self.$params().$section(), "history": self.$history(), "location": self.$location()}));
         ($c = ($d = self).$DIV, $c.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $e, $f, TMP_9;
 
         return ($e = ($f = self).$DIV, $e.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $g, $h, TMP_10;
@@ -16019,9 +16026,49 @@ Opal.modules["components/shared/page_layout"] = function(Opal) {
         self.$params().$sidebar_component().$render();
           return self.$params().$body_component().$render();}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($e, $hash2(["class"], {"class": "main container"}));}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $a).call($b, $hash2(["class"], {"class": "full height"}));
       self.$AppFooter();
-      return self.$SearchResultModal();
+      return self.$SearchResultModal($hash2(["history"], {"history": self.$history()}));
     }, TMP_14.$$arity = 0), nil) && 'main_content';
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["components/shared/modal_dialog"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$render', '$Modal', '$ModalHeader', '$ModalContent', '$Image', '$ModalDescription', '$each', '$to_proc', '$children', '$ModalActions', '$on', '$hide', '$Button', '$visible']);
+  return (function($base, $super) {
+    function $ModalDialog(){};
+    var self = $ModalDialog = $klass($base, $super, 'ModalDialog', $ModalDialog);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e;
+
+    return ($c = ($d = $scope.get('Sem')).$Modal, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4, $h, TMP_7;
+
+      ($e = ($f = $scope.get('Sem')).$ModalHeader, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+
+        return "Search Results: "}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f);
+        ($e = ($g = $scope.get('Sem')).$ModalContent, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5, $j, TMP_6;
+
+        ($h = ($i = $scope.get('Sem')).$Image, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+
+          return nil}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i, $hash2(["size", "src", "wrapped"], {"size": "massive", "src": "dist/images/hyperloop-logo-title.png", "wrapped": true}));
+          return ($h = ($j = $scope.get('Sem')).$ModalDescription, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $k, $l;
+
+          return ($k = ($l = self.$children()).$each, $k.$$p = "render".$to_proc(), $k).call($l)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($j);}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, $hash2(["image", "scrolling"], {"image": true, "scrolling": true}));
+        return ($e = ($h = $scope.get('Sem')).$ModalActions, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $i, $j, TMP_8, $k, $l, TMP_9;
+
+        return ($i = ($j = ($k = ($l = $scope.get('Sem')).$Button, $k.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+
+          return "Close"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($l, $hash2(["negative"], {"negative": true}))).$on, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+
+          return $scope.get('SearchResultModalStore').$hide()}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($j, "click")}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($h);}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["size", "open"], {"size": "large", "open": ((function() {if ((($e = $scope.get('SearchResultModalStore').$visible()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
+        return true
+        } else {
+        return false
+      }; return nil; })())}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
 /* Generated by Opal 0.10.5 */
@@ -16031,82 +16078,69 @@ Opal.modules["components/shared/site_search"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$param', '$render', '$search_control', '$Input', '$on', '$value', '$mutate', '$target', '$INPUT', '$Icon', '$Select', '$to_n', '$options', '$params', '$section', '$show', '$>', '$length', '$!=', '$inputvalue', '$allresults', '$inputvaluetoosmall', '$Button', '$SPAN', '$H4', '$EM', '$H1']);
+  Opal.add_stubs(['$param', '$state', '$after_mount', '$sectionselection', '$mutate', '$section', '$params', '$render', '$search_control', '$Input', '$on', '$searchinputvalue', '$value', '$target', '$INPUT', '$Icon', '$[]', '$new', '$to_n', '$Select', '$sectionoptions', '$>', '$length', '$!=', '$querystring', '$previoussectionquery', '$allresults', '$search_withlunr', '$empty?', '$alert', '$push', '$history', '$Button']);
   return (function($base, $super) {
     function $SiteSearch(){};
     var self = $SiteSearch = $klass($base, $super, 'SiteSearch', $SiteSearch);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_7, TMP_11, TMP_15;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_9;
 
-    self.$state($hash2(["results"], {"results": []}));
-
-    self.$state($hash2(["value"], {"value": ""}));
+    self.$param("history");
 
     self.$param("section");
 
-    self.$param($hash2(["options"], {"options": [$hash2(["key", "text", "value"], {"key": "docs", "text": "Documentation", "value": "docs"}), $hash2(["key", "text", "value"], {"key": "start", "text": "Get started", "value": "start"}), $hash2(["key", "text", "value"], {"key": "tutorials", "text": "Tutorials", "value": "tutorials"})]}));
+    self.$state($hash2(["results"], {"results": []}));
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+    self.$state($hash2(["searchinputvalue"], {"searchinputvalue": ""}));
 
-    return self.$search_control()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+    self.$state($hash2(["sectionselection"], {"sectionselection": ""}));
 
-    Opal.defn(self, '$search_control', TMP_7 = function $$search_control() {
-      var $a, $b, TMP_2, self = this;
+    self.$param($hash2(["sectionoptions"], {"sectionoptions": [$hash2(["key", "text", "value"], {"key": "docs", "text": "Documentation", "value": "docs"}), $hash2(["key", "text", "value"], {"key": "start", "text": "Get started", "value": "start"}), $hash2(["key", "text", "value"], {"key": "tutorials", "text": "Tutorials", "value": "tutorials"})]}));
 
-      return ($a = ($b = $scope.get('Sem')).$Input, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $c, $d, TMP_3, $e, $f, TMP_4, TMP_5, $g, $h, TMP_6;
+    self.$param($hash2(["searchwordoptions"], {"searchwordoptions": [$hash2(["key", "text", "value"], {"key": "exact", "text": "Exact word", "value": "exact"}), $hash2(["key", "text", "value"], {"key": "partial", "text": "partial word", "value": "partial"})]}));
 
-      ($c = ($d = ($e = ($f = self).$INPUT, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this;
+    ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
-        return nil}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($f)).$on, $c.$$p = (TMP_3 = function(e){var self = TMP_3.$$s || this;
+    return self.$mutate().$sectionselection(self.$params().$section())}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+
+    return self.$search_control()}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+
+    return (Opal.defn(self, '$search_control', TMP_9 = function $$search_control() {
+      var $a, $b, TMP_3, self = this;
+
+      return ($a = ($b = $scope.get('Sem')).$Input, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $c, $d, TMP_4, $e, $f, TMP_5, TMP_6, $g, TMP_7, $h, $i, TMP_8;
+
+      ($c = ($d = ($e = ($f = self).$INPUT, $e.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+
+        return nil}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $e).call($f)).$on, $c.$$p = (TMP_4 = function(e){var self = TMP_4.$$s || this;
 if (e == null) e = nil;
-        return self.$mutate().$value(e.$target().$value())}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $c).call($d, "change");
+        return self.$mutate().$searchinputvalue(e.$target().$value())}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $c).call($d, "change");
         $scope.get('Sem').$Icon($hash2(["name"], {"name": "search"}));
-        $scope.get('Sem').$Select($hash2(["compact", "options", "defaultValue"], {"compact": true, "options": self.$params().$options().$to_n(), "defaultValue": self.$params().$section().$to_n()}));
-        return ($c = ($e = ($g = ($h = $scope.get('Sem')).$Button, $g.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+        ($c = ($e = $scope.get('Sem').$Select($hash2(["compact", "options", "value"], {"compact": true, "options": self.$params().$sectionoptions().$to_n(), "value": self.$state().$sectionselection()}))).$on, $c.$$p = (TMP_6 = function(e){var self = TMP_6.$$s || this;
+if (e == null) e = nil;
+        return self.$mutate().$sectionselection($scope.get('Hash').$new(e.$to_n())['$[]']("value"))}, TMP_6.$$s = self, TMP_6.$$arity = 1, TMP_6), $c).call($e, "change");
+        return ($c = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
 
-        return "Search"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $g).call($h, $hash2(["type"], {"type": "submit"}))).$on, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $g;
+        return "Search"}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $h).call($i)).$on, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $h, $i;
 
-        $scope.get('SearchResultModalStore').$show();
-          if ((($g = ($rb_gt(self.$state().$value().$length(), 4))) !== nil && $g != null && (!$g.$$is_boolean || $g == true))) {
-            if ((($g = ($scope.get('SearchEngineStore').$inputvalue()['$!='](self.$state().$value()))) !== nil && $g != null && (!$g.$$is_boolean || $g == true))) {
-              $scope.get('SearchEngineStore').$mutate().$inputvalue(self.$state().$value());
-              return $scope.get('SearchEngineStore').$mutate().$allresults(nil);
+        if ((($h = ($rb_gt(self.$state().$searchinputvalue().$length(), 4))) !== nil && $h != null && (!$h.$$is_boolean || $h == true))) {
+            if ((($h = (((($i = ($scope.get('SearchEngineStore').$querystring()['$!='](self.$state().$searchinputvalue()))) !== false && $i !== nil && $i != null) ? $i : ($scope.get('SearchEngineStore').$previoussectionquery()['$!='](self.$params().$section()))))) !== nil && $h != null && (!$h.$$is_boolean || $h == true))) {
+              $scope.get('SearchEngineStore').$mutate().$querystring(self.$state().$searchinputvalue());
+              $scope.get('SearchEngineStore').$mutate().$previoussectionquery(self.$params().$section());
+              $scope.get('SearchEngineStore').$mutate().$allresults(nil);
+              $scope.get('SearchEngineStore').$search_withlunr(self.$params().$section());};
+            if ((($h = ($scope.get('SearchEngineStore').$allresults()['$empty?']())) !== nil && $h != null && (!$h.$$is_boolean || $h == true))) {
+              return self.$alert("Sorry, no result found for { " + (self.$state().$searchinputvalue()) + " }")
               } else {
-              return nil
-            }
+              return self.$params().$history().$push("/searchresult")
+            };
             } else {
-            $scope.get('SearchEngineStore').$mutate().$inputvalue("");
-            $scope.get('SearchEngineStore').$mutate().$allresults(nil);
-            return $scope.get('SearchEngineStore').$mutate().$inputvaluetoosmall("Please provide a search value > 4");
-          };}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($e, "click");}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($b, $hash2(["iconPosition", "placeholder", "action"], {"iconPosition": "left", "placeholder": "Search ...", "action": true}));
-    }, TMP_7.$$arity = 0);
-
-    Opal.defn(self, '$render_result', TMP_11 = function $$render_result(obj) {
-      var $a, $b, TMP_8, self = this;
-
-      return ($a = ($b = self).$SPAN, $a.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $c, $d, TMP_9, $e, TMP_10;
-
-      ($c = ($d = self).$H4, $c.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
-
-        return obj.text;}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $c).call($d);
-        return ($c = ($e = self).$EM, $c.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
-
-        return obj.friendly_doc_name;}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $c).call($e);}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $a).call($b).$to_n();
-    }, TMP_11.$$arity = 1);
-
-    return (Opal.defn(self, '$render_category', TMP_15 = function $$render_category(obj) {
-      var $a, $b, TMP_12, self = this;
-
-      return ($a = ($b = self).$SPAN, $a.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $c, $d, TMP_13, $e, TMP_14;
-
-      ($c = ($d = self).$H1, $c.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
-
-        return obj.name;}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $c).call($d);
-        return ($c = ($e = self).$EM, $c.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
-
-        return "" + (obj.result_number) + " results"}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $c).call($e);}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $a).call($b).$to_n();
-    }, TMP_15.$$arity = 1), nil) && 'render_category';
-  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
+            return self.$alert("Search word too small, must be > 4")
+          }}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($g, "click");}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($b, $hash2(["iconPosition", "placeholder", "action"], {"iconPosition": "left", "placeholder": "Search ...", "action": true}));
+    }, TMP_9.$$arity = 0), nil) && 'search_control';
+  })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
 /* Generated by Opal 0.10.5 */
@@ -16120,78 +16154,104 @@ Opal.modules["components/shared/page_toc.old"] = function(Opal) {
 Opal.modules["components/shared/search_result_modal"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$Modal', '$ModalHeader', '$ModalContent', '$Image', '$ModalDescription', '$HEADER', '$P', '$inputvaluetoosmall', '$inputvalue', '$visible', '$search_content', '$allresults', '$ModalActions', '$on', '$hide', '$Button']);
+  Opal.add_stubs(['$param', '$state', '$visible', '$mutate', '$slug', '$[]', '$pages', '$sections', '$set_current_page', '$push', '$history', '$params', '$accordionindex', '$close', '$render', '$Modal', '$ModalHeader', '$ModalContent', '$Image', '$ModalDescription', '$HEADER', '$ModalActions', '$on', '$Button']);
   return (function($base, $super) {
     function $SearchResultModal(){};
     var self = $SearchResultModal = $klass($base, $super, 'SearchResultModal', $SearchResultModal);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, $a, $b, TMP_4;
 
-    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2, $e;
+    self.$param("history");
 
-    return ($c = ($d = $scope.get('Sem')).$Modal, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3, $g, TMP_4, $h, TMP_11;
+    self.$state($hash2(["visible", "scope", "reader"], {"visible": false, "scope": "shared", "reader": true}));
 
-      ($e = ($f = $scope.get('Sem')).$ModalHeader, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this;
+    Opal.defs(self, '$open', TMP_1 = function $$open() {
+      var self = this;
 
-        return "Search Results: "}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f);
-        ($e = ($g = $scope.get('Sem')).$ModalContent, $e.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5, $j, TMP_6;
+      return self.$mutate().$visible(true);
+    }, TMP_1.$$arity = 0);
 
-        ($h = ($i = $scope.get('Sem')).$Image, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+    Opal.defs(self, '$close', TMP_2 = function $$close() {
+      var self = this;
 
-          return nil}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i, $hash2(["size", "src", "wrapped"], {"size": "massive", "src": "dist/images/hyperloop-logo-title.png", "wrapped": true}));
-          return ($h = ($j = $scope.get('Sem')).$ModalDescription, $h.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $k, $l, TMP_7, $m, TMP_8, $n, TMP_9, $o, TMP_10;
+      return self.$mutate().$visible(false);
+    }, TMP_2.$$arity = 0);
 
-          ($k = ($l = self).$HEADER, $k.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+    Opal.defn(self, '$gotoslug', TMP_3 = function $$gotoslug(slug, sectionname, pageid) {
+      var self = this, pagetogo = nil;
 
-            return "RESULTS LISTING"}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $k).call($l);
-            ($k = ($m = self).$P, $k.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+      $scope.get('NavigationStore').$mutate().$slug("");
+      pagetogo = $scope.get('SiteStore').$sections()['$[]'](sectionname).$pages()['$[]'](pageid);
+      $scope.get('SiteStore').$sections()['$[]'](sectionname).$set_current_page(pagetogo);
+      self.$params().$history().$push("/" + (sectionname) + "/" + (pagetogo['$[]']("name")) + "/" + (slug));
+      $scope.get('NavigationStore').$mutate().$accordionindex(pageid);
+      $scope.get('NavigationStore').$mutate().$slug(slug);
+      return $scope.get('SearchResultModal').$close();
+    }, TMP_3.$$arity = 3);
 
-            return $scope.get('SearchEngineStore').$inputvaluetoosmall()}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $k).call($m);
-            ($k = ($n = self).$P, $k.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+    return ($a = ($b = self).$render, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5, $e;
 
-            return $scope.get('SearchEngineStore').$inputvalue()}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $k).call($n);
-            return ($k = ($o = self).$P, $k.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $p;
+    return ($c = ($d = $scope.get('Sem')).$Modal, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6, $g, TMP_7, $h, TMP_11;
 
-            if ((($p = ($scope.get('SearchResultModalStore').$visible())) !== nil && $p != null && (!$p.$$is_boolean || $p == true))) {
-                $scope.get('SearchEngineStore').$search_content("docs");
-                return "Results: " + ($scope.get('SearchEngineStore').$allresults());
-                } else {
-                return nil
-              }}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $k).call($o);}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $h).call($j);}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $e).call($g, $hash2(["image", "scrolling"], {"image": true, "scrolling": true}));
+      ($e = ($f = $scope.get('Sem')).$ModalHeader, $e.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+
+        return "Search Results: "}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $e).call($f);
+        ($e = ($g = $scope.get('Sem')).$ModalContent, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $h, $i, TMP_8, $j, TMP_9;
+
+        ($h = ($i = $scope.get('Sem')).$Image, $h.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+
+          return nil}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $h).call($i, $hash2(["size", "src", "wrapped"], {"size": "massive", "src": "dist/images/hyperloop-logo-title.png", "wrapped": true}));
+          return ($h = ($j = $scope.get('Sem')).$ModalDescription, $h.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $k, $l, TMP_10;
+
+          return ($k = ($l = self).$HEADER, $k.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
+
+            return "RESULTS LISTING"}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $k).call($l)}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $h).call($j);}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($g, $hash2(["image", "scrolling"], {"image": true, "scrolling": true}));
         return ($e = ($h = $scope.get('Sem')).$ModalActions, $e.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $i, $j, TMP_12, $k, $l, TMP_13;
 
         return ($i = ($j = ($k = ($l = $scope.get('Sem')).$Button, $k.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
           return "Close"}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $k).call($l, $hash2(["negative"], {"negative": true}))).$on, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
-          return $scope.get('SearchResultModalStore').$hide()}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($j, "click")}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $e).call($h);}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["size", "open"], {"size": "large", "open": ((function() {if ((($e = $scope.get('SearchResultModalStore').$visible()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
+          return $scope.get('SearchResultModal').$close()}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($j, "click")}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $e).call($h);}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["size", "open"], {"size": "large", "open": ((function() {if ((($e = self.$state().$visible()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
         return true
         } else {
         return false
-      }; return nil; })())}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b)
+      }; return nil; })())}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
 /* Generated by Opal 0.10.5 */
 Opal.modules["components/shared/md_converter"] = function(Opal) {
+  function $rb_plus(lhs, rhs) {
+    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
+  }
+  function $rb_minus(lhs, rhs) {
+    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
+  }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$gsub', '$process', '$lambda', '$on_heading', '$on_code', '$on_codespan', '$on_blockquote', '$on_table', '$[]=', '$highlight', '$<<', '$[]', '$downcase']);
+  Opal.add_stubs(['$gsub', '$process', '$lambda', '$on_heading', '$on_paragraph', '$on_code', '$on_codespan', '$on_blockquote', '$on_table', '$[]=', '$highlight', '$<<', '$[]', '$downcase', '$+', '$-']);
   return (function($base, $super) {
     function $MdConverter(){};
     var self = $MdConverter = $klass($base, $super, 'MdConverter', $MdConverter);
 
-    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_10, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15, TMP_16;
+    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_11, TMP_12, TMP_13, TMP_14, TMP_15, TMP_16, TMP_17, TMP_18;
 
-    def.html = def.code_blocks = def.headings = def.md = nil;
-    Opal.defn(self, '$initialize', TMP_1 = function $$initialize(md) {
+    def.html = def.code_blocks = def.headings = def.md = def.sectionid = def.pageid = def.headings_index = def.sectionname = def.pagename = nil;
+    Opal.defn(self, '$initialize', TMP_1 = function $$initialize(md, sectionname, sectionid, pageid, pagename) {
       var self = this;
 
       self.md = md.$gsub("ruby runable", "ruby-runable");
+      self.sectionname = sectionname;
+      self.sectionid = sectionid;
+      self.pageid = pageid;
+      self.pagename = pagename;
       self.headings = [];
+      self.paragraphs = [];
       self.code_blocks = [];
+      self.headings_index = 0;
       return self.$process();
-    }, TMP_1.$$arity = 1);
+    }, TMP_1.$$arity = 5);
 
     Opal.defn(self, '$html', TMP_2 = function $$html() {
       var self = this;
@@ -16211,36 +16271,39 @@ Opal.modules["components/shared/md_converter"] = function(Opal) {
       return self.headings;
     }, TMP_4.$$arity = 0);
 
-    Opal.defn(self, '$process', TMP_10 = function $$process() {
-      var $a, $b, TMP_5, $c, TMP_6, $d, TMP_7, $e, TMP_8, $f, TMP_9, self = this;
+    Opal.defn(self, '$process', TMP_11 = function $$process() {
+      var $a, $b, TMP_5, $c, TMP_6, $d, TMP_7, $e, TMP_8, $f, TMP_9, $g, TMP_10, self = this;
 
       var renderer = new Marked.Renderer();
       renderer.heading = ($a = ($b = self).$lambda, $a.$$p = (TMP_5 = function(text, level){var self = TMP_5.$$s || this;
 if (text == null) text = nil;if (level == null) level = nil;
       return self.$on_heading(text, level)}, TMP_5.$$s = self, TMP_5.$$arity = 2, TMP_5), $a).call($b);
-      renderer.code = ($a = ($c = self).$lambda, $a.$$p = (TMP_6 = function(code, lang){var self = TMP_6.$$s || this;
+      renderer.paragraph = ($a = ($c = self).$lambda, $a.$$p = (TMP_6 = function(text){var self = TMP_6.$$s || this;
+if (text == null) text = nil;
+      return self.$on_paragraph(text)}, TMP_6.$$s = self, TMP_6.$$arity = 1, TMP_6), $a).call($c);
+      renderer.code = ($a = ($d = self).$lambda, $a.$$p = (TMP_7 = function(code, lang){var self = TMP_7.$$s || this;
 if (code == null) code = nil;if (lang == null) lang = nil;
-      return self.$on_code(code, lang)}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $a).call($c);
-      renderer.codespan = ($a = ($d = self).$lambda, $a.$$p = (TMP_7 = function(code){var self = TMP_7.$$s || this;
+      return self.$on_code(code, lang)}, TMP_7.$$s = self, TMP_7.$$arity = 2, TMP_7), $a).call($d);
+      renderer.codespan = ($a = ($e = self).$lambda, $a.$$p = (TMP_8 = function(code){var self = TMP_8.$$s || this;
 if (code == null) code = nil;
-      return self.$on_codespan(code)}, TMP_7.$$s = self, TMP_7.$$arity = 1, TMP_7), $a).call($d);
-      renderer.blockquote = ($a = ($e = self).$lambda, $a.$$p = (TMP_8 = function(quote){var self = TMP_8.$$s || this;
+      return self.$on_codespan(code)}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $a).call($e);
+      renderer.blockquote = ($a = ($f = self).$lambda, $a.$$p = (TMP_9 = function(quote){var self = TMP_9.$$s || this;
 if (quote == null) quote = nil;
-      return self.$on_blockquote(quote)}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $a).call($e);
-      renderer.table = ($a = ($f = self).$lambda, $a.$$p = (TMP_9 = function(header, body){var self = TMP_9.$$s || this;
+      return self.$on_blockquote(quote)}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9), $a).call($f);
+      renderer.table = ($a = ($g = self).$lambda, $a.$$p = (TMP_10 = function(header, body){var self = TMP_10.$$s || this;
 if (header == null) header = nil;if (body == null) body = nil;
-      return self.$on_table(header, body)}, TMP_9.$$s = self, TMP_9.$$arity = 2, TMP_9), $a).call($f);
+      return self.$on_table(header, body)}, TMP_10.$$s = self, TMP_10.$$arity = 2, TMP_10), $a).call($g);
       Marked.setOptions({ renderer: renderer });
       return self.html = Marked(self.md);
-    }, TMP_10.$$arity = 0);
+    }, TMP_11.$$arity = 0);
 
-    Opal.defn(self, '$on_table', TMP_11 = function $$on_table(header, body) {
+    Opal.defn(self, '$on_table', TMP_12 = function $$on_table(header, body) {
       var self = this;
 
       return "<table class='ui celled table'><thead class>" + (header) + "</thead><tbody class>" + (body) + "</tbody></table>";
-    }, TMP_11.$$arity = 2);
+    }, TMP_12.$$arity = 2);
 
-    Opal.defn(self, '$on_code', TMP_12 = function $$on_code(code, lang) {
+    Opal.defn(self, '$on_code', TMP_13 = function $$on_code(code, lang) {
       var self = this, cb = nil;
 
       cb = $hash2([], {});
@@ -16249,39 +16312,52 @@ if (header == null) header = nil;if (body == null) body = nil;
       cb['$[]=']("lang", lang);
       self.code_blocks['$<<'](cb);
       return "<pre><code class='lang-" + (lang) + " hljs'>" + (cb['$[]']("html")) + "</code></pre>";
-    }, TMP_12.$$arity = 2);
+    }, TMP_13.$$arity = 2);
 
-    Opal.defn(self, '$on_codespan', TMP_13 = function $$on_codespan(code) {
+    Opal.defn(self, '$on_codespan', TMP_14 = function $$on_codespan(code) {
       var self = this;
 
       return "<code class='inline-codespan'>" + (code) + "</code>";
-    }, TMP_13.$$arity = 1);
+    }, TMP_14.$$arity = 1);
 
-    Opal.defn(self, '$highlight', TMP_14 = function $$highlight(code, lang) {
+    Opal.defn(self, '$highlight', TMP_15 = function $$highlight(code, lang) {
       var self = this;
 
       if (lang == null) {
         lang = nil;
       }
       return hljs.highlightAuto(code).value;
-    }, TMP_14.$$arity = -2);
+    }, TMP_15.$$arity = -2);
 
-    Opal.defn(self, '$on_blockquote', TMP_15 = function $$on_blockquote(quote) {
+    Opal.defn(self, '$on_blockquote', TMP_16 = function $$on_blockquote(quote) {
       var self = this;
 
       return "<div class='ui cards'><div class='ui card fluid'><div class='content'>" + (quote) + "</div></div></div>";
-    }, TMP_15.$$arity = 1);
+    }, TMP_16.$$arity = 1);
 
-    return (Opal.defn(self, '$on_heading', TMP_16 = function $$on_heading(text, level) {
+    Opal.defn(self, '$on_heading', TMP_17 = function $$on_heading(text, level) {
       var self = this, heading = nil;
 
       heading = $hash2([], {});
+      heading['$[]=']("id", "" + (self.sectionid) + "-" + (self.pageid) + "-" + (self.headings_index));
+      heading['$[]=']("sectionname", self.sectionname);
+      heading['$[]=']("pageid", self.pageid);
+      heading['$[]=']("pagename", self.pagename);
       heading['$[]=']("text", text);
       heading['$[]=']("level", level);
       heading['$[]=']("slug", text.$downcase().$gsub(/[^\w]+/g, "-"));
+      heading['$[]=']("paragraphs", []);
+      self.headings_index = $rb_plus(self.headings_index, 1);
       self.headings['$<<'](heading);
       return "<h" + (level) + " class='doc_h" + (level) + " chapteranchor' id='" + (heading['$[]']("slug")) + "'>" + (text) + "</h" + (level) + ">";
-    }, TMP_16.$$arity = 2), nil) && 'on_heading';
+    }, TMP_17.$$arity = 2);
+
+    return (Opal.defn(self, '$on_paragraph', TMP_18 = function $$on_paragraph(text) {
+      var self = this;
+
+      self.headings['$[]']($rb_minus(self.headings_index, 1))['$[]']("paragraphs")['$<<']("<p>" + (text) + "</p>");
+      return "<p>" + (text) + "</p>";
+    }, TMP_18.$$arity = 1), nil) && 'on_paragraph';
   })($scope.base, null)
 };
 
@@ -16364,7 +16440,7 @@ Opal.modules["components/shared/app_footer"] = function(Opal) {
 Opal.modules["components/shared/app_menu"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$render', '$DIV', '$IMG', '$IFRAME', '$I', '$on', '$toggle', '$A', '$!=', '$section', '$params', '$MenuItem', '$SiteSearch']);
+  Opal.add_stubs(['$param', '$render', '$DIV', '$IMG', '$I', '$on', '$toggle', '$A', '$!=', '$section', '$params', '$MenuItem', '$SiteSearch', '$history', '$location', '$!', '$empty?', '$querystring', '$==', '$pathname', '$push', '$Button', '$IFRAME']);
   return (function($base, $super) {
     function $AppMenu(){};
     var self = $AppMenu = $klass($base, $super, 'AppMenu', $AppMenu);
@@ -16379,7 +16455,7 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
 
       return ($e = ($f = self).$DIV, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
 
-        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i, $j, TMP_5, $k, TMP_8, $l, TMP_12;
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i, $j, TMP_5, $k, TMP_8, $l, TMP_11;
 
           ($i = ($j = self).$DIV, $i.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $k, $l, TMP_6;
 
@@ -16388,40 +16464,68 @@ Opal.modules["components/shared/app_menu"] = function(Opal) {
               return ($m = ($n = self).$DIV, $m.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
 
                 return self.$IMG($hash2(["class", "src"], {"class": "ui image", "src": "dist/images/hyperloop-logo-small-pink.png"}))}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $m).call($n, $hash2(["class"], {"class": "active learn side"}))}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $k).call($l, $hash2(["class"], {"class": "sides"}))}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j, $hash2(["class"], {"class": "ui logo shape"}));
-            ($i = ($k = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $l, $m, TMP_9, $n, TMP_10;
+            ($i = ($k = self).$DIV, $i.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $l, $m, TMP_9;
 
-            ($l = ($m = self).$DIV, $l.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
-
-              return self.$IFRAME($hash2(["class", "src", "allowTransparency", "frameBorder", "scrolling", "width", "height"], {"class": "github", "src": "http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyperloop&type=watch&count=true", "allowTransparency": "true", "frameBorder": "0", "scrolling": "0", "width": "100", "height": "20"}))}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $l).call($m, $hash2(["class"], {"class": "item"}));
-              return ($l = ($n = self).$DIV, $l.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $o, $p, TMP_11;
+            return ($l = ($m = self).$DIV, $l.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $n, $o, TMP_10;
 
               self.$I($hash2(["class"], {"class": "world icon"}));
-                ($o = ($p = self).$DIV, $o.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+                ($n = ($o = self).$DIV, $n.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
 
-                return "English"}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $o).call($p, $hash2(["class"], {"class": "text"}));
-                return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $l).call($n, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}));}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($k, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
-            return ($i = ($l = self).$DIV, $i.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, $m, $n, TMP_13, $o, $p, TMP_14, TMP_15, $q, TMP_16, $r, TMP_17;
+                return "English"}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $n).call($o, $hash2(["class"], {"class": "text"}));
+                return self.$DIV($hash2(["class"], {"class": "menu"}));}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $l).call($m, $hash2(["class", "id"], {"class": "ui language floating dropdown link item", "id": "languages"}))}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $i).call($k, $hash2(["class"], {"class": "ui inverted right floated secondary menu"}));
+            return ($i = ($l = self).$DIV, $i.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $m, $n, TMP_12, $o, $p, TMP_13, TMP_14, $q, TMP_15, $r, TMP_16, $s, TMP_17, $t, TMP_20;
 
-            ($m = ($n = ($o = ($p = self).$A, $o.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
+            ($m = ($n = ($o = ($p = self).$A, $o.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
 
               self.$I($hash2(["class"], {"class": "sidebar icon"}));
-                return " Menu\n        ";}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $o).call($p, $hash2(["class"], {"class": "view-ui item"}))).$on, $m.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
+                return " Menu\n        ";}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $o).call($p, $hash2(["class"], {"class": "view-ui item"}))).$on, $m.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
-              return $scope.get('SidebarStore').$toggle()}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $m).call($n, "click");
-              ($m = ($o = self).$A, $m.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
+              return $scope.get('SidebarStore').$toggle()}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $m).call($n, "click");
+              ($m = ($o = self).$A, $m.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
-              return "Help"}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $m).call($o, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
-              ($m = ($q = self).$A, $m.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
+              return "Help"}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $m).call($o, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
+              ($m = ($q = self).$A, $m.$$p = (TMP_15 = function(){var self = TMP_15.$$s || this;
 
-              return "Showcase"}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $m).call($q, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
+              return "Showcase"}, TMP_15.$$s = self, TMP_15.$$arity = 0, TMP_15), $m).call($q, $hash2(["href", "data-site", "class"], {"href": "semantic", "data-site": "ui", "class": "additional item visible"}));
               if ((($m = (self.$params().$section()['$!=']("home"))) !== nil && $m != null && (!$m.$$is_boolean || $m == true))) {
-                return ($m = ($r = $scope.get('Sem')).$MenuItem, $m.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this;
+                ($m = ($r = $scope.get('Sem')).$MenuItem, $m.$$p = (TMP_16 = function(){var self = TMP_16.$$s || this;
 
-                return self.$SiteSearch($hash2(["section"], {"section": self.$params().$section()}))}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $m).call($r)
-                } else {
-                return nil
-              };}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $i).call($l, $hash2(["class"], {"class": "ui large secondary network menu"}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "following bar fixed"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+                return self.$SiteSearch($hash2(["section", "history", "location"], {"section": self.$params().$section(), "history": self.$history(), "location": self.$location()}))}, TMP_16.$$s = self, TMP_16.$$arity = 0, TMP_16), $m).call($r);
+                ($m = ($s = $scope.get('Sem')).$MenuItem, $m.$$p = (TMP_17 = function(){var self = TMP_17.$$s || this, $t, $u, TMP_18, $v, $w, TMP_19;
+
+                if ((($t = (($u = ($scope.get('SearchEngineStore').$querystring()['$empty?']())['$!'](), $u !== false && $u !== nil && $u != null ?(self.$location().$pathname()['$==']("/searchresult"))['$!']() : $u))) !== nil && $t != null && (!$t.$$is_boolean || $t == true))) {
+                    return ($t = ($u = ($v = ($w = $scope.get('Sem')).$Button, $v.$$p = (TMP_19 = function(){var self = TMP_19.$$s || this;
+
+                    return "See results for: { " + ($scope.get('SearchEngineStore').$querystring()) + " }"}, TMP_19.$$s = self, TMP_19.$$arity = 0, TMP_19), $v).call($w, $hash2(["color"], {"color": "pink"}))).$on, $t.$$p = (TMP_18 = function(){var self = TMP_18.$$s || this;
+
+                    return self.$params().$history().$push("/searchresult")}, TMP_18.$$s = self, TMP_18.$$arity = 0, TMP_18), $t).call($u, "click")
+                    } else {
+                    return nil
+                  }}, TMP_17.$$s = self, TMP_17.$$arity = 0, TMP_17), $m).call($s);};
+              return ($m = ($t = $scope.get('Sem')).$MenuItem, $m.$$p = (TMP_20 = function(){var self = TMP_20.$$s || this;
+
+              return self.$IFRAME($hash2(["class", "src", "allowTransparency", "frameBorder", "scrolling", "width", "height"], {"class": "github", "src": "http://ghbtns.com/github-btn.html?user=ruby-hyperloop&repo=hyperloop&type=watch&count=true", "allowTransparency": "true", "frameBorder": "0", "scrolling": "0", "width": "100", "height": "20"}))}, TMP_20.$$s = self, TMP_20.$$arity = 0, TMP_20), $m).call($t);}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $i).call($l, $hash2(["class"], {"class": "ui large secondary network menu"}));}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "column"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["class"], {"class": "ui page grid"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["class"], {"class": "following bar fixed"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["components/shared/test_comp"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
+
+  Opal.add_stubs(['$render', '$puts', '$rubyglobalIndex', '$H1']);
+  return (function($base, $super) {
+    function $TestComp(){};
+    var self = $TestComp = $klass($base, $super, 'TestComp', $TestComp);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+
+    self.$puts("rubyglobalIndex : " + ($scope.get('TestStore').$rubyglobalIndex()));
+      return ($c = ($d = self).$H1, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this;
+
+      return "RESULT : " + ($scope.get('TestStore').$rubyglobalIndex())}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d);}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'))
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
 /* Generated by Opal 0.10.5 */
@@ -16541,12 +16645,12 @@ if (observer == null) observer = nil;if (args == null) args = nil;
 Opal.modules["components/shared/page_body"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$param', '$before_mount', '$needs_refresh', '$mutate', '$render', '$loaded?', '$[]', '$sections', '$section', '$params', '$current_page', '$edit_button', '$Divider', '$DIV', '$convert_runable_code_blocks', '$each', '$text', '$create_element', '$parent', '$find', '$Grid', '$GridColumn', '$state', '$Message', '$MessageHeader', '$P', '$on', '$Button']);
+  Opal.add_stubs(['$param', '$before_mount', '$needs_refresh', '$mutate', '$after_update', '$!', '$empty?', '$slug', '$state', '$top', '$offset', '$[]', '$animate', '$render', '$loaded?', '$sections', '$section', '$params', '$current_page', '$edit_button', '$Divider', '$DIV', '$convert_runable_code_blocks', '$each', '$text', '$create_element', '$parent', '$find', '$Grid', '$GridColumn', '$Message', '$MessageHeader', '$P', '$on', '$Button']);
   return (function($base, $super) {
     function $PageBody(){};
     var self = $PageBody = $klass($base, $super, 'PageBody', $PageBody);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_4, TMP_12;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, $d, TMP_3, TMP_5, TMP_13;
 
     self.$param("section");
 
@@ -16554,52 +16658,61 @@ Opal.modules["components/shared/page_body"] = function(Opal) {
 
     return self.$mutate().$needs_refresh(false)}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d;
+    ($a = ($c = self).$after_update, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, anchorchapter_position = nil;
 
-    if ((($d = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section())['$loaded?']()) !== nil && $d != null && (!$d.$$is_boolean || $d == true))) {
-        if ((($d = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$current_page()['$[]']("allow_edit")) !== nil && $d != null && (!$d.$$is_boolean || $d == true))) {
+    if ((($d = $scope.get('NavigationStore').$state().$slug()['$empty?']()['$!']()) !== nil && $d != null && (!$d.$$is_boolean || $d == true))) {
+        anchorchapter_position = $scope.get('Element')['$[]']("#" + ($scope.get('NavigationStore').$state().$slug())).$offset().$top();
+        return $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": anchorchapter_position}), 500);
+        } else {
+        return nil
+      }}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+
+    ($a = ($d = self).$render, $a.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $e;
+
+    if ((($e = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section())['$loaded?']()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
+        if ((($e = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$current_page()['$[]']("allow_edit")) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
           self.$edit_button()};
         $scope.get('Sem').$Divider($hash2(["hidden"], {"hidden": true}));
         self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$current_page()['$[]']("html")})}));
         return self.$convert_runable_code_blocks();
         } else {
         return nil
-      }}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
+      }}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $a).call($d, $scope.get('DIV'));
 
-    Opal.defn(self, '$convert_runable_code_blocks', TMP_4 = function $$convert_runable_code_blocks() {
-      var $a, $b, TMP_3, self = this;
+    Opal.defn(self, '$convert_runable_code_blocks', TMP_5 = function $$convert_runable_code_blocks() {
+      var $a, $b, TMP_4, self = this;
 
-      return ($a = ($b = $scope.get('Element').$find("code.lang-ruby-runable")).$each, $a.$$p = (TMP_3 = function(mount_point){var self = TMP_3.$$s || this, code = nil;
+      return ($a = ($b = $scope.get('Element').$find("code.lang-ruby-runable")).$each, $a.$$p = (TMP_4 = function(mount_point){var self = TMP_4.$$s || this, code = nil;
 if (mount_point == null) mount_point = nil;
       code = mount_point.$text();
-        return $scope.get('React').$render($scope.get('React').$create_element($scope.get('CodeMirror'), $hash2(["code"], {"code": code})), mount_point.$parent());}, TMP_3.$$s = self, TMP_3.$$arity = 1, TMP_3), $a).call($b);
-    }, TMP_4.$$arity = 0);
+        return $scope.get('React').$render($scope.get('React').$create_element($scope.get('CodeMirror'), $hash2(["code"], {"code": code})), mount_point.$parent());}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $a).call($b);
+    }, TMP_5.$$arity = 0);
 
-    return (Opal.defn(self, '$edit_button', TMP_12 = function $$edit_button() {
-      var $a, $b, TMP_5, self = this;
+    return (Opal.defn(self, '$edit_button', TMP_13 = function $$edit_button() {
+      var $a, $b, TMP_6, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Grid, $a.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $c, $d, TMP_6;
+      return ($a = ($b = $scope.get('Sem')).$Grid, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
 
-      return ($c = ($d = $scope.get('Sem')).$GridColumn, $c.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $e, $f, TMP_7, $g, TMP_10, $h, $i, TMP_11;
+      return ($c = ($d = $scope.get('Sem')).$GridColumn, $c.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $e, $f, TMP_8, $g, TMP_11, $h, $i, TMP_12;
 
         if ((($e = self.$state().$needs_refresh()) !== nil && $e != null && (!$e.$$is_boolean || $e == true))) {
-            return ($e = ($f = $scope.get('Sem')).$Message, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this, $g, $h, TMP_8, $i, TMP_9;
+            return ($e = ($f = $scope.get('Sem')).$Message, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $g, $h, TMP_9, $i, TMP_10;
 
-            ($g = ($h = $scope.get('Sem')).$MessageHeader, $g.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this;
+            ($g = ($h = $scope.get('Sem')).$MessageHeader, $g.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
 
-              return "Thank you!"}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $g).call($h);
-              return ($g = ($i = self).$P, $g.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+              return "Thank you!"}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $g).call($h);
+              return ($g = ($i = self).$P, $g.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
 
-              return "PRs are always welcome."}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $g).call($i);}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($f, $hash2(["positive"], {"positive": true}))
+              return "PRs are always welcome."}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $g).call($i);}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($f, $hash2(["positive"], {"positive": true}))
             } else {
-            return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+            return ($e = ($g = ($h = ($i = $scope.get('Sem')).$Button, $h.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
 
-            return nil}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $h).call($i, $hash2(["icon", "circular", "label"], {"icon": "github", "circular": true, "label": "Improve this page"}))).$on, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
+            return nil}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $h).call($i, $hash2(["icon", "circular", "label"], {"icon": "github", "circular": true, "label": "Improve this page"}))).$on, $e.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
 
             self.$mutate().$needs_refresh(true);
-              return window.open($scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$current_page()['$[]']("edit_url"), "_blank");;}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $e).call($g, "click")
-          }}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $c).call($d)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $a).call($b, $hash2(["textAlign"], {"textAlign": "right"}));
-    }, TMP_12.$$arity = 0), nil) && 'edit_button';
+              return window.open($scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$current_page()['$[]']("edit_url"), "_blank");;}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $e).call($g, "click")
+          }}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["textAlign"], {"textAlign": "right"}));
+    }, TMP_13.$$arity = 0), nil) && 'edit_button';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')))
 };
 
@@ -16610,7 +16723,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$[]', '$sections', '$section', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$animate', '$set_current_page', '$push', '$history', '$force_update!', '$AccordionTitle', '$I', '$B', '$AccordionContent', '$each', '$<', '$top', '$offset', '$A', '$==', '$drop', '$pages']);
+  Opal.add_stubs(['$imports', '$param', '$before_mount', '$<', '$accordionindex', '$mutate', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$loaded?', '$[]', '$sections', '$section', '$params', '$accordion', '$Accordion', '$each_with_index', '$on', '$===', '$animate', '$set_current_page', '$slug', '$push', '$history', '$force_update!', '$AccordionTitle', '$I', '$B', '$AccordionContent', '$each', '$A', '$==', '$drop', '$state', '$pages']);
   (function($base, $super) {
     function $ReactYahooSticky(){};
     var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
@@ -16623,7 +16736,7 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
     function $PageToc(){};
     var self = $PageToc = $klass($base, $super, 'PageToc', $PageToc);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, TMP_14;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2, TMP_15;
 
     self.$param("history");
 
@@ -16631,59 +16744,73 @@ Opal.modules["components/shared/page_toc"] = function(Opal) {
 
     self.$param("section");
 
-    ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c;
 
-    return ($c = ($d = $scope.get('Sem')).$Rail, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
+    if ((($c = $rb_lt($scope.get('NavigationStore').$accordionindex(), 0)) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
+        return $scope.get('NavigationStore').$mutate().$accordionindex(-1)
+        } else {
+        return nil
+      }}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
 
-      return ($e = ($f = self).$ReactYahooSticky, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
+    ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $d, $e, TMP_3;
 
-        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i;
+    return ($d = ($e = $scope.get('Sem')).$Rail, $d.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $f, $g, TMP_4;
 
-          if ((($i = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section())['$loaded?']()) !== nil && $i != null && (!$i.$$is_boolean || $i == true))) {
+      return ($f = ($g = self).$ReactYahooSticky, $f.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $h, $i, TMP_5;
+
+        return ($h = ($i = self).$DIV, $h.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $j;
+
+          if ((($j = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section())['$loaded?']()) !== nil && $j != null && (!$j.$$is_boolean || $j == true))) {
               return self.$accordion()
               } else {
               return nil
-            }}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["enable", "top"], {"enable": true, "top": 50}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+            }}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $h).call($i, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $f).call($g, $hash2(["enable", "top"], {"enable": true, "top": 50}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $d).call($e, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
 
-    return (Opal.defn(self, '$accordion', TMP_14 = function $$accordion() {
-      var $a, $b, TMP_5, self = this;
+    return (Opal.defn(self, '$accordion', TMP_15 = function $$accordion() {
+      var $a, $b, TMP_6, self = this;
 
-      return ($a = ($b = $scope.get('Sem')).$Accordion, $a.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $c, $d, TMP_6;
+      return ($a = ($b = $scope.get('Sem')).$Accordion, $a.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this, $c, $d, TMP_7;
 
-      return ($c = ($d = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$pages()).$each_with_index, $c.$$p = (TMP_6 = function(page, index){var self = TMP_6.$$s || this, $e, $f, TMP_7, $g, $h, TMP_8, TMP_10;
+      return ($c = ($d = $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$pages()).$each_with_index, $c.$$p = (TMP_7 = function(page, index){var self = TMP_7.$$s || this, $e, $f, TMP_8, $g, $h, TMP_9, TMP_11;
 if (page == null) page = nil;if (index == null) index = nil;
-        ($e = ($f = ($g = ($h = $scope.get('Sem')).$AccordionTitle, $g.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $i, $j, TMP_9;
+        ($e = ($f = ($g = ($h = $scope.get('Sem')).$AccordionTitle, $g.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $i, $j, TMP_10;
 
           self.$I($hash2(["class"], {"class": "dropdown icon"}));
-            return ($i = ($j = self).$B, $i.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this;
+            return ($i = ($j = self).$B, $i.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this;
 
-            return page['$[]']("headings")['$[]'](0)['$[]']("text")}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $i).call($j);}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $g).call($h, $hash2(["as", "className"], {"as": "A", "className": "item"}))).$on, $e.$$p = (TMP_7 = function(){var self = TMP_7.$$s || this;
+            return page['$[]']("headings")['$[]'](0)['$[]']("text")}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $i).call($j);}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $g).call($h, $hash2(["className", "index", "active"], {"className": "item", "index": index, "active": ($scope.get('NavigationStore').$accordionindex()['$==='](index))}))).$on, $e.$$p = (TMP_8 = function(){var self = TMP_8.$$s || this, $g, newindex = nil;
 
-          $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": 0}), "slow");
+          newindex = (function() {if ((($g = ($scope.get('NavigationStore').$accordionindex()['$==='](index))) !== nil && $g != null && (!$g.$$is_boolean || $g == true))) {
+              return -1
+              } else {
+              return index
+            }; return nil; })();
+            $scope.get('NavigationStore').$mutate().$accordionindex(newindex);
+            $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": 0}), "slow");
             $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$set_current_page(page);
-            self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("repo")) + "/" + (page['$[]']("file")));
-            return self['$force_update!']();}, TMP_7.$$s = self, TMP_7.$$arity = 0, TMP_7), $e).call($f, "click");
-          return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $i, $j, TMP_11;
+            $scope.get('NavigationStore').$mutate().$slug("");
+            self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("name")));
+            return self['$force_update!']();}, TMP_8.$$s = self, TMP_8.$$arity = 0, TMP_8), $e).call($f, "click");
+          return ($e = ($g = $scope.get('Sem')).$AccordionContent, $e.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this, $i, $j, TMP_12;
 
-          return ($i = ($j = page['$[]']("headings").$drop(1)).$each, $i.$$p = (TMP_11 = function(heading){var self = TMP_11.$$s || this, $k, $l, TMP_12, $m, $n, TMP_13, $o;
+          return ($i = ($j = page['$[]']("headings").$drop(1)).$each, $i.$$p = (TMP_12 = function(heading){var self = TMP_12.$$s || this, $k, $l, TMP_13, $m, $n, TMP_14, $o;
 if (heading == null) heading = nil;
             if ((($k = ($rb_lt(heading['$[]']("level"), 4))) !== nil && $k != null && (!$k.$$is_boolean || $k == true))) {
-                return ($k = ($l = ($m = ($n = self).$A, $m.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
+                return ($k = ($l = ($m = ($n = self).$A, $m.$$p = (TMP_14 = function(){var self = TMP_14.$$s || this;
 
-                return heading['$[]']("text")}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $m).call($n, $hash2(["class"], {"class": "item " + ((function() {if ((($o = (heading['$[]']("level")['$=='](3))) !== nil && $o != null && (!$o.$$is_boolean || $o == true))) {
+                return heading['$[]']("text")}, TMP_14.$$s = self, TMP_14.$$arity = 0, TMP_14), $m).call($n, $hash2(["class"], {"class": "item " + ((function() {if ((($o = (heading['$[]']("level")['$=='](3))) !== nil && $o != null && (!$o.$$is_boolean || $o == true))) {
                   return "subitem"
                   } else {
                   return nil
-                }; return nil; })())}))).$on, $k.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this, slug = nil, anchorchapter_position = nil;
+                }; return nil; })())}))).$on, $k.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this, slug = nil;
 
                 slug = "" + (heading['$[]']("slug"));
-                  anchorchapter_position = $scope.get('Element')['$[]']("#" + (slug)).$offset().$top();
-                  $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": anchorchapter_position}), 500);
-                  return self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("repo")) + "/" + (page['$[]']("file")) + "/" + (slug));}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $k).call($l, "click")
+                  self.$params().$history().$push("/" + (self.$params().$section()) + "/" + (page['$[]']("name")) + "/" + (slug));
+                  return $scope.get('NavigationStore').$mutate().$slug(slug);}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $k).call($l, "click")
                 } else {
                 return nil
-              }}, TMP_11.$$s = self, TMP_11.$$arity = 1, TMP_11), $i).call($j)}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $e).call($g, $hash2(["className"], {"className": "menu"}));}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $c).call($d)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $a).call($b, $hash2(["fluid", "className"], {"fluid": true, "className": "large pointing secondary vertical following menu"}));
-    }, TMP_14.$$arity = 0), nil) && 'accordion';
+              }}, TMP_12.$$s = self, TMP_12.$$arity = 1, TMP_12), $i).call($j)}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $e).call($g, $hash2(["className", "active"], {"className": "menu", "active": ($scope.get('NavigationStore').$state().$accordionindex()['$==='](index))}));}, TMP_7.$$s = self, TMP_7.$$arity = 2, TMP_7), $c).call($d)}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $a).call($b, $hash2(["fluid", "className"], {"fluid": true, "className": "large pointing secondary vertical following menu"}));
+    }, TMP_15.$$arity = 0), nil) && 'accordion';
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
 };
 
@@ -16830,19 +16957,24 @@ Opal.modules["components/start/start_sidebar"] = function(Opal) {
 Opal.modules["components/start/start_page"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$render', '$as_node', '$DocsSidebar', '$[]', '$sections', '$history', '$StartBody', '$PageLayout', '$loaded?']);
+  Opal.add_stubs(['$before_mount', '$hide', '$render', '$as_node', '$PageToc', '$history', '$location', '$PageBody', '$PageLayout', '$loaded?', '$[]', '$sections']);
   return (function($base, $super) {
     function $StartPage(){};
     var self = $StartPage = $klass($base, $super, 'StartPage', $StartPage);
 
-    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2;
 
-    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, sidebar = nil, body = nil, title = nil;
+    ($a = ($b = self).$before_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
 
-    sidebar = self.$DocsSidebar($hash2(["section_store", "history", "section"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("start"), "history": self.$history(), "section": "start"})).$as_node();
-      body = self.$StartBody($hash2(["section_store"], {"section_store": $scope.get('SiteStore').$sections()['$[]']("start")})).$as_node();
-      title = "Get started with Hyperloop";
-      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "section", "loaded"], {"sidebar_component": sidebar, "body_component": body, "page_title": title, "section": "start", "loaded": $scope.get('SiteStore').$sections()['$[]']("start")['$loaded?']()}));}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, $scope.get('DIV'))
+    return $scope.get('SidebarStore').$hide()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, section_name = nil, displaytitle = nil, sidebar = nil, body = nil;
+
+    section_name = "start";
+      displaytitle = "Get started";
+      sidebar = self.$PageToc($hash2(["history", "location", "section"], {"history": self.$history(), "location": self.$location(), "section": section_name})).$as_node();
+      body = self.$PageBody($hash2(["section"], {"section": section_name})).$as_node();
+      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "section", "loaded", "history", "location"], {"sidebar_component": sidebar, "body_component": body, "page_title": displaytitle, "section": section_name, "loaded": $scope.get('SiteStore').$sections()['$[]'](section_name)['$loaded?'](), "history": self.$history(), "location": self.$location()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c, $scope.get('DIV'));
   })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
 };
 
@@ -17142,6 +17274,159 @@ Opal.modules["components/old/pages_toc"] = function(Opal) {
 };
 
 /* Generated by Opal 0.10.5 */
+Opal.modules["components/searchresult/search_result_body"] = function(Opal) {
+  function $rb_plus(lhs, rhs) {
+    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
+  }
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$param', '$slug', '$mutate', '$[]', '$pages', '$sections', '$set_current_page', '$accordionindex', '$push', '$history', '$uniq', '$compact', '$split', '$strip', '$new', '$+', '$join', '$gsub', '$render', '$DIV', '$each_with_index', '$each', '$==', '$previoussectionquery', '$H2', '$IMG', '$on', '$gotoslug', '$A', '$highlight', '$BR', '$allresults']);
+  return (function($base, $super) {
+    function $SearchResultBody(){};
+    var self = $SearchResultBody = $klass($base, $super, 'SearchResultBody', $SearchResultBody);
+
+    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_3, $a, $b, TMP_4;
+
+    self.$param("history");
+
+    self.$param("location");
+
+    self.$param("section");
+
+    Opal.defn(self, '$gotoslug', TMP_1 = function $$gotoslug(slug, sectionname, pageid) {
+      var self = this, pagetogo = nil;
+
+      $scope.get('NavigationStore').$mutate().$slug("");
+      pagetogo = $scope.get('SiteStore').$sections()['$[]'](sectionname).$pages()['$[]'](pageid);
+      $scope.get('SiteStore').$sections()['$[]'](sectionname).$set_current_page(pagetogo);
+      $scope.get('NavigationStore').$mutate().$accordionindex(pageid);
+      $scope.get('NavigationStore').$mutate().$slug(slug);
+      return self.$history().$push("/" + (sectionname) + "/" + (pagetogo['$[]']("name")) + "/" + (slug));
+    }, TMP_1.$$arity = 3);
+
+    Opal.defn(self, '$highlight', TMP_3 = function $$highlight(text, search_string) {
+      var $a, $b, TMP_2, self = this, keywords = nil, matcher = nil, highlighted = nil;
+
+      keywords = search_string.$strip().$split(" ").$compact().$uniq();
+      matcher = $scope.get('Regexp').$new($rb_plus($rb_plus("(", keywords.$join("|")), ")"));
+      highlighted = ($a = ($b = text).$gsub, $a.$$p = (TMP_2 = function(match){var self = TMP_2.$$s || this;
+if (match == null) match = nil;
+      return "<a class='ui teal label'>" + (match) + "</a>"}, TMP_2.$$s = self, TMP_2.$$arity = 1, TMP_2), $a).call($b, matcher);
+      return highlighted;
+    }, TMP_3.$$arity = 2);
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $c, $d, TMP_5;
+
+    return ($c = ($d = self).$DIV, $c.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this, $e, $f, TMP_6;
+
+      return ($e = ($f = $scope.get('SearchEngineStore').$allresults()).$each_with_index, $e.$$p = (TMP_6 = function(result, index){var self = TMP_6.$$s || this, $g, $h, TMP_7, $i, TMP_9, resulthtmlparagraph = nil, resultpagename = nil, resultheadingname = nil, resultheadingslug = nil, resultsectionname = nil, resultpageid = nil;
+if (result == null) result = nil;if (index == null) index = nil;
+        resulthtmlparagraph = "";
+          resultpagename = "";
+          resultheadingname = "";
+          resultheadingslug = "";
+          resultsectionname = "";
+          resultpageid = "";
+          ($g = ($h = $scope.get('SiteStore').$sections()['$[]']($scope.get('SearchEngineStore').$previoussectionquery()).$pages()).$each_with_index, $g.$$p = (TMP_7 = function(page, index){var self = TMP_7.$$s || this, $i, $j, TMP_8;
+if (page == null) page = nil;if (index == null) index = nil;
+          return ($i = ($j = page['$[]']("headings")).$each, $i.$$p = (TMP_8 = function(heading){var self = TMP_8.$$s || this, $k;
+if (heading == null) heading = nil;
+            if ((($k = (heading['$[]']("id")['$=='](result['$[]']("ref")))) !== nil && $k != null && (!$k.$$is_boolean || $k == true))) {
+                resultsectionname = heading['$[]']("sectionname");
+                resultpageid = heading['$[]']("pageid");
+                resultpagename = heading['$[]']("pagename");
+                resultheadingname = heading['$[]']("text");
+                resultheadingslug = heading['$[]']("slug");
+                return resulthtmlparagraph = heading['$[]']("paragraphs").$join(" ");
+                } else {
+                return nil
+              }}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8), $i).call($j)}, TMP_7.$$s = self, TMP_7.$$arity = 2, TMP_7), $g).call($h);
+          ($g = ($i = self).$H2, $g.$$p = (TMP_9 = function(){var self = TMP_9.$$s || this, $j, $k, TMP_10;
+
+          self.$IMG($hash2(["src"], {"src": "dist/images/icons/gear.png"}));
+            return ($j = ($k = self).$DIV, $j.$$p = (TMP_10 = function(){var self = TMP_10.$$s || this, $l, $m, TMP_11, $n, $o, TMP_12, TMP_13;
+
+            ($l = ($m = ($n = ($o = self).$A, $n.$$p = (TMP_12 = function(){var self = TMP_12.$$s || this;
+
+              return self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": "" + ($rb_plus(index, 1)) + ". In " + (resultpagename) + ": " + (self.$highlight(resultheadingname, result['$[]']("matchingwords"))) + " <a class='ui black label'>" + (result['$[]']("nbresults")) + " results</a>"})}))}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12), $n).call($o)).$on, $l.$$p = (TMP_11 = function(){var self = TMP_11.$$s || this;
+
+              return self.$gotoslug(resultheadingslug, resultsectionname, resultpageid)}, TMP_11.$$s = self, TMP_11.$$arity = 0, TMP_11), $l).call($m, "click");
+              return ($l = ($n = self).$DIV, $l.$$p = (TMP_13 = function(){var self = TMP_13.$$s || this;
+
+              return "_______________"}, TMP_13.$$s = self, TMP_13.$$arity = 0, TMP_13), $l).call($n, $hash2(["class"], {"class": "sub header"}));}, TMP_10.$$s = self, TMP_10.$$arity = 0, TMP_10), $j).call($k, $hash2(["class"], {"class": "content"}));}, TMP_9.$$s = self, TMP_9.$$arity = 0, TMP_9), $g).call($i, $hash2(["class"], {"class": "ui header"}));
+          self.$DIV($hash2(["dangerously_set_inner_HTML"], {"dangerously_set_inner_HTML": $hash2(["__html"], {"__html": self.$highlight(resulthtmlparagraph, result['$[]']("matchingwords"))})}));
+          return self.$BR();}, TMP_6.$$s = self, TMP_6.$$arity = 2, TMP_6), $e).call($f)}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $c).call($d, $hash2(["class"], {"class": "searchresultcontent"}))}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $a).call($b);
+  })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["components/searchresult/search_result_sidebar"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$imports', '$param', '$render', '$Rail', '$ReactYahooSticky', '$DIV', '$H1', '$nbresults', '$H2', '$length', '$allresults']);
+  (function($base, $super) {
+    function $ReactYahooSticky(){};
+    var self = $ReactYahooSticky = $klass($base, $super, 'ReactYahooSticky', $ReactYahooSticky);
+
+    var def = self.$$proto, $scope = self.$$scope;
+
+    return self.$imports("YahooSticky")
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
+  return (function($base, $super) {
+    function $SearchResultSidebar(){};
+    var self = $SearchResultSidebar = $klass($base, $super, 'SearchResultSidebar', $SearchResultSidebar);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    self.$param("history");
+
+    self.$param("location");
+
+    self.$param("section");
+
+    return ($a = ($b = self).$render, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;
+
+    return ($c = ($d = $scope.get('Sem')).$Rail, $c.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, $e, $f, TMP_3;
+
+      return ($e = ($f = self).$ReactYahooSticky, $e.$$p = (TMP_3 = function(){var self = TMP_3.$$s || this, $g, $h, TMP_4;
+
+        return ($g = ($h = self).$DIV, $g.$$p = (TMP_4 = function(){var self = TMP_4.$$s || this, $i, $j, TMP_5, $k, TMP_6;
+
+          ($i = ($j = self).$H1, $i.$$p = (TMP_5 = function(){var self = TMP_5.$$s || this;
+
+            return "" + ($scope.get('SearchEngineStore').$nbresults()) + " results found."}, TMP_5.$$s = self, TMP_5.$$arity = 0, TMP_5), $i).call($j);
+            return ($i = ($k = self).$H2, $i.$$p = (TMP_6 = function(){var self = TMP_6.$$s || this;
+
+            return "in " + ($scope.get('SearchEngineStore').$allresults().$length()) + " chapters"}, TMP_6.$$s = self, TMP_6.$$arity = 0, TMP_6), $i).call($k);}, TMP_4.$$s = self, TMP_4.$$arity = 0, TMP_4), $g).call($h, $hash2(["class"], {"class": "ui sticky visible transition"}))}, TMP_3.$$s = self, TMP_3.$$arity = 0, TMP_3), $e).call($f, $hash2(["enable", "top"], {"enable": true, "top": 50}))}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $c).call($d, $hash2(["close", "dividing", "position"], {"close": true, "dividing": false, "position": "left"}))}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Component')));
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["components/searchresult/search_result_page"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$after_mount', '$animate', '$[]', '$render', '$querystring', '$as_node', '$SearchResultSidebar', '$history', '$location', '$SearchResultBody', '$PageLayout']);
+  return (function($base, $super) {
+    function $SearchResultPage(){};
+    var self = $SearchResultPage = $klass($base, $super, 'SearchResultPage', $SearchResultPage);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1, $c, TMP_2;
+
+    ($a = ($b = self).$after_mount, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+
+    return $scope.get('Element')['$[]']("html, body").$animate($hash2(["scrollTop"], {"scrollTop": 0}), "slow")}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+
+    return ($a = ($c = self).$render, $a.$$p = (TMP_2 = function(){var self = TMP_2.$$s || this, section = nil, displaytitle = nil, sidebar = nil, body = nil;
+
+    section = "docs";
+      displaytitle = "Search results for { " + ($scope.get('SearchEngineStore').$querystring()) + " }";
+      sidebar = self.$SearchResultSidebar($hash2(["history", "location", "section"], {"history": self.$history(), "location": self.$location(), "section": section})).$as_node();
+      body = self.$SearchResultBody($hash2(["history", "location", "section"], {"history": self.$history(), "location": self.$location(), "section": section})).$as_node();
+      return self.$PageLayout($hash2(["sidebar_component", "body_component", "page_title", "section", "loaded", "history", "location"], {"sidebar_component": sidebar, "body_component": body, "page_title": displaytitle, "section": section, "loaded": true, "history": self.$history(), "location": self.$location()}));}, TMP_2.$$s = self, TMP_2.$$arity = 0, TMP_2), $a).call($c);
+  })($scope.base, (((($scope.get('Hyperloop')).$$scope.get('Router'))).$$scope.get('Component')))
+};
+
+/* Generated by Opal 0.10.5 */
 Opal.modules["components/tutorials/tutorials_body"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
 
@@ -17199,19 +17484,30 @@ Opal.modules["components/tutorials/tutorials_sidebar"] = function(Opal) {
 };
 
 /* Generated by Opal 0.10.5 */
+Opal.modules["stores/navigation_store"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$state']);
+  return (function($base, $super) {
+    function $NavigationStore(){};
+    var self = $NavigationStore = $klass($base, $super, 'NavigationStore', $NavigationStore);
+
+    var def = self.$$proto, $scope = self.$$scope;
+
+    self.$state($hash2(["accordionindex", "scope", "reader"], {"accordionindex": -1, "scope": "shared", "reader": true}));
+
+    return self.$state($hash2(["slug", "scope", "reader"], {"slug": "", "scope": "shared", "reader": true}));
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Store')))
+};
+
+/* Generated by Opal 0.10.5 */
 Opal.modules["stores/search_engine_store"] = function(Opal) {
   function $rb_plus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
   }
-  function $rb_gt(lhs, rhs) {
-    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs > rhs : lhs['$>'](rhs);
-  }
-  function $rb_minus(lhs, rhs) {
-    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
-  }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$[]=', '$pages', '$[]', '$sections', '$each', '$concat', '$match_content', '$inputvalue', '$==', '$size', '$<<', '$to_s', '$allresults', '$mutate', '$private', '$new', '$+', '$downcase', '$excerpt', '$!', '$nil?', '$fetch', '$split', '$delete', '$>', '$max', '$-', '$length', '$drop', '$first', '$join', '$===', '$escape', '$match', '$empty?', '$cut_excerpt_part', '$strip']);
+  Opal.add_stubs(['$state', '$new', '$[]=', '$each', '$[]', '$pages', '$sections', '$lunr_section_searchindex', '$mutate', '$empty?', '$build_lunr_section_searchindex', '$querystring', '$map', '$+', '$nbresults', '$sort_by', '$allresults']);
   return (function($base, $super) {
     function $SearchEngineStore(){};
     var self = $SearchEngineStore = $klass($base, $super, 'SearchEngineStore', $SearchEngineStore);
@@ -17219,114 +17515,44 @@ Opal.modules["stores/search_engine_store"] = function(Opal) {
     var def = self.$$proto, $scope = self.$$scope;
 
     return (function(self) {
-      var $scope = self.$$scope, def = self.$$proto, TMP_2, TMP_3, TMP_4, TMP_6;
+      var $scope = self.$$scope, def = self.$$proto, $a, $b, TMP_1, TMP_3, TMP_7;
 
-      self.$state($hash2(["inputvalue", "scope", "reader"], {"inputvalue": "", "scope": "shared", "reader": true}));
-      self.$state($hash2(["inputvaluetoosmall", "scope", "reader"], {"inputvaluetoosmall": "", "scope": "shared", "reader": true}));
+      self.$state($hash2(["querystring", "scope", "reader"], {"querystring": "", "scope": "shared", "reader": true}));
+      self.$state($hash2(["previoussectionquery", "scope", "reader"], {"previoussectionquery": "", "scope": "shared", "reader": true}));
       self.$state($hash2(["allresults", "scope", "reader"], {"allresults": [], "scope": "shared", "reader": true}));
-      Opal.defn(self, '$search_content', TMP_2 = function $$search_content(sectionname) {
-        var $a, $b, TMP_1, self = this, data = nil, a = nil, pages = nil;
+      self.$state($hash2(["nbresults", "scope", "reader"], {"nbresults": 0, "scope": "shared", "reader": true}));
+      self.$state($hash2(["lunr_section_searchindex", "scope", "reader"], {"lunr_section_searchindex": ($a = ($b = $scope.get('Hash')).$new, $a.$$p = (TMP_1 = function(h, k){var self = TMP_1.$$s || this;
+if (h == null) h = nil;if (k == null) k = nil;
+      return h['$[]='](k, "")}, TMP_1.$$s = self, TMP_1.$$arity = 2, TMP_1), $a).call($b), "scope": "shared", "reader": true}));
+      Opal.defn(self, '$build_lunr_section_searchindex', TMP_3 = function $$build_lunr_section_searchindex(section) {
+        var $a, $b, TMP_2, self = this;
 
-        data = [];
-        a = $hash2([], {});
-        a['$[]=']("name", sectionname);
-        a['$[]=']("results", []);
-        pages = $scope.get('SiteStore').$sections()['$[]'](sectionname).$pages();
-        ($a = ($b = pages).$each, $a.$$p = (TMP_1 = function(page){var self = TMP_1.$$s || this;
+        lunrsectionindex=[];
+        ($a = ($b = $scope.get('SiteStore').$sections()['$[]'](section).$pages()).$each, $a.$$p = (TMP_2 = function(page){var self = TMP_2.$$s || this;
 if (page == null) page = nil;
-        return a['$[]']("results").$concat(self.$match_content(self.$state().$inputvalue(), page))}, TMP_1.$$s = self, TMP_1.$$arity = 1, TMP_1), $a).call($b);
-        if (a['$[]']("results").$size()['$=='](0)) {
-          } else {
-          data['$<<'](a)
-        };
-        a['$[]=']("result_number", a['$[]']("results").$size().$to_s());
-        return self.$mutate().$allresults(data);
-      }, TMP_2.$$arity = 1);
-      self.$private();
-      Opal.defn(self, '$match_content', TMP_3 = function $$match_content(value, page) {
-        var $a, $b, self = this, ret = nil, result_item = nil, keyindex = nil, search_regex = nil, content = nil, search_content_result = nil, content_part = nil;
+        return lunrsectionindex = lunrsectionindex.concat(page['$[]']("lunrsearchindex"));;}, TMP_2.$$s = self, TMP_2.$$arity = 1, TMP_2), $a).call($b);
+        return $scope.get('SearchEngineStore').$mutate().$lunr_section_searchindex()['$[]='](section, lunrsectionindex);
+      }, TMP_3.$$arity = 1);
+      return (Opal.defn(self, '$search_withlunr', TMP_7 = function $$search_withlunr(section) {
+        var $a, $b, TMP_4, $c, TMP_5, $d, TMP_6, self = this, globalIndex = nil, jssearchresults = nil, searchresults = nil, nbresults = nil, sortedresults = nil;
 
-        ret = [];
-        result_item = $hash2([], {});
-        keyindex = 0;
-        search_regex = $scope.get('Regexp').$new($rb_plus($rb_plus("(\\W|^)", value.$downcase()), "(\\W|$)"));
-        content = page['$[]']("body");
-        search_content_result = self.$excerpt(content.$downcase(), search_regex, $hash2(["radius"], {"radius": 30}));
-        while ((($b = search_content_result['$nil?']()['$!']()) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-        result_item['$[]=']("text", search_content_result['$[]']("result_item_text"));
-        result_item['$[]=']("friendly_doc_name", page['$[]']("friendly_doc_name"));
-        result_item['$[]=']("repo", page['$[]']("repo"));
-        result_item['$[]=']("file", page['$[]']("file"));
-        result_item['$[]=']("key", "" + (result_item['$[]']("repo")) + "-" + (result_item['$[]']("file")) + "-" + (keyindex = $rb_plus(keyindex, 1)));
-        ret['$<<'](result_item);
-        content_part = search_content_result['$[]']("sliced_content");
-        search_content_result = self.$excerpt(content_part, search_regex, $hash2(["radius"], {"radius": 30}));
-        result_item = $hash2([], {});};
-        return ret;
-      }, TMP_3.$$arity = 2);
-      Opal.defn(self, '$cut_excerpt_part', TMP_4 = function $$cut_excerpt_part(part_position, part, separator, options) {
-        var $a, self = this, radius = nil, omission = nil, affix = nil, drop_index = nil;
-
-        if (part !== false && part !== nil && part != null) {
-          } else {
-          return ["", ""]
-        };
-        radius = options.$fetch("radius", 100);
-        omission = options.$fetch("omission", "...");
-        part = part.$split(separator);
-        part.$delete("");
-        affix = (function() {if ((($a = $rb_gt(part.$size(), radius)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-          return omission
-          } else {
-          return ""
-        }; return nil; })();
-        part = (function() {if (part_position['$==']("first")) {
-          drop_index = [$rb_minus(part.$length(), radius), 0].$max();
-          return part.$drop(drop_index);
-          } else {
-          return part.$first(radius)
-        }; return nil; })();
-        return [affix, part.$join(separator)];
-      }, TMP_4.$$arity = 4);
-      return (Opal.defn(self, '$excerpt', TMP_6 = function $$excerpt(text, phrase, options) {
-        var $a, $b, TMP_5, $c, self = this, excerptarray = nil, separator = nil, $case = nil, regex = nil, matches = nil, first_part = nil, second_part = nil, prefix = nil, postfix = nil, affix = nil;
-
-        if (options == null) {
-          options = $hash2([], {});
-        }
-        excerptarray = $hash2([], {});
-        if ((($a = (($b = text !== false && text !== nil && text != null) ? phrase : text)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-          } else {
-          return nil
-        };
-        separator = ((($a = options.$fetch("separator", nil)) !== false && $a !== nil && $a != null) ? $a : "");
-        $case = phrase;if ($scope.get('Regexp')['$===']($case)) {regex = phrase}else {regex = (new RegExp("" + $scope.get('Regexp').$escape(phrase)))};
-        if ((($a = matches = text.$match(regex)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-          } else {
-          return nil
-        };
-        phrase = matches['$[]'](0);
-        if ((($a = separator['$empty?']()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-          } else {
-          (function(){var $brk = Opal.new_brk(); try {return ($a = ($b = text.$split(separator)).$each, $a.$$p = (TMP_5 = function(value){var self = TMP_5.$$s || this, $c;
-if (value == null) value = nil;
-          if ((($c = value.$match(regex)) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-              regex = phrase = value;
-              
-              Opal.brk(nil, $brk);
-              } else {
-              return nil
-            }}, TMP_5.$$s = self, TMP_5.$$brk = $brk, TMP_5.$$arity = 1, TMP_5), $a).call($b)
-          } catch (err) { if (err === $brk) { return err.$v } else { throw err } }})()
-        };
-        $c = text.$split(phrase, 2), $a = Opal.to_ary($c), first_part = ($a[0] == null ? nil : $a[0]), second_part = ($a[1] == null ? nil : $a[1]), $c;
-        excerptarray['$[]=']("sliced_content", second_part);
-        $c = self.$cut_excerpt_part("first", first_part, separator, options), $a = Opal.to_ary($c), prefix = ($a[0] == null ? nil : $a[0]), first_part = ($a[1] == null ? nil : $a[1]), $c;
-        $c = self.$cut_excerpt_part("second", second_part, separator, options), $a = Opal.to_ary($c), postfix = ($a[0] == null ? nil : $a[0]), second_part = ($a[1] == null ? nil : $a[1]), $c;
-        affix = [first_part, separator, phrase, separator, second_part].$join().$strip();
-        excerptarray['$[]=']("result_item_text", [prefix, affix, postfix].$join());
-        return excerptarray;
-      }, TMP_6.$$arity = -3), nil) && 'excerpt';
+        if ((($a = $scope.get('SearchEngineStore').$lunr_section_searchindex()['$[]'](section)['$empty?']()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
+          self.$build_lunr_section_searchindex(section)};
+        globalIndex = $scope.get('SearchEngineStore').$lunr_section_searchindex()['$[]'](section);
+        jssearchresults = Searchquery(Lunrindex(globalIndex), globalIndex, self.$state().$querystring());
+        searchresults = ($a = ($b = jssearchresults).$map, $a.$$p = (TMP_4 = function(element){var self = TMP_4.$$s || this;
+if (element == null) element = nil;
+        return $scope.get('Hash').$new(element)}, TMP_4.$$s = self, TMP_4.$$arity = 1, TMP_4), $a).call($b);
+        nbresults = 0;
+        ($a = ($c = searchresults).$each, $a.$$p = (TMP_5 = function(searchresult){var self = TMP_5.$$s || this;
+if (searchresult == null) searchresult = nil;
+        return nbresults = $rb_plus(nbresults, searchresult['$[]']("nbresults"))}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5), $a).call($c);
+        $scope.get('SearchEngineStore').$mutate().$nbresults(nbresults);
+        sortedresults = ($a = ($d = searchresults).$sort_by, $a.$$p = (TMP_6 = function(hsh){var self = TMP_6.$$s || this;
+if (hsh == null) hsh = nil;
+        return hsh['$[]']("ref")}, TMP_6.$$s = self, TMP_6.$$arity = 1, TMP_6), $a).call($d);
+        return self.$mutate().$allresults(sortedresults);
+      }, TMP_7.$$arity = 1), nil) && 'search_withlunr';
     })(Opal.get_singleton_class(self))
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Store')))
 };
@@ -17364,7 +17590,7 @@ Opal.modules["stores/sidebar_store"] = function(Opal) {
 Opal.modules["stores/search_result_modal_store"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$visible', '$mutate', '$inputvaluetoosmall', '$!']);
+  Opal.add_stubs(['$state', '$visible', '$mutate', '$!']);
   return (function($base, $super) {
     function $SearchResultModalStore(){};
     var self = $SearchResultModalStore = $klass($base, $super, 'SearchResultModalStore', $SearchResultModalStore);
@@ -17378,8 +17604,7 @@ Opal.modules["stores/search_result_modal_store"] = function(Opal) {
       Opal.defn(self, '$hide', TMP_1 = function $$hide() {
         var self = this;
 
-        self.$mutate().$visible(false);
-        return $scope.get('SearchEngineStore').$mutate().$inputvaluetoosmall("");
+        return self.$mutate().$visible(false);
       }, TMP_1.$$arity = 0);
       Opal.defn(self, '$show', TMP_2 = function $$show() {
         var self = this;
@@ -17405,24 +17630,26 @@ Opal.modules["stores/section_store"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
 
-  Opal.add_stubs(['$state', '$puts', '$load_and_convert_pages', '$current_page', '$mutate', '$[]', '$loaded', '$current_anchor', '$private', '$each', '$get', '$+', '$ok?', '$new', '$body', '$[]=', '$headings', '$code_blocks', '$html', '$gsub', '$edit_url', '$alert', '$raw_url', '$-', '$==']);
+  Opal.add_stubs(['$state', '$load_and_convert_pages', '$current_page', '$mutate', '$[]', '$loaded', '$current_anchor', '$private', '$each', '$get', '$+', '$puts', '$ok?', '$new', '$body', '$[]=', '$headings', '$code_blocks', '$html', '$edit_url', '$build_lunr_page_searchindex', '$raw_url', '$-', '$==', '$each_with_index', '$gsub', '$join']);
   return (function($base, $super) {
     function $SectionStore(){};
     var self = $SectionStore = $klass($base, $super, 'SectionStore', $SectionStore);
 
-    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_11, TMP_13;
+    var def = self.$$proto, $scope = self.$$scope, TMP_1, TMP_2, TMP_3, TMP_4, TMP_5, TMP_6, TMP_7, TMP_8, TMP_9, TMP_11, TMP_13, TMP_15;
 
     def.pages = def.promises = nil;
     self.$state($hash2(["loaded"], {"loaded": false}));
 
-    Opal.defn(self, '$initialize', TMP_1 = function $$initialize(pages) {
+    Opal.defn(self, '$initialize', TMP_1 = function $$initialize(pages, sectionname, sectionid) {
       var self = this;
 
-      self.$puts("SectionStore is starting now");
+      self.sectionname = sectionname;
+      self.sectionid = sectionid;
       self.pages = pages;
+      lunrsectionindex = [];
       self.$load_and_convert_pages();
       return self.$mutate().$current_page(self.pages['$[]'](0));
-    }, TMP_1.$$arity = 1);
+    }, TMP_1.$$arity = 3);
 
     Opal.defn(self, '$pages', TMP_2 = function $$pages() {
       var self = this;
@@ -17483,24 +17710,26 @@ if (page == null) page = nil;
       return self.$get(page)}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10), $a).call($b);
     }, TMP_11.$$arity = 0);
 
-    return (Opal.defn(self, '$get', TMP_13 = function $$get(page) {
+    Opal.defn(self, '$get', TMP_13 = function $$get(page) {
       var $a, $b, TMP_12, self = this;
 
       self.promises = $rb_plus(self.promises, 1);
       return ($a = ($b = $scope.get('HTTP')).$get, $a.$$p = (TMP_12 = function(response){var self = TMP_12.$$s || this, $c, converted = nil;
+        if (self.sectionname == null) self.sectionname = nil;
+        if (self.sectionid == null) self.sectionid = nil;
         if (self.promises == null) self.promises = nil;
 if (response == null) response = nil;
-      if ((($c = response['$ok?']()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-          self.$puts("got page " + (page));
-          converted = $scope.get('MdConverter').$new(response.$body());
+      self.$puts("got page " + (page));
+        if ((($c = response['$ok?']()) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
+          converted = $scope.get('MdConverter').$new(response.$body(), self.sectionname, self.sectionid, page['$[]']("id"), page['$[]']("name"));
           page['$[]=']("headings", converted.$headings());
           page['$[]=']("friendly_doc_name", converted.$headings()['$[]'](0)['$[]']("text"));
           page['$[]=']("code_blocks", converted.$code_blocks());
           page['$[]=']("html", converted.$html());
-          page['$[]=']("body", page['$[]']("html").$gsub(/<\/?[^>]*>/, ""));
           page['$[]=']("edit_url", self.$edit_url(page));
+          page['$[]=']("lunrsearchindex", self.$build_lunr_page_searchindex(page));
           } else {
-          self.$alert("Unable to get " + (self.$raw_url(page)) + " from Github")
+          self.$puts("Unable to get " + (self.$raw_url(page)) + " from Github")
         };
         self.promises = $rb_minus(self.promises, 1);
         if (self.promises['$=='](0)) {
@@ -17508,7 +17737,51 @@ if (response == null) response = nil;
           } else {
           return nil
         };}, TMP_12.$$s = self, TMP_12.$$arity = 1, TMP_12), $a).call($b, self.$raw_url(page));
-    }, TMP_13.$$arity = 1), nil) && 'get';
+    }, TMP_13.$$arity = 1);
+
+    return (Opal.defn(self, '$build_lunr_page_searchindex', TMP_15 = function $$build_lunr_page_searchindex(page) {
+      var $a, $b, TMP_14, self = this, lunrpageindex = nil;
+
+      lunrpageindex=[];
+      ($a = ($b = page['$[]']("headings")).$each_with_index, $a.$$p = (TMP_14 = function(heading, index){var self = TMP_14.$$s || this, lunrheadingindex = nil;
+if (heading == null) heading = nil;if (index == null) index = nil;
+      lunrheadingindex = {
+        "headingid": heading['$[]']("id"),
+        "headingname": heading['$[]']("text"),
+        "text": heading['$[]']("paragraphs").$join(" ").$gsub(/<\/?[^>]*>/, "")
+      };
+        return lunrpageindex.push(lunrheadingindex);;}, TMP_14.$$s = self, TMP_14.$$arity = 2, TMP_14), $a).call($b);
+      lunrpageindex = lunrpageindex;
+      return lunrpageindex;
+    }, TMP_15.$$arity = 1), nil) && 'build_lunr_page_searchindex';
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Store')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["stores/test_store"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2;
+
+  Opal.add_stubs(['$receives', '$init', '$state', '$rubyglobalIndex', '$mutate']);
+  return (function($base, $super) {
+    function $TestStore(){};
+    var self = $TestStore = $klass($base, $super, 'TestStore', $TestStore);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    ($a = ($b = self).$receives, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+
+    return self.$init()}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b, (((($scope.get('Hyperloop')).$$scope.get('Application'))).$$scope.get('Boot')));
+
+    return (function(self) {
+      var $scope = self.$$scope, def = self.$$proto, TMP_2;
+
+      self.$state("rubyglobalIndex", $hash2(["reader"], {"reader": true}));
+      return (Opal.defn(self, '$init', TMP_2 = function $$init() {
+        var self = this;
+
+        return self.$mutate().$rubyglobalIndex("test_init");
+      }, TMP_2.$$arity = 0), nil) && 'init';
+    })(Opal.get_singleton_class(self));
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Store')))
 };
 
@@ -17559,21 +17832,46 @@ if (section == null) section = nil;
         return self.$load_docs_section();
       }, TMP_5.$$arity = 0);
       Opal.defn(self, '$load_start_section', TMP_6 = function $$load_start_section() {
-        var self = this, pages = nil;
+        var self = this, sectionname = nil, sectionid = nil, pages = nil;
         if (self.section_stores == null) self.section_stores = nil;
 
-        pages = [$hash2(["id", "repo", "file", "allow_edit"], {"id": 1, "repo": "hyperloop-website", "file": "pages/start/components.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 2, "repo": "hyperloop-website", "file": "pages/start/stores.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 3, "repo": "hyperloop-website", "file": "pages/start/models.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 4, "repo": "hyperloop-website", "file": "pages/start/operations.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 5, "repo": "hyperloop-website", "file": "pages/start/policies.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 6, "repo": "hyperloop-website", "file": "pages/start/pradgmatic.md", "allow_edit": true})];
-        return self.section_stores['$[]=']("start", $scope.get('SectionStore').$new(pages));
+        sectionname = "start";
+        sectionid = 1;
+        pages = [$hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 0, "name": "components", "repo": "hyperloop-website", "file": "pages/start/components.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 1, "name": "stores", "repo": "hyperloop-website", "file": "pages/start/stores.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 2, "name": "models", "repo": "hyperloop-website", "file": "pages/start/models.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 3, "name": "operations", "repo": "hyperloop-website", "file": "pages/start/operations.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 4, "name": "policies", "repo": "hyperloop-website", "file": "pages/start/policies.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 5, "name": "pradgmatic", "repo": "hyperloop-website", "file": "pages/start/pradgmatic.md", "allow_edit": true})];
+        return self.section_stores['$[]='](sectionname, $scope.get('SectionStore').$new(pages, sectionname, sectionid));
       }, TMP_6.$$arity = 0);
       return (Opal.defn(self, '$load_docs_section', TMP_7 = function $$load_docs_section() {
-        var self = this, pages = nil;
+        var self = this, sectionname = nil, sectionid = nil, pages = nil;
         if (self.section_stores == null) self.section_stores = nil;
 
-        pages = [$hash2(["id", "repo", "file", "allow_edit"], {"id": 1, "repo": "hyperloop-website", "file": "dist/dummy_DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 2, "repo": "hyper-react", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 3, "repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 4, "repo": "hyper-router", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 5, "repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 6, "repo": "hyper-operation", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "repo", "file", "allow_edit"], {"id": 7, "repo": "hyper-operation", "file": "DOCS-POLICIES.md", "allow_edit": true})];
-        return self.section_stores['$[]=']("docs", $scope.get('SectionStore').$new(pages));
+        sectionname = "docs";
+        sectionid = 0;
+        pages = [$hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 0, "name": "components", "repo": "hyper-react", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 1, "name": "stores", "repo": "hyper-store", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 2, "name": "router", "repo": "hyper-router", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 3, "name": "models", "repo": "hyper-mesh", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 4, "name": "operations", "repo": "hyper-operation", "file": "DOCS.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 5, "name": "policies", "repo": "hyper-operation", "file": "DOCS-POLICIES.md", "allow_edit": true}), $hash2(["id", "name", "repo", "file", "allow_edit"], {"id": 6, "name": "dummy", "repo": "hyperloop-website", "file": "dist/dummy_DOCS.md", "allow_edit": true})];
+        return self.section_stores['$[]='](sectionname, $scope.get('SectionStore').$new(pages, sectionname, sectionid));
       }, TMP_7.$$arity = 0), nil) && 'load_docs_section';
     })(Opal.get_singleton_class(self));
   })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Store')))
+};
+
+/* Generated by Opal 0.10.5 */
+Opal.modules["operations/update_section_page_op"] = function(Opal) {
+  var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
+
+  Opal.add_stubs(['$param', '$step', '$set_current_page', '$[]', '$sections', '$section', '$params', '$page']);
+  return (function($base, $super) {
+    function $UpdateSectionpageOp(){};
+    var self = $UpdateSectionpageOp = $klass($base, $super, 'UpdateSectionpageOp', $UpdateSectionpageOp);
+
+    var def = self.$$proto, $scope = self.$$scope, $a, $b, TMP_1;
+
+    self.$param("section");
+
+    self.$param("page");
+
+    return ($a = ($b = self).$step, $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this;
+
+    return $scope.get('SiteStore').$sections()['$[]'](self.$params().$section()).$set_current_page(self.$params().$page())}, TMP_1.$$s = self, TMP_1.$$arity = 0, TMP_1), $a).call($b);
+  })($scope.base, (($scope.get('Hyperloop')).$$scope.get('Operation')))
 };
 
 /* Generated by Opal 0.10.5 */
@@ -17583,6 +17881,7 @@ if (section == null) section = nil;
   Opal.add_stubs(['$require_tree', '$require', '$listen', '$ready?', '$render', '$AppRouter', '$[]']);
   self.$require_tree("components");
   self.$require_tree("stores");
+  self.$require_tree("operations");
   self.$require("opal_hot_reloader");
   $scope.get('OpalHotReloader').$listen(25222, false, 1);
   return ($a = ($b = $scope.get('Document'))['$ready?'], $a.$$p = (TMP_1 = function(){var self = TMP_1.$$s || this, $c, $d, TMP_2;

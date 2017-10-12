@@ -1,23 +1,116 @@
-class SiteSearch < Hyperloop::Component
+class SiteSearch < Hyperloop::Router::Component
+
+  param :history
+  param :section
 
   state results: []
-  state value: ""
+  state searchinputvalue: ""
+  state sectionselection: ''
+  #state searchwordselection: ''
 
-  param :section
-  
-
-  param options: [
+  param sectionoptions: [
     { key: 'docs', text: 'Documentation', value: 'docs' },
     { key: 'start', text: 'Get started', value: 'start' },
     { key: 'tutorials', text: 'Tutorials', value: 'tutorials' }
   ]
 
+  param searchwordoptions: [
+    { key: 'exact', text: 'Exact word', value: 'exact' },
+    { key: 'partial', text: 'partial word', value: 'partial' }
+  ]
+
+  after_mount do
+    mutate.sectionselection params.section
+    #mutate.searchwordselection 'exact'
+  end
 
   render do
+
     search_control
   end
 
-  # def search_control_old
+
+
+  def search_control
+
+        
+    Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
+      INPUT(){}.on(:change) do |e|
+       #SearchEngineStore.mutate.querystring e.target.value
+       mutate.searchinputvalue e.target.value
+      end
+
+      Sem.Icon(name: 'search')
+
+      # Sem.Select(compact: true, options: params.searchwordoptions.to_n, value: state.searchwordselection).on :change do |e|
+        
+      #   #mutate.selection Hash.new(e.to_n)['value']
+        
+      # end
+
+      Sem.Select(compact: true, options: params.sectionoptions.to_n, value: state.sectionselection).on :change do |e|
+        
+        mutate.sectionselection Hash.new(e.to_n)['value']
+        #puts state.selection
+        
+
+        # test1 = e.target
+        # `test2=#{test1}`
+        # `alert(test2)`
+        # test =  state.selection.map{|element| Hash.new(element)}
+        # puts "VALUE: #{test}"
+      end
+
+      Sem.Button() {'Search'}.on(:click) do
+
+        # SearchResultModal.open
+        
+        
+        if (state.searchinputvalue.length>4)
+
+          if ( (SearchEngineStore.querystring != state.searchinputvalue) ||
+             (SearchEngineStore.previoussectionquery != params.section) )
+            
+            SearchEngineStore.mutate.querystring state.searchinputvalue
+            SearchEngineStore.mutate.previoussectionquery params.section
+            SearchEngineStore.mutate.allresults nil
+            
+            SearchEngineStore.search_withlunr(params.section)
+          end
+
+          if (SearchEngineStore.allresults.empty?)
+            alert("Sorry, no result found for { #{state.searchinputvalue} }")
+          else
+            params.history.push "/searchresult"
+          end
+
+        else
+          #SearchEngineStore.mutate.querystring ""
+          #SearchEngineStore.mutate.allresults nil
+    
+          alert("Search word too small, must be > 4")
+        end
+        
+      end
+      
+
+    end
+    
+    
+    
+
+  end
+
+  
+end
+
+
+
+
+########################################
+##  CODE USED FOR Sem.Search
+
+# def search_control_old
   #   Sem.Search(category: true, aligned: :left,
   #     resultRenderer: lambda { |obj| render_result(obj) },
   #     categoryRenderer: lambda { |obj| render_category(obj) },
@@ -46,67 +139,19 @@ class SiteSearch < Hyperloop::Component
   #   end
   # end
 
-  def search_control
-    Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
-      INPUT(){}.on(:change) do |e|
-       #SearchEngineStore.mutate.inputvalue e.target.value
-       mutate.value e.target.value
-      end
-      Sem.Icon(name: 'search')
-      Sem.Select(compact: true, options: params.options.to_n, defaultValue: params.section.to_n )
-      Sem.Button() {'Search'}.on(:click) do
 
-        SearchResultModalStore.show
+  # def render_result obj
+  #   SPAN do
+  #     H4 { `obj.text` }
+  #     EM { `obj.friendly_doc_name` }
+  #   end.to_n
+  #   #SearchResult().to_n
+  # end
 
-
-        if (state.value.length>4)
-          if (SearchEngineStore.inputvalue != state.value)
-            #puts "VALUE : #{state.value}"
-            SearchEngineStore.mutate.inputvalue state.value
-            SearchEngineStore.mutate.allresults nil
-            
-            if (SearchResultModalStore.visible)
-              SearchEngineStore.search_content(params.section)
-            end
-          end
-        else
-          SearchEngineStore.mutate.inputvalue ""
-          SearchEngineStore.mutate.allresults nil
-          SearchEngineStore.mutate.inputvaluetoosmall "Please provide a search value > 4"
-        end
-        
-      end
-    end
+  # def render_category obj
+  #   SPAN do
+  #     H1 { `obj.name` }
+  #     EM { "#{`obj.result_number`} results" }
+  #   end.to_n
     
-  end
-
-  def render_result obj
-    #  FRED I don't know why we get the warnings about props on a div and a missing key
-    #  clearly this is not where to declare these props, I have tried everything
-    # React.create_element(SearchResult, {friendly_doc_name: `obj.friendly_doc_name`, heading_text: `obj.text`} ).to_n
-    # a local HTML element feels faster ro tun than a component being created.... Same warning in both cases though
-    SPAN do
-      H4 { `obj.text` }
-      EM { `obj.friendly_doc_name` }
-    end.to_n
-    #SearchResult().to_n
-  end
-
-  def render_category obj
-    SPAN do
-      H1 { `obj.name` }
-      EM { "#{`obj.result_number`} results" }
-    end.to_n
-    
-  end
-end
-
-# class SearchResult < Hyperloop::Component
-#   param :friendly_doc_name
-#   param :heading_text
-
-#   render(DIV) do
-#     H4 { params.heading_text }
-#     EM { params.friendly_doc_name }
-#   end
-# end
+  # end

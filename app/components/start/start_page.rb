@@ -1,13 +1,25 @@
 class StartPage < Hyperloop::Router::Component
 
+   before_mount do
+    SidebarStore.hide
+  end
+
   render(DIV) do
 
-    sidebar = DocsSidebar(section_store: SiteStore.sections[:start],
-                          history: history,
-                          section: 'start').as_node
-    body = StartBody(section_store: SiteStore.sections[:start]).as_node
-    title = "Get started with Hyperloop"
+    section_name = "start"
+    displaytitle = "Get started"
 
-    PageLayout(sidebar_component: sidebar, body_component: body, page_title: title, section: 'start', loaded: SiteStore.sections[:start].loaded?)
+    sidebar = PageToc(history: history, location: location, section: section_name).as_node
+    body = PageBody(section: section_name).as_node
+    
+    PageLayout(sidebar_component: sidebar, 
+              body_component: body, 
+              page_title: displaytitle, 
+              section: section_name, 
+              loaded: SiteStore.sections[section_name].loaded?,
+              history: history,
+              location: location)
+
   end
+
 end

@@ -4,11 +4,17 @@ class SectionStore < Hyperloop::Store
 
   state loaded: false
 
-  def initialize pages
-    puts "SectionStore is starting now"
+  def initialize pages, sectionname, sectionid
+    #puts "SectionStore is starting now"
+    @sectionname = sectionname
+    @sectionid = sectionid
     @pages = pages
+    #mutate.current_sectionname_lunrsectionindex sectionname
+    `lunrsectionindex = [];`
+    
     load_and_convert_pages
     mutate.current_page @pages[0]
+    
   end
 
   def pages
@@ -45,32 +51,69 @@ class SectionStore < Hyperloop::Store
 
   private
 
-  def load_and_convert_pages
+  def load_and_convert_pages 
     @promises = 0
 
     @pages.each do |page|
       get(page)
     end
+
+    
+    
   end
 
   def get page
+    
     @promises += 1
+    
     HTTP.get( raw_url(page) ) do |response|
+      puts "got page #{page}"
       if response.ok?
-        puts "got page #{page}"
-        converted = MdConverter.new(response.body)
+        converted = MdConverter.new(response.body, @sectionname, @sectionid, page[:id], page[:name])
         page[:headings] = converted.headings
         page[:friendly_doc_name] = converted.headings[0][:text]
         page[:code_blocks] = converted.code_blocks
         page[:html] = converted.html
-        page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
+        #page[:body] = page[:html].gsub(/<\/?[^>]*>/, "")
         page[:edit_url] = edit_url page
+        page[:lunrsearchindex] = build_lunr_page_searchindex(page)
+
+        
       else
-        alert "Unable to get #{raw_url(page)} from Github"
+        puts "Unable to get #{raw_url(page)} from Github"
       end
+     
+      
       @promises -= 1
       mutate.loaded true if @promises == 0
+
+
     end
   end
+
+  def build_lunr_page_searchindex page
+
+
+    `lunrpageindex=[]`
+    
+    page[:headings].each_with_index do |heading, index|
+
+      lunrheadingindex = `{
+        "headingid": #{heading[:id]},
+        "headingname": #{heading[:text]},
+        "text": #{heading[:paragraphs].join(' ').gsub(/<\/?[^>]*>/, "")}
+      }`
+
+      
+      `lunrpageindex.push(#{lunrheadingindex});`
+
+      
+    end
+
+    lunrpageindex =  `lunrpageindex`   
+    return lunrpageindex
+  
+  end
+
 
 end

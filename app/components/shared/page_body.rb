@@ -6,6 +6,20 @@ class PageBody < Hyperloop::Component
     mutate.needs_refresh false
   end
 
+  after_update do
+    if !NavigationStore.state.slug.empty?
+      # if !(Element["##{NavigationStore.state.slug}"].nil?)
+        #puts "ELEMENT: #{Element["##{NavigationStore.state.slug}"].offset().nil?}"
+        anchorchapter_position = Element["##{NavigationStore.state.slug}"].offset().top
+        #puts "Position: #{anchorchapter_position}"
+        #puts "BODY update"
+        Element['html, body'].animate({
+              scrollTop: anchorchapter_position
+            }, 500)
+      # end
+    end
+  end
+
   render(DIV) do
     if SiteStore.sections[params.section].loaded?
       edit_button if SiteStore.sections[params.section].current_page[:allow_edit]

@@ -68,28 +68,37 @@ class SiteStore < Hyperloop::Store
     end
 
     def load_start_section
+
+      sectionname = "start"
+      sectionid = 1
+
       pages = [
-        { id: 1, repo: 'hyperloop-website',     file: 'pages/start/components.md',  allow_edit: true },
-        { id: 2, repo: 'hyperloop-website',     file: 'pages/start/stores.md',  allow_edit: true },
-        { id: 3, repo: 'hyperloop-website',     file: 'pages/start/models.md',  allow_edit: true },
-        { id: 4, repo: 'hyperloop-website',     file: 'pages/start/operations.md',  allow_edit: true },
-        { id: 5, repo: 'hyperloop-website',     file: 'pages/start/policies.md',  allow_edit: true },
-        { id: 6, repo: 'hyperloop-website',     file: 'pages/start/pradgmatic.md',  allow_edit: true }
+        { id: 0, name: 'components', repo: 'hyperloop-website',     file: 'pages/start/components.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hyperloop-website',     file: 'pages/start/stores.md',  allow_edit: true },
+        { id: 2, name: 'models', repo: 'hyperloop-website',     file: 'pages/start/models.md',  allow_edit: true },
+        { id: 3, name: 'operations', repo: 'hyperloop-website',     file: 'pages/start/operations.md',  allow_edit: true },
+        { id: 4, name: 'policies', repo: 'hyperloop-website',     file: 'pages/start/policies.md',  allow_edit: true },
+        { id: 5, name: 'pradgmatic', repo: 'hyperloop-website',     file: 'pages/start/pradgmatic.md',  allow_edit: true }
       ]
-      @section_stores[:start] = SectionStore.new(pages)
+
+      @section_stores[sectionname] = SectionStore.new(pages, sectionname, sectionid)
     end
 
     def load_docs_section
+     
+      sectionname = "docs"
+      sectionid = 0
+
       pages = [
-        { id: 1, repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true },
-        { id: 2, repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
-        { id: 3, repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
-        { id: 4, repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
-        { id: 5, repo: 'hyper-mesh',      file: 'DOCS.md',  allow_edit: true },
-        { id: 6, repo: 'hyper-operation', file: 'DOCS.md',  allow_edit: true },
-        { id: 7, repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true }
+        { id: 0, name: 'components', repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
+        { id: 1, name: 'stores', repo: 'hyper-store',     file: 'DOCS.md',  allow_edit: true },
+        { id: 2, name: 'router', repo: 'hyper-router',    file: 'DOCS.md',  allow_edit: true },
+        { id: 3, name: 'models', repo: 'hyper-mesh',      file: 'DOCS.md',  allow_edit: true },
+        { id: 4, name: 'operations', repo: 'hyper-operation', file: 'DOCS.md',  allow_edit: true },
+        { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
+        { id: 6, name: 'dummy', repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
-      @section_stores[:docs] = SectionStore.new(pages)
+      @section_stores[sectionname] = SectionStore.new(pages, sectionname, sectionid)
     end
 
 

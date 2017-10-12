@@ -4,11 +4,12 @@ class PageLayout < Hyperloop::Router::Component
   param :page_title
   param :loaded
   param :section
+  # param :history
 
   
 
   before_mount do
-    SidebarStore.hide
+    SidebarStore.hide  
   end
 
   after_mount do
@@ -24,6 +25,10 @@ class PageLayout < Hyperloop::Router::Component
   
 
   render do
+
+    # Sem.Dimmer(active: (params.loaded ? false : true), inverted: true) {
+    #   Sem.Loader(inverted: true, size: :large, content: 'Loading dynamic content...')
+    # }
 
     DIV(id: 'example', class: 'index') do
        
@@ -45,7 +50,7 @@ class PageLayout < Hyperloop::Router::Component
 
       DIV(class: 'full height') do
 
-        AppMenu(section: params.section)
+        AppMenu(section: params.section, history: history, location: location)
         
         DIV(class: 'header segment') do
           DIV(class: 'container') do
@@ -67,9 +72,14 @@ class PageLayout < Hyperloop::Router::Component
       
       AppFooter()
 
-      SearchResultModal()
+      SearchResultModal(history: history)
 
-      
+      # test1 =  SearchEngineStore.lunr_section_searchindex[:start].map{|element| Hash.new(element)}
+      #   puts "+++++++++++++++++++++++++++++++++++++++++++++++SECIONINDEX : --- SECTION: START DETAIL: #{test1}"
+
+
+      #   test2 =  SearchEngineStore.lunr_section_searchindex[:docs].map{|element| Hash.new(element)}
+      #   puts "+++++++++++++++++++++++++++++++++++++++++++++++SECIONINDEX : --- SECTION: DOCS DETAIL: #{test2}"
 
       
 

@@ -2,7 +2,7 @@ class ModalDialog < Hyperloop::Component
 
   render do
 
-    Sem.Modal(size: :large, open: (SearchResultModalStore.visible ? true : false)) do
+    Sem.Modal(size: :large,open: (SearchResultModalStore.visible ? true : false)) do
       Sem.ModalHeader {"Search Results: "}
       Sem.ModalContent(image: true, scrolling: true) do
         Sem.Image(size: 'massive', src: 'dist/images/hyperloop-logo-title.png', wrapped: true) {}
@@ -17,6 +17,8 @@ class ModalDialog < Hyperloop::Component
         
       end
     end
+
+    
 
   end
 
