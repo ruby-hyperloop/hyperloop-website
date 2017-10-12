@@ -84,7 +84,7 @@ function Searchquery(index, data, querystring){
 
         searchresultitem = {"ref": result.ref,
                 "nbresults": nbresults,
-                "matchingwords": matchingwords.replace(/[^\w\s]|_/g, "")}
+                "matchingwords": matchingwords.replace(/[^\w\s]|/g, "")}
 
         searchresults.push(searchresultitem)
     })

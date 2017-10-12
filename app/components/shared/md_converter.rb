@@ -53,6 +53,7 @@ class MdConverter
     cb[:code] = code
     cb[:lang] = lang
     @code_blocks << cb
+    @headings[@headings_index-1][:paragraphs] << "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
     "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
   end
 
