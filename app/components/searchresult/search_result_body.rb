@@ -21,7 +21,8 @@ class SearchResultBody < Hyperloop::Router::Component
 
   def highlight(text, search_string)
     keywords = search_string.strip.split(" ").compact.uniq
-    matcher = Regexp.new( '(' + keywords.join("|") + ')' )
+    #matcher = Regexp.new( '(' + keywords.join("|") + ')' )
+    matcher = Regexp.new('\\b(' + keywords.join("|") + ')\\b')
     highlighted = text.gsub(matcher) { |match| "<a class='ui teal label'>#{match}</a>" }
     return highlighted
   end
@@ -80,6 +81,8 @@ class SearchResultBody < Hyperloop::Router::Component
           end
           
         end
+
+           
 
         DIV(dangerously_set_inner_HTML: { __html: highlight(resulthtmlparagraph, result[:matchingwords]) })
         

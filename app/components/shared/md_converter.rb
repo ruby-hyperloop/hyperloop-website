@@ -38,13 +38,16 @@ class MdConverter
     `renderer.codespan = #{lambda {|code| on_codespan(code)} }`
     `renderer.blockquote = #{lambda {|quote| on_blockquote(quote)} }`
     `renderer.table = #{lambda {|header, body| on_table(header, body)} }`
+    `renderer.list = #{lambda {|body, ordered| on_list(body, ordered)} }`
 
     `Marked.setOptions({ renderer: renderer })`
     @html = `Marked(#{@md})`
   end
 
   def on_table header, body
-    "<table class='ui celled table'><thead class>#{header}</thead><tbody class>#{body}</tbody></table>"
+    return_html = "<table class='ui celled table'><thead class>#{header}</thead><tbody class>#{body}</tbody></table>"
+    @headings[@headings_index-1][:paragraphs] << return_html
+    return_html
   end
 
   def on_code code, lang
@@ -53,8 +56,9 @@ class MdConverter
     cb[:code] = code
     cb[:lang] = lang
     @code_blocks << cb
-    @headings[@headings_index-1][:paragraphs] << "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
-    "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
+    return_html = "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
+    @headings[@headings_index-1][:paragraphs] << return_html
+    return_html
   end
 
   def on_codespan code
@@ -86,8 +90,15 @@ class MdConverter
   end
 
   def on_paragraph text
-    @headings[@headings_index-1][:paragraphs] << "<p>#{text}</p>"
-    "<p>#{text}</p>"
+    return_html = "<p>#{text}</p>"
+    @headings[@headings_index-1][:paragraphs] << return_html
+    return_html
+  end
+
+  def on_list body, ordered
+    return_html = "<ul>#{body}</ul>"
+    @headings[@headings_index-1][:paragraphs] << return_html
+    return_html
   end
 
 end

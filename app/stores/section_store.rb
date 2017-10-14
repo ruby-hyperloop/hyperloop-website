@@ -5,13 +5,11 @@ class SectionStore < Hyperloop::Store
   state loaded: false
 
   def initialize pages, sectionname, sectionid
-    #puts "SectionStore is starting now"
+  
     @sectionname = sectionname
     @sectionid = sectionid
     @pages = pages
-    #mutate.current_sectionname_lunrsectionindex sectionname
-    `lunrsectionindex = [];`
-    
+      
     load_and_convert_pages
     mutate.current_page @pages[0]
     
@@ -91,8 +89,17 @@ class SectionStore < Hyperloop::Store
     end
   end
 
-  def build_lunr_page_searchindex page
+  def purify_text text
+    puretext = text.gsub(/<\/?[^>]*>/, "")
+                  .gsub(/\s+/, ' ')
+                  .gsub(/&#39;/, ' ')
+                  .gsub(/[^\w\d\_\?]/, ' ')
+                  .strip
+    return puretext
+  end
+  
 
+  def build_lunr_page_searchindex page
 
     `lunrpageindex=[]`
     
@@ -100,8 +107,8 @@ class SectionStore < Hyperloop::Store
 
       lunrheadingindex = `{
         "headingid": #{heading[:id]},
-        "headingname": #{heading[:text]},
-        "text": #{heading[:paragraphs].join(' ').gsub(/<\/?[^>]*>/, "")}
+        "headingname": #{purify_text(heading[:text])},
+        "text": #{purify_text(heading[:paragraphs].join(' '))}
       }`
 
       

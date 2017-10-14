@@ -20,6 +20,8 @@ class SearchEngineStore < Hyperloop::Store
         end
         SearchEngineStore.mutate.lunr_section_searchindex[section] = `lunrsectionindex`
         
+        # test = SearchEngineStore.lunr_section_searchindex[section].map{|element| Hash.new(element)}
+        # puts test
     end
 
     def search_withlunr section

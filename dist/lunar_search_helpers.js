@@ -18,8 +18,10 @@ function Lunrindex(data) {
             this.add(item) 
         }, this);
 
-        this.pipeline.remove(lunr.stemmer);
-        this.pipeline.remove(lunr.stopWordFilter)
+        //this.pipeline.remove(lunr.stemmer);
+        //this.searchPipeline.remove(lunr.stemmer);
+        //this.pipeline.remove(lunr.stopWordFilter);
+
     })
 
     return index;
@@ -49,6 +51,12 @@ function Searchquery(index, data, querystring){
 
 
     var lunrresults = index.search(querystring);
+
+    // index.query(function (q) {
+    //   q.term(term, { boost: 100 }) // exact match
+    //   q.term(term, { usePipeline: false, wildcard: lunr.query.wildcard.TRAILING, boost: 10 }) // prefix match, no stemmer
+    //   q.term(term, { usePipeline: false, editDistance: 1, boost: 1 }) // fuzzy matching
+    // })
 
 
     // searchresults wanted format
@@ -81,9 +89,11 @@ function Searchquery(index, data, querystring){
                 // if (fieldName=="text") { positionintext = fieldNameKey.position}
              })
         })
-
+        
         searchresultitem = {"ref": result.ref,
                 "nbresults": nbresults,
+                // "positioninheadingname": positioninheadingname,
+                // "positionintext": positionintext,
                 "matchingwords": matchingwords.replace(/[^\w\s]|/g, "")}
 
         searchresults.push(searchresultitem)
