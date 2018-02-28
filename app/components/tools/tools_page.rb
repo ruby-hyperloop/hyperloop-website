@@ -1,18 +1,11 @@
 class ToolsPage < Hyperloop::Router::Component
-  render(DIV) do
-
-    DIV(class: 'testdiv') do
-    DIV(class: 'fixedmenu') do
-
-      A(href: '') {'link 1'}
-      A(href: '') {'link 1'}
-      A(href: '') {'link 1'}
-      A(href: '') {'link 1'}
+  
+    render(DIV) do
+      imgcomp = Sem.Image(size: 'small', src: 'http://via.placeholder.com/140x100').as_node
+      #imgcomp2 = [ Sem.Image(size: 'small', src: 'http://via.placeholder.com/140x100').as_node, span{'text'}.as_node, span{'text'}.as_node ]
+      SemImage(imagecomponent: imgcomp)
+      span{'text'}
+      span{'text'}
     end
-  end
-    # sidebar = ToolsSidebar().as_node
-    # body = ToolsBody().as_node
 
-    # PageLayout(sidebar_component: sidebar, body_component: body, loaded: true)
-  end
 end

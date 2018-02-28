@@ -5,19 +5,20 @@ class SiteSearch < Hyperloop::Router::Component
 
   state results: []
   state searchinputvalue: ""
-  state sectionselection: ''
+  state sectionselection: 'docs'
   #state searchwordselection: ''
+  param onChange: nil
 
   param sectionoptions: [
-    { key: 'docs', text: 'Documentation', value: 'docs' },
-    { key: 'start', text: 'Get started', value: 'start' },
-    { key: 'tutorials', text: 'Tutorials', value: 'tutorials' }
+    { key: 'docs', text: 'In Documentation', value: 'docs' },
+    { key: 'start', text: 'In Get started', value: 'start' },
+    { key: 'tutorials', text: 'In Tutorials', value: 'tutorials' }
   ]
 
-  param searchwordoptions: [
-    { key: 'exact', text: 'Exact word', value: 'exact' },
-    { key: 'partial', text: 'partial word', value: 'partial' }
-  ]
+  # param searchwordoptions: [
+  #   { key: 'exact', text: 'Exact word', value: 'exact' },
+  #   { key: 'partial', text: 'partial word', value: 'partial' }
+  # ]
 
   after_mount do
     mutate.sectionselection params.section
@@ -36,7 +37,6 @@ class SiteSearch < Hyperloop::Router::Component
         
     Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
       INPUT(){}.on(:change) do |e|
-       #SearchEngineStore.mutate.querystring e.target.value
        mutate.searchinputvalue e.target.value
       end
 
@@ -48,17 +48,19 @@ class SiteSearch < Hyperloop::Router::Component
         
       # end
 
-      Sem.Select(compact: true, options: params.sectionoptions.to_n, value: state.sectionselection).on :change do |e|
+      Sem.Select(compact: false, options: params.sectionoptions.to_n, defaultValue: state.sectionselection).on :change do |e|
         
         mutate.sectionselection Hash.new(e.to_n)['value']
-        #puts state.selection
-        
+        #params.onChange.call(state.sectionselection) if params.onChange.present?
+        # puts "SELECT #{state.sectionselection}"
+        `alert(#{e})`
 
         # test1 = e.target
         # `test2=#{test1}`
         # `alert(test2)`
-        # test =  state.selection.map{|element| Hash.new(element)}
-        # puts "VALUE: #{test}"
+        
+        #test =  state.sectionselection.map{|element| Hash.new(element)}
+        #puts "VALUE: #{test}"
       end
 
       Sem.Button() {'Search'}.on(:click) do
