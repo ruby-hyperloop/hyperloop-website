@@ -4,27 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1">
 
-    <!-- JQuery -->
+    <!-- bundle from webpack -->
+    <script src="dist/bundle.js"></script>
+
+    <!-- React and JQuery -->
+    <!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
+    <!-- <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 
-
-    <!-- bundle from webpack -->
+    <!-- Opal (or bring your own) -->
+    <!-- <script src="dist/opal.min.js"></script> -->
     <%= javascript_include_tag 'opal.js'%>
-    <script src="dist/bundle.js"></script>
 
-    
-      <script src="dist/lunr.js"></script>
-      <script src="dist/lunar_search_helpers.js"></script>
+    <!--Hyperloop -->
+    <%= javascript_include_tag 'hyperloop.js'%>
+    <%= javascript_include_tag 'hyperloop-compiler.js'%>
+    <%= javascript_include_tag 'hyper-router.js'%>
 
+    <script src="dist/lunr.js"></script>
+    <script src="dist/lunar_search_helpers.js"></script>
 
-
-    <!-- <script src="dist/docs.js"></script> -->
+<!-- <script src="dist/docs.js"></script> -->
 
     <!-- React and JQuery -->
     <!-- <script src="dist/semantic.min.js"></script> -->
     <!-- <script src="dist/docs.js"></script> -->
-    
+
     <!-- stylesheets -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css"></link>
     <link href="./app/css/codemirror.css" rel="stylesheet">
@@ -42,13 +48,13 @@
 
 
     <!-- Opal and Hyperloop -->
-    
+
     <!-- <script src="http://cdn.opalrb.org/opal/current/opal.min.js"></script> -->
     <!-- <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyperloop.js"></script><script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyper-router.js"></script> -->
 
 
     <!-- website application -->
-    
+
     <%= javascript_include_tag 'app.js'%>
 
   </head>
@@ -57,7 +63,7 @@
 
     <script type="text/javascript">
 
-        
+
 
 
 
@@ -68,10 +74,10 @@
 //     var data = AllWebsiteDatas;
 //     var searchquery = "library";
 //     var searchresults = Searchquery(Lunrindex(data), data, searchquery);
-    
+
 //     $.each(searchresults, function(i,result) {
-//         alert(result.text);  
-//     }); 
+//         alert(result.text);
+//     });
  });
 
 
@@ -82,19 +88,19 @@
     <script type="text/ruby">
 
     Document.ready? do
-           
+
        #@globalIndex = `AllWebsiteDatas`
-       
+
 
        #puts rubyobj[0][:text]
     end
 
     </script>
-    
+
 
 
     <div id="hyperloopsite"></div>
-    
+
 
   </body>
 </html>

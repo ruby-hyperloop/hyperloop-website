@@ -1,6 +1,15 @@
 require 'opal-sprockets'
 require "./rack-custom_404.rb"
 
+require 'hyperloop-config'
+require 'rubygems'
+require 'opal-rails'
+require 'hyper-operation'
+require 'hyper-store'
+require 'hyper-router'
+require 'opal-browser'
+require 'opal-jquery'
+
 require 'bundler'
 Bundler.require
 
