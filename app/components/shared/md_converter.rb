@@ -56,7 +56,13 @@ class MdConverter
     cb[:code] = code
     cb[:lang] = lang
     @code_blocks << cb
-    return_html = "<pre><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
+
+    return_html = "<pre class='pre-md-code'><code class='lang-#{lang} hljs'>#{ cb[:html] }</code></pre>"
+
+    # if (lang == 'ruby-runable')
+    #   return_html = "<div class='ui inverted instructive segment runablecode-container'><div class='ui attached top label'><span class='title'>Hyperloop Code</span><em>Live executed code</em></div>#{return_html}</div>"
+    # end
+
     @headings[@headings_index-1][:paragraphs] << return_html
     return_html
   end
@@ -81,12 +87,17 @@ class MdConverter
     heading[:pagename] = @pagename
     heading[:text] = text
     heading[:level] = level
-    heading[:slug] = text.downcase.gsub(/[^\w]+/g, '-')
+    heading[:slug] = text.downcase.gsub(/[^\w]+/, '-')
     heading[:paragraphs] = []
     @headings_index += 1
 
+    levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
+    leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
+    leveliconhtml = "" if level==1
+    
+
     @headings << heading
-    "<h#{level} class='doc_h#{level} chapteranchor' id='#{heading[:slug]}'>#{text}</h#{level}>"
+    "<p class='ptopmargin-#{level}'></p><h#{level} class='doc_h#{level} chapteranchor' id='#{heading[:slug]}'>#{leveliconhtml}#{text}</h#{level}>"
   end
 
   def on_paragraph text

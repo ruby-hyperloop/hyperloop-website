@@ -11,7 +11,7 @@ class PageToc < Hyperloop::Component
   before_mount do
 
     if (NavigationStore.accordionindex < 0)
-      NavigationStore.mutate.accordionindex -1
+      NavigationStore.mutate.accordionindex(-1)
     end
   end
 

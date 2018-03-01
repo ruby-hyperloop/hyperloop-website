@@ -61,7 +61,8 @@ class SearchResultBody < Hyperloop::Router::Component
         
 
         H2(class: 'ui header') do
-          IMG(src: 'dist/images/icons/gear.png')
+          #IMG(src: 'dist/images/icons/gear.png')
+          Sem.Icon(name: 'chevron right')
           DIV(class: 'content') do
           
             A() do 

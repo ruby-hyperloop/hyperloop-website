@@ -6,6 +6,7 @@ class PageBody < Hyperloop::Component
     mutate.needs_refresh false
   end
 
+
   after_update do
     if !NavigationStore.state.slug.empty?
       # if !(Element["##{NavigationStore.state.slug}"].nil?)
@@ -16,17 +17,33 @@ class PageBody < Hyperloop::Component
         Element['html, body'].animate({
               scrollTop: anchorchapter_position
             }, 500)
+
+        
       # end
+    end
+    convert_runable_code_blocks
+  end
+
+  render do
+    DIV(class: 'page-container') do
+      if SiteStore.sections[params.section].loaded?
+
+        set_pagebody_cssstyle
+        
+        edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
+        
+        DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: SiteStore.sections[params.section].current_page[:html] })
+        
+      end
     end
   end
 
-  render(DIV) do
-    if SiteStore.sections[params.section].loaded?
-      edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
-      Sem.Divider(hidden: true)
-      DIV(dangerously_set_inner_HTML: { __html: SiteStore.sections[params.section].current_page[:html] })
-      convert_runable_code_blocks
-    end
+  def set_pagebody_cssstyle
+    
+    #Element['.ptopmargin-2'].prev('h1').css('height', '0em')
+    # Element['h3'].prev().not('h2').css('margin-bottom', '5em')
+    # Element['h4'].prev().css('margin-bottom', '5em')
+    # Element['h2'].before( "<p>Test</p>" )
   end
 
   def convert_runable_code_blocks
@@ -37,23 +54,21 @@ class PageBody < Hyperloop::Component
   end
 
   def edit_button
-    Sem.Grid(textAlign: :right) {
-      Sem.GridColumn {
-        if state.needs_refresh
-          Sem.Message(positive: true) {
-            Sem.MessageHeader { "Thank you!" }
-            P { "PRs are always welcome." }
-          }
-        else
-          Sem.Button(icon: :github, circular: true, label: "Improve this page") {
+    DIV(class: 'edit-github-button') do
+      if state.needs_refresh
+        Sem.Message(positive: true) {
+          Sem.MessageHeader { "Thank you!" }
+          P { "PRs are always welcome." }
+        }
+      else
+        Sem.Button(icon: :github, circular: true, label: "Improve this page") {
 
-          }.on(:click) do
-            mutate.needs_refresh true
-            `window.open(#{SiteStore.sections[params.section].current_page[:edit_url]}, "_blank");`
-          end
+        }.on(:click) do
+          mutate.needs_refresh true
+          `window.open(#{SiteStore.sections[params.section].current_page[:edit_url]}, "_blank");`
         end
-      }
-    }
+      end
+    end
   end
 
 end

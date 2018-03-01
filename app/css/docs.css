@@ -112,7 +112,7 @@ ul.list li {
 /* text and headers */
 h1 {
   margin: 0px 0px 20px;
-  padding: 50px 0px 5px;
+  padding: 20px 0px 5px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -139,7 +139,7 @@ code {
   vertical-align: baseline;
 }
 pre code {
-  box-shadow: none;
+  
   border: none;
   padding: 0px;
   font-size: 1em;
@@ -234,7 +234,7 @@ a:hover {
   z-index: -1;
   margin: 0em;
   min-height: 220px;
-  padding-top: 70px;
+  padding-top: 80px;
   padding-bottom: 30px;
   background-color: #FFFFFF;
   border-bottom: 1px solid #DDDDDD;

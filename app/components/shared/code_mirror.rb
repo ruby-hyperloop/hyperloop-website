@@ -11,8 +11,17 @@ class CodeMirror < Hyperloop::Component
     mutate.code params.code
   end
 
-  render(DIV) do
-    Sem.Container {
+  render do
+
+    
+
+    DIV(class: 'runable_code_blocks') do
+      
+      Sem.Segment(class: 'codeeditor-header', inverted: true) {
+        Sem.Icon(name: :edit)
+        "Code editor"
+      }
+
       mirror
 
       unless compile && evaluate && render_component
@@ -20,7 +29,7 @@ class CodeMirror < Hyperloop::Component
           PRE { state.compile_error }
         }
       end
-    }
+    end
   end
 
   def compile

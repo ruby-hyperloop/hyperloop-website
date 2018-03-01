@@ -39,6 +39,8 @@ class HomePage < Hyperloop::Router::Component
 
         AppMenu(section: 'home')
 
+        
+        #CANVAS(id: "c_n5", width: "1474", height: "800", style: { position: 'absolute', top: '0px', left: '0px', zIndex: '1', opacity: '0.5'})
         DIV(class: 'masthead segment stopped') do
           DIV(class: 'ui page grid') do
             DIV(class: 'column') do

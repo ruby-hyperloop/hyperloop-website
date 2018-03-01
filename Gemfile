@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'opal'
-gem 'opal_hot_reloader' # this will move to hyperloop.js
+gem 'opal', '0.10.5'
+gem 'opal_hot_reloader'
 gem 'foreman'
 gem 'rake'
 
