@@ -21,7 +21,7 @@ class PageBody < Hyperloop::Component
 
       # end
     end
-    convert_runable_code_blocks
+    # convert_runable_code_blocks
   end
 
   render do
@@ -33,8 +33,8 @@ class PageBody < Hyperloop::Component
         edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
 
         puts params.section
-        # html = SiteStore.sections[params.section].current_page[:html].to_s
-        html = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Metus vulputate eu scelerisque felis imperdiet proin. Cursus mattis molestie a iaculis at erat. Nisl vel pretium lectus quam id leo in vitae. Morbi tempus iaculis urna id volutpat lacus laoreet non. Suspendisse sed nisi lacus sed. A arcu cursus vitae congue. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. In dictum non consectetur a erat nam at lectus urna. Pellentesque dignissim enim sit amet venenatis urna. Est sit amet facilisis magna. Sit amet aliquam id diam maecenas ultricies. In nisl nisi scelerisque eu ultrices vitae."
+        html = SiteStore.sections[params.section].current_page[:html].to_s
+        # html = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Metus vulputate eu scelerisque felis imperdiet proin. Cursus mattis molestie a iaculis at erat. Nisl vel pretium lectus quam id leo in vitae. Morbi tempus iaculis urna id volutpat lacus laoreet non. Suspendisse sed nisi lacus sed. A arcu cursus vitae congue. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. In dictum non consectetur a erat nam at lectus urna. Pellentesque dignissim enim sit amet venenatis urna. Est sit amet facilisis magna. Sit amet aliquam id diam maecenas ultricies. In nisl nisi scelerisque eu ultrices vitae."
 
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
 

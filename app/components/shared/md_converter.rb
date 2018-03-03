@@ -28,7 +28,7 @@ class MdConverter
     @headings
   end
 
-  
+
 
   def process
     `var renderer = new Marked.Renderer()`
@@ -94,7 +94,7 @@ class MdConverter
     levelicon = ['', 'bookmark outline', 'circle outline', 'square outline']
     leveliconhtml = "<i class='#{levelicon[level-1]} icon'></i>&nbsp;"
     leveliconhtml = "" if level==1
-    
+
 
     @headings << heading
     "<p class='ptopmargin-#{level}'></p><h#{level} class='doc_h#{level} chapteranchor' id='#{heading[:slug]}'>#{leveliconhtml}#{text}</h#{level}>"

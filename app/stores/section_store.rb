@@ -5,14 +5,14 @@ class SectionStore < Hyperloop::Store
   state loaded: false
 
   def initialize pages, sectionname, sectionid
-  
+
     @sectionname = sectionname
     @sectionid = sectionid
     @pages = pages
-      
+
     load_and_convert_pages
     mutate.current_page @pages[0]
-    
+
   end
 
   def pages
@@ -49,21 +49,21 @@ class SectionStore < Hyperloop::Store
 
   private
 
-  def load_and_convert_pages 
+  def load_and_convert_pages
     @promises = 0
 
     @pages.each do |page|
       get(page)
     end
 
-    
-    
+
+
   end
 
   def get page
-    
+
     @promises += 1
-    
+
     HTTP.get( raw_url(page) ) do |response|
       puts "got page #{page}"
       if response.ok?
@@ -76,12 +76,12 @@ class SectionStore < Hyperloop::Store
         page[:edit_url] = edit_url page
         page[:lunrsearchindex] = build_lunr_page_searchindex(page)
 
-        
+
       else
         puts "Unable to get #{raw_url(page)} from Github"
       end
-     
-      
+
+
       @promises -= 1
       mutate.loaded true if @promises == 0
 
@@ -97,12 +97,12 @@ class SectionStore < Hyperloop::Store
                   .strip
     return puretext
   end
-  
+
 
   def build_lunr_page_searchindex page
 
     `lunrpageindex=[]`
-    
+
     page[:headings].each_with_index do |heading, index|
 
       lunrheadingindex = `{
@@ -111,15 +111,15 @@ class SectionStore < Hyperloop::Store
         "text": #{purify_text(heading[:paragraphs].join(' '))}
       }`
 
-      
+
       `lunrpageindex.push(#{lunrheadingindex});`
 
-      
+
     end
 
-    lunrpageindex =  `lunrpageindex`   
+    lunrpageindex =  `lunrpageindex`
     return lunrpageindex
-  
+
   end
 
 
