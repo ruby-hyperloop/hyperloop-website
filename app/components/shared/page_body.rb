@@ -18,7 +18,7 @@ class PageBody < Hyperloop::Component
               scrollTop: anchorchapter_position
             }, 500)
 
-        
+
       # end
     end
     convert_runable_code_blocks
@@ -29,17 +29,21 @@ class PageBody < Hyperloop::Component
       if SiteStore.sections[params.section].loaded?
 
         set_pagebody_cssstyle
-        
+
         edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
-        
-        DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: SiteStore.sections[params.section].current_page[:html] })
-        
+
+        puts params.section
+        # html = SiteStore.sections[params.section].current_page[:html].to_s
+        html = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Metus vulputate eu scelerisque felis imperdiet proin. Cursus mattis molestie a iaculis at erat. Nisl vel pretium lectus quam id leo in vitae. Morbi tempus iaculis urna id volutpat lacus laoreet non. Suspendisse sed nisi lacus sed. A arcu cursus vitae congue. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi. In dictum non consectetur a erat nam at lectus urna. Pellentesque dignissim enim sit amet venenatis urna. Est sit amet facilisis magna. Sit amet aliquam id diam maecenas ultricies. In nisl nisi scelerisque eu ultrices vitae."
+
+        DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
+
       end
     end
   end
 
   def set_pagebody_cssstyle
-    
+
     #Element['.ptopmargin-2'].prev('h1').css('height', '0em')
     # Element['h3'].prev().not('h2').css('margin-bottom', '5em')
     # Element['h4'].prev().css('margin-bottom', '5em')
