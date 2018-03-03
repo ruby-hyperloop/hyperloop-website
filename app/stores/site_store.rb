@@ -18,59 +18,17 @@ class SiteStore < Hyperloop::Store
       ret
     end
 
-    # def search_headings value, sectionname
-    #   data = []
-      
-    #   @section_stores.each do |section|
-        
-    #     a = {}
-    #     a[:name] = section[0].upcase
-        
-    #     a[:results] = []
-    #     pages = section[1].pages
-    #     pages.each do |page|
-    #       a[:results].concat( match_headings(page[:headings], value, page) )
-    #     end
-    #     data << a unless a[:results].size == 0
-    #   end
-    #   data
-    # end
-
-
-    
-
-
-
     private
-
-    
-
-    # def match_headings headings, value, page
-    #   ret = []
-    #   headings.each_with_index do |heading, index|
-    #     if heading[:text].downcase.include?(value.downcase)
-    #       heading[:friendly_doc_name] = page[:friendly_doc_name]
-    #       heading[:repo] = page[:repo]
-    #       heading[:file] = page[:file]
-    #       heading[:key] = "#{index}-#{heading[:repo]}-#{heading[:file]}-#{heading[:slug]}"
-    #       ret << heading
-
-    #     end
-    #   end
-    #   ret
-    # end
 
     def init
       @section_stores = {}
-      # FRED if the site is being loaded through a specific route, can we figure out which section to load first?
       load_start_section
       load_docs_section
+      load_installation_section
     end
 
     def load_start_section
-
-      sectionname = "start"
-      sectionid = 1
+      section_name = "start"
 
       pages = [
         { id: 0, name: 'components', repo: 'hyperloop-website',     file: 'pages/start/components.md',  allow_edit: true },
@@ -80,14 +38,11 @@ class SiteStore < Hyperloop::Store
         { id: 4, name: 'policies', repo: 'hyperloop-website',     file: 'pages/start/policies.md',  allow_edit: true },
         { id: 5, name: 'pradgmatic', repo: 'hyperloop-website',     file: 'pages/start/pradgmatic.md',  allow_edit: true }
       ]
-
-      @section_stores[sectionname] = SectionStore.new(pages, sectionname, sectionid)
+      @section_stores[section_name] = SectionStore.new(pages, section_name)
     end
 
     def load_docs_section
-     
-      sectionname = "docs"
-      sectionid = 0
+      section_name = "docs"
 
       pages = [
         { id: 0, name: 'components', repo: 'hyper-react',     file: 'DOCS.md',  allow_edit: true },
@@ -98,10 +53,17 @@ class SiteStore < Hyperloop::Store
         { id: 5, name: 'policies', repo: 'hyper-operation', file: 'DOCS-POLICIES.md',  allow_edit: true },
         { id: 6, name: 'dummy', repo: 'hyperloop-website', file: 'dist/dummy_DOCS.md',  allow_edit: true }
       ]
-      @section_stores[sectionname] = SectionStore.new(pages, sectionname, sectionid)
+      @section_stores[section_name] = SectionStore.new(pages, section_name)
     end
 
+    def load_installation_section
+      section_name = "installation"
 
+      pages = [
+        { id: 0, name: 'components', repo: 'hyperloop-website', file: 'pages/installation/overview.md',  allow_edit: true }
+      ]
+      @section_stores[section_name] = SectionStore.new(pages, section_name)
+    end
   end
 
 end

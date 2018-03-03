@@ -1,4 +1,4 @@
-# Componentst
+# Components
 
 Hyperloop user interfaces are composed of React Components written in Ruby.
 
