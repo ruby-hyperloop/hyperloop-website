@@ -1,1 +1,1 @@
-require 'opal'
+# require 'opal'

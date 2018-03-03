@@ -29,14 +29,14 @@
     "codemirror-one-dark-theme": "^1.1.1",
     "create-react-class": "^15.6.3",
     "marked": "^0.3.17",
-    "react": "^15.6.2",
+    "react": "16.2.0",
     "react-burger-menu": "^2.3.0",
     "react-codemirror": "^1.0.0",
-    "react-dom": "^15.6.2",
+    "react-dom": "16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-stickynode": "^1.4.1",
     "ruby-hyperloop": "0.0.24",
-    "semantic-ui-react": "^0.71.5"
+    "semantic-ui-react": "0.78.3"
   }
 }

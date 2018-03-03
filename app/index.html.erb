@@ -14,22 +14,20 @@
 
 
     <!-- Opal (or bring your own) -->
-    <!-- <script src="dist/opal.min.js"></script> -->
-    <%= javascript_include_tag 'opal.js'%>
+    <%= javascript_include_tag 'opal-collapsed.js'%>
 
     <!--Hyperloop -->
     <%= javascript_include_tag 'hyperloop.js'%>
-    <%= javascript_include_tag 'hyperloop-compiler.js'%>
     <%= javascript_include_tag 'hyper-router.js'%>
 
     <script src="dist/lunr.js"></script>
     <script src="dist/lunar_search_helpers.js"></script>
 
-<!-- <script src="dist/docs.js"></script> -->
+<!-- <script src="xxxdist/docs.js"></script> -->
 
     <!-- React and JQuery -->
-    <!-- <script src="dist/semantic.min.js"></script> -->
-    <!-- <script src="dist/docs.js"></script> -->
+    <!-- <script src="dist/xxxsemantic.min.js"></script> -->
+    <!-- <script src="dist/xxxdocs.js"></script> -->
 
     <!-- stylesheets -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css"></link>
@@ -45,16 +43,6 @@
     <!-- cdn libs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
-
-
-    <!-- Opal and Hyperloop -->
-
-    <!-- <script src="http://cdn.opalrb.org/opal/current/opal.min.js"></script> -->
-    <!-- <script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyperloop.js"></script><script src="https://rawgit.com/ruby-hyperloop/hyperloop-js/refactor/hyper-router.js"></script> -->
-
-
-    <!-- website application -->
-
     <%= javascript_include_tag 'app.js'%>
 
   </head>
@@ -62,12 +50,6 @@
   <body>
 
     <script type="text/javascript">
-
-
-
-
-
-
 
  $(document).ready(function() {
     //alert (getDatas());
