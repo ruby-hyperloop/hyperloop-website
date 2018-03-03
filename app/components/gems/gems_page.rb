@@ -1,9 +1,9 @@
 class GemsPage < Hyperloop::Router::Component
+
   render(DIV) do
-
-    sidebar = GemsSidebar().as_node
-    body = GemsBody().as_node
-
-    PageLayout(sidebar_component: sidebar, body_component: body, loaded: true)
+    PageRender(section_name: "gems",
+               display_title: "Hyperloop Gems",
+               history: history,
+               location: location)
   end
 end
