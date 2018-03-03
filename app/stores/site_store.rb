@@ -61,7 +61,7 @@ class SiteStore < Hyperloop::Store
       section_name = "installation"
 
       pages = [
-        { id: 0, name: 'components', repo: 'hyperloop-website', file: 'pages/installation/overview.md',  allow_edit: true }
+        { id: 0, name: 'installation', repo: 'hyperloop-website', file: 'pages/installation/overview.md',  allow_edit: true }
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name)
     end
