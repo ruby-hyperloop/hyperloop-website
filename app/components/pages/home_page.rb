@@ -10,37 +10,18 @@ class HomePage < Hyperloop::Router::Component
     }
   end
 
-
   render do
-
-    # sidebar = HomeSidebar().as_node
-    # body = HomeBody().as_node
-
-    # PageLayout(sidebar_component: sidebar, body_component: body, loaded: true)
-
     DIV(id: 'example', class: 'index') do
-      
       SidebarMenu()
-      
-
-      DIV(class: 'page-wrap') do      
+      DIV(class: 'page-wrap') do
         main_content
       end
-      
     end
-
   end
 
-
   def main_content
-
-  
       DIV(class: 'full height') do
-
         AppMenu(section: 'home')
-
-        
-        #CANVAS(id: "c_n5", width: "1474", height: "800", style: { position: 'absolute', top: '0px', left: '0px', zIndex: '1', opacity: '0.5'})
         DIV(class: 'masthead segment stopped') do
           DIV(class: 'ui page grid') do
             DIV(class: 'column') do
@@ -49,7 +30,6 @@ class HomePage < Hyperloop::Router::Component
                   SPAN(class: 'library') { 'Hyperloop' }
                 end
                 DIV(class: 'ui hidden divider')
-                #A(class: 'ui big basic inverted pink view-ui button getstartedbutton') do
                 Link('/start', class: 'ui big basic inverted pink view-ui button getstartedbutton') do
                   I(class: 'sidebar icon')
                   "\n          Get Started\n        "
@@ -87,18 +67,7 @@ class HomePage < Hyperloop::Router::Component
             end
           end
         end
-
       end
-      
       AppFooter()
-      
-
-
-
-    
-
   end
-
-
-
 end
