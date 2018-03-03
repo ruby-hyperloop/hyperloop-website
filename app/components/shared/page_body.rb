@@ -57,8 +57,8 @@ class PageBody < Hyperloop::Component
     DIV(class: 'edit-github-button') do
       if state.needs_refresh
         Sem.Message(positive: true) {
-          Sem.MessageHeader { "Thank you!" }
-          P { "PRs are always welcome." }
+          Sem.MessageHeader { "Refresh for changes" }
+          P { "Note: There can be a delay with Github pages" }
         }
       else
         Sem.Button(icon: :github, circular: true, label: "Improve this page") {
