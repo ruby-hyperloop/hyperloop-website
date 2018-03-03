@@ -11,7 +11,9 @@ class StrippedBackComponent < Hyperloop::Component
 end
 ```
 
-As you can see, a Component is just a Ruby class which inherits from `Hyperloop::Component`. At a minimum, a Component must implement a `render` macro that returns just one HTML element. Under the covers, HyperReact uses Opal to compile this Component into JavaScript then hands it to React to mount as a regular JavaScript React Component.
+A Component is just a Ruby class inherited from `Hyperloop::Component`. At a minimum, a Component must implement a `render` macro that returns **just one** HTML element.
+
+Under the covers, Hyperloop uses Opal to compile this Component into JavaScript then hands it to React to mount as a regular JavaScript React Component.
 
 As with React, there are no templates in Hyperloop, your user interface is made up of Components which mix conditional logic and HTML elements to build the user interface. Unlike React, where you code in JSX and JavaScript, Hyperloop lets you keep all your code in Ruby.
 
