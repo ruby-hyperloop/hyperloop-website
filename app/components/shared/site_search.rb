@@ -26,57 +26,40 @@ class SiteSearch < Hyperloop::Router::Component
   end
 
   render do
-
     search_control
   end
 
-
-
   def search_control
-
-        
     Sem.Input(iconPosition: 'left', placeholder: 'Search ...', action: true) do
       INPUT(){}.on(:change) do |e|
        mutate.searchinputvalue e.target.value
       end
 
       Sem.Icon(name: 'search')
+      Sem.Select(compact: false, options: params.sectionoptions.to_n).on :change do |e|
 
-      # Sem.Select(compact: true, options: params.searchwordoptions.to_n, value: state.searchwordselection).on :change do |e|
-        
-      #   #mutate.selection Hash.new(e.to_n)['value']
-        
-      # end
-
-      Sem.Select(compact: false, options: params.sectionoptions.to_n, defaultValue: state.sectionselection).on :change do |e|
-        
         mutate.sectionselection Hash.new(e.to_n)['value']
         #params.onChange.call(state.sectionselection) if params.onChange.present?
         # puts "SELECT #{state.sectionselection}"
-        `alert(#{e})`
+        # `alert(#{e})`
 
         # test1 = e.target
         # `test2=#{test1}`
         # `alert(test2)`
-        
+
         #test =  state.sectionselection.map{|element| Hash.new(element)}
         #puts "VALUE: #{test}"
       end
 
       Sem.Button() {'Search'}.on(:click) do
-
-        # SearchResultModal.open
-        
-        
         if (state.searchinputvalue.length>4)
-
           if ( (SearchEngineStore.querystring != state.searchinputvalue) ||
              (SearchEngineStore.previoussectionquery != params.section) )
-            
-            SearchEngineStore.mutate.querystring state.searchinputvalue
-            SearchEngineStore.mutate.previoussectionquery params.section
-            SearchEngineStore.mutate.allresults nil
-            
+
+                SearchEngineStore.mutate.querystring state.searchinputvalue
+                SearchEngineStore.mutate.previoussectionquery params.section
+                SearchEngineStore.mutate.allresults nil
+
             SearchEngineStore.search_withlunr(params.section)
           end
 
@@ -87,23 +70,11 @@ class SiteSearch < Hyperloop::Router::Component
           end
 
         else
-          #SearchEngineStore.mutate.querystring ""
-          #SearchEngineStore.mutate.allresults nil
-    
           alert("Search word too small, must be > 4")
         end
-        
       end
-      
-
     end
-    
-    
-    
-
   end
-
-  
 end
 
 
@@ -122,7 +93,7 @@ end
   #   ) { }
   #   .on(:searchChange) do |e|
   #     mutate.value e.target.value
-  #     if (e.target.value.length > 4) 
+  #     if (e.target.value.length > 4)
   #       #mutate.results SiteStore.search_content(state.value, params.section).to_n
   #       resultat = SiteStore.search_content(state.value, params.section)
   #       puts "RESULTS: #{resultat[0][:results][0][:text]}"
@@ -155,5 +126,5 @@ end
   #     H1 { `obj.name` }
   #     EM { "#{`obj.result_number`} results" }
   #   end.to_n
-    
+
   # end

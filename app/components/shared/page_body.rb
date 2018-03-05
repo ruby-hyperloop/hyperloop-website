@@ -6,17 +6,15 @@ class PageBody < Hyperloop::Component
     mutate.needs_refresh false
   end
 
-
   after_update do
-    if !NavigationStore.state.slug.empty?
-      # if !(Element["##{NavigationStore.state.slug}"].nil?)
-        #puts "ELEMENT: #{Element["##{NavigationStore.state.slug}"].offset().nil?}"
-        anchorchapter_position = Element["##{NavigationStore.state.slug}"].offset().top
-        #puts "Position: #{anchorchapter_position}"
-        #puts "BODY update"
+    unless NavigationStore.slug.empty?
+      element = Element["##{NavigationStore.slug}"]
+      if element.offset()
+        anchorchapter_position = element.offset().top
         Element['html, body'].animate({
               scrollTop: anchorchapter_position
             }, 500)
+      end
     end
     # convert_runable_code_blocks
   end
@@ -24,12 +22,8 @@ class PageBody < Hyperloop::Component
   render do
     DIV(class: 'page-container') do
       if SiteStore.sections[params.section].loaded?
-
         set_pagebody_cssstyle
-
         edit_button if SiteStore.sections[params.section].current_page[:allow_edit]
-
-        puts params.section
         html = SiteStore.sections[params.section].current_page[:html].to_s
         DIV(class: 'pagebody', dangerously_set_inner_HTML: { __html: html } )
       end
