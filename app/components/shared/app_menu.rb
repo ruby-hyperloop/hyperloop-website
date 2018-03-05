@@ -1,13 +1,13 @@
 class AppMenu < Hyperloop::Router::Component
 
   param :section
-  
+
   render do
 
     DIV(class: 'following bar fixed') do
       DIV(class: 'ui page grid') do
         DIV(class: 'column') do
-          
+
           DIV(class: 'ui logo shape') do
             DIV(class: 'sides') do
               DIV(class: 'active learn side') do
@@ -15,7 +15,7 @@ class AppMenu < Hyperloop::Router::Component
                 #Link('/docs', class: 'item') { 'DOCUMENTATION' }
 
               end
-    
+
             end
           end
 
@@ -37,9 +37,9 @@ class AppMenu < Hyperloop::Router::Component
             end.on(:click) {
               SidebarStore.toggle
             }
-            A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Help' }
-            A(href: 'semantic', 'data-site': 'ui', class: 'additional item visible') { 'Showcase' }  
-          
+            A(href: 'https://github.com/ruby-hyperloop', 'data-site': 'ui', class: 'additional item visible') { 'Github' }
+            A(href: 'https://gitter.im/ruby-hyperloop/chat', 'data-site': 'ui', class: 'additional item visible') { 'Gitter chat' }
+
             if (params.section != 'home')
               Sem.MenuItem {
                 SiteSearch(section: params.section, history: history, location: location)
