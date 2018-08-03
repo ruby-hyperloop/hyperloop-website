@@ -17,6 +17,27 @@ The new website will:
 + will be as SEO friendly as the current site (through pre-rendering)
 + be beautiful to behold!
 
+## Setup and build
+
+### Setup
+
++ `bundle`
++ `yarn`
+
+### Build
+
++ To build packs.js and app.js: `yarn run webpack` (-p for production mode)
++ To build app.js: `bundle exec rake build`
+
+## Running the server
+
+We use Rack and OpelHotReloader as a development environment. Website Components are rebuilt by sprockets on server start. You will need to build bundle.js (`yarn run webpack`).
+
+To start the server:
+
+`foreman start`
+Browse `http://localhost:9292/`
+
 ## Adding pages and sections
 
 ### Adding a section
@@ -36,27 +57,6 @@ Not all sections need to load pages, but if you do then:
 
 + There is one singleton Store - `SiteStore` which contains many instances of `SectionStore` (one per section)
 
-## Setup and build
-
-### Setup
-
-+ `bundle`
-+ `npm install`
-+ `npm install webpack@3.4.1 -g` <-- if you don't have Webpack command line
-
-### Build
-
-+ To build packs.js and app.js: `webpack` (-p for production mode)
-+ To build app.js: `bundle exec rake build`
-
-## Running the server
-
-We use Rack and OpelHotReloader as a development environment. Website Components are rebuilt by sprockets on server start. You will need to build bundle.js (`webpack`).
-
-To start the server:
-
-`foreman start`
-Browse `http://localhost:9292/`
 
 ## Code blocks
 
