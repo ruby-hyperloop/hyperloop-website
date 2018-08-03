@@ -2509,7 +2509,7 @@ react-dom@16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-router-dom@^4.2.2:
+react-router-dom@^4.2.2, react-router-dom@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-4.3.1.tgz#4c2619fc24c4fa87c9fd18f4fb4a43fe63fbd5c6"
   dependencies:
@@ -2520,7 +2520,7 @@ react-router-dom@^4.2.2:
     react-router "^4.3.1"
     warning "^4.0.1"
 
-react-router@^4.2.0, react-router@^4.3.1:
+react-router@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
   dependencies:
@@ -2702,9 +2702,9 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-ruby-hyperloop@0.0.24:
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/ruby-hyperloop/-/ruby-hyperloop-0.0.24.tgz#7d2972f4b64165970775d076549c238da638fe75"
+ruby-hyperloop@0.0.28:
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/ruby-hyperloop/-/ruby-hyperloop-0.0.28.tgz#7b021cbe8e86729c72365111ed19bb7100e17333"
   dependencies:
     react "^15.6.1"
     react-router-dom "^4.2.2"

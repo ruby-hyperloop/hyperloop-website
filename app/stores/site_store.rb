@@ -27,7 +27,7 @@ class SiteStore < Hyperloop::Store
       load_installation_section
       load_gems_section
       load_tools_section
-      load_tutorials_section
+      # load_tutorials_section
     end
 
     def load_start_section
@@ -92,7 +92,7 @@ class SiteStore < Hyperloop::Store
       pages = [
         { id: 0, name: 'helloworld', repo: 'hyperloop-website', file: 'pages/tutorial/helloworld.md',  allow_edit: true },
         { id: 1, name: 'todo', repo: 'todo-tutorial',     file: 'README.md',  allow_edit: true }
-        
+
       ]
       @section_stores[section_name] = SectionStore.new(pages, section_name)
     end

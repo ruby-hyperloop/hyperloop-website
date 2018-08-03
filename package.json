@@ -33,10 +33,10 @@
     "react-burger-menu": "^2.3.0",
     "react-codemirror": "^1.0.0",
     "react-dom": "16.2.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "react-stickynode": "^1.4.1",
-    "ruby-hyperloop": "0.0.24",
+    "ruby-hyperloop": "0.0.28",
     "semantic-ui-react": "0.78.3"
   }
 }

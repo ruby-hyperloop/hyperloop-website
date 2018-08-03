@@ -1,14 +1,6 @@
 GIT
-  remote: https://github.com/opal/opal-jquery.git
-  revision: f47a9b42da366cea270f743b05acf529f3077d35
-  branch: master
-  specs:
-    opal-jquery (0.4.2)
-      opal (>= 0.10.0, < 0.12.0)
-
-GIT
-  remote: https://github.com/ruby-hyperloop/hyper-router.git
-  revision: 834758358805357aba4d0bdb205b62fc6d635851
+  remote: https://github.com/janbiedermann/hyper-router.git
+  revision: 33b076cad664ed5ff783efbf8f9ad9e9ae9f8bba
   branch: edge
   specs:
     hyper-router (4.2.6.lap28)
@@ -17,6 +9,14 @@ GIT
       opal-browser (~> 0.2.0)
       opal-rails (~> 0.9.4)
       react-rails (>= 2.4.0, < 2.5.0)
+
+GIT
+  remote: https://github.com/opal/opal-jquery.git
+  revision: d15ca70f53cb323245c54842587b874945e1083e
+  branch: master
+  specs:
+    opal-jquery (0.4.2)
+      opal (>= 0.10.0, < 0.12.0)
 
 GEM
   remote: https://rubygems.org/
@@ -73,13 +73,13 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     builder (3.2.3)
-    capybara (3.0.3)
+    capybara (3.5.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      xpath (~> 3.0)
+      xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.2.0)
@@ -90,14 +90,14 @@ GEM
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
     concurrent-ruby (1.0.5)
-    connection_pool (2.2.1)
+    connection_pool (2.2.2)
     crass (1.0.4)
     diff-lcs (1.3)
     equalizer (0.0.11)
     erubi (1.7.1)
     execjs (2.7.0)
-    ffi (1.9.23)
-    foreman (0.84.0)
+    ffi (1.9.25)
+    foreman (0.85.0)
       thor (~> 0.19.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -164,7 +164,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    libv8 (6.3.292.48.1)
+    libv8 (6.7.288.46.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -182,12 +182,12 @@ GEM
     mini_racer (0.1.15)
       libv8 (~> 6.3)
     minitest (5.11.3)
-    mutations (0.8.2)
+    mutations (0.8.3)
       activesupport
     nio4r (2.3.1)
-    nokogiri (1.8.2)
+    nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
-    opal (0.11.0)
+    opal (0.11.1)
       ast (>= 2.3.0)
       hike (~> 1.2)
       parser (= 2.3.3.1)
@@ -209,7 +209,7 @@ GEM
       opal (~> 0.11.0)
       sprockets (~> 3.1)
       tilt (>= 1.4)
-    opal_hot_reloader (0.1.5)
+    opal_hot_reloader (0.1.6)
       listen (~> 3.0)
       websocket
     paggio (0.2.6)
@@ -221,7 +221,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.2)
     rack (2.0.5)
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
       actioncable (= 5.1.6)
@@ -250,7 +250,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    react-rails (2.4.4)
+    react-rails (2.4.7)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -275,11 +275,11 @@ GEM
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    selenium-webdriver (3.11.0)
+    selenium-webdriver (3.14.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
     sourcemap (0.1.1)
-    sprockets (3.7.1)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -292,9 +292,9 @@ GEM
     timecop (0.8.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.10)
+    uglifier (4.1.17)
       execjs (>= 0.3.0, < 3)
-    unparser (0.2.7)
+    unparser (0.2.8)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
       concord (~> 0.1.5)
@@ -302,15 +302,15 @@ GEM
       equalizer (~> 0.0.9)
       parser (>= 2.3.1.2, < 2.6)
       procto (~> 0.0.2)
-    webdrivers (3.3.1)
+    webdrivers (3.3.2)
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
-    websocket (1.2.5)
+    websocket (1.2.8)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (3.0.0)
+    xpath (3.1.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
@@ -318,6 +318,7 @@ PLATFORMS
 
 DEPENDENCIES
   foreman
+  hyper-operation (= 1.0.0.lap28)
   hyper-router!
   hyper-spec (= 1.0.0.lap28)
   hyperloop (= 1.0.0.lap28)
@@ -334,4 +335,4 @@ DEPENDENCIES
   uglifier
 
 BUNDLED WITH
-   1.16.1
+   1.16.3
